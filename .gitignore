@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.claude/
+*.log
+.DS_Store
+mcp.config.json
+foj-app/src/publicjwd2-topaz-enhance-2.png
