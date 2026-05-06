@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "stitch": {
+      "protocol": "http",
+      "url": "https://mcp.stitch.ai",
+      "headers": {
+        "Authorization": "YOUR_STITCH_API_TOKEN_HERE"
+      }
+    }
+  }
+}
