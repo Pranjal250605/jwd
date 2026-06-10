@@ -1,8 +1,8 @@
 import React from 'react';
 import { siteContent } from '../data/content';
 import { useTheme } from '../context/ThemeContext';
-import jwd2 from '../publicjwd2-topaz-enhance.png';
-import jwd1 from '../publicjwd1-topaz-enhance.png';
+import jwd2 from '../jwd2-hero.jpg';
+import jwd1 from '../jwd1-hero.jpg';
 
 export const Hero: React.FC = () => {
   const { theme } = useTheme();
