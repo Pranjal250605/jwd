@@ -96,6 +96,10 @@ function Stars({ reduce }: { reduce: boolean }) {
     };
     resize();
 
+    /* Occasional shooting star — the wish-upon-a-star moment */
+    let meteor: { nx: number; ny: number; born: number } | null = null;
+    let nextMeteor = 5000 + Math.random() * 5000;
+
     const draw = (t: number) => {
       const { clientWidth: w, clientHeight: h } = canvas;
       ctx.clearRect(0, 0, w, h);
@@ -107,7 +111,34 @@ function Stars({ reduce }: { reduce: boolean }) {
         ctx.arc(st.x * w, st.y * h, st.r, 0, Math.PI * 2);
         ctx.fill();
       }
-      if (!reduce) raf = requestAnimationFrame(draw);
+
+      if (!reduce) {
+        if (!meteor && t > nextMeteor) {
+          meteor = { nx: 0.1 + Math.random() * 0.5, ny: 0.05 + Math.random() * 0.25, born: t };
+        }
+        if (meteor) {
+          const age = (t - meteor.born) / 850;
+          if (age >= 1) {
+            meteor = null;
+            nextMeteor = t + 6000 + Math.random() * 7000;
+          } else {
+            const hx = meteor.nx * w + age * 0.24 * w;
+            const hy = meteor.ny * h + age * 0.13 * h;
+            const trail = (1 - age) * 0.09 * w;
+            const grad = ctx.createLinearGradient(hx, hy, hx - trail, hy - trail * 0.54);
+            grad.addColorStop(0, 'rgba(230,217,184,0.9)');
+            grad.addColorStop(1, 'rgba(230,217,184,0)');
+            ctx.globalAlpha = Math.sin(Math.PI * age);
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 1.4;
+            ctx.beginPath();
+            ctx.moveTo(hx, hy);
+            ctx.lineTo(hx - trail, hy - trail * 0.54);
+            ctx.stroke();
+          }
+        }
+        raf = requestAnimationFrame(draw);
+      }
     };
     raf = requestAnimationFrame(draw);
 
@@ -198,6 +229,19 @@ export function NightWorld({ reduce }: { reduce: boolean }) {
           <rect x={759.3} y={0} width={1.4} height={22} />
           {/* ground line */}
           <rect x={0} y={356} width={1200} height={4} />
+        </g>
+
+        {/* Spire glint — a four-point star pulsing at the very top */}
+        <g
+          style={{
+            transformBox: 'fill-box',
+            transformOrigin: 'center',
+            animation: reduce ? undefined : 'glint 5.5s ease-in-out infinite',
+          }}
+        >
+          <circle cx={760} cy={20} r={3.2} fill="#e6d9b8" opacity={0.85} />
+          <rect x={759.4} y={4} width={1.2} height={32} fill="#e6d9b8" opacity={0.8} />
+          <rect x={744} y={19.4} width={32} height={1.2} fill="#e6d9b8" opacity={0.8} />
         </g>
 
         {/* lit windows */}

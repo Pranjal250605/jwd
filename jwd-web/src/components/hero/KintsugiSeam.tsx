@@ -34,6 +34,44 @@ export function KintsugiSeam({ reduce }: { reduce: boolean }) {
         </filter>
       </defs>
 
+      {/* Light bleeding through the crack — flash at the moment of opening */}
+      <motion.path
+        d={SEAM_PATH}
+        fill="none"
+        stroke="#e6d9b8"
+        strokeWidth={26}
+        vectorEffect="non-scaling-stroke"
+        filter="url(#kintsugi-glow)"
+        initial={reduce ? { strokeOpacity: 0 } : { strokeOpacity: 0 }}
+        animate={
+          reduce
+            ? { strokeOpacity: 0 }
+            : { strokeOpacity: [0, 0.85, 0.12] }
+        }
+        transition={{ duration: 1.4, delay: 1.05, times: [0, 0.45, 1], ease: 'easeInOut' }}
+      />
+
+      {/* Breathing glow — the seam stays alive */}
+      <motion.path
+        d={SEAM_PATH}
+        fill="none"
+        stroke="#c9a85c"
+        strokeWidth={9}
+        vectorEffect="non-scaling-stroke"
+        filter="url(#kintsugi-glow)"
+        initial={{ strokeOpacity: reduce ? 0.25 : 0 }}
+        animate={
+          reduce
+            ? { strokeOpacity: 0.25 }
+            : { strokeOpacity: [0.16, 0.38, 0.16] }
+        }
+        transition={
+          reduce
+            ? undefined
+            : { duration: 5, delay: 2.4, repeat: Infinity, ease: 'easeInOut' }
+        }
+      />
+
       {/* Glow halo */}
       <motion.path
         d={SEAM_PATH}
@@ -75,7 +113,7 @@ export function KintsugiSeam({ reduce }: { reduce: boolean }) {
           vectorEffect="non-scaling-stroke"
           initial={reduce ? false : { pathLength: 0, opacity: 0 }}
           animate={{ pathLength: 1, opacity: 0.55 }}
-          transition={{ duration: 0.5, delay: 1.35 + i * 0.08, ease: 'easeOut' }}
+          transition={{ duration: 0.5, delay: 1.5 + i * 0.08, ease: 'easeOut' }}
         />
       ))}
     </svg>

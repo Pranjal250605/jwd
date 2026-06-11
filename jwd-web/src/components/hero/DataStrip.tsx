@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, type MotionValue } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { CountUp } from '@/components/kintsugi/CountUp';
 
@@ -29,7 +29,7 @@ function Stat({
 }
 
 /** Frosted-glass live market strip — the hero's instant credibility signal. */
-export function DataStrip() {
+export function DataStrip({ fade }: { fade?: MotionValue<number> }) {
   const t = useTranslations('data');
   const reduce = useReducedMotion();
   const [fx, setFx] = useState(FX_FALLBACK);
@@ -59,10 +59,14 @@ export function DataStrip() {
 
   return (
     <motion.div
-      className="absolute inset-x-0 bottom-0 z-40 border-t border-gold-bright/15 bg-night/40 backdrop-blur-md"
+      className="absolute inset-x-0 bottom-0 z-50"
+      style={fade ? { opacity: fade } : undefined}
+    >
+    <motion.div
+      className="border-t border-gold-bright/15 bg-night/40 backdrop-blur-md"
       initial={reduce ? false : { y: '100%', opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.9, delay: 2.2, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.9, delay: 2.7, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="mx-auto flex max-w-screen-2xl items-stretch justify-center divide-x divide-gold-bright/10 sm:justify-start">
         <Stat label={t('fxLabel')}>
@@ -89,6 +93,7 @@ export function DataStrip() {
           <CountUp to={0} decimals={0} start={start} suffix="%" />
         </Stat>
       </div>
+    </motion.div>
     </motion.div>
   );
 }
