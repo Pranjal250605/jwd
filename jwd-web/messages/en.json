@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About JWD",
+    "whyDubai": "Why Dubai",
+    "properties": "Dubai Properties",
+    "heartOfEurope": "Heart of Europe",
+    "funds": "Investment Funds",
+    "japanProperties": "Japan Properties",
+    "familyOffice": "Family Office",
+    "simulator": "Investment Simulator",
+    "knowledge": "Knowledge Center",
+    "stories": "Tomo's Stories",
+    "consulting": "Consulting",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "tagline": "The bridge between Japan & Dubai wealth creation"
+  },
+  "hero": {
+    "badge": "First Call Partner · Est. 2020",
+    "titleLine1": "Two horizons,",
+    "titleLine2": "one golden bridge.",
+    "subtitle": "日本とドバイを結ぶ — Real Estate × Wealth Creation",
+    "description": "From Dubai real estate investment to Japanese asset strategy and family wealth preservation — JWD Group is the rare partner fluent in both markets, guiding your wealth to its next horizon.",
+    "ctaPrimary": "Book a Consultation",
+    "ctaSecondary": "Download Investment Guide",
+    "scroll": "Scroll",
+    "japan": "Japan",
+    "dubai": "Dubai"
+  },
+  "data": {
+    "live": "LIVE",
+    "fxLabel": "AED / JPY",
+    "yieldLabel": "Dubai Avg. Yield",
+    "popLabel": "Population Growth",
+    "taxLabel": "Personal Income Tax"
+  },
+  "trust": {
+    "heading": "A Track Record of Trust",
+    "subheading": "The numbers behind JWD",
+    "stat1Label": "Years in Dubai",
+    "stat1Suffix": "yrs",
+    "stat2Label": "Transaction Volume",
+    "stat2Suffix": "B¥",
+    "stat3Label": "Families & Investors Advised",
+    "stat3Suffix": "+",
+    "stat4Label": "Average Target Yield",
+    "stat4Suffix": "%"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "tagline": "The Bridge Between Japan & Dubai"
+  }
+}

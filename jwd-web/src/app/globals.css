@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+@theme inline {
+  /* ── KINTSUGI design tokens ───────────────────────────── */
+  --color-washi: #faf9f5;
+  --color-washi-deep: #f0ede5;
+  --color-sumi: #20251f;
+  --color-sumi-soft: #4c5248;
+  --color-gold: #9a7b2d;
+  --color-gold-bright: #c9a85c;
+  --color-gold-pale: #e6d9b8;
+  --color-night: #10182b;
+  --color-night-deep: #0a1020;
+  --color-sand: #e8ddc8;
+
+  --font-jp: var(--font-shippori), serif;
+  --font-en: var(--font-cormorant), serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), monospace;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-washi);
+  color: var(--color-sumi);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'palt'; /* proportional JP punctuation */
+  overflow-x: clip;
+}
+
+::selection {
+  background: rgba(201, 168, 92, 0.35);
+  color: #20251f;
+}
+
+/* ── Kintsugi gold gradient text ── */
+.text-gold-gradient {
+  background: linear-gradient(120deg, #9a7b2d 0%, #c9a85c 45%, #e6d9b8 55%, #9a7b2d 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: goldShimmer 7s ease-in-out infinite;
+}
+
+@keyframes goldShimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+/* ── Mist drift (washi world atmosphere) ── */
+@keyframes mistDrift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(4%, -3%, 0) scale(1.06); }
+}
+
+@keyframes mistDriftAlt {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.04); }
+  50% { transform: translate3d(-3%, 2%, 0) scale(1); }
+}
+
+/* ── Window light flicker (Dubai skyline) ── */
+@keyframes windowFlicker {
+  0%, 92%, 100% { opacity: var(--w-base, 0.7); }
+  95% { opacity: 0.15; }
+}
+
+/* ── Live data dot ── */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ── Scroll hint line ── */
+@keyframes scrollHint {
+  0% { transform: scaleY(0); transform-origin: top; }
+  45% { transform: scaleY(1); transform-origin: top; }
+  55% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}

@@ -1,0 +1,55 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "about": "JWDについて",
+    "whyDubai": "なぜドバイか",
+    "properties": "ドバイ不動産",
+    "heartOfEurope": "ハート・オブ・ヨーロッパ",
+    "funds": "投資ファンド",
+    "japanProperties": "日本不動産",
+    "familyOffice": "ファミリーオフィス",
+    "simulator": "投資シミュレーター",
+    "knowledge": "ナレッジセンター",
+    "stories": "Tomoのストーリー",
+    "consulting": "コンサルティング",
+    "contact": "お問い合わせ",
+    "menu": "メニュー",
+    "close": "閉じる",
+    "tagline": "日本とドバイを結ぶ、資産の架け橋"
+  },
+  "hero": {
+    "badge": "First Call Partner · Est. 2020",
+    "titleLine1": "日本とドバイ、",
+    "titleLine2": "二つの地平を結ぶ。",
+    "subtitle": "The Bridge Between Japan & Dubai — Real Estate × Wealth Creation",
+    "description": "ドバイ不動産投資、日本の資産活用、そして一族の資産保全まで。JWDグループは、二つの市場を知り尽くした唯一無二のパートナーとして、あなたの資産戦略を次の地平へ導きます。",
+    "ctaPrimary": "無料相談を予約する",
+    "ctaSecondary": "投資ガイドをダウンロード",
+    "scroll": "スクロール",
+    "japan": "日本",
+    "dubai": "ドバイ"
+  },
+  "data": {
+    "live": "ライブ",
+    "fxLabel": "AED / JPY",
+    "yieldLabel": "ドバイ平均利回り",
+    "popLabel": "人口成長率",
+    "taxLabel": "個人所得税"
+  },
+  "trust": {
+    "heading": "信頼の実績",
+    "subheading": "数字が語る、JWDの確かな歩み",
+    "stat1Label": "ドバイ在住・事業年数",
+    "stat1Suffix": "年",
+    "stat2Label": "累計取引額",
+    "stat2Suffix": "億円",
+    "stat3Label": "ご支援した投資家・一族",
+    "stat3Suffix": "組",
+    "stat4Label": "平均想定利回り",
+    "stat4Suffix": "%"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "tagline": "The Bridge Between Japan & Dubai"
+  }
+}
