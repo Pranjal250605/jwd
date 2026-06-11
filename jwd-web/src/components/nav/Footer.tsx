@@ -20,6 +20,10 @@ export function Footer() {
           </span>
         </span>
         <p className="font-en text-sm italic text-gold-pale/60">{t('tagline')}</p>
+        <div className="flex flex-col gap-1.5 text-[11px] leading-relaxed text-washi/40">
+          <p>{t('company')}</p>
+          <p>{t('address')}</p>
+        </div>
         <p className="text-[10px] tracking-[0.2em]">
           © {new Date().getFullYear()} JWD GROUP. {t('rights')}
         </p>

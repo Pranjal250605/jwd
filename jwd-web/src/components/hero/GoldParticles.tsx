@@ -38,6 +38,22 @@ export function GoldParticles({ reduce }: { reduce: boolean }) {
     };
     resize();
 
+    /* Pre-rendered glow sprite — drawImage is ~20× cheaper than per-frame shadowBlur */
+    const SPRITE = 32;
+    const sprite = document.createElement('canvas');
+    sprite.width = SPRITE;
+    sprite.height = SPRITE;
+    const sctx = sprite.getContext('2d')!;
+    const grad = sctx.createRadialGradient(
+      SPRITE / 2, SPRITE / 2, 0,
+      SPRITE / 2, SPRITE / 2, SPRITE / 2,
+    );
+    grad.addColorStop(0, 'rgba(230,217,184,1)');
+    grad.addColorStop(0.25, 'rgba(201,168,92,0.9)');
+    grad.addColorStop(1, 'rgba(201,168,92,0)');
+    sctx.fillStyle = grad;
+    sctx.fillRect(0, 0, SPRITE, SPRITE);
+
     const spawn = (): Particle => {
       const [sx, sy] = seamPointAt(Math.random());
       const maxLife = 160 + Math.random() * 200;
@@ -75,14 +91,9 @@ export function GoldParticles({ reduce }: { reduce: boolean }) {
         const alpha = t < 0.15 ? t / 0.15 : 1 - (t - 0.15) / 0.85;
 
         ctx.globalAlpha = alpha * 0.8;
-        ctx.fillStyle = '#c9a85c';
-        ctx.shadowColor = '#c9a85c';
-        ctx.shadowBlur = 6;
-        ctx.beginPath();
-        ctx.arc(p.x * w, p.y * h, p.r, 0, Math.PI * 2);
-        ctx.fill();
+        const size = p.r * 7;
+        ctx.drawImage(sprite, p.x * w - size / 2, p.y * h - size / 2, size, size);
       }
-      ctx.shadowBlur = 0;
       raf = requestAnimationFrame(draw);
     };
     raf = requestAnimationFrame(draw);

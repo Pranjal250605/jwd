@@ -44,6 +44,8 @@ interface Win {
   o: number;
   delay: number;
   dur: number;
+  /** Only a small fraction animate — hundreds of CSS animations cause jank. */
+  anim: boolean;
 }
 
 function buildWindows(): Win[] {
@@ -54,13 +56,14 @@ function buildWindows(): Win[] {
     const rows = Math.floor(bh / 14);
     for (let c = 0; c < cols; c++) {
       for (let r = 0; r < rows; r++) {
-        if (rand() > 0.3) continue; // ~30% of windows lit
+        if (rand() > 0.28) continue; // ~28% of windows lit
         wins.push({
           x: bx + 4 + c * 9,
           y: 360 - bh + 6 + r * 14,
           o: 0.25 + rand() * 0.55,
           delay: rand() * 8,
           dur: 5 + rand() * 9,
+          anim: rand() < 0.22, // ~22% of lit windows flicker; the rest are static
         });
       }
     }
@@ -256,9 +259,10 @@ export function NightWorld({ reduce }: { reduce: boolean }) {
               style={{
                 opacity: win.o,
                 ['--w-base' as string]: win.o,
-                animation: reduce
-                  ? undefined
-                  : `windowFlicker ${win.dur}s ease-in-out ${win.delay}s infinite`,
+                animation:
+                  reduce || !win.anim
+                    ? undefined
+                    : `windowFlicker ${win.dur}s ease-in-out ${win.delay}s infinite`,
               }}
             />
           ))}

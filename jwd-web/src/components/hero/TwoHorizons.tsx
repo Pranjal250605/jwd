@@ -40,7 +40,7 @@ function SplitChars({
           initial={
             reduce
               ? false
-              : { y: '0.65em', opacity: 0, rotateX: 60, filter: 'blur(10px)' }
+              : { y: '0.65em', opacity: 0, rotateX: 60, filter: 'blur(6px)' }
           }
           animate={{ y: 0, opacity: 1, rotateX: 0, filter: 'blur(0px)' }}
           transition={{ duration: 0.9, delay: delay + i * 0.05, ease: EASE }}
@@ -73,12 +73,23 @@ export function TwoHorizons() {
     target: outerRef,
     offset: ['start start', 'end end'],
   });
-  const worldScale = useTransform(scrollYProgress, [0, 0.3, 1], [1, 1.05, 2.6]);
-  const worldOpacityOut = useTransform(scrollYProgress, [0.8, 1], [1, 0.6]);
-  const contentY = useTransform(scrollYProgress, [0, 0.38], [0, -150]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.32], [1, 0]);
-  const gateOpacity = useTransform(scrollYProgress, [0.45, 0.9], [0, 1]);
-  const stripFade = useTransform(scrollYProgress, [0.12, 0.4], [1, 0]);
+  // Spring-damped progress: raw wheel input arrives in steps — this is what
+  // makes the zoom feel like glass instead of a ratchet.
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 28,
+    restDelta: 0.001,
+  });
+  const worldScale = useTransform(progress, [0, 0.3, 1], [1, 1.05, 2.6]);
+  const worldOpacityOut = useTransform(progress, [0.8, 1], [1, 0.6]);
+  const contentY = useTransform(progress, [0, 0.38], [0, -150]);
+  const contentOpacity = useTransform(progress, [0, 0.32], [1, 0]);
+  const gateOpacity = useTransform(progress, [0.42, 0.78], [0, 1]);
+  const stripFade = useTransform(progress, [0.12, 0.4], [1, 0]);
+  // The landing: a statement rises out of the light as the zoom completes.
+  const landingOpacity = useTransform(progress, [0.62, 0.86], [0, 1]);
+  const landingY = useTransform(progress, [0.62, 0.9], [44, 0]);
+  const landingScale = useTransform(progress, [0.62, 0.9], [0.94, 1]);
 
   /* ── Mouse parallax ── */
   const mx = useMotionValue(0);
@@ -103,7 +114,7 @@ export function TwoHorizons() {
     <section
       ref={outerRef}
       className="relative"
-      style={{ height: reduce ? '100vh' : '220vh' }}
+      style={{ height: reduce ? '100vh' : '260vh' }}
       aria-label={t('subtitle')}
     >
       <div
@@ -113,7 +124,7 @@ export function TwoHorizons() {
       >
         {/* ════ THE WORLDS (scaled as one — the zoom into the crack) ════ */}
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 will-change-transform"
           style={{
             scale: reduce ? 1 : worldScale,
             opacity: reduce ? 1 : worldOpacityOut,
@@ -122,7 +133,7 @@ export function TwoHorizons() {
         >
           {/* World 1 · Japan (washi) — base layer */}
           <motion.div
-            className="absolute inset-[-2%] z-0"
+            className="absolute inset-[-2%] z-0 will-change-transform"
             style={{ x: washiX, y: washiY }}
           >
             <WashiWorld reduce={reduce} />
@@ -131,7 +142,7 @@ export function TwoHorizons() {
           {/* World 2 · Dubai (night) — clipped by the seam */}
           <div className="absolute inset-0 z-10" style={{ clipPath: NIGHT_CLIP }}>
             <motion.div
-              className="absolute inset-[-2%]"
+              className="absolute inset-[-2%] will-change-transform"
               style={{ x: nightX, y: nightY }}
               initial={reduce ? false : { opacity: 0, x: 70, scale: 1.08 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -347,6 +358,26 @@ export function TwoHorizons() {
                 'radial-gradient(circle at 53% 42%, #e6d9b8 0%, rgba(201,168,92,0.92) 26%, rgba(154,123,45,0.65) 46%, rgba(16,24,43,0.97) 80%)',
             }}
           />
+        )}
+
+        {/* The landing — the statement the zoom arrives on */}
+        {!reduce && (
+          <motion.div
+            className="pointer-events-none absolute inset-0 z-[46] flex flex-col items-center justify-center gap-6 px-8 text-center"
+            style={{ opacity: landingOpacity, y: landingY, scale: landingScale }}
+          >
+            <span className="h-px w-16 bg-sumi/30" />
+            <p
+              className="font-jp font-extrabold text-sumi"
+              style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4.2rem)', letterSpacing: '0.04em' }}
+            >
+              {t('passageTitle')}
+            </p>
+            <p className="font-en text-lg italic tracking-wide text-[#5a4a1f] sm:text-xl">
+              {t('passageSub')}
+            </p>
+            <span className="h-px w-16 bg-sumi/30" />
+          </motion.div>
         )}
 
         <DataStrip fade={reduce ? undefined : stripFade} />

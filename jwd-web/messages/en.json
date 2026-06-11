@@ -27,7 +27,39 @@
     "ctaSecondary": "Download Investment Guide",
     "scroll": "Scroll",
     "japan": "Japan",
-    "dubai": "Dubai"
+    "dubai": "Dubai",
+    "passageTitle": "Dreams, opening.",
+    "passageSub": "二つの世界を、ひとつの物語に。"
+  },
+  "about": {
+    "label": "UAE & Dubai Business Setup Consulting",
+    "title": "Your first move into Dubai.",
+    "p1": "The UAE, centered on Dubai, is one of the world's premier business hubs — zero corporate tax (with qualifying exemptions), zero personal income tax, 100% foreign ownership and full profit repatriation. JWD handles every procedure your Dubai entry requires, end to end: company formation, licensing, visas, Emirates ID, bank accounts, tax registration and statutory audit.",
+    "p2": "Combining deep networks with UAE authorities and major free zones with Japanese-language expertise, we complete complex procedures quickly and reliably — minimizing your market-entry cost and time risk so you can focus on what matters: growth."
+  },
+  "whyDubai": {
+    "label": "UAE Strategic Business Environment",
+    "title": "Why Dubai, why now",
+    "card1Title": "Strategic Gateway",
+    "card1Text": "Over 50 free zones guarantee 100% foreign ownership and full profit repatriation, making the UAE the strategic gateway to the Middle East, Africa and South Asia — a rare jurisdiction with no personal income or capital gains tax, where wealth preservation and expansion coexist.",
+    "card2Title": "Exceptional Tax Efficiency",
+    "card2Text": "The 9% corporate tax introduced in 2023 signals international compliance — yet free-zone incentives and double-tax treaties with 143+ countries still deliver exceptional efficiency. Precise structuring and early registration decide long-term advantage.",
+    "card3Title": "One-Stop Execution",
+    "card3Text": "From formation and licensing to visas, Emirates ID, banking, tax registration and audit — one team executes all eight essential procedures as a single coherent scheme, eliminating the friction of fragmented vendors."
+  },
+  "services": {
+    "label": "Consulting Services",
+    "title": "Eight essential procedures. One team.",
+    "intro": "JWD is the one-stop, Japanese-language advisory that executes every procedure a Dubai market entry requires — as one coordinated team."
+  },
+  "contact": {
+    "label": "Contact",
+    "title": "Make the first move, together.",
+    "desc": "Consultations are by introduction. Reach out, and we will take it from there.",
+    "notice": "By Introduction Only",
+    "ctaPrimary": "Book a Consultation",
+    "ctaWhatsApp": "WhatsApp",
+    "ctaLine": "LINE"
   },
   "data": {
     "live": "LIVE",
@@ -50,6 +82,8 @@
   },
   "footer": {
     "rights": "All rights reserved.",
-    "tagline": "The Bridge Between Japan & Dubai"
+    "tagline": "The Bridge Between Japan & Dubai",
+    "company": "Japan WorldLink DWC Group",
+    "address": "NK Marunouchi Bldg. 2F, 2-17-13 Marunouchi, Naka-ku, Nagoya, Aichi, Japan"
   }
 }
