@@ -7,11 +7,11 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { MenuOverlay } from './MenuOverlay';
 
 const PRIMARY_LINKS = [
-  { key: 'whyDubai', href: '#why-dubai' },
-  { key: 'properties', href: '#properties' },
-  { key: 'heartOfEurope', href: '#heart-of-europe' },
-  { key: 'simulator', href: '#simulator' },
-  { key: 'contact', href: '#contact' },
+  { key: 'whyDubai', href: '/why-dubai' },
+  { key: 'properties', href: '/dubai-properties' },
+  { key: 'heartOfEurope', href: '/heart-of-europe' },
+  { key: 'simulator', href: '/simulator' },
+  { key: 'contact', href: '/contact' },
 ] as const;
 
 function LocaleSwitcher({ light }: { light: boolean }) {
@@ -69,9 +69,10 @@ export function Navbar() {
             : 'mix-blend-difference'
         }`}
       >
-        <div className="mx-auto flex h-20 max-w-screen-2xl items-center justify-between px-6 lg:px-12">
+        {/* 3-zone grid: wordmark · centered nav · controls */}
+        <div className="mx-auto grid h-20 max-w-screen-2xl grid-cols-[1fr_auto_1fr] items-center px-6 lg:px-12">
           {/* Wordmark */}
-          <Link href="/" className="group flex flex-col leading-none">
+          <Link href="/" className="group flex w-fit flex-col leading-none">
             <span
               className={`font-en text-[1.45rem] font-semibold tracking-[0.16em] ${
                 light ? 'text-white' : 'text-sumi'
@@ -88,29 +89,29 @@ export function Navbar() {
             </span>
           </Link>
 
-          <div className="flex items-center gap-8">
-            {/* Primary links */}
-            <nav className="hidden items-center gap-7 lg:flex">
-              {PRIMARY_LINKS.map(({ key, href }) => (
-                <a
-                  key={key}
-                  href={href}
-                  className={`group relative text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 ${
-                    light
-                      ? 'text-white/70 hover:text-white'
-                      : 'text-sumi/70 hover:text-sumi'
+          {/* Primary links — dead center */}
+          <nav className="hidden items-center gap-8 lg:flex">
+            {PRIMARY_LINKS.map(({ key, href }) => (
+              <Link
+                key={key}
+                href={href}
+                className={`group relative whitespace-nowrap text-[11px] uppercase tracking-[0.16em] transition-colors duration-300 ${
+                  light
+                    ? 'text-white/70 hover:text-white'
+                    : 'text-sumi/70 hover:text-sumi'
+                }`}
+              >
+                {t(key)}
+                <span
+                  className={`absolute -bottom-1.5 left-0 h-px w-0 transition-all duration-500 group-hover:w-full ${
+                    light ? 'bg-white' : 'bg-gold'
                   }`}
-                >
-                  {t(key)}
-                  <span
-                    className={`absolute -bottom-1.5 left-0 h-px w-0 transition-all duration-500 group-hover:w-full ${
-                      light ? 'bg-white' : 'bg-gold'
-                    }`}
-                  />
-                </a>
-              ))}
-            </nav>
+                />
+              </Link>
+            ))}
+          </nav>
 
+          <div className="flex items-center justify-end gap-8">
             <LocaleSwitcher light={light} />
 
             {/* Menu trigger */}

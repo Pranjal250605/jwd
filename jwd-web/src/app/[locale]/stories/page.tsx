@@ -1,0 +1,38 @@
+import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Navbar } from '@/components/nav/Navbar';
+import { PageHero } from '@/components/PageHero';
+import { StoriesSection } from '@/components/home/StoriesSection';
+import { Footer } from '@/components/nav/Footer';
+
+const IMG =
+  'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=2400&q=80';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'nav' });
+  return { title: t('stories') };
+}
+
+export default async function StoriesPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('stories');
+  return (
+    <>
+      <Navbar />
+      <main>
+        <PageHero image={IMG} alt="Dubai desert" label={t('label')} title={t('title')} />
+        <StoriesSection />
+      </main>
+      <Footer />
+    </>
+  );
+}

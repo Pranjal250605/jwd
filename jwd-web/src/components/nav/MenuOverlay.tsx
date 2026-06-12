@@ -3,25 +3,27 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { Grain } from '@/components/kintsugi/Grain';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const MotionLink = motion.create(Link);
 
-/** All 13 sections from the sitemap — draft hrefs for now. */
+/** All 13 sections from the sitemap — each a dedicated route. */
 const MENU_ITEMS = [
   { key: 'home', href: '/' },
-  { key: 'about', href: '#about' },
-  { key: 'whyDubai', href: '#why-dubai' },
-  { key: 'properties', href: '#properties' },
-  { key: 'heartOfEurope', href: '#heart-of-europe' },
-  { key: 'funds', href: '#funds' },
-  { key: 'japanProperties', href: '#japan-properties' },
-  { key: 'familyOffice', href: '#family-office' },
-  { key: 'simulator', href: '#simulator' },
-  { key: 'knowledge', href: '#knowledge' },
-  { key: 'stories', href: '#stories' },
-  { key: 'consulting', href: '#consulting' },
-  { key: 'contact', href: '#contact' },
+  { key: 'about', href: '/about' },
+  { key: 'whyDubai', href: '/why-dubai' },
+  { key: 'properties', href: '/dubai-properties' },
+  { key: 'heartOfEurope', href: '/heart-of-europe' },
+  { key: 'funds', href: '/funds' },
+  { key: 'japanProperties', href: '/japan-properties' },
+  { key: 'familyOffice', href: '/family-office' },
+  { key: 'simulator', href: '/simulator' },
+  { key: 'knowledge', href: '/knowledge' },
+  { key: 'stories', href: '/stories' },
+  { key: 'consulting', href: '/consulting' },
+  { key: 'contact', href: '/contact' },
 ] as const;
 
 export function MenuOverlay({ onClose }: { onClose: () => void }) {
@@ -63,7 +65,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
         {/* Items */}
         <nav className="flex flex-col gap-1">
           {MENU_ITEMS.map(({ key, href }, i) => (
-            <motion.a
+            <MotionLink
               key={key}
               href={href}
               onClick={onClose}
@@ -78,7 +80,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
               <span className="font-jp text-2xl font-bold text-sumi transition-all duration-500 group-hover:translate-x-3 group-hover:text-gold lg:text-[2.1rem]">
                 {t(key)}
               </span>
-            </motion.a>
+            </MotionLink>
           ))}
         </nav>
 
@@ -101,13 +103,13 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
             className="h-40 w-px self-center"
             style={{ background: 'linear-gradient(to bottom, transparent, #9a7b2d, transparent)' }}
           />
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             onClick={onClose}
             className="bg-sumi px-7 py-4 text-center text-[10px] uppercase tracking-[0.3em] text-washi transition-colors duration-500 hover:bg-gold"
           >
             {t('contact')}
-          </a>
+          </Link>
         </motion.aside>
       </div>
     </motion.div>
