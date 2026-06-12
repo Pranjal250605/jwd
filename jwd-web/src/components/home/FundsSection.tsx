@@ -1,0 +1,72 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+import { Reveal } from '@/components/kintsugi/Reveal';
+
+const FUNDS = [
+  { key: 'equity', url: 'https://www.equiti.com/sc-en/' },
+  { key: 'aix', url: 'https://www.aixinvestment.com/' },
+] as const;
+
+export function FundsSection() {
+  const t = useTranslations('funds');
+
+  return (
+    <section id="funds" className="relative overflow-hidden bg-washi-deep py-28 lg:py-36">
+      <div className="mx-auto max-w-screen-xl px-7 lg:px-12">
+        <Reveal className="mb-14 flex flex-col gap-5">
+          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+            {t('label')}
+          </span>
+          <h2 className="font-jp text-3xl font-extrabold text-sumi lg:text-[2.4rem]">
+            {t('title')}
+          </h2>
+          <p className="max-w-xl text-sm font-light leading-loose text-sumi-soft">
+            {t('intro')}
+          </p>
+        </Reveal>
+
+        <div className="grid gap-7 lg:grid-cols-2">
+          {FUNDS.map(({ key, url }, i) => (
+            <Reveal key={key} delay={0.12 + i * 0.12}>
+              <article className="group flex h-full flex-col gap-5 border border-sumi/8 bg-washi p-9 transition-colors duration-500 hover:border-gold/40">
+                <h3 className="font-en text-2xl font-semibold tracking-wide text-sumi">
+                  {t(`${key}Title`)}
+                </h3>
+                <p className="text-sm font-light leading-loose text-sumi-soft">
+                  {t(`${key}Desc`)}
+                </p>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-block w-fit border-b border-gold/40 pb-1 text-[11px] uppercase tracking-[0.2em] text-gold transition-colors hover:border-gold hover:text-sumi"
+                >
+                  {t('visit')}
+                </a>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-7 grid gap-7 lg:grid-cols-2">
+          {(['governance', 'risk'] as const).map((key, i) => (
+            <Reveal key={key} delay={0.3 + i * 0.1}>
+              <div className="flex items-start gap-5 border-t border-gold/20 pt-6">
+                <span className="font-mono text-[10px] text-gold/60">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h4 className="font-jp text-sm font-bold text-sumi">{t(key)}</h4>
+                  <p className="mt-2 text-xs font-light leading-relaxed text-sumi-soft">
+                    {t(`${key}Text`)}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
