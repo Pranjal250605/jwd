@@ -28,12 +28,10 @@ function Chars({
         <motion.span
           key={`${ch}-${i}`}
           aria-hidden
-          className="inline-block will-change-transform"
-          initial={
-            reduce ? false : { y: '0.55em', opacity: 0, filter: 'blur(6px)' }
-          }
-          animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 0.85, delay: delay + i * 0.04, ease: EASE }}
+          className="inline-block"
+          initial={reduce ? false : { y: '0.5em', opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, delay: delay + i * 0.035, ease: EASE }}
         >
           {ch === ' ' ? ' ' : ch}
         </motion.span>

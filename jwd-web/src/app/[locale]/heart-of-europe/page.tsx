@@ -2,7 +2,11 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Navbar } from '@/components/nav/Navbar';
 import { PageHero } from '@/components/PageHero';
 import { HeartOfEuropeSection } from '@/components/home/HeartOfEuropeSection';
+import { SubHubGrid } from '@/components/sub/SubHubGrid';
+import { getSection } from '@/content/sections';
 import { Footer } from '@/components/nav/Footer';
+
+const SECTION = getSection('heart-of-europe')!;
 
 const IMG =
   'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=2400&q=80';
@@ -31,6 +35,11 @@ export default async function HeartOfEuropePage({
       <main>
         <PageHero image={IMG} alt="Open sea" label={t('label')} title={t('title')} />
         <HeartOfEuropeSection />
+        <SubHubGrid
+          base="/heart-of-europe"
+          subsections={SECTION.subsections}
+          heading={SECTION.blurb}
+        />
       </main>
       <Footer />
     </>

@@ -2,7 +2,11 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Navbar } from '@/components/nav/Navbar';
 import { PageHero } from '@/components/PageHero';
 import { FundsSection } from '@/components/home/FundsSection';
+import { SubHubGrid } from '@/components/sub/SubHubGrid';
+import { getSection } from '@/content/sections';
 import { Footer } from '@/components/nav/Footer';
+
+const SECTION = getSection('funds')!;
 
 const IMG =
   'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=2400&q=80';
@@ -37,6 +41,11 @@ export default async function FundsPage({
           subtitle={t('intro')}
         />
         <FundsSection />
+        <SubHubGrid
+          base="/funds"
+          subsections={SECTION.subsections}
+          heading={SECTION.blurb}
+        />
       </main>
       <Footer />
     </>

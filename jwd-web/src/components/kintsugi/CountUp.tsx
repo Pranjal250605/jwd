@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { animate, useReducedMotion } from 'framer-motion';
 
 interface CountUpProps {
@@ -12,6 +12,11 @@ interface CountUpProps {
   suffix?: string;
 }
 
+/**
+ * Counts up by writing directly to the DOM node via a ref — no per-frame
+ * React re-render, so multiple counters animating at once stay smooth on
+ * low-end hardware.
+ */
 export function CountUp({
   to,
   decimals = 0,
@@ -21,27 +26,32 @@ export function CountUp({
   suffix = '',
 }: CountUpProps) {
   const reduce = useReducedMotion();
-  const [value, setValue] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (!start) return;
+    const node = ref.current;
+    if (!node) return;
+    const fmt = (v: number) => `${prefix}${v.toFixed(decimals)}${suffix}`;
+
+    if (!start) {
+      node.textContent = fmt(0);
+      return;
+    }
     if (reduce) {
-      setValue(to);
+      node.textContent = fmt(to);
       return;
     }
     const controls = animate(0, to, {
       duration,
       ease: [0.16, 1, 0.3, 1],
-      onUpdate: setValue,
+      onUpdate: (v) => {
+        node.textContent = fmt(v);
+      },
     });
     return () => controls.stop();
-  }, [start, to, duration, reduce]);
+  }, [start, to, duration, decimals, prefix, suffix, reduce]);
 
-  return (
-    <span>
-      {prefix}
-      {value.toFixed(decimals)}
-      {suffix}
-    </span>
-  );
+  // SSR / first paint: render the final value so layout is stable, then the
+  // effect resets to 0 and animates up when in view.
+  return <span ref={ref}>{`${prefix}${to.toFixed(decimals)}${suffix}`}</span>;
 }

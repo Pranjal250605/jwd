@@ -49,7 +49,7 @@ export function WhyDubaiSection() {
               transition={{ duration: 0.9, delay: 0.2 + i * 0.16, ease: EASE }}
             >
               {/* gold seam grows on hover */}
-              <span className="absolute left-0 top-[-1px] h-px w-0 bg-gradient-to-r from-gold-bright to-transparent transition-all duration-700 group-hover:w-full" />
+              <span className="absolute left-0 top-[-1px] h-px w-full origin-left scale-x-0 bg-gradient-to-r from-gold-bright to-transparent transition-transform duration-700 group-hover:scale-x-100" />
               <span className="font-mono text-xs text-gold-bright/60">
                 {String(i + 1).padStart(2, '0')}
               </span>

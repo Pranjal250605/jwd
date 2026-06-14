@@ -7,10 +7,11 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { MenuOverlay } from './MenuOverlay';
 
 const PRIMARY_LINKS = [
+  { key: 'home', href: '/' },
+  { key: 'about', href: '/about' },
   { key: 'whyDubai', href: '/why-dubai' },
   { key: 'properties', href: '/dubai-properties' },
   { key: 'heartOfEurope', href: '/heart-of-europe' },
-  { key: 'simulator', href: '/simulator' },
   { key: 'contact', href: '/contact' },
 ] as const;
 
@@ -90,7 +91,7 @@ export function Navbar() {
           </Link>
 
           {/* Primary links — dead center */}
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
             {PRIMARY_LINKS.map(({ key, href }) => (
               <Link
                 key={key}
@@ -103,7 +104,7 @@ export function Navbar() {
               >
                 {t(key)}
                 <span
-                  className={`absolute -bottom-1.5 left-0 h-px w-0 transition-all duration-500 group-hover:w-full ${
+                  className={`absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100 ${
                     light ? 'bg-white' : 'bg-gold'
                   }`}
                 />

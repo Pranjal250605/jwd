@@ -20,38 +20,6 @@ import { Grain } from '@/components/kintsugi/Grain';
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/* ── Per-character 3D reveal — each glyph rises out of the mist ────────── */
-function SplitChars({
-  text,
-  delay,
-  reduce,
-}: {
-  text: string;
-  delay: number;
-  reduce: boolean;
-}) {
-  return (
-    <span aria-label={text} role="text" style={{ perspective: 800 }} className="inline-block">
-      {[...text].map((ch, i) => (
-        <motion.span
-          key={`${ch}-${i}`}
-          aria-hidden
-          className="inline-block will-change-transform"
-          initial={
-            reduce
-              ? false
-              : { y: '0.65em', opacity: 0, rotateX: 60, filter: 'blur(6px)' }
-          }
-          animate={{ y: 0, opacity: 1, rotateX: 0, filter: 'blur(0px)' }}
-          transition={{ duration: 0.9, delay: delay + i * 0.05, ease: EASE }}
-        >
-          {ch === ' ' ? ' ' : ch}
-        </motion.span>
-      ))}
-    </span>
-  );
-}
-
 /**
  * HERO — "Two Horizons"
  *
@@ -233,13 +201,20 @@ export function TwoHorizons() {
               </span>
             </motion.div>
 
-            {/* Headline — line 1 rises character by character */}
+            {/* Headline — each line rises as one clean stroke (masked slide-up) */}
             <h1
               className="font-jp font-extrabold leading-[1.12] tracking-[-0.015em] text-sumi"
               style={{ fontSize: 'clamp(2.5rem, 6.2vw, 5rem)' }}
             >
-              <span className="block">
-                <SplitChars text={t('titleLine1')} delay={1.85} reduce={reduce} />
+              <span className="block overflow-hidden pb-1">
+                <motion.span
+                  className="block"
+                  initial={reduce ? false : { y: '115%' }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, delay: 1.85, ease: EASE }}
+                >
+                  {t('titleLine1')}
+                </motion.span>
               </span>
               {/* line 2 sweeps in as one golden stroke */}
               <span className="block overflow-hidden pb-2">
@@ -247,7 +222,7 @@ export function TwoHorizons() {
                   className="text-gold-gradient block"
                   initial={reduce ? false : { y: '112%' }}
                   animate={{ y: 0 }}
-                  transition={{ duration: 1.0, delay: 2.45, ease: EASE }}
+                  transition={{ duration: 1.0, delay: 2.3, ease: EASE }}
                 >
                   {t('titleLine2')}
                 </motion.span>

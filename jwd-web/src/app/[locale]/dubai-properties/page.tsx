@@ -2,7 +2,11 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Navbar } from '@/components/nav/Navbar';
 import { PageHero } from '@/components/PageHero';
 import { PropertiesSection } from '@/components/home/PropertiesSection';
+import { SubHubGrid } from '@/components/sub/SubHubGrid';
+import { getSection } from '@/content/sections';
 import { Footer } from '@/components/nav/Footer';
+
+const SECTION = getSection('dubai-properties')!;
 
 const IMG =
   'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=2400&q=80';
@@ -37,6 +41,11 @@ export default async function DubaiPropertiesPage({
           subtitle={t('intro')}
         />
         <PropertiesSection />
+        <SubHubGrid
+          base="/dubai-properties"
+          subsections={SECTION.subsections}
+          heading={SECTION.blurb}
+        />
       </main>
       <Footer />
     </>
