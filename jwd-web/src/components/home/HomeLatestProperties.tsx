@@ -56,7 +56,7 @@ export function HomeLatestProperties() {
                   </h3>
                   <div className="mt-auto flex items-baseline justify-between border-t border-sumi/8 pt-3">
                     <span className="font-en text-lg font-light text-sumi">
-                      AED {p.priceAed.toLocaleString()}
+                      AED {p.priceAed.toLocaleString('en-US')}
                     </span>
                     <span className="text-[9px] uppercase tracking-[0.18em] text-sumi-soft">
                       {tx(c.yieldLabel)}

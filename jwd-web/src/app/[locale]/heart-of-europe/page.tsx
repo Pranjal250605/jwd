@@ -4,9 +4,11 @@ import { PageHero } from '@/components/PageHero';
 import { HeartOfEuropeSection } from '@/components/home/HeartOfEuropeSection';
 import { SubHubGrid } from '@/components/sub/SubHubGrid';
 import { getSection } from '@/content/sections';
+import { getTheme } from '@/content/themes';
 import { Footer } from '@/components/nav/Footer';
 
 const SECTION = getSection('heart-of-europe')!;
+const THEME = getTheme('heart-of-europe');
 
 const IMG =
   'https://images.unsplash.com/photo-1505118380757-91f5f5632de0?auto=format&fit=crop&w=2400&q=80';
@@ -33,7 +35,7 @@ export default async function HeartOfEuropePage({
     <>
       <Navbar />
       <main>
-        <PageHero image={IMG} alt="Open sea" label={t('label')} title={t('title')} />
+        <PageHero image={IMG} alt="Open sea" label={t('label')} title={t('title')} accent={THEME.accent} motif={THEME.motif} ribbon={THEME.ribbon} />
         <HeartOfEuropeSection />
         <SubHubGrid
           base="/heart-of-europe"

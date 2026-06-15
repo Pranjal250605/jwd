@@ -5,9 +5,11 @@ import { AboutSection } from '@/components/home/AboutSection';
 import { TrustBand } from '@/components/home/TrustBand';
 import { SubHubGrid } from '@/components/sub/SubHubGrid';
 import { getSection } from '@/content/sections';
+import { getTheme } from '@/content/themes';
 import { Footer } from '@/components/nav/Footer';
 
 const SECTION = getSection('about')!;
+const THEME = getTheme('about');
 
 const IMG =
   'https://images.unsplash.com/photo-1480796927426-f609979314bd?auto=format&fit=crop&w=2400&q=80';
@@ -34,7 +36,7 @@ export default async function AboutPage({
     <>
       <Navbar />
       <main>
-        <PageHero image={IMG} alt="Tokyo at night" label={t('label')} title={t('title')} />
+        <PageHero image={IMG} alt="Tokyo at night" label={t('label')} title={t('title')} accent={THEME.accent} motif={THEME.motif} ribbon={THEME.ribbon} />
         <AboutSection />
         <TrustBand />
         <SubHubGrid

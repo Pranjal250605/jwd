@@ -56,6 +56,25 @@ export const heartOfEurope: Section = {
           },
         },
         {
+          kind: 'split',
+          tone: 'light',
+          image: IMG.world,
+          imageAlt: { ja: '上空から見たザ・ワールド諸島', en: 'The World Islands, seen from above' },
+          kicker: { ja: '海に描かれた地図', en: 'A map drawn on the sea' },
+          heading: { ja: '再生産できない、海上の地形', en: 'A geography that cannot be remade' },
+          body: [
+            {
+              ja: '一度きりの埋め立てで生まれた島々は、増やすことができません。だからこそ希少であり、所有そのものが物語になります。その中心に位置するハート・オブ・ヨーロッパは、この物語の主役です。',
+              en: 'Born from a one-time act of reclamation, these islands cannot be multiplied. That scarcity is the point — ownership itself becomes a story, with the Heart of Europe at its centre.',
+            },
+          ],
+          bullets: [
+            { ja: '約300の人工島', en: 'Roughly 300 man-made islands' },
+            { ja: '海上という唯一の立地', en: 'A singular over-water setting' },
+            { ja: 'ドバイを象徴するランドマーク', en: 'An icon of Dubai' },
+          ],
+        },
+        {
           kind: 'points',
           tone: 'light',
           kicker: { ja: '稀少性の源泉', en: 'Where the scarcity comes from' },
@@ -121,6 +140,7 @@ export const heartOfEurope: Section = {
           heading: { ja: '島ごとに異なる世界', en: 'A different world on each island' },
           items: [
             {
+              icon: 'building',
               title: { ja: 'ホスピタリティ', en: 'Hospitality' },
               text: {
                 ja: 'ホテル運営を前提とした設計で、所有者は運用収益を享受できます。',
@@ -128,6 +148,7 @@ export const heartOfEurope: Section = {
               },
             },
             {
+              icon: 'home',
               title: { ja: 'プライベート・レジデンス', en: 'Private residences' },
               text: {
                 ja: '海に面した居住空間。別荘としても、運用資産としても機能します。',
@@ -135,6 +156,7 @@ export const heartOfEurope: Section = {
               },
             },
             {
+              icon: 'sparkles',
               title: { ja: '体験型インフラ', en: 'Experiential infrastructure' },
               text: {
                 ja: '気候演出やビーチ、施設群が滞在体験を高め、稼働を支えます。',
@@ -179,6 +201,7 @@ export const heartOfEurope: Section = {
           heading: { ja: '所有の選択肢', en: 'Ways to own' },
           items: [
             {
+              icon: 'building',
               title: { ja: 'ホテル', en: 'Hotels' },
               meta: { ja: '運用益重視', en: 'Income-led' },
               text: {
@@ -187,6 +210,7 @@ export const heartOfEurope: Section = {
               },
             },
             {
+              icon: 'home',
               title: { ja: 'ヴィラ', en: 'Villas' },
               meta: { ja: '希少性重視', en: 'Scarcity-led' },
               text: {
@@ -195,6 +219,7 @@ export const heartOfEurope: Section = {
               },
             },
             {
+              icon: 'key',
               title: { ja: 'レジデンス', en: 'Residences' },
               meta: { ja: 'バランス型', en: 'Balanced' },
               text: {
@@ -281,6 +306,27 @@ export const heartOfEurope: Section = {
           text: {
             ja: 'ハート・オブ・ヨーロッパの資産価値を語る上で外せないのが「希少性」です。海上の人工島は数が限られ、再生産できません。供給が増えない一方で、ドバイの認知と観光需要が高まれば、資産価値の上昇余地が生まれます。',
             en: 'Any discussion of value at the Heart of Europe must begin with scarcity. The over-water islands are finite and cannot be reproduced. As supply stays fixed while Dubai’s recognition and tourism rise, room for appreciation emerges.',
+          },
+        },
+        {
+          kind: 'chart',
+          tone: 'deep',
+          kicker: { ja: '価値の推移', en: 'Value trajectory' },
+          heading: { ja: '海上資産の価値指数（参考・2021 = 100）', en: 'Over-water asset value index (illustrative, 2021 = 100)' },
+          chart: {
+            type: 'line',
+            points: [
+              { label: { ja: '’21', en: '’21' }, value: 100 },
+              { label: { ja: '’22', en: '’22' }, value: 121 },
+              { label: { ja: '’23', en: '’23' }, value: 144 },
+              { label: { ja: '’24', en: '’24' }, value: 162 },
+              { label: { ja: '’25', en: '’25' }, value: 178 },
+              { label: { ja: '’26', en: '’26' }, value: 190 },
+            ],
+          },
+          note: {
+            ja: '※ 希少性を象徴する参考指数です。確定値はご相談ください。',
+            en: '※ An illustrative index expressing scarcity. Verified figures on request.',
           },
         },
         {
@@ -372,14 +418,14 @@ export const heartOfEurope: Section = {
           },
         },
         {
-          kind: 'gallery',
+          kind: 'cards',
           tone: 'dark',
-          kicker: { ja: '近日公開', en: 'Coming soon' },
-          heading: { ja: '公開予定の映像', en: 'Films in the pipeline' },
+          kicker: { ja: '近日公開', en: 'In the pipeline' },
+          heading: { ja: '公開予定の映像シリーズ', en: 'The film series to come' },
           items: [
-            { title: { ja: '現地ツアー', en: 'On-site tour' }, meta: { ja: '川名が案内する島めぐり', en: 'An island tour led by Tomo' } },
-            { title: { ja: 'プロジェクト紹介', en: 'Project overview' }, meta: { ja: '開発コンセプトを映像で', en: 'The development concept, on film' } },
-            { title: { ja: 'オーナーの声', en: 'Owner voices' }, meta: { ja: '当事者が語る体験', en: 'Experience, told by owners' } },
+            { icon: 'map', title: { ja: '現地ツアー', en: 'On-site tour' }, meta: { ja: '近日', en: 'Soon' }, text: { ja: '川名が案内する島めぐり。海上の街並みを歩きながら、各島の性格を解説します。', en: 'An island tour led by Tomo — walking the over-water streets and reading each island’s character.' } },
+            { icon: 'building', title: { ja: 'プロジェクト紹介', en: 'Project overview' }, meta: { ja: '近日', en: 'Soon' }, text: { ja: '開発コンセプトと全体像を、設計図と映像で立体的に紹介します。', en: 'The development concept and master plan, brought to life in film and renderings.' } },
+            { icon: 'users', title: { ja: 'オーナーの声', en: 'Owner voices' }, meta: { ja: '近日', en: 'Soon' }, text: { ja: '実際に投資した当事者が、判断の理由と体験を率直に語ります。', en: 'Real owners, candidly sharing why they invested and what the experience has been.' } },
           ],
         },
         {

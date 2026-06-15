@@ -42,12 +42,32 @@ export const dubaiProperties: Section = {
           },
         },
         {
+          kind: 'split',
+          tone: 'light',
+          image: IMG.hero,
+          imageAlt: { ja: 'ドバイ・マリーナの夕景', en: 'Dubai Marina at dusk' },
+          kicker: { ja: '量より、質', en: 'Quality over quantity' },
+          heading: { ja: '数千件ではなく、数件を真剣に', en: 'Not thousands of listings — a handful, taken seriously' },
+          body: [
+            {
+              ja: '私たちは在庫の多さを誇りません。むしろ、投資価値のある数件に時間を注ぎます。立地、利回り、開発主体、出口——一件ごとに、自分が買うつもりで精査します。',
+              en: 'We do not boast about inventory. We pour our time into the handful of assets that actually merit it — scrutinising location, yield, developer and exit on each, as if we were buying it ourselves.',
+            },
+          ],
+          bullets: [
+            { ja: 'エリアと利回りの整合を検証', en: 'Location and yield, cross-checked' },
+            { ja: '開発主体の引き渡し実績を確認', en: 'Developer delivery record verified' },
+            { ja: '取得前に出口戦略を設計', en: 'Exit strategy designed before you buy' },
+          ],
+        },
+        {
           kind: 'cards',
           tone: 'light',
           kicker: { ja: '検索の軸', en: 'The search axes' },
           heading: { ja: '何で絞り込むか', en: 'What you filter by' },
           items: [
             {
+              icon: 'map',
               title: { ja: 'エリア', en: 'Area' },
               text: {
                 ja: 'ダウンタウン、マリーナ、パーム、JVC——立地は利回りと値動きの性格を決めます。',
@@ -55,6 +75,7 @@ export const dubaiProperties: Section = {
               },
             },
             {
+              icon: 'wallet',
               title: { ja: '予算', en: 'Budget' },
               text: {
                 ja: '65万AEDのスタジオから数千万AEDのヴィラまで。レンジで戦略は変わります。',
@@ -62,6 +83,7 @@ export const dubaiProperties: Section = {
               },
             },
             {
+              icon: 'building',
               title: { ja: '物件タイプ', en: 'Property Type' },
               text: {
                 ja: 'アパートメント、ヴィラ、スタジオ。用途と運用形態で選び分けます。',
@@ -69,6 +91,7 @@ export const dubaiProperties: Section = {
               },
             },
             {
+              icon: 'trending',
               title: { ja: '利回り', en: 'Yield' },
               text: {
                 ja: '表面利回りの目安を起点に、手取りベースまで一緒に検証します。',
@@ -76,6 +99,7 @@ export const dubaiProperties: Section = {
               },
             },
             {
+              icon: 'briefcase',
               title: { ja: 'デベロッパー', en: 'Developer' },
               text: {
                 ja: '開発主体の実績と引き渡し信頼性は、オフプラン投資で特に重要です。',
@@ -83,6 +107,26 @@ export const dubaiProperties: Section = {
               },
             },
           ],
+        },
+        {
+          kind: 'chart',
+          tone: 'dark',
+          kicker: { ja: '坪単価の目安', en: 'Price per sq ft' },
+          heading: { ja: 'エリア別 平方フィート単価（AED）', en: 'Indicative price per sq ft (AED) by area' },
+          chart: {
+            type: 'bars',
+            items: [
+              { label: { ja: 'JVC', en: 'JVC' }, value: 950, highlight: true },
+              { label: { ja: 'ビジネスベイ', en: 'Business Bay' }, value: 1600 },
+              { label: { ja: 'マリーナ', en: 'Marina' }, value: 1750 },
+              { label: { ja: 'ダウンタウン', en: 'Downtown' }, value: 2100 },
+              { label: { ja: 'パーム', en: 'Palm' }, value: 3200 },
+            ],
+          },
+          note: {
+            ja: '※ 参考の単価イメージです。実勢は時期・物件で変動します。',
+            en: '※ Illustrative price points. Live values vary by time and asset.',
+          },
         },
         {
           kind: 'stats',

@@ -4,9 +4,11 @@ import { PageHero } from '@/components/PageHero';
 import { FundsSection } from '@/components/home/FundsSection';
 import { SubHubGrid } from '@/components/sub/SubHubGrid';
 import { getSection } from '@/content/sections';
+import { getTheme } from '@/content/themes';
 import { Footer } from '@/components/nav/Footer';
 
 const SECTION = getSection('funds')!;
+const THEME = getTheme('funds');
 
 const IMG =
   'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=2400&q=80';
@@ -39,6 +41,9 @@ export default async function FundsPage({
           label={t('label')}
           title={t('title')}
           subtitle={t('intro')}
+          accent={THEME.accent}
+          motif={THEME.motif}
+          ribbon={THEME.ribbon}
         />
         <FundsSection />
         <SubHubGrid

@@ -49,9 +49,14 @@ export function SubHubGrid({
               animate={inView ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.8, delay: i * 0.08, ease: EASE }}
             >
+              <motion.div
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                className="h-full"
+              >
               <Link
                 href={`${base}/${s.slug}`}
-                className="group block h-full overflow-hidden border border-sumi/8 bg-washi transition-colors duration-500 hover:border-gold/40"
+                className="group block h-full overflow-hidden rounded-2xl border border-sumi/8 bg-washi shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow duration-500 hover:border-gold/40 hover:shadow-[0_34px_64px_-30px_rgba(32,37,31,0.4)]"
               >
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <Image
@@ -88,6 +93,7 @@ export function SubHubGrid({
                   </span>
                 </div>
               </Link>
+              </motion.div>
             </motion.div>
           ))}
         </div>

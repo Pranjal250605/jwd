@@ -8,6 +8,7 @@ import { Breadcrumb } from '@/components/sub/Breadcrumb';
 import { SubPager } from '@/components/sub/SubPager';
 import { SubCTA } from '@/components/sub/SubCTA';
 import { getSub } from '@/content/sections';
+import { getTheme } from '@/content/themes';
 import type { L } from '@/content/types';
 
 type Lang = 'ja' | 'en';
@@ -32,6 +33,7 @@ export async function SubsectionPage({
   const tx = (l: L) => l[locale] ?? l.en;
   const sectionLabel = t(section.navKey);
   const base = `/${section.slug}`;
+  const theme = getTheme(section.slug);
 
   return (
     <>
@@ -43,6 +45,9 @@ export async function SubsectionPage({
           label={tx(sub.label)}
           title={tx(sub.title)}
           subtitle={tx(sub.tagline)}
+          accent={theme.accent}
+          motif={theme.motif}
+          ribbon={theme.ribbon}
         />
         <Breadcrumb
           items={[
@@ -51,7 +56,7 @@ export async function SubsectionPage({
             { label: tx(sub.label) },
           ]}
         />
-        <Blocks blocks={sub.blocks} />
+        <Blocks blocks={sub.blocks} theme={theme} />
         <SubPager
           base={base}
           sectionHref={base}

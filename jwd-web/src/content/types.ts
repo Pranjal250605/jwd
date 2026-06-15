@@ -13,6 +13,9 @@ export type L = { ja: string; en: string };
 /** Surface palette a block renders on — keeps the two-worlds scroll rhythm. */
 export type Tone = 'light' | 'deep' | 'dark';
 
+/** Lucide icon key (see ICONS map in Blocks.tsx). */
+export type IconKey = string;
+
 export interface StatItem {
   value: number;
   decimals?: number;
@@ -21,24 +24,42 @@ export interface StatItem {
   label: L;
 }
 
+/** Code-drawn, animated data visualisations. */
+export type ChartSpec =
+  | { type: 'bars'; unit?: string; items: { label: L; value: number; highlight?: boolean }[] }
+  | { type: 'line'; unit?: string; points: { label: L; value: number }[] }
+  | { type: 'donut'; items: { label: L; value: number }[] };
+
 export type Block =
-  | { kind: 'lead'; tone?: Tone; text: L }
+  | { kind: 'lead'; tone?: Tone; text: L; sidenote?: L }
   | { kind: 'prose'; tone?: Tone; kicker?: L; heading?: L; body: L[] }
+  | {
+      kind: 'split';
+      tone?: Tone;
+      reverse?: boolean;
+      image: string;
+      imageAlt?: L;
+      kicker?: L;
+      heading?: L;
+      body: L[];
+      bullets?: L[];
+    }
   | { kind: 'stats'; tone?: Tone; kicker?: L; heading?: L; items: StatItem[] }
+  | { kind: 'chart'; tone?: Tone; kicker?: L; heading?: L; chart: ChartSpec; note?: L }
   | {
       kind: 'points';
       tone?: Tone;
       kicker?: L;
       heading?: L;
       numbered?: boolean;
-      items: { title: L; text: L }[];
+      items: { title: L; text: L; icon?: IconKey }[];
     }
   | {
       kind: 'cards';
       tone?: Tone;
       kicker?: L;
       heading?: L;
-      items: { title: L; text: L; meta?: L }[];
+      items: { title: L; text: L; meta?: L; icon?: IconKey }[];
     }
   | { kind: 'quote'; tone?: Tone; text: L; by?: L; role?: L }
   | {
@@ -64,11 +85,12 @@ export type Block =
       items: { q: L; a: L }[];
     }
   | {
-      kind: 'gallery';
+      kind: 'testimonial';
       tone?: Tone;
-      kicker?: L;
-      heading?: L;
-      items: { title: L; meta: L }[];
+      quote: L;
+      name: L;
+      role: L;
+      result?: L;
     };
 
 export interface Subsection {

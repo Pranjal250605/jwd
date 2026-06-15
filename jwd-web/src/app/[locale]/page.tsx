@@ -1,7 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 import { Navbar } from '@/components/nav/Navbar';
-import { TwoHorizons } from '@/components/hero/TwoHorizons';
+import { StripeHero } from '@/components/hero/StripeHero';
 import { HomeLatestProperties } from '@/components/home/HomeLatestProperties';
 import { HomeHighlights } from '@/components/home/HomeHighlights';
 import { HomeMarketNews } from '@/components/home/HomeMarketNews';
@@ -25,14 +25,14 @@ export default function HomePage({
     <>
       <Navbar />
       <main>
-        <TwoHorizons /> {/* hero */}
+        <StripeHero /> {/* animated kintsugi-aurora gradient hero */}
         <HomeLatestProperties /> {/* washi */}
-        <HomeHighlights /> {/* night */}
+        <HomeHighlights /> {/* washi-deep, zen */}
         <HomeMarketNews market="dubai" tone="light" /> {/* washi */}
         <HomeMarketNews market="japan" tone="deep" /> {/* washi-deep */}
-        <HomeFeaturedProjects /> {/* night, cinematic */}
+        <HomeFeaturedProjects /> {/* washi, photographic */}
         <HomeWhyJwd /> {/* washi-deep */}
-        <HomeCTA /> {/* night-deep */}
+        <HomeCTA /> {/* zen close */}
       </main>
       <Footer />
     </>

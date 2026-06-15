@@ -101,6 +101,7 @@ export const about: Section = {
           heading: { ja: '一つの窓口で、すべてを', en: 'One desk for everything' },
           items: [
             {
+              icon: 'building',
               title: { ja: 'ドバイ不動産', en: 'Dubai Real Estate' },
               text: {
                 ja: '投資価値で厳選した物件のキュレーション、取得から賃貸運用までの伴走。',
@@ -108,6 +109,7 @@ export const about: Section = {
               },
             },
             {
+              icon: 'key',
               title: { ja: '法人・ビザ設計', en: 'Company & Visa Structuring' },
               text: {
                 ja: 'フリーゾーン法人設立、ゴールデンビザ、エミレーツIDまでワンストップで。',
@@ -115,6 +117,7 @@ export const about: Section = {
               },
             },
             {
+              icon: 'shield',
               title: { ja: 'ファミリーオフィス', en: 'Family Office' },
               text: {
                 ja: '資産保全、事業承継、相続を国境を越えて設計する富裕層向けの中核機能。',
@@ -122,12 +125,33 @@ export const about: Section = {
               },
             },
             {
+              icon: 'sprout',
               title: { ja: '日本不動産', en: 'Japan Real Estate' },
               text: {
                 ja: '円安局面を活かした、海外投資家のための日本不動産・空き家再生の機会提供。',
                 en: 'Japan property and akiya-revival opportunities for overseas investors, leveraging the weak-yen window.',
               },
             },
+          ],
+        },
+        {
+          kind: 'split',
+          tone: 'deep',
+          reverse: true,
+          image: IMG.leadership,
+          imageAlt: { ja: 'JWDのチーム', en: 'The JWD team' },
+          kicker: { ja: 'ひとつのチーム', en: 'One team' },
+          heading: { ja: '案件ごとに専門家を、寄せ集めない', en: 'We don’t reassemble a team for every deal' },
+          body: [
+            {
+              ja: '不動産、法人・ビザ、ファミリーオフィス、日本側の資産戦略まで——本来は別々の専門家に渡る領域を、JWDはひとつのチームとして横断的に扱います。窓口は常に一つ。判断の文脈が、人から人へこぼれ落ちることはありません。',
+              en: 'Property, company and visa, family office, Japan-side strategy — domains that usually pass between separate specialists are handled by JWD as one team. One point of contact, always; context never falls through the cracks between hands.',
+            },
+          ],
+          bullets: [
+            { ja: 'クロスボーダーを一貫した視点で', en: 'Cross-border, from one viewpoint' },
+            { ja: '日本語・英語の両対応', en: 'Fluent in Japanese and English' },
+            { ja: '取得後の運用まで伴走', en: 'Alongside you, through operation' },
           ],
         },
         {

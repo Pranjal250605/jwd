@@ -47,6 +47,25 @@ export const whyDubai: Section = {
           },
         },
         {
+          kind: 'split',
+          tone: 'light',
+          image: IMG.tax,
+          imageAlt: { ja: 'ドバイの金融街', en: 'Dubai financial district' },
+          kicker: { ja: '残る資産', en: 'Wealth that stays' },
+          heading: { ja: '差し引かれないことの、複利効果', en: 'The compounding power of what is not taken' },
+          body: [
+            {
+              ja: '所得税やキャピタルゲイン課税がないということは、毎年、再投資に回せる原資が大きくなることを意味します。長期では、この差が複利となって資産曲線を押し上げます。',
+              en: 'No income or capital-gains tax means more capital recycled into reinvestment every year. Over time that gap compounds — bending the wealth curve upward.',
+            },
+          ],
+          bullets: [
+            { ja: '個人所得税・キャピタルゲイン税ゼロ', en: 'Zero personal income & capital-gains tax' },
+            { ja: '相続税・贈与税なし', en: 'No inheritance or gift tax' },
+            { ja: '利益・資本の100%本国送金', en: '100% repatriation of profit & capital' },
+          ],
+        },
+        {
           kind: 'stats',
           tone: 'dark',
           kicker: { ja: '税率の比較', en: 'The tax picture' },
@@ -123,6 +142,7 @@ export const whyDubai: Section = {
           heading: { ja: '滞在資格の選択肢', en: 'Your residency options' },
           items: [
             {
+              icon: 'award',
               title: { ja: 'ゴールデンビザ', en: 'Golden Visa' },
               meta: { ja: '5〜10年', en: '5–10 years' },
               text: {
@@ -131,6 +151,7 @@ export const whyDubai: Section = {
               },
             },
             {
+              icon: 'home',
               title: { ja: '不動産投資ビザ', en: 'Property Investor Visa' },
               meta: { ja: '2年〜', en: '2 years+' },
               text: {
@@ -139,6 +160,7 @@ export const whyDubai: Section = {
               },
             },
             {
+              icon: 'briefcase',
               title: { ja: '就労・事業ビザ', en: 'Employment / Business Visa' },
               meta: { ja: '法人設立連動', en: 'Linked to company' },
               text: {
@@ -201,6 +223,27 @@ export const whyDubai: Section = {
           ],
         },
         {
+          kind: 'chart',
+          tone: 'light',
+          kicker: { ja: '為替の推移', en: 'The currency trend' },
+          heading: { ja: '円から見たAEDの強さ', en: 'AED strength, seen from the yen' },
+          chart: {
+            type: 'line',
+            points: [
+              { label: { ja: '’21', en: '’21' }, value: 29 },
+              { label: { ja: '’22', en: '’22' }, value: 33 },
+              { label: { ja: '’23', en: '’23' }, value: 37 },
+              { label: { ja: '’24', en: '’24' }, value: 39 },
+              { label: { ja: '’25', en: '’25' }, value: 40 },
+              { label: { ja: '’26', en: '’26' }, value: 41 },
+            ],
+          },
+          note: {
+            ja: '※ 1 AED あたりの円相当（参考値）。',
+            en: '※ JPY per AED — illustrative values, not live rates.',
+          },
+        },
+        {
           kind: 'points',
           tone: 'light',
           kicker: { ja: '分散の意味', en: 'Why it matters' },
@@ -259,16 +302,25 @@ export const whyDubai: Section = {
           },
         },
         {
-          kind: 'stats',
+          kind: 'chart',
           tone: 'dark',
-          kicker: { ja: '利回りの目安', en: 'Yield benchmarks' },
-          heading: { ja: 'エリア別の傾向', en: 'Patterns by area' },
-          items: [
-            { value: 8.4, decimals: 1, suffix: '%', label: { ja: 'JVC（高利回り帯）', en: 'JVC (high-yield band)' } },
-            { value: 7.1, decimals: 1, suffix: '%', label: { ja: 'ドバイ・マリーナ', en: 'Dubai Marina' } },
-            { value: 6.8, decimals: 1, suffix: '%', label: { ja: 'ダウンタウン', en: 'Downtown' } },
-            { value: 5.2, decimals: 1, suffix: '%', label: { ja: 'パーム（ヴィラ）', en: 'Palm (villa)' } },
-          ],
+          kicker: { ja: '利回りの比較', en: 'Yield, compared' },
+          heading: { ja: 'エリア別グロス利回り', en: 'Gross yield by area' },
+          chart: {
+            type: 'bars',
+            unit: '%',
+            items: [
+              { label: { ja: 'JVC', en: 'JVC' }, value: 8.4, highlight: true },
+              { label: { ja: 'ドバイ・マリーナ', en: 'Dubai Marina' }, value: 7.1, highlight: true },
+              { label: { ja: 'ダウンタウン', en: 'Downtown' }, value: 6.8, highlight: true },
+              { label: { ja: 'パーム（ヴィラ）', en: 'Palm (villa)' }, value: 5.2 },
+              { label: { ja: '東京（参考）', en: 'Tokyo (ref.)' }, value: 3.5 },
+            ],
+          },
+          note: {
+            ja: '※ 参考値。実際の利回りは物件・契約・運用形態で変動します。',
+            en: '※ Illustrative figures. Actual yields vary by property, lease and operating model.',
+          },
         },
         {
           kind: 'points',
@@ -340,6 +392,27 @@ export const whyDubai: Section = {
             { value: 7, suffix: '%', label: { ja: '平均賃貸利回り', en: 'Average rental yield' } },
             { value: 100, suffix: '%', label: { ja: '外国人所有（指定区域）', en: 'Foreign ownership (freehold)' } },
           ],
+        },
+        {
+          kind: 'chart',
+          tone: 'deep',
+          kicker: { ja: '価格の推移', en: 'Price trajectory' },
+          heading: { ja: 'ドバイ住宅価格指数（2021 = 100）', en: 'Dubai residential price index (2021 = 100)' },
+          chart: {
+            type: 'line',
+            points: [
+              { label: { ja: '’21', en: '’21' }, value: 100 },
+              { label: { ja: '’22', en: '’22' }, value: 118 },
+              { label: { ja: '’23', en: '’23' }, value: 137 },
+              { label: { ja: '’24', en: '’24' }, value: 152 },
+              { label: { ja: '’25', en: '’25' }, value: 164 },
+              { label: { ja: '’26', en: '’26' }, value: 173 },
+            ],
+          },
+          note: {
+            ja: '※ 参考の指数イメージです。確定値はご相談ください。',
+            en: '※ Illustrative index for orientation. Verified figures on request.',
+          },
         },
         {
           kind: 'points',

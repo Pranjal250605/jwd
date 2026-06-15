@@ -45,20 +45,42 @@ export const funds: Section = {
           },
         },
         {
+          kind: 'split',
+          tone: 'light',
+          image: IMG.equity,
+          imageAlt: { ja: 'グローバル市場', en: 'Global markets' },
+          kicker: { ja: '不動産の先へ', en: 'Beyond real estate' },
+          heading: { ja: '一つの資産クラスに、偏らない', en: 'Never leaning on a single asset class' },
+          body: [
+            {
+              ja: '不動産は強力ですが、流動性と分散には限界があります。規制下のエクイティ・プラットフォームは、世界の市場へのアクセスを加え、ポートフォリオ全体の重心を整えます。',
+              en: 'Property is powerful, but limited in liquidity and diversification. A regulated equity platform adds access to global markets and rebalances the centre of gravity of the whole portfolio.',
+            },
+          ],
+          bullets: [
+            { ja: '必要なときの流動性', en: 'Liquidity, when you need it' },
+            { ja: '地域・通貨の分散', en: 'Diversification across regions & currencies' },
+            { ja: '規制下の透明な枠組み', en: 'A regulated, transparent framework' },
+          ],
+        },
+        {
           kind: 'points',
           tone: 'light',
           kicker: { ja: 'ファンドの性格', en: 'Character of the fund' },
           heading: { ja: '戦略・ガバナンス・リスク', en: 'Strategy, governance, risk' },
           items: [
             {
+              icon: 'trending',
               title: { ja: '戦略', en: 'Strategy' },
               text: { ja: 'グローバル市場への分散アクセスを軸に、流動性と成長性を両立させます。', en: 'Centred on diversified access to global markets, balancing liquidity and growth.' },
             },
             {
+              icon: 'scale',
               title: { ja: 'ガバナンス', en: 'Governance' },
               text: { ja: '独立した運営と透明な報告体制のもとで運用されます。', en: 'Run under independent administration and transparent reporting.' },
             },
             {
+              icon: 'shield',
               title: { ja: 'リスク管理', en: 'Risk management' },
               text: { ja: '分散と継続的なデューデリジェンスでリスクを抑制します。', en: 'Risk is contained through diversification and ongoing due diligence.' },
             },
@@ -102,18 +124,40 @@ export const funds: Section = {
           heading: { ja: '構造・目的・リターン', en: 'Structure, objectives, returns' },
           items: [
             {
+              icon: 'building',
               title: { ja: '構造', en: 'Structure' },
               text: { ja: '実物資産を裏付けとした規制下のファンド構造を採ります。', en: 'A regulated fund structure backed by tangible real assets.' },
             },
             {
+              icon: 'award',
               title: { ja: '目的', en: 'Objectives' },
               text: { ja: '市場相関を抑えつつ、中長期での安定的なリターンを志向します。', en: 'To pursue stable medium-to-long-term returns with low market correlation.' },
             },
             {
+              icon: 'coins',
               title: { ja: 'リターン', en: 'Returns' },
               text: { ja: '実物資産由来のインカムとキャピタルの両面から収益を狙います。', en: 'Income and capital gains, both drawn from the underlying real assets.' },
             },
           ],
+        },
+        {
+          kind: 'chart',
+          tone: 'deep',
+          kicker: { ja: '資産構成', en: 'Composition' },
+          heading: { ja: '実物資産の配分イメージ', en: 'Illustrative real-asset allocation' },
+          chart: {
+            type: 'donut',
+            items: [
+              { label: { ja: '不動産', en: 'Real estate' }, value: 45 },
+              { label: { ja: 'インフラ', en: 'Infrastructure' }, value: 25 },
+              { label: { ja: 'プライベート・クレジット', en: 'Private credit' }, value: 18 },
+              { label: { ja: '現金・その他', en: 'Cash & other' }, value: 12 },
+            ],
+          },
+          note: {
+            ja: '※ 配分はイメージであり、実際のファンド構成とは異なります。',
+            en: '※ Allocation shown for illustration only; not the actual fund composition.',
+          },
         },
         {
           kind: 'links',
@@ -251,16 +295,19 @@ export const funds: Section = {
           heading: { ja: '将来の選択肢', en: 'Future possibilities' },
           items: [
             {
+              icon: 'users',
               title: { ja: '分割所有', en: 'Fractional ownership' },
               meta: { ja: '少額から', en: 'Smaller tickets' },
               text: { ja: '一つの物件を複数の投資家で分割保有し、少額からの参加を可能にします。', en: 'Splitting one asset across investors, enabling participation from a smaller ticket.' },
             },
             {
+              icon: 'briefcase',
               title: { ja: 'シンジケーション', en: 'Syndication' },
               meta: { ja: '共同投資', en: 'Co-investment' },
               text: { ja: '複数投資家による共同投資で、より大型の案件にアクセスします。', en: 'Co-investment by multiple parties to access larger deals together.' },
             },
             {
+              icon: 'sparkles',
               title: { ja: 'プラットフォーム化', en: 'Toward a platform' },
               meta: { ja: '将来構想', en: 'On the roadmap' },
               text: { ja: 'AI物件アドバイザーやマッチングと連携し、参加しやすい仕組みへ。', en: 'Linked to an AI advisor and matching, toward an accessible system.' },

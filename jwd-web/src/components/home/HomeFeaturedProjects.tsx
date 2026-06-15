@@ -16,23 +16,17 @@ export function HomeFeaturedProjects() {
   const c = home.featured;
 
   return (
-    <section
-      className="relative overflow-hidden py-28 lg:py-36"
-      style={{
-        background:
-          'linear-gradient(180deg, #070d1c 0%, #0e1830 55%, #131c33 100%)',
-      }}
-    >
-      <Grain opacity={0.03} />
+    <section className="relative overflow-hidden bg-washi py-28 lg:py-36">
+      <Grain opacity={0.02} />
       <div className="relative mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-14 flex flex-col gap-5">
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold-bright/80">
+          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
             {tx(c.label)}
           </span>
-          <h2 className="font-jp max-w-2xl text-3xl font-extrabold leading-snug text-washi lg:text-[2.6rem]">
+          <h2 className="font-jp max-w-2xl text-3xl font-extrabold leading-snug text-sumi lg:text-[2.6rem]">
             {tx(c.title)}
           </h2>
-          <p className="max-w-xl text-sm font-light leading-loose text-washi/55">
+          <p className="max-w-xl text-sm font-light leading-loose text-sumi-soft">
             {tx(c.intro)}
           </p>
         </Reveal>
@@ -42,7 +36,7 @@ export function HomeFeaturedProjects() {
             <Reveal key={i} delay={i * 0.1}>
               <Link
                 href={p.href}
-                className="group block h-full overflow-hidden border border-gold-bright/15 transition-colors duration-500 hover:border-gold-bright/45"
+                className="group block h-full overflow-hidden border border-sumi/8 bg-washi transition-colors duration-500 hover:border-gold/40"
               >
                 <div className="relative aspect-[16/11] overflow-hidden">
                   <Image
@@ -64,13 +58,13 @@ export function HomeFeaturedProjects() {
                   </span>
                 </div>
                 <div className="flex flex-col gap-3 p-7">
-                  <h3 className="font-jp text-lg font-bold text-washi transition-colors group-hover:text-gold-bright">
+                  <h3 className="font-jp text-lg font-bold text-sumi transition-colors group-hover:text-gold">
                     {tx(p.title)}
                   </h3>
-                  <p className="text-[0.84rem] font-light leading-[1.95] text-washi/55">
+                  <p className="text-[0.84rem] font-light leading-[1.95] text-sumi-soft">
                     {tx(p.text)}
                   </p>
-                  <span className="mt-2 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-gold-bright/70 transition-all duration-500 group-hover:gap-3">
+                  <span className="mt-2 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-gold transition-all duration-500 group-hover:gap-3">
                     {locale === 'ja' ? '詳しく見る' : 'Explore'}
                     <span aria-hidden>→</span>
                   </span>

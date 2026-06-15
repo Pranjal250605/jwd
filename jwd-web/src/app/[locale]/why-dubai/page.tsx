@@ -4,9 +4,11 @@ import { PageHero } from '@/components/PageHero';
 import { WhyDubaiSection } from '@/components/home/WhyDubaiSection';
 import { SubHubGrid } from '@/components/sub/SubHubGrid';
 import { getSection } from '@/content/sections';
+import { getTheme } from '@/content/themes';
 import { Footer } from '@/components/nav/Footer';
 
 const SECTION = getSection('why-dubai')!;
+const THEME = getTheme('why-dubai');
 
 const IMG =
   'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2400&q=80';
@@ -33,7 +35,7 @@ export default async function WhyDubaiPage({
     <>
       <Navbar />
       <main>
-        <PageHero image={IMG} alt="Dubai skyline" label={t('label')} title={t('title')} />
+        <PageHero image={IMG} alt="Dubai skyline" label={t('label')} title={t('title')} accent={THEME.accent} motif={THEME.motif} ribbon={THEME.ribbon} />
         <WhyDubaiSection />
         <SubHubGrid
           base="/why-dubai"
