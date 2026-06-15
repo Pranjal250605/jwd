@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Navbar } from '@/components/nav/Navbar';
 import { PageHero } from '@/components/PageHero';
 import { AboutSection } from '@/components/home/AboutSection';
+import { HomeExplore } from '@/components/home/HomeExplore';
 import { TrustBand } from '@/components/home/TrustBand';
 import { SubHubGrid } from '@/components/sub/SubHubGrid';
 import { getSection } from '@/content/sections';
@@ -38,6 +39,7 @@ export default async function AboutPage({
       <main>
         <PageHero image={IMG} alt="Tokyo at night" label={t('label')} title={t('title')} accent={THEME.accent} motif={THEME.motif} ribbon={THEME.ribbon} />
         <AboutSection />
+        <HomeExplore /> {/* interactive — tabs: what we do */}
         <TrustBand />
         <SubHubGrid
           base="/about"

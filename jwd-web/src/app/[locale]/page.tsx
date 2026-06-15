@@ -4,6 +4,8 @@ import { Navbar } from '@/components/nav/Navbar';
 import { StripeHero } from '@/components/hero/StripeHero';
 import { HomeLatestProperties } from '@/components/home/HomeLatestProperties';
 import { HomeHighlights } from '@/components/home/HomeHighlights';
+import { HomeExplore } from '@/components/home/HomeExplore';
+import { HomeCalculator } from '@/components/home/HomeCalculator';
 import { HomeMarketNews } from '@/components/home/HomeMarketNews';
 import { HomeFeaturedProjects } from '@/components/home/HomeFeaturedProjects';
 import { HomeWhyJwd } from '@/components/home/HomeWhyJwd';
@@ -28,8 +30,10 @@ export default function HomePage({
         <StripeHero /> {/* animated kintsugi-aurora gradient hero */}
         <HomeLatestProperties /> {/* washi */}
         <HomeHighlights /> {/* washi-deep, zen */}
+        <HomeExplore /> {/* interactive — tabs: what we do */}
         <HomeMarketNews market="dubai" tone="light" /> {/* washi */}
         <HomeMarketNews market="japan" tone="deep" /> {/* washi-deep */}
+        <HomeCalculator /> {/* interactive — live yield calculator */}
         <HomeFeaturedProjects /> {/* washi, photographic */}
         <HomeWhyJwd /> {/* washi-deep */}
         <HomeCTA /> {/* zen close */}
