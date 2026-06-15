@@ -14,6 +14,7 @@ import { Link } from '@/i18n/navigation';
 import { Reveal } from '@/components/kintsugi/Reveal';
 import { StatsRow } from '@/components/sub/StatsRow';
 import { BarChart, LineChart, DonutChart } from '@/components/sub/Charts';
+import { Tabs, YieldCalculator, Compare } from '@/components/sub/Interactive';
 import { Motif } from '@/components/sub/Motif';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { Grain } from '@/components/kintsugi/Grain';
@@ -89,7 +90,7 @@ function Header({ tone, kicker, heading, tx, display }: { tone?: Tone; kicker?: 
       {heading && (
         <div className="flex flex-col gap-3.5">
           <h2 className={`${display} max-w-3xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] ${c.heading} lg:text-[3rem]`}>{tx(heading)}</h2>
-          <MarkerUnderline accent={accFor(theme, tone)} className="w-32 lg:w-48" />
+          <MarkerUnderline accent={accFor(theme, tone)} className="w-44 lg:w-64" />
         </div>
       )}
     </Reveal>
@@ -397,6 +398,55 @@ function BlockView({ block, tx, display }: { block: Block; tx: (l: L) => string;
             {block.heading && <span className="text-[10px] uppercase tracking-[0.38em]" style={{ color: acc }}>{tx(block.heading)}</span>}
             {block.note && <p className={`max-w-xl text-sm font-light leading-loose ${c.body}`}>{tx(block.note)}</p>}
             <PillLinks items={block.items} tx={tx} />
+          </Reveal>
+        </Shell>
+      );
+
+    case 'tabs':
+      return (
+        <Shell tone={block.tone}>
+          <Header tone={block.tone} kicker={block.kicker} heading={block.heading} tx={tx} display={display} />
+          <Reveal>
+            <Tabs
+              accent={acc}
+              dark={dark}
+              display={display}
+              items={block.items.map((it) => ({
+                tab: tx(it.tab),
+                title: tx(it.title),
+                text: tx(it.text),
+                bullets: it.bullets?.map(tx),
+                metric: it.metric ? { value: it.metric.value, label: tx(it.metric.label) } : undefined,
+              }))}
+            />
+          </Reveal>
+        </Shell>
+      );
+
+    case 'calculator':
+      return (
+        <Shell tone={block.tone}>
+          <Header tone={block.tone} kicker={block.kicker} heading={block.heading} tx={tx} display={display} />
+          <Reveal>
+            <YieldCalculator accent={acc} dark={dark} ja={!isEn} />
+            {block.note && <p className={`mt-6 text-xs font-light italic ${c.body}`}>{tx(block.note)}</p>}
+          </Reveal>
+        </Shell>
+      );
+
+    case 'compare':
+      return (
+        <Shell tone={block.tone}>
+          <Header tone={block.tone} kicker={block.kicker} heading={block.heading} tx={tx} display={display} />
+          <Reveal>
+            <Compare
+              accent={acc}
+              dark={dark}
+              display={display}
+              left={tx(block.left)}
+              right={tx(block.right)}
+              rows={block.rows.map((r) => ({ label: tx(r.label), left: tx(r.left), right: tx(r.right) }))}
+            />
           </Reveal>
         </Shell>
       );

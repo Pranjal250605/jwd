@@ -78,6 +78,36 @@ export type Block =
       items: { label: L; url: string }[];
     }
   | {
+      kind: 'tabs';
+      tone?: Tone;
+      kicker?: L;
+      heading?: L;
+      items: {
+        tab: L;
+        title: L;
+        text: L;
+        bullets?: L[];
+        icon?: IconKey;
+        metric?: { value: string; label: L };
+      }[];
+    }
+  | {
+      kind: 'calculator';
+      tone?: Tone;
+      kicker?: L;
+      heading?: L;
+      note?: L;
+    }
+  | {
+      kind: 'compare';
+      tone?: Tone;
+      kicker?: L;
+      heading?: L;
+      left: L;
+      right: L;
+      rows: { label: L; left: L; right: L }[];
+    }
+  | {
       kind: 'faq';
       tone?: Tone;
       kicker?: L;
