@@ -41,6 +41,8 @@ export default async function HeartOfEuropePage({
           base="/heart-of-europe"
           subsections={SECTION.subsections}
           heading={SECTION.blurb}
+          accent={THEME.accent}
+          accentBright={THEME.accentBright}
         />
       </main>
       <Footer />

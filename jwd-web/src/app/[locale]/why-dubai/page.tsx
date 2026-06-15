@@ -41,6 +41,8 @@ export default async function WhyDubaiPage({
           base="/why-dubai"
           subsections={SECTION.subsections}
           heading={SECTION.blurb}
+          accent={THEME.accent}
+          accentBright={THEME.accentBright}
         />
       </main>
       <Footer />

@@ -50,6 +50,8 @@ export default async function FundsPage({
           base="/funds"
           subsections={SECTION.subsections}
           heading={SECTION.blurb}
+          accent={THEME.accent}
+          accentBright={THEME.accentBright}
         />
       </main>
       <Footer />

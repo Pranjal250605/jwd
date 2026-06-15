@@ -50,6 +50,8 @@ export default async function DubaiPropertiesPage({
           base="/dubai-properties"
           subsections={SECTION.subsections}
           heading={SECTION.blurb}
+          accent={THEME.accent}
+          accentBright={THEME.accentBright}
         />
       </main>
       <Footer />

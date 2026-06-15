@@ -45,6 +45,8 @@ export default async function AboutPage({
           base="/about"
           subsections={SECTION.subsections}
           heading={SECTION.blurb}
+          accent={THEME.accent}
+          accentBright={THEME.accentBright}
         />
       </main>
       <Footer />
