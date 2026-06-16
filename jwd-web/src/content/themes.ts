@@ -28,7 +28,8 @@ export const SECTION_THEMES: Record<string, SectionTheme> = {
     accent: '#9a7b2d',
     accentBright: '#c9a85c',
     accentSoft: 'rgba(154,123,45,0.10)',
-    ribbon: ['#c9a85c', '#e8ddc8', '#d8b878', '#9a7b2d', '#e6d9b8', '#bcae8a'],
+    // the colourful "home" abstract now lives on About JWD
+    ribbon: ['#bcc8ec', '#d7bfe4', '#e6a98f', '#e8a14e', '#d99a2e', '#c9a85c', '#e6d9b8', '#9a7b2d', '#cdbfe0'],
     motif: 'enso',
   },
   'why-dubai': {

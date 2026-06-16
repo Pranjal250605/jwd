@@ -1,7 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { use } from 'react';
 import { Navbar } from '@/components/nav/Navbar';
-import { StripeHero } from '@/components/hero/StripeHero';
+import { ZenHero } from '@/components/hero/ZenHero';
 import { HomeLatestProperties } from '@/components/home/HomeLatestProperties';
 import { HomeHighlights } from '@/components/home/HomeHighlights';
 import { HomeExplore } from '@/components/home/HomeExplore';
@@ -27,7 +27,7 @@ export default function HomePage({
     <>
       <Navbar />
       <main>
-        <StripeHero /> {/* animated kintsugi-aurora gradient hero */}
+        <ZenHero /> {/* zen photographic cover */}
         <HomeLatestProperties /> {/* washi */}
         <HomeHighlights /> {/* washi-deep, zen */}
         <HomeExplore /> {/* interactive — tabs: what we do */}
