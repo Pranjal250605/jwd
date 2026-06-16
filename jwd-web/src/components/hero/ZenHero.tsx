@@ -82,17 +82,23 @@ export function ZenHero() {
               <span className="text-[10px] uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
             </motion.div>
 
-            <h1 className="font-en font-semibold text-sumi" style={{ fontSize: 'clamp(2.8rem, 6.6vw, 5.6rem)', lineHeight: 1.04, letterSpacing: '-0.035em' }}>
-              <span className="block overflow-hidden pb-[0.22em]">
-                <motion.span className="block" initial={reduce ? false : { y: '110%' }} animate={{ y: 0 }} transition={{ duration: 1, delay: 0.15, ease: EASE }}>
-                  {t('titleLine1')}
-                </motion.span>
-              </span>
-              <span className="-mt-[0.18em] block overflow-hidden pb-[0.22em]">
-                <motion.span className="block text-gold-gradient" initial={reduce ? false : { y: '110%' }} animate={{ y: 0 }} transition={{ duration: 1, delay: 0.3, ease: EASE }}>
-                  {t('titleLine2')}
-                </motion.span>
-              </span>
+            <h1 className="font-en font-semibold text-sumi" style={{ fontSize: 'clamp(2.8rem, 6.6vw, 5.6rem)', lineHeight: 1.12, letterSpacing: '-0.035em' }}>
+              <motion.span
+                className="block"
+                initial={reduce ? false : { opacity: 0, y: '0.4em' }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.15, ease: EASE }}
+              >
+                {t('titleLine1')}
+              </motion.span>
+              <motion.span
+                className="block pb-[0.12em] text-gold-gradient"
+                initial={reduce ? false : { opacity: 0, y: '0.4em' }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.3, ease: EASE }}
+              >
+                {t('titleLine2')}
+              </motion.span>
             </h1>
 
             <motion.p className="mt-7 max-w-lg text-base font-light leading-relaxed text-sumi-soft"
