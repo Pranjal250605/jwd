@@ -10,6 +10,7 @@ interface CountUpProps {
   duration?: number;
   prefix?: string;
   suffix?: string;
+  className?: string;
 }
 
 /**
@@ -24,6 +25,7 @@ export function CountUp({
   duration = 1.8,
   prefix = '',
   suffix = '',
+  className,
 }: CountUpProps) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
@@ -53,5 +55,5 @@ export function CountUp({
 
   // SSR / first paint: render the final value so layout is stable, then the
   // effect resets to 0 and animates up when in view.
-  return <span ref={ref}>{`${prefix}${to.toFixed(decimals)}${suffix}`}</span>;
+  return <span ref={ref} className={className}>{`${prefix}${to.toFixed(decimals)}${suffix}`}</span>;
 }
