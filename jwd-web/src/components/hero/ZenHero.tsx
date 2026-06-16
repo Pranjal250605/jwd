@@ -70,17 +70,6 @@ export function ZenHero() {
         className="absolute inset-0 z-0"
         style={{ background: 'linear-gradient(to bottom, rgba(250,249,245,0.55) 0%, transparent 24%, transparent 55%, rgba(250,249,245,0.85) 100%)' }}
       />
-      {/* faint ensō */}
-      <svg aria-hidden viewBox="0 0 100 100" fill="none" className="absolute right-[3%] top-[8%] z-0 hidden h-[58vmin] w-[58vmin] opacity-[0.08] lg:block">
-        <motion.path
-          d="M75 26 C87 38 90 60 77 75 C64 90 38 91 22 79 C7 67 7 41 23 26 C37 13 60 12 74 22"
-          stroke="#9a7b2d" strokeWidth={2} strokeLinecap="round"
-          initial={reduce ? { pathLength: 1 } : { pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2.6, delay: 0.5, ease: [0.6, 0, 0.2, 1] }}
-        />
-      </svg>
-
       <div className="relative z-10 mx-auto max-w-screen-2xl px-7 sm:px-10 lg:px-16">
         {/* ── statement ── */}
         <div className="flex min-h-[88vh] items-center pt-28">
@@ -93,13 +82,13 @@ export function ZenHero() {
               <span className="text-[10px] uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
             </motion.div>
 
-            <h1 className="font-en font-semibold text-sumi" style={{ fontSize: 'clamp(2.8rem, 6.6vw, 5.6rem)', lineHeight: 1.0, letterSpacing: '-0.035em' }}>
-              <span className="block overflow-hidden pb-[0.08em]">
+            <h1 className="font-en font-semibold text-sumi" style={{ fontSize: 'clamp(2.8rem, 6.6vw, 5.6rem)', lineHeight: 1.04, letterSpacing: '-0.035em' }}>
+              <span className="block overflow-hidden pb-[0.22em]">
                 <motion.span className="block" initial={reduce ? false : { y: '110%' }} animate={{ y: 0 }} transition={{ duration: 1, delay: 0.15, ease: EASE }}>
                   {t('titleLine1')}
                 </motion.span>
               </span>
-              <span className="block overflow-hidden pb-[0.08em]">
+              <span className="-mt-[0.18em] block overflow-hidden pb-[0.22em]">
                 <motion.span className="block text-gold-gradient" initial={reduce ? false : { y: '110%' }} animate={{ y: 0 }} transition={{ duration: 1, delay: 0.3, ease: EASE }}>
                   {t('titleLine2')}
                 </motion.span>
