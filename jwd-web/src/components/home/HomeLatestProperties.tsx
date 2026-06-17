@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { Reveal } from '@/components/kintsugi/Reveal';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { Property3DCarousel } from '@/components/home/Property3DCarousel';
+import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 import { home } from '@/content/home';
 import type { L } from '@/content/types';
 
@@ -20,7 +21,8 @@ export function HomeLatestProperties() {
 
   return (
     <section className="relative overflow-hidden bg-washi py-28 lg:py-36">
-      <div className="mx-auto max-w-screen-2xl px-7 lg:px-12">
+      <PremiumBackdrop mask="corner" />
+      <div className="relative z-10 mx-auto max-w-screen-2xl px-7 lg:px-12">
         <Reveal className="mb-6 flex flex-col gap-4">
           <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
             {tx(c.label)}
@@ -43,7 +45,7 @@ export function HomeLatestProperties() {
 
       <Property3DCarousel />
 
-      <div className="mx-auto max-w-screen-2xl px-7 lg:px-12">
+      <div className="relative z-10 mx-auto max-w-screen-2xl px-7 lg:px-12">
         <Reveal delay={0.1} className="mt-10">
           <Link
             href="/dubai-properties"

@@ -5,6 +5,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Reveal } from '@/components/kintsugi/Reveal';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
+import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 import { home } from '@/content/home';
 import type { L } from '@/content/types';
 import type { NewsEntry } from '@/lib/news';
@@ -31,7 +32,8 @@ export function HomeMarketNews({
 
   return (
     <section className={`relative overflow-hidden ${bg} py-28 lg:py-32`}>
-      <div className="mx-auto max-w-screen-xl px-7 lg:px-12">
+      <PremiumBackdrop tone={tone === 'deep' ? 'deep' : 'light'} mask="left" />
+      <div className="relative z-10 mx-auto max-w-screen-xl px-7 lg:px-12">
         <div className="mb-12 flex items-end justify-between gap-6">
           <Reveal className="flex flex-col gap-4">
             <span className="text-[10px] uppercase tracking-[0.38em] text-gold">

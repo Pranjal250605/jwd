@@ -4,6 +4,7 @@ import { useLocale } from 'next-intl';
 import { Reveal } from '@/components/kintsugi/Reveal';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { YieldCalculator } from '@/components/sub/Interactive';
+import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 
 const ACCENT = '#9a7b2d';
 
@@ -15,7 +16,8 @@ export function HomeCalculator() {
 
   return (
     <section className="relative overflow-hidden bg-washi-deep py-28 lg:py-36">
-      <div className="mx-auto max-w-screen-xl px-7 lg:px-12">
+      <PremiumBackdrop tone="deep" mask="bottom" />
+      <div className="relative z-10 mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-12 flex flex-col gap-4">
           <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
             {ja ? 'ためしに、動かす' : 'Try it yourself'}

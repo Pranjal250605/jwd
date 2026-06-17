@@ -4,6 +4,7 @@ import { useLocale } from 'next-intl';
 import { Reveal } from '@/components/kintsugi/Reveal';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { Tabs } from '@/components/sub/Interactive';
+import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 
 const ACCENT = '#9a7b2d';
 type L = { ja: string; en: string };
@@ -77,7 +78,8 @@ export function HomeExplore() {
 
   return (
     <section className="relative overflow-hidden bg-washi py-28 lg:py-36">
-      <div className="mx-auto max-w-screen-xl px-7 lg:px-12">
+      <PremiumBackdrop mask="corner" />
+      <div className="relative z-10 mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-12 flex flex-col gap-4">
           <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
             {ja ? '事業領域' : 'What we do'}
