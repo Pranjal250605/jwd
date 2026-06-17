@@ -95,6 +95,33 @@ export const home = {
         },
         href: '/why-dubai/rental-yield',
       },
+      {
+        date: '2026.02.14',
+        tag: { ja: '税制', en: 'Tax' },
+        title: {
+          ja: 'UAEの法人税ガイダンスが更新。フリーゾーン優遇の適用範囲が明確化。',
+          en: 'UAE corporate-tax guidance updated, clarifying the scope of free-zone incentives.',
+        },
+        href: '/why-dubai/tax-benefits',
+      },
+      {
+        date: '2026.01.22',
+        tag: { ja: '市場動向', en: 'Market' },
+        title: {
+          ja: 'オフプラン販売が好調を維持。主要デベロッパーが新規プロジェクトを相次ぎ発表。',
+          en: 'Off-plan sales stay strong as major developers launch a wave of new projects.',
+        },
+        href: '/dubai-properties',
+      },
+      {
+        date: '2025.12.05',
+        tag: { ja: '為替', en: 'Currency' },
+        title: {
+          ja: 'AEDの米ドルペッグが安定を維持。円安局面で分散需要が拡大。',
+          en: 'The AED’s dollar peg holds steady; weak-yen diversification demand grows.',
+        },
+        href: '/why-dubai/currency-diversification',
+      },
     ] as NewsItem[],
   },
 
@@ -126,6 +153,33 @@ export const home = {
         title: {
           ja: '不動産を活用した事業承継・相続設計への関心が高まる。',
           en: 'Interest grows in property-based succession and inheritance planning.',
+        },
+        href: '/japan-properties',
+      },
+      {
+        date: '2026.01.30',
+        tag: { ja: '市場動向', en: 'Market' },
+        title: {
+          ja: '都心の優良物件に海外マネーが流入。利回りは依然タイト。',
+          en: 'Overseas capital flows into prime central Tokyo; yields remain tight.',
+        },
+        href: '/japan-properties',
+      },
+      {
+        date: '2025.12.18',
+        tag: { ja: '税制', en: 'Tax' },
+        title: {
+          ja: '相続税対策としての不動産活用に関する相談が増加。',
+          en: 'Enquiries rise on using real estate for inheritance-tax planning.',
+        },
+        href: '/family-office',
+      },
+      {
+        date: '2025.11.20',
+        tag: { ja: '空き家', en: 'Akiya' },
+        title: {
+          ja: '自治体の空き家バンク連携が拡大。再生投資のパイプラインが充実。',
+          en: 'Municipal akiya-bank tie-ups expand, deepening the renovation pipeline.',
         },
         href: '/japan-properties',
       },

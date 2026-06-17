@@ -39,6 +39,17 @@ export function HomeMarketNews({
             </h2>
             <MarkerUnderline accent={ACCENT} className="w-40 lg:w-56" />
           </Reveal>
+          <Reveal>
+            <Link
+              href="/news"
+              className="group hidden shrink-0 items-center gap-2 whitespace-nowrap text-[11px] uppercase tracking-[0.2em] text-gold transition-all duration-500 hover:gap-3 hover:text-sumi sm:inline-flex"
+            >
+              <span className="border-b border-gold/40 pb-1 transition-colors group-hover:border-sumi">
+                {locale === 'ja' ? 'すべてのニュース' : 'View all news'}
+              </span>
+              <ArrowUpRight className="h-4 w-4" strokeWidth={1.6} />
+            </Link>
+          </Reveal>
         </div>
 
         <div className="flex flex-col gap-1.5">
