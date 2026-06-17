@@ -37,7 +37,7 @@ export function HomeLatestProperties() {
         {/* drag hint */}
         <Reveal className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-sumi-soft/70">
           <MoveHorizontal className="h-3.5 w-3.5" style={{ color: ACCENT }} strokeWidth={1.6} />
-          {locale === 'ja' ? 'ドラッグして回す' : 'Drag to explore'}
+          {locale === 'ja' ? 'ドラッグして回す・カードをクリックで詳細' : 'Drag to explore · click a card for details'}
         </Reveal>
       </div>
 

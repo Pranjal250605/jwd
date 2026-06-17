@@ -11,6 +11,10 @@ export interface Listing {
   typeEn: string;
   priceAed: number;
   yieldPct: number;
+  beds: string;
+  sizeSqft: number;
+  descJa: string;
+  descEn: string;
   /** real photograph for the card */
   image: string;
   /** gradient stops for the code-drawn card visual (fallback) */
@@ -29,6 +33,10 @@ export const listings: Listing[] = [
     typeEn: 'Apartment',
     priceAed: 1_850_000,
     yieldPct: 6.8,
+    beds: '1BR',
+    sizeSqft: 820,
+    descJa: 'ブルジュ・ハリファを望むダウンタウンの中心に立つ1ベッドルーム。観光・駐在需要が厚く、長期・短期いずれの賃貸でも高稼働が見込めます。',
+    descEn: 'A one-bedroom residence in the heart of Downtown with Burj Khalifa views. Deep tourist and expat demand supports strong occupancy on both long and short lets.',
     image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
     hues: ['#1a2336', '#3a2f25'],
     bayut: 'https://www.bayut.com/for-sale/apartments/dubai/downtown-dubai/',
@@ -43,6 +51,10 @@ export const listings: Listing[] = [
     typeEn: 'Apartment',
     priceAed: 2_400_000,
     yieldPct: 7.1,
+    beds: '2BR',
+    sizeSqft: 1_250,
+    descJa: 'マリーナのウォーターフロントに位置する2ベッドルーム。海とヨットハーバーの眺望、充実した共用施設が、安定した賃貸需要を支えます。',
+    descEn: 'A two-bedroom waterfront residence on Dubai Marina. Sea and marina views with rich shared amenities underpin steady rental demand.',
     image: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1200&q=80',
     hues: ['#0e2233', '#1d3a4a'],
     bayut: 'https://www.bayut.com/for-sale/apartments/dubai/dubai-marina/',
@@ -57,6 +69,10 @@ export const listings: Listing[] = [
     typeEn: 'Villa',
     priceAed: 16_500_000,
     yieldPct: 5.2,
+    beds: '5BR',
+    sizeSqft: 6_500,
+    descJa: 'パーム・ジュメイラのプライベートビーチに面した5ベッドルーム・ヴィラ。希少性が高く、資産価値の保全と短期賃貸の上振れの両面で魅力があります。',
+    descEn: 'A five-bedroom villa on a private beach on Palm Jumeirah. High scarcity makes it compelling both for preserving value and for short-let upside.',
     image: 'https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1200&q=80',
     hues: ['#2a2438', '#4a3a28'],
     bayut: 'https://www.bayut.com/for-sale/villas/dubai/palm-jumeirah/',
@@ -71,6 +87,10 @@ export const listings: Listing[] = [
     typeEn: 'Studio',
     priceAed: 650_000,
     yieldPct: 8.4,
+    beds: 'Studio',
+    sizeSqft: 480,
+    descJa: 'JVCの高利回りスタジオ。手頃な価格帯と旺盛な賃貸需要により、グロス8%超を狙えるエントリー向けの一戸です。',
+    descEn: 'A high-yield studio in JVC. An accessible price point and robust rental demand make 8%+ gross achievable — an ideal entry asset.',
     image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80',
     hues: ['#131c33', '#2d2a20'],
     bayut: 'https://www.bayut.com/for-sale/apartments/dubai/jumeirah-village-circle-jvc/',
