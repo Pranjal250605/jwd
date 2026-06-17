@@ -1,5 +1,5 @@
 import { setRequestLocale } from 'next-intl/server';
-import { use } from 'react';
+import { getNews } from '@/lib/news';
 import { Navbar } from '@/components/nav/Navbar';
 import { ZenHero } from '@/components/hero/ZenHero';
 import { HomeLatestProperties } from '@/components/home/HomeLatestProperties';
@@ -12,13 +12,17 @@ import { HomeWhyJwd } from '@/components/home/HomeWhyJwd';
 import { HomeCTA } from '@/components/home/HomeCTA';
 import { Footer } from '@/components/nav/Footer';
 
-export default function HomePage({
+export default async function HomePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = use(params);
+  const { locale } = await params;
   setRequestLocale(locale);
+
+  const news = await getNews();
+  const dubaiNews = news.filter((n) => n.market === 'dubai').slice(0, 4);
+  const japanNews = news.filter((n) => n.market === 'japan').slice(0, 4);
 
   // HOME (sitemap section 1) presents its own seven blocks, in order:
   // Latest Properties → Investment Highlights → Dubai Market News →
@@ -31,8 +35,8 @@ export default function HomePage({
         <HomeLatestProperties /> {/* washi */}
         <HomeHighlights /> {/* washi-deep, zen */}
         <HomeExplore /> {/* interactive — tabs: what we do */}
-        <HomeMarketNews market="dubai" tone="light" /> {/* washi */}
-        <HomeMarketNews market="japan" tone="deep" /> {/* washi-deep */}
+        <HomeMarketNews market="dubai" items={dubaiNews} tone="light" /> {/* washi */}
+        <HomeMarketNews market="japan" items={japanNews} tone="deep" /> {/* washi-deep */}
         <HomeCalculator /> {/* interactive — live yield calculator */}
         <HomeFeaturedProjects /> {/* washi, photographic */}
         <HomeWhyJwd /> {/* washi-deep */}

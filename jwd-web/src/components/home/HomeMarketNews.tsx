@@ -7,6 +7,7 @@ import { Reveal } from '@/components/kintsugi/Reveal';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { home } from '@/content/home';
 import type { L } from '@/content/types';
+import type { NewsEntry } from '@/lib/news';
 
 const ACCENT = '#9a7b2d';
 type Lang = 'ja' | 'en';
@@ -15,9 +16,11 @@ type Lang = 'ja' | 'en';
  *  grows, the headline shifts and the arrow lifts into an accent disc. */
 export function HomeMarketNews({
   market,
+  items,
   tone = 'light',
 }: {
   market: 'dubai' | 'japan';
+  items: NewsEntry[];
   tone?: 'light' | 'deep';
 }) {
   const locale = useLocale() as Lang;
@@ -53,7 +56,7 @@ export function HomeMarketNews({
         </div>
 
         <div className="flex flex-col gap-1.5">
-          {c.items.map((n, i) => (
+          {items.map((n, i) => (
             <Reveal key={i} delay={i * 0.08}>
               <Link
                 href={n.href}
