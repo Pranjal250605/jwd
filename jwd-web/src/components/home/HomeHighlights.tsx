@@ -110,14 +110,15 @@ function TiltStatCard({
               animate={inView ? { scaleX: 1 } : undefined}
               transition={{ duration: 1, delay: delay + 0.3, ease: EASE }}
             />
-            <span className="text-[0.7rem] uppercase tracking-[0.18em] text-sumi-soft">{label}</span>
-          </div>
-
-          {stat.href && (
-            <div className="absolute bottom-6 right-8 text-[10px] font-medium uppercase tracking-[0.2em] text-gold opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
-              View data &rarr;
+            <div className="flex items-center justify-between">
+              <span className="text-[0.7rem] uppercase tracking-[0.18em] text-sumi-soft">{label}</span>
+              {stat.href && (
+                <span className="text-[9px] font-medium uppercase tracking-[0.2em] text-gold opacity-0 transition-all duration-300 group-hover:opacity-100">
+                  View &rarr;
+                </span>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </motion.div>
     </motion.div>

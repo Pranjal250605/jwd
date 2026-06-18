@@ -85,7 +85,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
                 <MotionLink
                   href={href}
                   onClick={onClose}
-                  className="group flex items-baseline gap-5 border-b border-sumi/5 py-3 lg:py-3.5"
+                  className="group flex items-baseline gap-5 border-b border-sumi/5 py-3 lg:py-2"
                   initial={{ opacity: 0, x: -28 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.25 + i * 0.04, ease: EASE }}
