@@ -145,9 +145,19 @@ export function ZenHero() {
             {ja ? '信頼できる情報源と提携' : 'Curated across trusted sources'}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {SOURCES.map((s) => (
-              <span key={s} className="font-sans text-sm font-medium tracking-wide text-sumi/35 transition-colors duration-300 hover:text-sumi/70">{s}</span>
-            ))}
+            {SOURCES.map((s) => {
+              const isHighlighted = s === 'Equiti' || s === 'AIX';
+              return (
+                <span
+                  key={s}
+                  className={`font-sans text-sm font-medium tracking-wide transition-colors duration-300 ${
+                    isHighlighted ? 'text-[#c9a85c] hover:opacity-80' : 'text-sumi/35 hover:text-sumi/70'
+                  }`}
+                >
+                  {s}
+                </span>
+              );
+            })}
           </div>
         </div>
       </div>
