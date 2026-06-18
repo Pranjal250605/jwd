@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { ChatPanel } from './ChatPanel';
@@ -8,6 +8,12 @@ import { ChatPanel } from './ChatPanel';
 export function ChatWidget() {
   const t = useTranslations('advisor');
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpen = () => setOpen(true);
+    window.addEventListener('open-advisor-chat', handleOpen);
+    return () => window.removeEventListener('open-advisor-chat', handleOpen);
+  }, []);
 
   return (
     <>

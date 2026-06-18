@@ -112,6 +112,12 @@ function TiltStatCard({
             />
             <span className="text-[0.7rem] uppercase tracking-[0.18em] text-sumi-soft">{label}</span>
           </div>
+
+          {stat.href && (
+            <div className="absolute bottom-6 right-8 text-[10px] font-medium uppercase tracking-[0.2em] text-gold opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+              View data &rarr;
+            </div>
+          )}
         </div>
       </motion.div>
     </motion.div>

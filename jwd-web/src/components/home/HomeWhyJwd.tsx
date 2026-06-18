@@ -55,12 +55,25 @@ export function HomeWhyJwd() {
                   {tx(it.text)}
                 </p>
                 {it.action && (
-                  <Link
-                    href={it.action.href}
-                    className="mt-6 inline-block w-fit border-b border-gold/40 pb-1 text-[11px] uppercase tracking-[0.2em] text-gold transition-colors hover:border-gold hover:text-sumi"
-                  >
-                    {tx(it.action.label)}
-                  </Link>
+                  it.action.href === '/advisor' ? (
+                    <button
+                      onClick={() => window.dispatchEvent(new Event('open-advisor-chat'))}
+                      className="group/btn mt-6 inline-flex items-center gap-2 border-b border-gold/40 pb-1 text-[11px] uppercase tracking-[0.2em] text-gold transition-all duration-300 hover:border-gold hover:text-gold-bright"
+                    >
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-gold" />
+                      </span>
+                      {tx(it.action.label)}
+                    </button>
+                  ) : (
+                    <Link
+                      href={it.action.href}
+                      className="mt-6 inline-block w-fit border-b border-gold/40 pb-1 text-[11px] uppercase tracking-[0.2em] text-gold transition-colors hover:border-gold hover:text-sumi"
+                    >
+                      {tx(it.action.label)}
+                    </Link>
+                  )
                 )}
               </article>
             </Reveal>
