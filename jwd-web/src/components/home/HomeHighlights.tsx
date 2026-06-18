@@ -65,6 +65,7 @@ function TiltStatCard({
 
   return (
     <motion.div
+      className="h-full"
       style={{ perspective: 1000 }}
       initial={{ opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : undefined}
@@ -74,7 +75,7 @@ function TiltStatCard({
     >
       <motion.div
         style={{ rotateX: srx, rotateY: sry, transformStyle: 'preserve-3d' }}
-        className="group relative overflow-hidden rounded-[1.75rem] border border-sumi/8 bg-washi p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow duration-500 hover:shadow-[0_40px_70px_-32px_rgba(32,37,31,0.4)]"
+        className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-sumi/8 bg-washi p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow duration-500 hover:shadow-[0_40px_70px_-32px_rgba(32,37,31,0.4)]"
       >
         {stat.href && <Link href={stat.href} className="absolute inset-0 z-20" />}
         {/* gradient edge */}
@@ -85,9 +86,9 @@ function TiltStatCard({
         {/* cursor glow */}
         <motion.div className="pointer-events-none absolute inset-0" style={{ background: glow }} />
 
-        <div style={{ transform: 'translateZ(45px)' }} className="relative flex flex-col gap-7">
+        <div style={{ transform: 'translateZ(45px)' }} className="relative flex h-full flex-col">
           <span
-            className="flex h-12 w-12 items-center justify-center rounded-2xl text-white"
+            className="mb-7 flex h-12 w-12 items-center justify-center rounded-2xl text-white"
             style={{ background: `linear-gradient(140deg, ${ACCENT}, #c9a85c)`, boxShadow: `0 12px 26px -10px ${ACCENT}` }}
           >
             <Icon className="h-5 w-5" strokeWidth={1.5} />
@@ -99,10 +100,10 @@ function TiltStatCard({
             prefix={stat.prefix ?? ''}
             suffix={stat.suffix ?? ''}
             start={inView}
-            className="bg-gradient-to-br from-gold to-gold-bright bg-clip-text font-en text-5xl font-light leading-none text-transparent lg:text-6xl"
+            className="mb-7 bg-gradient-to-br from-gold to-gold-bright bg-clip-text font-en text-5xl font-light leading-none text-transparent lg:text-6xl"
           />
 
-          <div className="flex flex-col gap-3">
+          <div className="mt-auto flex flex-col gap-3">
             <motion.span
               className="block h-px w-full origin-left"
               style={{ background: `linear-gradient(90deg, ${ACCENT}, transparent)` }}
