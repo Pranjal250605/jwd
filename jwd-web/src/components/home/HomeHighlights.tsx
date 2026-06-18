@@ -31,7 +31,7 @@ function TiltStatCard({
   delay,
   label,
 }: {
-  stat: { value: number; decimals?: number; prefix?: string; suffix?: string };
+  stat: { value: number; decimals?: number; prefix?: string; suffix?: string; href?: string };
   Icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   inView: boolean;
   delay: number;
