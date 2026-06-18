@@ -54,7 +54,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[70] overflow-y-auto bg-washi"
+      className="fixed inset-0 z-[70] overflow-hidden bg-washi"
       initial={{ clipPath: 'inset(0 0 100% 0)' }}
       animate={{ clipPath: 'inset(0 0 0% 0)' }}
       exit={{ clipPath: 'inset(0 0 100% 0)' }}
@@ -74,9 +74,9 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
         <span className="absolute h-px w-7 -rotate-45 bg-sumi transition-colors group-hover:bg-gold" />
       </button>
 
-      <div className="mx-auto grid min-h-full max-w-screen-2xl grid-cols-1 gap-12 px-7 py-28 lg:grid-cols-[1.1fr_1fr] lg:px-16">
+      <div className="mx-auto grid h-[100dvh] max-w-screen-2xl grid-cols-1 gap-12 px-7 py-24 lg:grid-cols-[1.1fr_1fr] lg:px-16">
         {/* Items */}
-        <nav className="flex flex-col gap-1" onMouseLeave={() => setActive(null)}>
+        <nav className="scrollbar-hide flex h-full flex-col gap-1 overflow-y-auto pb-12 pr-4" onMouseLeave={() => setActive(null)}>
           {MENU_ITEMS.map(({ key, href }, i) => {
             const slug = href.replace('/', '');
             const subs = SUBS[slug];
