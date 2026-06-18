@@ -59,10 +59,10 @@ export const home = {
       en: 'Tax, yield, growth — the indicators behind Dubai’s appeal, at a glance.',
     },
     stats: [
-      { value: 0, suffix: '%', label: { ja: '個人所得税', en: 'Personal income tax' }, href: '/why-dubai/tax-benefits' },
-      { value: 7, suffix: '%', label: { ja: '平均賃貸利回り', en: 'Average rental yield' }, href: '/why-dubai/rental-yield' },
-      { value: 6, suffix: '%+', label: { ja: '年間人口増', en: 'Annual population growth' }, href: '/why-dubai/market-statistics' },
-      { value: 100, suffix: '%', label: { ja: '外国人所有（指定区域）', en: 'Foreign ownership (freehold)' }, href: '/dubai-properties' },
+      { value: 0, suffix: '%', label: { ja: '個人所得税', en: 'Personal income tax' }, href: '/highlight/tax' },
+      { value: 7, suffix: '%', label: { ja: '平均賃貸利回り', en: 'Average rental yield' }, href: '/highlight/yield' },
+      { value: 6, suffix: '%+', label: { ja: '年間人口増', en: 'Annual population growth' }, href: '/highlight/growth' },
+      { value: 100, suffix: '%', label: { ja: '外国人所有（指定区域）', en: 'Foreign ownership (freehold)' }, href: '/highlight/ownership' },
     ] as HighlightStat[],
   },
 
