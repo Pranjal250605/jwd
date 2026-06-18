@@ -16,7 +16,7 @@ export function HomeCalculator() {
 
   return (
     <section className="relative overflow-hidden bg-washi-deep py-28 lg:py-36">
-      <PremiumBackdrop tone="deep" mask="bottom" />
+      <PremiumBackdrop tone="deep" />
       <div className="relative z-10 mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-12 flex flex-col gap-4">
           <span className="text-[10px] uppercase tracking-[0.38em] text-gold">

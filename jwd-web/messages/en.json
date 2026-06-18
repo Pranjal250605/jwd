@@ -182,5 +182,20 @@
     "connect": "Connect",
     "blurb": "A cross-border advisory bridging real estate and wealth creation between Japan and Dubai — by introduction only.",
     "disclaimer": "Figures shown across this site are illustrative samples for demonstration only and do not constitute financial advice, an offer, or a solicitation. Contact JWD for verified, current data."
+  },
+  "advisor": {
+    "label": "AI Property Advisor",
+    "title": "AI Investment Advisor",
+    "intro": "Ask me anything about Dubai and Japan real estate investment. I'm powered by JWD's own market knowledge.",
+    "placeholder": "Ask about Dubai investment, yields, visas...",
+    "thinking": "Thinking...",
+    "disclaimer": "AI-generated guidance — not financial advice. Consult JWD for verified, personalized information.",
+    "cta": "Book a consultation with Tomo →",
+    "limit": "Session limit reached. For deeper, personalized guidance, book a consultation.",
+    "chip1": "Dubai rental yields?",
+    "chip2": "Golden Visa guide",
+    "chip3": "I have ¥100M to invest",
+    "chip4": "Heart of Europe project",
+    "chip5": "Dubai vs Japan comparison"
   }
 }

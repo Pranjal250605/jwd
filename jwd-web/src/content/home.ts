@@ -21,6 +21,7 @@ export interface HighlightStat {
   prefix?: string;
   suffix?: string;
   label: L;
+  href?: string;
 }
 
 export interface FeaturedProject {
@@ -35,6 +36,7 @@ export interface FeaturedProject {
 export interface WhyPoint {
   title: L;
   text: L;
+  action?: { label: L; href: string };
 }
 
 export const home = {
@@ -57,10 +59,10 @@ export const home = {
       en: 'Tax, yield, growth — the indicators behind Dubai’s appeal, at a glance.',
     },
     stats: [
-      { value: 0, suffix: '%', label: { ja: '個人所得税', en: 'Personal income tax' } },
-      { value: 7, suffix: '%', label: { ja: '平均賃貸利回り', en: 'Average rental yield' } },
-      { value: 6, suffix: '%+', label: { ja: '年間人口増', en: 'Annual population growth' } },
-      { value: 100, suffix: '%', label: { ja: '外国人所有（指定区域）', en: 'Foreign ownership (freehold)' } },
+      { value: 0, suffix: '%', label: { ja: '個人所得税', en: 'Personal income tax' }, href: '/why-dubai/tax-benefits' },
+      { value: 7, suffix: '%', label: { ja: '平均賃貸利回り', en: 'Average rental yield' }, href: '/why-dubai/rental-yield' },
+      { value: 6, suffix: '%+', label: { ja: '年間人口増', en: 'Annual population growth' }, href: '/why-dubai/market-statistics' },
+      { value: 100, suffix: '%', label: { ja: '外国人所有（指定区域）', en: 'Foreign ownership (freehold)' }, href: '/dubai-properties' },
     ] as HighlightStat[],
   },
 
@@ -258,6 +260,7 @@ export const home = {
           ja: '不動産、法人・ビザ、ファミリーオフィスまで、ひとつのチームが横断的に伴走します。',
           en: 'Property, company and visa, family office — one team walks with you across all of it.',
         },
+        action: { label: { ja: 'AIにリアルタイムで相談', en: 'Ask AI in real-time' }, href: '/advisor' },
       },
       {
         title: { ja: '透明性', en: 'Radical transparency' },

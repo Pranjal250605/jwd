@@ -17,7 +17,7 @@ import { BarChart, LineChart, DonutChart } from '@/components/sub/Charts';
 import { Tabs, YieldCalculator, Compare } from '@/components/sub/Interactive';
 import { Motif } from '@/components/sub/Motif';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
-import { Grain } from '@/components/kintsugi/Grain';
+import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 import { DEFAULT_THEME, type SectionTheme } from '@/content/themes';
 import type { Block, L, Tone, IconKey } from '@/content/types';
 
@@ -73,9 +73,9 @@ function Shell({ tone, children, tight }: { tone?: Tone; children: React.ReactNo
   const place = MOTIF_PLACE[idx % MOTIF_PLACE.length];
   return (
     <section className={`relative overflow-hidden ${c.section} ${tight ? 'py-20 lg:py-28' : 'py-28 lg:py-40'}`}>
-      {c.grain && <Grain opacity={0.03} />}
-      <Motif motif={theme.motif} accent={acc} className={`absolute ${place}`} opacity={dark ? 0.09 : 0.05} />
-      <div className="relative mx-auto max-w-screen-xl px-7 lg:px-12">{children}</div>
+      <PremiumBackdrop tone={tone ?? 'light'} accent={acc} glow={false} />
+      <Motif motif={theme.motif} accent={acc} className={`absolute z-0 ${place}`} opacity={dark ? 0.09 : 0.05} />
+      <div className="relative z-10 mx-auto max-w-screen-xl px-7 lg:px-12">{children}</div>
     </section>
   );
 }

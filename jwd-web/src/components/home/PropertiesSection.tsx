@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { Reveal } from '@/components/kintsugi/Reveal';
 import { listings } from '@/content/properties';
 
@@ -29,7 +30,7 @@ export function PropertiesSection() {
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
           {listings.map((p, i) => (
             <Reveal key={p.id} delay={0.1 + i * 0.08}>
-              <article className="group flex h-full flex-col border border-sumi/8 bg-washi transition-all duration-500 hover:border-gold/40 hover:shadow-[0_18px_50px_-24px_rgba(32,37,31,0.35)]">
+              <Link href={`/property/${p.id}`} className="group flex h-full flex-col border border-sumi/8 bg-washi transition-all duration-500 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_18px_50px_-24px_rgba(32,37,31,0.35)]">
                 {/* code-drawn visual */}
                 <div
                   className="relative h-44 overflow-hidden"
@@ -61,26 +62,11 @@ export function PropertiesSection() {
                     {ja ? p.nameJa : p.nameEn}
                   </h3>
                   <p className="font-mono text-sm text-sumi-soft">{aed(p.priceAed)}</p>
-                  <div className="mt-auto flex flex-col gap-2 pt-3 text-[11px] tracking-[0.08em]">
-                    <a
-                      href={p.bayut}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gold transition-colors hover:text-sumi"
-                    >
-                      {t('viewBayut')}
-                    </a>
-                    <a
-                      href={p.pf}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gold transition-colors hover:text-sumi"
-                    >
-                      {t('viewPF')}
-                    </a>
+                  <div className="mt-auto pt-3 text-[11px] uppercase tracking-[0.16em] text-gold opacity-0 transition-opacity group-hover:opacity-100">
+                    {ja ? '詳細を見る →' : 'View details →'}
                   </div>
                 </div>
-              </article>
+              </Link>
             </Reveal>
           ))}
         </div>

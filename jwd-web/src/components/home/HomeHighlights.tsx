@@ -11,6 +11,7 @@ import {
 } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { Percent, TrendingUp, Users, Globe2 } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import { CountUp } from '@/components/kintsugi/CountUp';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { Motif } from '@/components/sub/Motif';
@@ -75,6 +76,7 @@ function TiltStatCard({
         style={{ rotateX: srx, rotateY: sry, transformStyle: 'preserve-3d' }}
         className="group relative overflow-hidden rounded-[1.75rem] border border-sumi/8 bg-washi p-8 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow duration-500 hover:shadow-[0_40px_70px_-32px_rgba(32,37,31,0.4)]"
       >
+        {stat.href && <Link href={stat.href} className="absolute inset-0 z-20" />}
         {/* gradient edge */}
         <div
           className="pointer-events-none absolute inset-0 rounded-[1.75rem]"

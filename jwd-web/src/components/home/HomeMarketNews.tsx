@@ -32,7 +32,7 @@ export function HomeMarketNews({
 
   return (
     <section className={`relative overflow-hidden ${bg} py-28 lg:py-32`}>
-      <PremiumBackdrop tone={tone === 'deep' ? 'deep' : 'light'} mask="left" />
+      <PremiumBackdrop tone={tone === 'deep' ? 'deep' : 'light'} />
       <div className="relative z-10 mx-auto max-w-screen-xl px-7 lg:px-12">
         <div className="mb-12 flex items-end justify-between gap-6">
           <Reveal className="flex flex-col gap-4">

@@ -1,0 +1,420 @@
+'use client';
+
+import { useState, useRef, useEffect, useCallback, type FormEvent } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLocale, useTranslations } from 'next-intl';
+
+interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+const MAX_MESSAGES = 20;
+
+const SUGGESTIONS_EN = [
+  'Dubai rental yields?',
+  'Golden Visa guide',
+  'I have ¥100M to invest',
+  'Heart of Europe project',
+  'Dubai vs Japan comparison',
+];
+
+const SUGGESTIONS_JA = [
+  'ドバイの利回りは？',
+  'ゴールデンビザについて',
+  '1億円の投資先は？',
+  'ハート・オブ・ヨーロッパとは？',
+  'ドバイvs日本の比較',
+];
+
+/** Minimal markdown-ish rendering: bold, bullets, line breaks. */
+function renderMarkdown(text: string) {
+  const lines = text.split('\n');
+  return lines.map((line, i) => {
+    // Bold: **text**
+    const parts = line.split(/(\*\*[^*]+\*\*)/g).map((part, j) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return (
+          <strong key={j} className="font-semibold text-sumi">
+            {part.slice(2, -2)}
+          </strong>
+        );
+      }
+      return part;
+    });
+
+    // Bullet point
+    if (line.startsWith('- ') || line.startsWith('• ')) {
+      return (
+        <div key={i} className="flex gap-2 pl-1">
+          <span className="text-gold mt-0.5 shrink-0">•</span>
+          <span>{parts.slice(0, 1)}{parts.slice(1).map((p, k) =>
+            typeof p === 'string' ? p.replace(/^[-•]\s*/, '') : p
+          )}</span>
+        </div>
+      );
+    }
+
+    // Empty line → spacing
+    if (line.trim() === '') {
+      return <div key={i} className="h-2" />;
+    }
+
+    return (
+      <p key={i} className="leading-relaxed">
+        {parts}
+      </p>
+    );
+  });
+}
+
+export function ChatPanel({
+  fullPage = false,
+  className = '',
+}: {
+  fullPage?: boolean;
+  className?: string;
+}) {
+  const locale = useLocale();
+  const t = useTranslations('advisor');
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState('');
+  const [streaming, setStreaming] = useState(false);
+  const [error, setError] = useState('');
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
+
+  const suggestions = locale === 'ja' ? SUGGESTIONS_JA : SUGGESTIONS_EN;
+  const userCount = messages.filter((m) => m.role === 'user').length;
+  const limitReached = userCount >= MAX_MESSAGES;
+
+  // Auto-scroll to bottom
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  const sendMessage = useCallback(
+    async (text: string) => {
+      if (!text.trim() || streaming || limitReached) return;
+      setError('');
+
+      const userMsg: Message = {
+        id: `u-${Date.now()}`,
+        role: 'user',
+        content: text.trim(),
+      };
+
+      const assistantMsg: Message = {
+        id: `a-${Date.now()}`,
+        role: 'assistant',
+        content: '',
+      };
+
+      const updated = [...messages, userMsg];
+      setMessages([...updated, assistantMsg]);
+      setInput('');
+      setStreaming(true);
+
+      try {
+        const controller = new AbortController();
+        abortRef.current = controller;
+
+        const res = await fetch('/api/advisor', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: updated.map((m) => ({
+              role: m.role,
+              content: m.content,
+            })),
+            locale,
+          }),
+          signal: controller.signal,
+        });
+
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          throw new Error(data.error || `Server error (${res.status})`);
+        }
+
+        const reader = res.body?.getReader();
+        if (!reader) throw new Error('No response stream');
+
+        const decoder = new TextDecoder();
+        let accumulated = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split('\n');
+
+          for (const line of lines) {
+            if (line.startsWith('data: ')) {
+              const data = line.slice(6);
+              if (data === '[DONE]') continue;
+              try {
+                const parsed = JSON.parse(data);
+                if (parsed.error) {
+                  throw new Error(parsed.error);
+                }
+                if (parsed.text) {
+                  accumulated += parsed.text;
+                  setMessages((prev) =>
+                    prev.map((m) =>
+                      m.id === assistantMsg.id
+                        ? { ...m, content: accumulated }
+                        : m
+                    )
+                  );
+                }
+              } catch (e) {
+                if (e instanceof SyntaxError) continue; // skip malformed chunks
+                throw e;
+              }
+            }
+          }
+        }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') return;
+        const msg =
+          err instanceof Error ? err.message : 'Something went wrong';
+        setError(msg);
+        // Remove the empty assistant message on error
+        setMessages((prev) =>
+          prev.filter((m) => m.id !== assistantMsg.id)
+        );
+      } finally {
+        setStreaming(false);
+        abortRef.current = null;
+      }
+    },
+    [messages, streaming, limitReached, locale]
+  );
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    sendMessage(input);
+  };
+
+  const handleSuggestion = (text: string) => {
+    sendMessage(text);
+  };
+
+  const msgVariants = {
+    initial: { opacity: 0, y: 16, scale: 0.97 },
+    animate: { opacity: 1, y: 0, scale: 1 },
+    exit: { opacity: 0, scale: 0.95 },
+  };
+
+  return (
+    <div
+      className={`flex flex-col ${
+        fullPage ? 'h-[calc(100vh-5rem)]' : 'h-full'
+      } ${className}`}
+    >
+      {/* Messages */}
+      <div
+        ref={scrollRef}
+        className="flex-1 overflow-y-auto px-4 py-6 space-y-4 scroll-smooth"
+        style={{ scrollbarWidth: 'thin', scrollbarColor: '#9a7b2d33 transparent' }}
+      >
+        {/* Welcome / empty state */}
+        {messages.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center text-center pt-8 pb-4"
+          >
+            {/* AI Avatar */}
+            <div className="w-14 h-14 rounded-full bg-sumi flex items-center justify-center mb-5">
+              <span className="text-gold font-jp text-xl font-bold">金</span>
+            </div>
+
+            <h3 className="font-jp text-lg font-bold text-sumi mb-2">
+              {t('title')}
+            </h3>
+            <p className="text-sm text-sumi-soft/80 max-w-xs leading-relaxed mb-6">
+              {t('intro')}
+            </p>
+
+            {/* Suggestion chips */}
+            <div className="flex flex-wrap justify-center gap-2">
+              {suggestions.map((s) => (
+                <button
+                  key={s}
+                  onClick={() => handleSuggestion(s)}
+                  className="rounded-full border border-sumi/10 bg-washi px-3.5 py-1.5 text-[11px] text-sumi-soft transition-all duration-300 hover:border-gold/40 hover:text-gold hover:bg-gold/5"
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Message bubbles */}
+        <AnimatePresence mode="popLayout">
+          {messages.map((msg) => (
+            <motion.div
+              key={msg.id}
+              variants={msgVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className={`flex ${
+                msg.role === 'user' ? 'justify-end' : 'justify-start'
+              }`}
+            >
+              {msg.role === 'assistant' && (
+                <div className="w-7 h-7 rounded-full bg-sumi flex items-center justify-center mr-2 mt-1 shrink-0">
+                  <span className="text-gold text-[10px] font-jp font-bold">金</span>
+                </div>
+              )}
+
+              <div
+                className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+                  msg.role === 'user'
+                    ? 'bg-sumi text-washi rounded-br-md'
+                    : 'bg-washi-deep text-sumi border border-sumi/5 rounded-bl-md'
+                }`}
+              >
+                {msg.role === 'assistant' ? (
+                  msg.content ? (
+                    <div className="space-y-1">
+                      {renderMarkdown(msg.content)}
+                    </div>
+                  ) : (
+                    <ThinkingDots />
+                  )
+                ) : (
+                  <p>{msg.content}</p>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+
+        {/* Post-response suggestions */}
+        {messages.length > 0 &&
+          !streaming &&
+          !limitReached &&
+          messages[messages.length - 1]?.role === 'assistant' && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              className="flex flex-wrap gap-1.5 pl-9"
+            >
+              {suggestions.slice(0, 3).map((s) => (
+                <button
+                  key={s}
+                  onClick={() => handleSuggestion(s)}
+                  className="rounded-full border border-sumi/8 px-3 py-1 text-[10px] text-sumi-soft/70 transition-all duration-300 hover:border-gold/40 hover:text-gold"
+                >
+                  {s}
+                </button>
+              ))}
+            </motion.div>
+          )}
+
+        {/* Error */}
+        {error && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mx-auto max-w-xs rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-600"
+          >
+            {error}
+          </motion.div>
+        )}
+
+        {/* Limit reached */}
+        {limitReached && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mx-auto max-w-xs rounded-lg border border-gold/20 bg-gold/5 px-4 py-3 text-center text-xs text-sumi-soft"
+          >
+            <p className="mb-2">{t('limit')}</p>
+            <a
+              href={`/${locale}/contact`}
+              className="inline-block rounded-full bg-sumi px-4 py-1.5 text-[10px] uppercase tracking-widest text-washi transition-colors hover:bg-gold"
+            >
+              {t('cta')}
+            </a>
+          </motion.div>
+        )}
+      </div>
+
+      {/* Input area */}
+      <div className="border-t border-sumi/8 bg-washi px-4 py-3">
+        <form onSubmit={handleSubmit} className="flex items-center gap-2">
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={t('placeholder')}
+            disabled={streaming || limitReached}
+            className="flex-1 rounded-full border border-sumi/10 bg-washi-deep/50 px-4 py-2.5 text-sm text-sumi placeholder:text-sumi/30 outline-none transition-colors duration-300 focus:border-gold/40 disabled:opacity-50"
+          />
+          <button
+            type="submit"
+            disabled={!input.trim() || streaming || limitReached}
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sumi text-washi transition-all duration-300 hover:bg-gold disabled:opacity-30 disabled:hover:bg-sumi"
+            aria-label="Send"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M22 2 11 13" />
+              <path d="M22 2 15 22 11 13 2 9z" />
+            </svg>
+          </button>
+        </form>
+        <p className="mt-2 text-center text-[9px] tracking-wide text-sumi/25">
+          {t('disclaimer')}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/** Animated thinking dots with gold shimmer. */
+function ThinkingDots() {
+  return (
+    <div className="flex items-center gap-1 py-1">
+      {[0, 1, 2].map((i) => (
+        <motion.span
+          key={i}
+          className="block h-1.5 w-1.5 rounded-full bg-gold"
+          animate={{
+            opacity: [0.3, 1, 0.3],
+            scale: [0.8, 1.2, 0.8],
+          }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            delay: i * 0.2,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+    </div>
+  );
+}

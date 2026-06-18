@@ -10,6 +10,7 @@ import {
 } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { SmoothScroll } from '@/components/SmoothScroll';
+import { ChatWidget } from '@/components/advisor/ChatWidget';
 import '../globals.css';
 
 const shippori = Shippori_Mincho_B1({
@@ -74,6 +75,7 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider>
           <SmoothScroll>{children}</SmoothScroll>
+          <ChatWidget />
         </NextIntlClientProvider>
       </body>
     </html>

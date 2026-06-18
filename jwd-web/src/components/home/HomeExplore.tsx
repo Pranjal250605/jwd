@@ -78,7 +78,7 @@ export function HomeExplore() {
 
   return (
     <section className="relative overflow-hidden bg-washi py-28 lg:py-36">
-      <PremiumBackdrop mask="corner" />
+      <PremiumBackdrop />
       <div className="relative z-10 mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-12 flex flex-col gap-4">
           <span className="text-[10px] uppercase tracking-[0.38em] text-gold">

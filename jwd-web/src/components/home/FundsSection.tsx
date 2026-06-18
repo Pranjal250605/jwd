@@ -29,22 +29,26 @@ export function FundsSection() {
         <div className="grid gap-7 lg:grid-cols-2">
           {FUNDS.map(({ key, url }, i) => (
             <Reveal key={key} delay={0.12 + i * 0.12}>
-              <article className="group flex h-full flex-col gap-5 border border-sumi/8 bg-washi p-9 transition-colors duration-500 hover:border-gold/40">
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex h-full flex-col gap-5 overflow-hidden rounded-2xl border border-gold/20 bg-gradient-to-br from-washi to-[#f8f5f0] p-9 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl"
+              >
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  style={{ background: 'radial-gradient(circle at 100% 100%, rgba(154,123,45,0.06), transparent 70%)' }}
+                />
                 <h3 className="font-en text-2xl font-semibold tracking-wide text-sumi">
                   {t(`${key}Title`)}
                 </h3>
                 <p className="text-sm font-light leading-loose text-sumi-soft">
                   {t(`${key}Desc`)}
                 </p>
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-block w-fit border-b border-gold/40 pb-1 text-[11px] uppercase tracking-[0.2em] text-gold transition-colors hover:border-gold hover:text-sumi"
-                >
+                <span className="mt-auto inline-block w-fit border-b border-gold/40 pb-1 text-[11px] uppercase tracking-[0.2em] text-gold transition-colors group-hover:border-gold group-hover:text-sumi">
                   {t('visit')}
-                </a>
-              </article>
+                </span>
+              </a>
             </Reveal>
           ))}
         </div>

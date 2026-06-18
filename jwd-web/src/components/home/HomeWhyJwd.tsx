@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { Reveal } from '@/components/kintsugi/Reveal';
 import { home } from '@/content/home';
 import type { L } from '@/content/types';
@@ -53,6 +54,14 @@ export function HomeWhyJwd() {
                 <p className="mt-4 text-[0.84rem] font-light leading-[2.1] text-sumi-soft">
                   {tx(it.text)}
                 </p>
+                {it.action && (
+                  <Link
+                    href={it.action.href}
+                    className="mt-6 inline-block w-fit border-b border-gold/40 pb-1 text-[11px] uppercase tracking-[0.2em] text-gold transition-colors hover:border-gold hover:text-sumi"
+                  >
+                    {tx(it.action.label)}
+                  </Link>
+                )}
               </article>
             </Reveal>
           ))}

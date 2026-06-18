@@ -4,43 +4,35 @@ import { useId } from 'react';
 import { Grain } from '@/components/kintsugi/Grain';
 
 /**
- * Subtle premium atmosphere for otherwise-flat sections: soft gold ambient
- * glows, a faint seigaiha (青海波 — Japanese wave) pattern, and washi grain.
- * Everything sits well under 8% opacity so the section still reads clean.
+ * Consistent premium atmosphere applied site-wide: a faint seigaiha (青海波 —
+ * Japanese wave) pattern, soft gold ambient glows, and washi grain. Even,
+ * gentle coverage so every section shares the same texture.
  */
 export function PremiumBackdrop({
   accent = '#9a7b2d',
   tone = 'light',
-  mask = 'corner',
+  glow = true,
 }: {
   accent?: string;
   tone?: 'light' | 'deep' | 'dark';
-  mask?: 'corner' | 'bottom' | 'left';
+  glow?: boolean;
 }) {
   const id = useId().replace(/[:]/g, '');
-  const stroke = tone === 'dark' ? 'rgba(201,168,92,0.7)' : accent;
-  const patOpacity = tone === 'dark' ? 0.06 : 0.05;
-  const maskImg =
-    mask === 'bottom'
-      ? 'linear-gradient(to top, #000 0%, transparent 60%)'
-      : mask === 'left'
-        ? 'radial-gradient(ellipse 60% 80% at 12% 50%, #000 0%, transparent 72%)'
-        : 'radial-gradient(ellipse 65% 70% at 84% 22%, #000 0%, transparent 72%)';
+  const stroke = tone === 'dark' ? 'rgba(201,168,92,0.85)' : accent;
+  const patOpacity = tone === 'dark' ? 0.1 : 0.085;
+  // even coverage with a soft edge-fade so it never looks like a hard tile
+  const maskImg = 'radial-gradient(ellipse 130% 120% at 50% 45%, #000 58%, transparent 100%)';
   const rings = [40, 30, 20, 10];
 
   return (
     <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden>
-      {/* ambient glows */}
-      <div
-        className="absolute -right-[8%] -top-[16%] h-[40rem] w-[40rem]"
-        style={{ background: `radial-gradient(circle, ${accent}12, transparent 64%)` }}
-      />
-      <div
-        className="absolute -left-[12%] bottom-[-22%] h-[34rem] w-[34rem]"
-        style={{ background: `radial-gradient(circle, ${accent}0d, transparent 64%)` }}
-      />
+      {glow && (
+        <>
+          <div className="absolute -right-[8%] -top-[16%] h-[40rem] w-[40rem]" style={{ background: `radial-gradient(circle, ${accent}12, transparent 64%)` }} />
+          <div className="absolute -left-[12%] bottom-[-22%] h-[34rem] w-[34rem]" style={{ background: `radial-gradient(circle, ${accent}0d, transparent 64%)` }} />
+        </>
+      )}
 
-      {/* seigaiha wave pattern, faint + masked */}
       <svg
         className="absolute inset-0 h-full w-full"
         style={{ opacity: patOpacity, maskImage: maskImg, WebkitMaskImage: maskImg }}

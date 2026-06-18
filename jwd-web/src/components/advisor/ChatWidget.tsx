@@ -1,0 +1,123 @@
+'use client';
+
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import { ChatPanel } from './ChatPanel';
+
+export function ChatWidget() {
+  const t = useTranslations('advisor');
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      {/* ── Floating trigger button ── */}
+      <AnimatePresence>
+        {!open && (
+          <motion.button
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 24 }}
+            onClick={() => setOpen(true)}
+            className="fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-sumi shadow-lg shadow-sumi/20 transition-colors duration-300 hover:bg-gold group"
+            aria-label={t('label')}
+          >
+            {/* Chat icon */}
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-washi"
+            >
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+
+            {/* Gold pulse ring */}
+            <span className="absolute inset-0 rounded-full border-2 border-gold/40 animate-ping opacity-20" />
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* ── Chat panel overlay ── */}
+      <AnimatePresence>
+        {open && (
+          <>
+            {/* Backdrop (mobile only) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[60] bg-sumi/30 backdrop-blur-sm sm:hidden"
+              onClick={() => setOpen(false)}
+            />
+
+            {/* Panel */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.95 }}
+              transition={{
+                type: 'spring',
+                stiffness: 300,
+                damping: 28,
+              }}
+              className="fixed z-[61] flex flex-col overflow-hidden border border-sumi/8 bg-washi/95 shadow-2xl shadow-sumi/15 backdrop-blur-xl
+                /* Mobile: full screen with safe area */
+                inset-0
+                /* Desktop: floating panel bottom-right */
+                sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[620px] sm:w-[400px] sm:rounded-2xl"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between border-b border-sumi/8 px-4 py-3">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-sumi">
+                    <span className="text-gold text-xs font-jp font-bold">金</span>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-sumi leading-tight">
+                      {t('title')}
+                    </h3>
+                    <div className="flex items-center gap-1.5">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      <span className="text-[9px] text-sumi-soft/60 tracking-wide uppercase">
+                        Online
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setOpen(false)}
+                  className="flex h-8 w-8 items-center justify-center rounded-full text-sumi-soft transition-colors hover:bg-sumi/5 hover:text-sumi"
+                  aria-label="Close"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M18 6 6 18" />
+                    <path d="M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Chat */}
+              <ChatPanel />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}

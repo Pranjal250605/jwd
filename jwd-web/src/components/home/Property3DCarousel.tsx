@@ -1,10 +1,9 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Image from 'next/image';
 import {
   motion,
-  AnimatePresence,
   useMotionValue,
   useTransform,
   useMotionTemplate,
@@ -13,7 +12,6 @@ import {
 } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { listings, type Listing } from '@/content/properties';
-import { PropertyModal } from '@/components/home/PropertyModal';
 
 const ACCENT = '#9a7b2d';
 const RX = 380;
@@ -89,10 +87,9 @@ export function Property3DCarousel() {
   const moved = useRef(false);
   const lastX = useRef(0);
   const n = listings.length;
-  const [active, setActive] = useState<Listing | null>(null);
 
   useAnimationFrame(() => {
-    if (reduce || dragging.current || hovering.current || active) return;
+    if (reduce || dragging.current || hovering.current) return;
     rotation.set(rotation.get() + 0.12);
   });
 
@@ -134,18 +131,12 @@ export function Property3DCarousel() {
               rotation={rotation}
               locale={locale}
               onSelect={() => {
-                if (!moved.current) setActive(p);
+                if (!moved.current) window.location.href = `/${locale}/property/${p.id}`;
               }}
             />
           ))}
         </div>
       </div>
-
-      <AnimatePresence>
-        {active && (
-          <PropertyModal listing={active} ja={locale === 'ja'} onClose={() => setActive(null)} />
-        )}
-      </AnimatePresence>
     </>
   );
 }
