@@ -138,7 +138,7 @@ export function PropertyAnalysis({
               </span>
               {live && (
                 <span className="text-[10px] tracking-wide text-sumi-soft/60">
-                  {ja ? '出典：ドバイ土地局' : 'Source: Dubai Land Dept.'}
+                  {ja ? 'ドバイ土地局のエリア動向に基づく' : 'Based on DLD area trends'}
                 </span>
               )}
             </div>
@@ -161,8 +161,8 @@ export function PropertyAnalysis({
             <p className="text-[11px] font-light italic text-sumi-soft/70">
               {live
                 ? ja
-                  ? `実線=ドバイ土地局の坪単価実績、点線=今後${HOLD}年の予測（年率${(appreciation * 100).toFixed(0)}%想定）。`
-                  : `Solid = DLD recorded price/sqft, dashed = ${HOLD}-yr forecast (${(appreciation * 100).toFixed(0)}% p.a. assumed).`
+                  ? `実線=ドバイ土地局のエリア価格動向（本物件の坪単価に基準化）、点線=今後${HOLD}年の予測（年率${(appreciation * 100).toFixed(0)}%想定）。`
+                  : `Solid = DLD area price trend (anchored to this unit), dashed = ${HOLD}-yr forecast (${(appreciation * 100).toFixed(0)}% p.a. assumed).`
                 : ja
                   ? `実線=過去（推定）、点線=今後${HOLD}年の予測。年率${(APPRECIATION * 100).toFixed(0)}%の値上がりを仮定。`
                   : `Solid = past (estimated), dashed = ${HOLD}-yr projection, assuming ${(APPRECIATION * 100).toFixed(0)}% p.a. growth.`}
@@ -204,8 +204,8 @@ export function PropertyAnalysis({
         {/* assumptions / disclaimer */}
         <p className="mt-10 text-[11px] font-light leading-relaxed text-sumi-soft/70">
           {ja
-            ? `※ ${live ? '価格推移はドバイ土地局のエリア坪単価に基づきます。利回り・ROI・IRRはAIによる試算です。' : '本分析はAIによる試算（参考値）です。'}前提：年率${(appreciation * 100).toFixed(0)}%の価格上昇、取得コスト${(PURCHASE_COST * 100).toFixed(0)}%、売却コスト${(EXIT_COST * 100).toFixed(0)}%、管理・共益費 約AED${OPEX_PER_SQFT}/sqft/年、保有${HOLD}年、AED≈¥${FX_JPY}。実際の数値は市場データ・契約条件により変動します。確定的な投資助言ではありません。`
-            : `※ ${live ? 'Price history reflects Dubai Land Department area price/sqft; yield, ROI and IRR are AI-modelled.' : 'This analysis is AI-modelled and illustrative.'} Assumptions: ${(appreciation * 100).toFixed(0)}% p.a. price growth, ${(PURCHASE_COST * 100).toFixed(0)}% purchase costs, ${(EXIT_COST * 100).toFixed(0)}% exit costs, ~AED ${OPEX_PER_SQFT}/sqft/yr running costs, ${HOLD}-yr hold, AED≈¥${FX_JPY}. Actual figures vary with market data and terms; not financial advice.`}
+            ? `※ ${live ? '価格推移はドバイ土地局のエリア価格動向に基づき、本物件の坪単価に基準化しています。利回り・ROI・IRRはAIによる試算です。' : '本分析はAIによる試算（参考値）です。'}前提：年率${(appreciation * 100).toFixed(0)}%の価格上昇、取得コスト${(PURCHASE_COST * 100).toFixed(0)}%、売却コスト${(EXIT_COST * 100).toFixed(0)}%、管理・共益費 約AED${OPEX_PER_SQFT}/sqft/年、保有${HOLD}年、AED≈¥${FX_JPY}。実際の数値は市場データ・契約条件により変動します。確定的な投資助言ではありません。`
+            : `※ ${live ? "Price history is based on Dubai Land Department area price trends, anchored to this unit's price/sqft; yield, ROI and IRR are AI-modelled." : 'This analysis is AI-modelled and illustrative.'} Assumptions: ${(appreciation * 100).toFixed(0)}% p.a. price growth, ${(PURCHASE_COST * 100).toFixed(0)}% purchase costs, ${(EXIT_COST * 100).toFixed(0)}% exit costs, ~AED ${OPEX_PER_SQFT}/sqft/yr running costs, ${HOLD}-yr hold, AED≈¥${FX_JPY}. Actual figures vary with market data and terms; not financial advice.`}
         </p>
       </div>
     </section>
