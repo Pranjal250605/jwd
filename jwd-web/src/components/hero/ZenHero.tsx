@@ -21,7 +21,13 @@ const STATS = [
   { value: 10, prefix: '¥', suffix: 'B+', en: 'Transaction volume', ja: '取引総額' },
   { value: 120, suffix: '+', en: 'Families advised', ja: '支援した家族' },
 ];
-const SOURCES = ['Bayut', 'Property Finder', 'Equiti', 'AIX', 'The World'];
+const SOURCES: { name: string; url: string }[] = [
+  { name: 'Bayut', url: 'https://www.bayut.com/' },
+  { name: 'Property Finder', url: 'https://www.propertyfinder.ae/' },
+  { name: 'Equiti', url: 'https://www.equiti.com/sc-en/' },
+  { name: 'AIX', url: 'https://www.aixinvestment.com/' },
+  { name: 'The World', url: 'https://theworld-dubai.com/' },
+];
 
 /**
  * Home cover — the zen photograph (minimalist Japanese architecture) full-bleed
@@ -146,16 +152,19 @@ export function ZenHero() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
             {SOURCES.map((s) => {
-              const isHighlighted = s === 'Equiti' || s === 'AIX';
+              const isHighlighted = s.name === 'Equiti' || s.name === 'AIX';
               return (
-                <span
-                  key={s}
+                <a
+                  key={s.name}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`font-sans text-sm font-medium tracking-wide transition-colors duration-300 ${
                     isHighlighted ? 'text-[#c9a85c] hover:opacity-80' : 'text-sumi/35 hover:text-sumi/70'
                   }`}
                 >
-                  {s}
-                </span>
+                  {s.name}
+                </a>
               );
             })}
           </div>

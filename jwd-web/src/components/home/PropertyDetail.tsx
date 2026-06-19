@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ArrowUpRight, BedDouble, Ruler, Building2, MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Listing } from '@/content/properties';
+import { PropertyAnalysis } from './PropertyAnalysis';
 
 const ACCENT = '#9a7b2d';
 
@@ -26,6 +27,7 @@ export function PropertyDetail({
   ];
 
   return (
+    <>
     <div className="mx-auto max-w-6xl px-4 lg:px-8">
       <Link href="/dubai-properties" className="mb-6 inline-flex items-center gap-2 text-sm uppercase tracking-widest text-sumi-soft transition-colors hover:text-gold">
         ← {ja ? '戻る' : 'Back to properties'}
@@ -100,5 +102,8 @@ export function PropertyDetail({
         </div>
       </div>
     </div>
+
+    <PropertyAnalysis listing={p} locale={locale} />
+    </>
   );
 }
