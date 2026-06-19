@@ -7,6 +7,7 @@ import { useLocale } from 'next-intl';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
+import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 import type { L, Subsection } from '@/content/types';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -38,7 +39,8 @@ export function SubHubGrid({
 
   return (
     <section className="relative overflow-hidden bg-washi-deep py-28 lg:py-36">
-      <div ref={ref} className="mx-auto max-w-screen-2xl px-7 lg:px-12">
+      <PremiumBackdrop accent={accent} />
+      <div ref={ref} className="relative z-10 mx-auto max-w-screen-2xl px-7 lg:px-12">
         <div className="mb-14 flex flex-col gap-4">
           <span className="text-[10px] uppercase tracking-[0.38em]" style={{ color: accent }}>
             {locale === 'ja' ? 'このセクションを探る' : 'In this section'}
