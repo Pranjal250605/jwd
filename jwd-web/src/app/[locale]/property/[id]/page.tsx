@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { listings } from '@/content/properties';
+import { getPriceHistory } from '@/lib/market-data';
 import { Navbar } from '@/components/nav/Navbar';
 import { Footer } from '@/components/nav/Footer';
 import { PropertyDetail } from '@/components/home/PropertyDetail';
@@ -20,11 +21,13 @@ export default async function PropertyPage({
   const listing = listings.find((p) => p.id === id);
   if (!listing) notFound();
 
+  const history = await getPriceHistory(listing);
+
   return (
     <>
       <Navbar />
       <main className="min-h-screen bg-washi pt-24 pb-12 lg:pt-32 lg:pb-24">
-        <PropertyDetail listing={listing} locale={locale} />
+        <PropertyDetail listing={listing} locale={locale} history={history} />
       </main>
       <Footer />
     </>

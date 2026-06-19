@@ -1,10 +1,11 @@
 import { Sparkles, TrendingUp, ShieldCheck } from 'lucide-react';
 import type { Listing } from '@/content/properties';
+import type { PriceHistory } from '@/lib/market-data';
 
 const ACCENT = '#9a7b2d';
 
 /* ── Illustrative model assumptions (replace with verified / live data) ── */
-const APPRECIATION = 0.06; // capital growth p.a.
+const APPRECIATION = 0.06; // fallback capital growth p.a. (used if no history)
 const PURCHASE_COST = 0.06; // DLD 4% + agency 2%
 const EXIT_COST = 0.02; // agency at sale
 const OPEX_PER_SQFT = 18; // service charge + management, AED/yr
@@ -28,35 +29,46 @@ function irr(cf: number[]): number {
 
 const fmt = (n: number) => new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(Math.round(n));
 
-export function PropertyAnalysis({ listing: p, locale }: { listing: Listing; locale: string }) {
+export function PropertyAnalysis({
+  listing: p,
+  locale,
+  history,
+}: {
+  listing: Listing;
+  locale: string;
+  history?: PriceHistory;
+}) {
   const ja = locale === 'ja';
   const display = ja ? 'font-jp' : 'font-sans';
+  const live = !!history; // DLD-sourced price history available
 
   // ── model ──
   const price = p.priceAed;
+  const appreciation = history?.appreciation ?? APPRECIATION;
   const grossRent = price * (p.yieldPct / 100);
   const opex = p.sizeSqft * OPEX_PER_SQFT;
   const netRent = Math.max(grossRent - opex, 0);
   const netYield = (netRent / price) * 100;
   const invested = price * (1 + PURCHASE_COST);
-  const exitPrice = price * Math.pow(1 + APPRECIATION, HOLD);
+  const exitPrice = price * Math.pow(1 + appreciation, HOLD);
   const saleNet = exitPrice * (1 - EXIT_COST);
   const cf = [-invested, ...Array(HOLD - 1).fill(netRent), netRent + saleNet];
   const irrPct = irr(cf) * 100;
   const roi5 = ((HOLD * netRent + (exitPrice - price)) / invested) * 100;
   const payback = invested / netRent;
 
-  // ── price index series: 5y history (solid) + 5y projection (dashed) ──
-  const nowYear = 26; // 2026
-  const pps = price / p.sizeSqft;
-  const series = Array.from({ length: 11 }, (_, i) => {
-    const offset = i - 5; // -5 … +5
-    return {
-      label: `'${String(nowYear + offset).padStart(2, '0')}`,
-      value: pps * Math.pow(1 + APPRECIATION, offset),
-      projected: offset > 0,
-    };
-  });
+  // ── price/sqft series: history (DLD) or modelled, split solid / dashed ──
+  const series =
+    history?.points ??
+    Array.from({ length: 11 }, (_, i) => {
+      const offset = i - 5; // -5 … +5
+      return {
+        label: `'${String(26 + offset).padStart(2, '0')}`,
+        value: (price / p.sizeSqft) * Math.pow(1 + APPRECIATION, offset),
+        projected: offset > 0,
+      };
+    });
+  const nowIdx = series.reduce((acc, s, i) => (s.projected ? acc : i), 0);
   const vals = series.map((s) => s.value);
   const min = Math.min(...vals);
   const max = Math.max(...vals);
@@ -66,11 +78,11 @@ export function PropertyAnalysis({ listing: p, locale }: { listing: Listing; loc
     const y = pad + (1 - (s.value - min) / (max - min || 1)) * (H - pad * 2);
     return [x, y] as const;
   });
-  const histPts = xy.slice(0, 6);
-  const projPts = xy.slice(5);
+  const histPts = xy.slice(0, nowIdx + 1);
+  const projPts = xy.slice(nowIdx);
   const line = (pts: ReadonlyArray<readonly [number, number]>) =>
     pts.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x} ${y}`).join(' ');
-  const nowX = xy[5][0];
+  const nowX = xy[nowIdx][0];
 
   const metrics = [
     { label: ja ? 'グロス利回り' : 'Gross yield', value: `${p.yieldPct.toFixed(1)}%` },
@@ -112,16 +124,24 @@ export function PropertyAnalysis({ listing: p, locale }: { listing: Listing; loc
             </h2>
           </div>
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 text-[10px] uppercase tracking-[0.18em] text-gold">
-            <Sparkles className="h-3.5 w-3.5" strokeWidth={1.6} /> {ja ? 'AI試算 · 参考値' : 'AI-modelled · illustrative'}
+            <Sparkles className="h-3.5 w-3.5" strokeWidth={1.6} />
+            {live ? (ja ? 'DLDデータ · AI予測' : 'DLD data · AI forecast') : ja ? 'AI試算 · 参考値' : 'AI-modelled · illustrative'}
           </span>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-[7fr_5fr] lg:gap-16">
           {/* chart */}
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] uppercase tracking-[0.2em] text-sumi-soft">
-              {ja ? '価格推移と将来予測（坪単価指数）' : 'Price history & projection (AED / sqft)'}
-            </span>
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="text-[11px] uppercase tracking-[0.2em] text-sumi-soft">
+                {ja ? '価格推移と将来予測（AED / sqft）' : 'Price history & projection (AED / sqft)'}
+              </span>
+              {live && (
+                <span className="text-[10px] tracking-wide text-sumi-soft/60">
+                  {ja ? '出典：ドバイ土地局' : 'Source: Dubai Land Dept.'}
+                </span>
+              )}
+            </div>
             <svg viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none" className="w-full" style={{ height: 220 }}>
               <defs>
                 <linearGradient id="pa-fill" x1="0" y1="0" x2="0" y2="1">
@@ -129,23 +149,23 @@ export function PropertyAnalysis({ listing: p, locale }: { listing: Listing; loc
                   <stop offset="100%" stopColor={ACCENT} stopOpacity={0} />
                 </linearGradient>
               </defs>
-              {/* now marker */}
               <line x1={nowX} y1={pad} x2={nowX} y2={H - pad} stroke={ACCENT} strokeWidth={0.4} strokeDasharray="1 1.5" opacity={0.5} />
-              {/* area under history */}
               <path d={`${line(histPts)} L${histPts[histPts.length - 1][0]} ${H} L${histPts[0][0]} ${H} Z`} fill="url(#pa-fill)" />
-              {/* historical solid */}
               <path d={line(histPts)} fill="none" stroke={ACCENT} strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
-              {/* projection dashed */}
               <path d={line(projPts)} fill="none" stroke={ACCENT} strokeWidth={1} strokeDasharray="2 1.6" strokeLinecap="round" vectorEffect="non-scaling-stroke" opacity={0.75} />
-              <circle cx={nowX} cy={xy[5][1]} r={1} fill={ACCENT} />
+              <circle cx={nowX} cy={xy[nowIdx][1]} r={1} fill={ACCENT} />
             </svg>
             <div className="flex justify-between text-[10px] tracking-wide text-sumi-soft/70">
-              {series.filter((_, i) => i % 2 === 0).map((s) => <span key={s.label}>{s.label}</span>)}
+              {series.filter((_, i) => i % 2 === 0).map((s, i) => <span key={`${s.label}-${i}`}>{s.label}</span>)}
             </div>
             <p className="text-[11px] font-light italic text-sumi-soft/70">
-              {ja
-                ? `実線=過去（推定）、点線=今後${HOLD}年の予測。年率${(APPRECIATION * 100).toFixed(0)}%の値上がりを仮定。`
-                : `Solid = past (estimated), dashed = ${HOLD}-yr projection, assuming ${(APPRECIATION * 100).toFixed(0)}% p.a. growth.`}
+              {live
+                ? ja
+                  ? `実線=ドバイ土地局の坪単価実績、点線=今後${HOLD}年の予測（年率${(appreciation * 100).toFixed(0)}%想定）。`
+                  : `Solid = DLD recorded price/sqft, dashed = ${HOLD}-yr forecast (${(appreciation * 100).toFixed(0)}% p.a. assumed).`
+                : ja
+                  ? `実線=過去（推定）、点線=今後${HOLD}年の予測。年率${(APPRECIATION * 100).toFixed(0)}%の値上がりを仮定。`
+                  : `Solid = past (estimated), dashed = ${HOLD}-yr projection, assuming ${(APPRECIATION * 100).toFixed(0)}% p.a. growth.`}
             </p>
           </div>
 
@@ -184,8 +204,8 @@ export function PropertyAnalysis({ listing: p, locale }: { listing: Listing; loc
         {/* assumptions / disclaimer */}
         <p className="mt-10 text-[11px] font-light leading-relaxed text-sumi-soft/70">
           {ja
-            ? `※ 本分析はAIによる試算（参考値）です。前提：年率${(APPRECIATION * 100).toFixed(0)}%の価格上昇、取得コスト${(PURCHASE_COST * 100).toFixed(0)}%、売却コスト${(EXIT_COST * 100).toFixed(0)}%、管理・共益費 約AED${OPEX_PER_SQFT}/sqft/年、保有${HOLD}年、AED≈¥${FX_JPY}。実際の数値は市場データ・契約条件により変動します。確定的な投資助言ではありません。`
-            : `※ This analysis is AI-modelled and illustrative. Assumptions: ${(APPRECIATION * 100).toFixed(0)}% p.a. price growth, ${(PURCHASE_COST * 100).toFixed(0)}% purchase costs, ${(EXIT_COST * 100).toFixed(0)}% exit costs, ~AED ${OPEX_PER_SQFT}/sqft/yr running costs, ${HOLD}-yr hold, AED≈¥${FX_JPY}. Actual figures vary with market data and terms; not financial advice.`}
+            ? `※ ${live ? '価格推移はドバイ土地局のエリア坪単価に基づきます。利回り・ROI・IRRはAIによる試算です。' : '本分析はAIによる試算（参考値）です。'}前提：年率${(appreciation * 100).toFixed(0)}%の価格上昇、取得コスト${(PURCHASE_COST * 100).toFixed(0)}%、売却コスト${(EXIT_COST * 100).toFixed(0)}%、管理・共益費 約AED${OPEX_PER_SQFT}/sqft/年、保有${HOLD}年、AED≈¥${FX_JPY}。実際の数値は市場データ・契約条件により変動します。確定的な投資助言ではありません。`
+            : `※ ${live ? 'Price history reflects Dubai Land Department area price/sqft; yield, ROI and IRR are AI-modelled.' : 'This analysis is AI-modelled and illustrative.'} Assumptions: ${(appreciation * 100).toFixed(0)}% p.a. price growth, ${(PURCHASE_COST * 100).toFixed(0)}% purchase costs, ${(EXIT_COST * 100).toFixed(0)}% exit costs, ~AED ${OPEX_PER_SQFT}/sqft/yr running costs, ${HOLD}-yr hold, AED≈¥${FX_JPY}. Actual figures vary with market data and terms; not financial advice.`}
         </p>
       </div>
     </section>

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ArrowUpRight, BedDouble, Ruler, Building2, MapPin } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Listing } from '@/content/properties';
+import type { PriceHistory } from '@/lib/market-data';
 import { PropertyAnalysis } from './PropertyAnalysis';
 
 const ACCENT = '#9a7b2d';
@@ -11,9 +12,11 @@ const ACCENT = '#9a7b2d';
 export function PropertyDetail({
   listing: p,
   locale,
+  history,
 }: {
   listing: Listing;
   locale: string;
+  history?: PriceHistory;
 }) {
   const ja = locale === 'ja';
   const name = ja ? p.nameJa : p.nameEn;
@@ -103,7 +106,7 @@ export function PropertyDetail({
       </div>
     </div>
 
-    <PropertyAnalysis listing={p} locale={locale} />
+    <PropertyAnalysis listing={p} locale={locale} history={history} />
     </>
   );
 }
