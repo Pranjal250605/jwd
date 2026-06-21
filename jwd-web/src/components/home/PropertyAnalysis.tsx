@@ -84,6 +84,21 @@ export function PropertyAnalysis({
     pts.map(([x, y], i) => `${i === 0 ? 'M' : 'L'}${x} ${y}`).join(' ');
   const nowX = xy[nowIdx][0];
 
+  // ── explicit year-by-year value history (total AED = price/sqft × size) ──
+  const historical = series.filter((s) => !s.projected);
+  const valueHistory = historical.map((s, i) => {
+    const value = s.value * p.sizeSqft;
+    const prev = i > 0 ? historical[i - 1].value * p.sizeSqft : null;
+    return {
+      year: s.label,
+      value,
+      yoy: prev ? ((value - prev) / prev) * 100 : null,
+      now: i === historical.length - 1,
+    };
+  });
+  const totalGrowth =
+    ((historical[historical.length - 1].value - historical[0].value) / historical[0].value) * 100;
+
   const metrics = [
     { label: ja ? 'グロス利回り' : 'Gross yield', value: `${p.yieldPct.toFixed(1)}%` },
     { label: ja ? 'ネット利回り' : 'Net yield', value: `${netYield.toFixed(1)}%` },
@@ -178,6 +193,46 @@ export function PropertyAnalysis({
               </div>
             ))}
           </div>
+        </div>
+
+        {/* value history — explicit year-by-year numbers */}
+        <div className="mt-12 border-t border-sumi/8 pt-10">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em]" style={{ color: ACCENT }}>
+              <TrendingUp className="h-4 w-4" strokeWidth={1.6} /> {ja ? '資産価値の推移' : 'Value history'}
+            </span>
+            <span className="text-[11px] text-sumi-soft/80">
+              {ja ? "'21年比 " : "Since '21 "}
+              <b className="font-en" style={{ color: ACCENT }}>+{totalGrowth.toFixed(0)}%</b>
+            </span>
+          </div>
+          <div className="mt-5 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-sumi/8 bg-sumi/[0.06] sm:grid-cols-6">
+            {valueHistory.map((v) => (
+              <div key={v.year} className={`flex flex-col gap-1.5 p-4 ${v.now ? 'bg-gold/[0.07]' : 'bg-washi'}`}>
+                <span className="text-[10px] tracking-wide text-sumi-soft">
+                  {v.year}
+                  {v.now ? (ja ? ' 現在' : ' now') : ''}
+                </span>
+                <span className="font-en text-[0.95rem] font-light leading-none text-sumi">AED {fmt(v.value)}</span>
+                {v.yoy != null ? (
+                  <span className="inline-flex items-center gap-0.5 text-[10px]" style={{ color: v.yoy >= 0 ? ACCENT : '#c0566b' }}>
+                    {v.yoy >= 0 ? '▲' : '▼'} {Math.abs(v.yoy).toFixed(1)}%
+                  </span>
+                ) : (
+                  <span className="text-[10px] text-sumi-soft/50">{ja ? '基準' : 'base'}</span>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-[11px] font-light italic text-sumi-soft/60">
+            {live
+              ? ja
+                ? '推定総額（ドバイ土地局のエリア坪単価 × 専有面積）。'
+                : 'Estimated total value (DLD area price/sqft × unit size).'
+              : ja
+                ? '推定総額（坪単価 × 専有面積）。'
+                : 'Estimated total value (price/sqft × unit size).'}
+          </p>
         </div>
 
         {/* risks & hedges */}
