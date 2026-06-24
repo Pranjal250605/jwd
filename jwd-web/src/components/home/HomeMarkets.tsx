@@ -1,5 +1,12 @@
 'use client';
 
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useMotionTemplate,
+  useReducedMotion,
+} from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { Reveal } from '@/components/kintsugi/Reveal';
@@ -9,6 +16,58 @@ import { MARKETS, MARKETS_ALL_URL } from '@/data/markets';
 
 const ACCENT = '#9a7b2d';
 type Lang = 'ja' | 'en';
+
+/** Cursor-following 3D tilt anchor — matches the stat cards elsewhere on site. */
+function TiltLink({
+  href,
+  className,
+  children,
+}: {
+  href: string;
+  className: string;
+  children: React.ReactNode;
+}) {
+  const reduce = useReducedMotion() ?? false;
+  const rx = useMotionValue(0);
+  const ry = useMotionValue(0);
+  const mx = useMotionValue(50);
+  const my = useMotionValue(50);
+  const srx = useSpring(rx, { stiffness: 180, damping: 16 });
+  const sry = useSpring(ry, { stiffness: 180, damping: 16 });
+  const glow = useMotionTemplate`radial-gradient(circle at ${mx}% ${my}%, rgba(154,123,45,0.18), transparent 55%)`;
+
+  const onMove = (e: React.MouseEvent) => {
+    if (reduce) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    ry.set((px - 0.5) * 14);
+    rx.set(-(py - 0.5) * 14);
+    mx.set(px * 100);
+    my.set(py * 100);
+  };
+  const onLeave = () => {
+    rx.set(0);
+    ry.set(0);
+    mx.set(50);
+    my.set(50);
+  };
+
+  return (
+    <motion.div className="h-full" style={{ perspective: 1000 }} onMouseMove={onMove} onMouseLeave={onLeave}>
+      <motion.a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ rotateX: srx, rotateY: sry, transformStyle: 'preserve-3d' }}
+        className={className}
+      >
+        <motion.div className="pointer-events-none absolute inset-0" style={{ background: glow }} />
+        {children}
+      </motion.a>
+    </motion.div>
+  );
+}
 
 export function HomeMarkets() {
   const locale = useLocale() as Lang;
@@ -36,58 +95,53 @@ export function HomeMarkets() {
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {MARKETS.map((m, i) => (
-            <Reveal key={m.key} delay={i * 0.06}>
-              <a
+            <Reveal key={m.key} delay={i * 0.06} className="h-full">
+              <TiltLink
                 href={m.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex h-full flex-col gap-5 overflow-hidden rounded-[1.5rem] border border-sumi/8 bg-washi p-7 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-all duration-500 hover:-translate-y-1.5 hover:border-gold/40 hover:shadow-[0_30px_60px_-30px_rgba(32,37,31,0.42)]"
+                className="group relative flex h-full flex-col gap-5 overflow-hidden rounded-[1.5rem] border border-sumi/8 bg-washi p-7 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow duration-500 hover:border-gold/40 hover:shadow-[0_30px_60px_-30px_rgba(32,37,31,0.42)]"
               >
-                {/* corner glow on hover */}
-                <div
-                  className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{ background: `radial-gradient(circle, ${ACCENT}20, transparent 70%)` }}
-                />
-                <span
-                  className="relative flex h-12 w-12 items-center justify-center rounded-2xl text-white"
-                  style={{ background: `linear-gradient(140deg, ${ACCENT}, #c9a85c)`, boxShadow: `0 12px 26px -10px ${ACCENT}` }}
-                >
-                  <m.icon className="h-5 w-5" strokeWidth={1.5} />
-                </span>
-                <div className="relative flex flex-col gap-2">
-                  <h3 className={`${display} text-lg font-semibold text-sumi`}>{ja ? m.ja : m.en}</h3>
-                  <p className="text-[13px] font-light leading-relaxed text-sumi-soft">{ja ? m.descJa : m.descEn}</p>
+                <div style={{ transform: 'translateZ(40px)' }} className="relative flex h-full flex-col gap-5">
+                  <span
+                    className="flex h-12 w-12 items-center justify-center rounded-2xl text-white"
+                    style={{ background: `linear-gradient(140deg, ${ACCENT}, #c9a85c)`, boxShadow: `0 12px 26px -10px ${ACCENT}` }}
+                  >
+                    <m.icon className="h-5 w-5" strokeWidth={1.5} />
+                  </span>
+                  <div className="flex flex-col gap-2">
+                    <h3 className={`${display} text-lg font-semibold text-sumi`}>{ja ? m.ja : m.en}</h3>
+                    <p className="text-[13px] font-light leading-relaxed text-sumi-soft">{ja ? m.descJa : m.descEn}</p>
+                  </div>
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.16em] text-gold">
+                    {ja ? 'Equitiで取引' : 'Trade on Equiti'}
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" strokeWidth={1.8} />
+                  </span>
                 </div>
-                <span className="relative mt-auto inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.16em] text-gold">
-                  {ja ? 'Equitiで取引' : 'Trade on Equiti'}
-                  <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" strokeWidth={1.8} />
-                </span>
-              </a>
+              </TiltLink>
             </Reveal>
           ))}
 
           {/* All-markets card */}
-          <Reveal delay={MARKETS.length * 0.06}>
-            <a
+          <Reveal delay={MARKETS.length * 0.06} className="h-full">
+            <TiltLink
               href={MARKETS_ALL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex h-full flex-col justify-between gap-8 overflow-hidden rounded-[1.5rem] bg-sumi p-7 text-washi shadow-[0_20px_50px_-24px_rgba(12,14,18,0.6)] transition-all duration-500 hover:-translate-y-1.5"
+              className="group relative flex h-full flex-col justify-between gap-8 overflow-hidden rounded-[1.5rem] bg-sumi p-7 text-washi shadow-[0_20px_50px_-24px_rgba(12,14,18,0.6)] transition-shadow duration-500"
             >
               <div
                 className="pointer-events-none absolute inset-0 opacity-60"
                 style={{ background: `radial-gradient(ellipse 70% 60% at 80% 10%, ${ACCENT}40, transparent 60%)` }}
               />
-              <span className="relative text-[10px] uppercase tracking-[0.28em] text-gold-pale/90">
-                {ja ? 'すべての商品' : 'Full range'}
-              </span>
-              <div className="relative flex items-center justify-between">
-                <span className={`${display} whitespace-pre-line text-xl font-semibold leading-snug`}>
-                  {ja ? 'すべての\nマーケットを見る' : 'Explore all\nmarkets'}
+              <div style={{ transform: 'translateZ(40px)' }} className="relative flex h-full flex-col justify-between gap-8">
+                <span className="text-[10px] uppercase tracking-[0.28em] text-gold-pale/90">
+                  {ja ? 'すべての商品' : 'Full range'}
                 </span>
-                <ArrowRight className="h-6 w-6 shrink-0 text-gold-pale transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.6} />
+                <div className="flex items-center justify-between">
+                  <span className={`${display} whitespace-pre-line text-xl font-semibold leading-snug`}>
+                    {ja ? 'すべての\nマーケットを見る' : 'Explore all\nmarkets'}
+                  </span>
+                  <ArrowRight className="h-6 w-6 shrink-0 text-gold-pale transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1.6} />
+                </div>
               </div>
-            </a>
+            </TiltLink>
           </Reveal>
         </div>
 
