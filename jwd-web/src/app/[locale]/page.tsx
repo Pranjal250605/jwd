@@ -2,6 +2,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { getNews } from '@/lib/news';
 import { Navbar } from '@/components/nav/Navbar';
 import { ZenHero } from '@/components/hero/ZenHero';
+import { HomeMarkets } from '@/components/home/HomeMarkets';
 import { HomeLatestProperties } from '@/components/home/HomeLatestProperties';
 import { HomeHighlights } from '@/components/home/HomeHighlights';
 import { HomeExplore } from '@/components/home/HomeExplore';
@@ -32,6 +33,7 @@ export default async function HomePage({
       <Navbar />
       <main>
         <ZenHero /> {/* zen photographic cover */}
+        <HomeMarkets /> {/* Equiti markets — clickable, partner products */}
         <HomeLatestProperties /> {/* washi */}
         <HomeHighlights /> {/* washi-deep, zen */}
         <HomeExplore /> {/* interactive — tabs: what we do */}
