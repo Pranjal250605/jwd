@@ -5,7 +5,10 @@ import { ArrowUpRight, BedDouble, Ruler, Building2, MapPin } from 'lucide-react'
 import { Link } from '@/i18n/navigation';
 import type { Listing } from '@/content/properties';
 import type { PriceHistory } from '@/lib/market-data';
+import type { FxRate } from '@/lib/fx';
 import { PropertyAnalysis } from './PropertyAnalysis';
+import { PropertySimulator } from './PropertySimulator';
+import { PropertyTaxComparison } from './PropertyTaxComparison';
 
 const ACCENT = '#9a7b2d';
 
@@ -13,10 +16,12 @@ export function PropertyDetail({
   listing: p,
   locale,
   history,
+  fx,
 }: {
   listing: Listing;
   locale: string;
   history?: PriceHistory;
+  fx?: FxRate;
 }) {
   const ja = locale === 'ja';
   const name = ja ? p.nameJa : p.nameEn;
@@ -107,6 +112,27 @@ export function PropertyDetail({
     </div>
 
     <PropertyAnalysis listing={p} locale={locale} history={history} />
+
+    {fx && (
+      <>
+        <PropertySimulator
+          priceAed={p.priceAed}
+          sizeSqft={p.sizeSqft}
+          yieldPct={p.yieldPct}
+          appreciation={history?.appreciation ?? 0.06}
+          aedJpy={fx.aedJpy}
+          fxLive={fx.live}
+          fxSource={fx.source}
+          fxAsOf={fx.asOf}
+        />
+        <PropertyTaxComparison
+          priceAed={p.priceAed}
+          yieldPct={p.yieldPct}
+          appreciation={history?.appreciation ?? 0.06}
+          aedJpy={fx.aedJpy}
+        />
+      </>
+    )}
     </>
   );
 }
