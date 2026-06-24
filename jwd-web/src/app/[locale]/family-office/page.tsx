@@ -2,6 +2,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Navbar } from '@/components/nav/Navbar';
 import { PageHero } from '@/components/PageHero';
 import { FamilyOfficeSection } from '@/components/home/FamilyOfficeSection';
+import { WealthDashboard } from '@/components/home/WealthDashboard';
 import { Footer } from '@/components/nav/Footer';
 
 const IMG =
@@ -37,6 +38,7 @@ export default async function FamilyOfficePage({
           subtitle={t('intro')}
         />
         <FamilyOfficeSection />
+        <WealthDashboard />
       </main>
       <Footer />
     </>
