@@ -3,10 +3,14 @@ import { buildKnowledgeBase } from '@/lib/knowledge-base';
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY ?? '';
 
-/** Pre-build the knowledge base once at module level (server-side). */
-const knowledgeBase = buildKnowledgeBase();
-
-const SYSTEM_PROMPT = `You are the JWD Group AI Investment Advisor — a knowledgeable, friendly, and professional real estate investment consultant for JWD Group (Japan WorldLink DWC), the bridge between Japan and Dubai real estate and wealth creation.
+/**
+ * Build the system prompt around a freshly-compiled knowledge base. The KB is
+ * rebuilt per request (not frozen at cold start) so live FX and DLD-based
+ * property figures stay current — and upgrade themselves when paid real-time
+ * feeds are connected, with no change here.
+ */
+function buildSystemPrompt(knowledgeBase: string): string {
+  return `You are the JWD Group AI Investment Advisor — a knowledgeable, friendly, and professional real estate investment consultant for JWD Group (Japan WorldLink DWC), the bridge between Japan and Dubai real estate and wealth creation.
 
 ## YOUR ROLE
 - You help investors (primarily Japanese) understand Dubai and Japan real estate investment opportunities.
@@ -23,13 +27,14 @@ ${knowledgeBase}
 1. Keep responses concise but informative (150-300 words typically).
 2. Use bullet points and bold text for key figures (yields, prices, tax rates).
 3. When discussing properties, always mention: area, price (AED), yield %, and type.
-4. Convert AED to JPY when speaking to Japanese users (use approximate rate of ¥41/AED).
+4. Convert AED to JPY using the LIVE rate in the "LIVE DATA SNAPSHOT" section — never a hardcoded number. If asked, you can state the current rate and its source/freshness.
 5. Always end with a clear next step: "Book a consultation with Tomo" / "Try our Investment Simulator" / "Explore our Dubai Properties page".
 6. NEVER give specific financial advice. Always say: "For personalized advice tailored to your situation, we recommend booking a consultation with Tomo Kawana."
 7. If asked about something outside your knowledge base, honestly say you don't have that specific information and suggest contacting JWD directly.
 8. Highlight JWD's unique value: Tomo's personal experience living and investing in Dubai, bilingual service, one-stop solution.
 9. When comparing Dubai vs Japan, be balanced — JWD operates in both markets.
 10. Format numbers clearly: AED 1,850,000 / ¥75,850,000 / 6.8% yield.`;
+}
 
 export async function POST(request: Request) {
   if (!GROQ_API_KEY) {
@@ -63,6 +68,9 @@ export async function POST(request: Request) {
 
     const groq = new Groq({ apiKey: GROQ_API_KEY });
 
+    // Compile a FRESH knowledge base per request so live data stays current.
+    const knowledgeBase = await buildKnowledgeBase();
+
     // Add locale hint to the system instruction
     const localeHint =
       locale === 'ja'
@@ -72,7 +80,7 @@ export async function POST(request: Request) {
     const stream = await groq.chat.completions.create({
       model: 'llama-3.1-8b-instant',
       messages: [
-        { role: 'system', content: SYSTEM_PROMPT + localeHint },
+        { role: 'system', content: buildSystemPrompt(knowledgeBase) + localeHint },
         ...messages.map((m) => ({
           role: m.role as 'user' | 'assistant',
           content: m.content,

@@ -9,12 +9,37 @@
 import { listings } from '@/content/properties';
 import { services } from '@/content/services';
 import { NET_WORTH, ALLOC, CCY, TARGET, RE_KPI, PROPS, EQ_KPI, HOLDINGS } from '@/data/wealth';
+import { getFxRate } from '@/lib/fx';
+import { getPriceHistory } from '@/lib/market-data';
 
 const oku = (m: number) => `¥${(m / 100).toFixed(2)}億`; // 百万円 → 億
+const yen = (n: number) => `¥${Math.round(n).toLocaleString('en-US')}`;
 
-/** Build the compact knowledge base document. */
-export function buildKnowledgeBase(): string {
+/**
+ * Build the compact knowledge base. Async so it can pull LIVE data (FX, and
+ * DLD-based property trends) at request time — when paid real-time feeds are
+ * connected, the agent speaks from them automatically, no code change needed.
+ */
+export async function buildKnowledgeBase(): Promise<string> {
   const parts: string[] = [];
+
+  // ── Live data snapshot (refreshed via ISR; upgrades itself when paid feeds turn on) ──
+  const [fx, histories] = await Promise.all([
+    getFxRate(),
+    Promise.all(listings.map((p) => getPriceHistory(p))),
+  ]);
+  const jpy = fx.aedJpy;
+
+  parts.push(`
+# LIVE DATA SNAPSHOT (auto-refreshed — quote these, not stale figures)
+AED/JPY: ¥${jpy.toFixed(2)} per AED · USD/JPY: ¥${fx.usdJpy.toFixed(2)} (source: ${fx.source}${fx.live ? ', LIVE' : ', fallback'}${fx.asOf ? `, as of ${fx.asOf}` : ''}).
+Property price trends (${histories[0]?.source === 'dld-live' ? 'LIVE Dubai Land Department feed' : 'DLD-based area trends; upgrades to live feed when the Dubai Pulse key is set'}):`);
+  listings.forEach((p, i) => {
+    const h = histories[i];
+    const proj5 = p.priceAed * Math.pow(1 + h.appreciation, 5);
+    parts.push(`  - ${p.nameEn} (${p.area}): now AED ${p.priceAed.toLocaleString('en-US')} (~${yen(p.priceAed * jpy)}), ${(h.appreciation * 100).toFixed(1)}% p.a. trend, 5-yr projected AED ${Math.round(proj5).toLocaleString('en-US')} (~${yen(proj5 * jpy)}).`);
+  });
+  parts.push(`Data freshness: FX is real-time/daily; property figures are DLD-based trend estimates (not live transaction records unless the live feed is enabled). Say so honestly if asked.`);
 
   // ── Company overview ──
   parts.push(`# JWD GROUP
@@ -35,14 +60,14 @@ Consultations by introduction only. Channels: WhatsApp, LINE, Zoom.`);
 - Golden Visa: AED 2M+ property purchase qualifies
 - Currency: AED pegged to USD (1 USD = 3.6725 AED)
 - Corporate tax: 9% (free-zone exemptions available)
-- AED to JPY rate: ~¥41 per AED`);
+- AED to JPY rate: see LIVE DATA SNAPSHOT above (use that live rate, not a fixed number)`);
 
   // ── Property listings ──
   parts.push(`
 # CURATED DUBAI PROPERTIES`);
   for (const p of listings) {
     parts.push(`
-${p.nameEn}: ${p.area}, ${p.typeEn}, AED ${p.priceAed.toLocaleString('en-US')} (~¥${Math.round(p.priceAed * 41).toLocaleString('en-US')}), ${p.yieldPct}% yield, ${p.beds}, ${p.sizeSqft}sqft. ${p.descEn}`);
+${p.nameEn}: ${p.area}, ${p.typeEn}, AED ${p.priceAed.toLocaleString('en-US')} (~${yen(p.priceAed * jpy)}), ${p.yieldPct}% yield, ${p.beds}, ${p.sizeSqft}sqft. ${p.descEn}`);
   }
 
   // ── Heart of Europe ──
