@@ -12,6 +12,7 @@ import {
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { CountUp } from '@/components/kintsugi/CountUp';
+import { AssetMarquee } from '@/components/home/AssetMarquee';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -129,6 +130,16 @@ export function ZenHero() {
             </motion.p>
           </div>
         </div>
+
+        {/* ── tradable-markets marquee ── */}
+        <motion.div
+          className="pb-12"
+          initial={reduce ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.7, ease: EASE }}
+        >
+          <AssetMarquee />
+        </motion.div>
 
         {/* ── stats bar ── */}
         <div ref={statsRef} className="relative pb-14">
