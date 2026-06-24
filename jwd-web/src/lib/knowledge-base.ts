@@ -8,6 +8,9 @@
 
 import { listings } from '@/content/properties';
 import { services } from '@/content/services';
+import { NET_WORTH, ALLOC, CCY, TARGET, RE_KPI, PROPS, EQ_KPI, HOLDINGS } from '@/data/wealth';
+
+const oku = (m: number) => `¥${(m / 100).toFixed(2)}億`; // 百万円 → 億
 
 /** Build the compact knowledge base document. */
 export function buildKnowledgeBase(): string {
@@ -80,6 +83,19 @@ Tokyo prime tight yields, but regional cities and resorts offer upside`);
 # FAMILY OFFICE & WEALTH PLANNING
 Services: Asset protection, succession planning, tax planning, family office setup, multi-country wealth structures
 Cross-border Japan-Dubai structuring — JWD's core premium offering`);
+
+  // ── Family Office sample portfolio (the live dashboard on /family-office) ──
+  parts.push(`
+# FAMILY OFFICE — SAMPLE PORTFOLIO DASHBOARD (illustrative demo)
+Shown on the /family-office page as the "Wealth Suite". This is a DEMONSTRATION portfolio (the fictional "Todō family" / 藤堂家), NOT a real client — present it as an example of how JWD consolidates a whole family's balance sheet. JPY-based.
+Net worth: ¥${NET_WORTH.oku}億 (¥${NET_WORTH.jpy.toLocaleString('en-US')}) across 5 accounts / 3 currencies. MoM +${NET_WORTH.momPct}% (+¥${(NET_WORTH.momYen / 1e6).toFixed(0)}M). YTD +${NET_WORTH.ytdPct}% vs benchmark +${NET_WORTH.benchPct}%. Liquid ¥${NET_WORTH.liquidOku}億 (${NET_WORTH.liquidPct}%).
+Asset allocation: ${ALLOC.map((a) => `${a.en} ${a.pct}% (${oku(a.v)})`).join(', ')}.
+Currency mix: ${CCY.map((c) => `${c.en} ${c.v}%`).join(', ')}.
+Target vs current weights (rebalanced quarterly): ${TARGET.map((t) => `${t.en} ${t.cur}%→${t.tgt}%`).join(', ')}.
+Real estate: ¥${RE_KPI.valueOku}億 value, unrealised +¥${RE_KPI.unrealOku}億, ${RE_KPI.count} properties (${RE_KPI.dom} domestic / ${RE_KPI.intl} overseas), ${RE_KPI.yld}% avg gross yield, ¥${RE_KPI.rentM}M annual rent.
+  ${PROPS.map((p) => `${p.locEn} ${p.nmEn} (${p.tagEn}, acq ${oku(p.acq)} → now ${oku(p.cur)}, yield ${p.yld})`).join('; ')}.
+Equities: ¥${EQ_KPI.valueOku}億, +${EQ_KPI.dayPct}% today. Holdings: ${HOLDINGS.map((h) => `${h.nmEn} ¥${h.v}M (${h.w}%)`).join(', ')}.
+Each Dubai property page also has an interactive growth simulator (this property vs keeping capital in Japan, using a live AED/JPY FX rate) and a Japan-vs-Dubai tax comparison (Japan 20.315% capital-gains tax vs Dubai 0%).`);
 
   // ── Services ──
   parts.push(`
