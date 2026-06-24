@@ -12,6 +12,7 @@ const PRIMARY_LINKS = [
   { key: 'whyDubai', href: '/why-dubai' },
   { key: 'properties', href: '/dubai-properties' },
   { key: 'heartOfEurope', href: '/heart-of-europe' },
+  { key: 'familyOffice', href: '/family-office' },
   { key: 'contact', href: '/contact' },
 ] as const;
 
