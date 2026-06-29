@@ -38,6 +38,12 @@ export function AdvisorPageContent() {
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   <span>Powered by Google Gemini</span>
                 </div>
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('advisor-new-chat'))}
+                  className="mt-4 w-full rounded-lg border border-sumi/10 px-4 py-2 text-xs text-sumi-soft transition-colors duration-300 hover:border-gold/40 hover:text-sumi"
+                >
+                  {locale === 'ja' ? '新しいチャットを開始' : 'Start a new chat'}
+                </button>
               </div>
 
               {/* Quick links */}

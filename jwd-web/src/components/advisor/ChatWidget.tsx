@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { ChatPanel } from './ChatPanel';
 
 export function ChatWidget() {
   const t = useTranslations('advisor');
+  const ja = useLocale() === 'ja';
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -97,25 +98,47 @@ export function ChatWidget() {
                     </div>
                   </div>
                 </div>
-                <button
-                  onClick={() => setOpen(false)}
-                  className="flex h-8 w-8 items-center justify-center rounded-full text-sumi-soft transition-colors hover:bg-sumi/5 hover:text-sumi"
-                  aria-label="Close"
-                >
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                <div className="flex items-center gap-1">
+                  <button
+                    onClick={() => window.dispatchEvent(new CustomEvent('advisor-new-chat'))}
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-sumi-soft transition-colors hover:bg-sumi/5 hover:text-sumi"
+                    aria-label={ja ? '新しいチャット' : 'New chat'}
+                    title={ja ? '新しいチャット' : 'New chat'}
                   >
-                    <path d="M18 6 6 18" />
-                    <path d="M6 6l12 12" />
-                  </svg>
-                </button>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 20h9" />
+                      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setOpen(false)}
+                    className="flex h-8 w-8 items-center justify-center rounded-full text-sumi-soft transition-colors hover:bg-sumi/5 hover:text-sumi"
+                    aria-label="Close"
+                  >
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M18 6 6 18" />
+                      <path d="M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               {/* Chat */}

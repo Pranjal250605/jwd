@@ -354,6 +354,32 @@ export function ChatPanel({
     });
   }, []);
 
+  /** Clear the conversation and stored history; stop any stream/voice. */
+  const resetChat = useCallback(() => {
+    abortRef.current?.abort();
+    recognizerRef.current?.abort();
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    setListening(false);
+    setStreaming(false);
+    setMessages([]);
+    setInput('');
+    setError('');
+    try {
+      sessionStorage.removeItem(STORAGE_KEY);
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  // Any "New chat" button (widget header / advisor sidebar) resets this panel.
+  useEffect(() => {
+    const handler = () => resetChat();
+    window.addEventListener('advisor-new-chat', handler);
+    return () => window.removeEventListener('advisor-new-chat', handler);
+  }, [resetChat]);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     sendMessage(input);
