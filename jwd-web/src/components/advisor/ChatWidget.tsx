@@ -12,8 +12,13 @@ export function ChatWidget() {
 
   useEffect(() => {
     const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false); // e.g. after an in-chat navigation
     window.addEventListener('open-advisor-chat', handleOpen);
-    return () => window.removeEventListener('open-advisor-chat', handleOpen);
+    window.addEventListener('advisor-close', handleClose);
+    return () => {
+      window.removeEventListener('open-advisor-chat', handleOpen);
+      window.removeEventListener('advisor-close', handleClose);
+    };
   }, []);
 
   return (

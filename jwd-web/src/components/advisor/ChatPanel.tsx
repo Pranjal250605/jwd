@@ -3,7 +3,28 @@
 import { useState, useRef, useEffect, useCallback, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 import { Mic, Volume2, VolumeX } from 'lucide-react';
+
+// ── In-chat navigation: the model can emit [[GOTO:/path]] to route the user. ──
+// We validate against this allowlist so a prompt-injected directive can never
+// send anyone to an arbitrary or external URL.
+const NAV_ALLOW = [
+  '/', '/dubai-properties', '/simulator', '/heart-of-europe', '/why-dubai',
+  '/funds', '/family-office', '/japan-properties', '/knowledge', '/stories',
+  '/consulting', '/contact', '/about', '/news', '/advisor',
+];
+function allowedNavPath(p: string): boolean {
+  if (!p.startsWith('/') || p.startsWith('//')) return false; // internal only
+  return NAV_ALLOW.some((a) => p === a || (a !== '/' && p.startsWith(a + '/')));
+}
+/** Hide the directive (and any partial one mid-stream) from the shown text. */
+function stripDirectives(text: string): string {
+  return text
+    .replace(/\[\[GOTO:[^\]]*\]\]/g, '')
+    .replace(/\[\[[^\]]*$/g, '')
+    .trimEnd();
+}
 
 interface Message {
   id: string;
@@ -120,6 +141,7 @@ export function ChatPanel({
 }) {
   const locale = useLocale();
   const t = useTranslations('advisor');
+  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
@@ -279,7 +301,7 @@ export function ChatPanel({
                   setMessages((prev) =>
                     prev.map((m) =>
                       m.id === assistantMsg.id
-                        ? { ...m, content: accumulated }
+                        ? { ...m, content: stripDirectives(accumulated) }
                         : m
                     )
                   );
@@ -292,8 +314,19 @@ export function ChatPanel({
           }
         }
 
+        const finalText = stripDirectives(accumulated);
         // Reply finished streaming — read it aloud if voice output is on.
-        if (ttsOn && accumulated.trim()) speak(accumulated);
+        if (ttsOn && finalText) speak(finalText);
+
+        // Honour an in-chat navigation directive, if present and allowlisted.
+        const goto = accumulated.match(/\[\[GOTO:\s*([^\]\s]+)\s*\]\]/);
+        if (goto && allowedNavPath(goto[1])) {
+          const path = goto[1];
+          setTimeout(() => {
+            window.dispatchEvent(new CustomEvent('advisor-close'));
+            router.push(path);
+          }, 700);
+        }
       } catch (err) {
         if (err instanceof Error && err.name === 'AbortError') return;
         const msg =
@@ -308,7 +341,7 @@ export function ChatPanel({
         abortRef.current = null;
       }
     },
-    [messages, streaming, limitReached, locale, ttsOn, speak]
+    [messages, streaming, limitReached, locale, ttsOn, speak, router]
   );
 
   /** Toggle voice input. Fills the box live and auto-sends the final transcript. */
