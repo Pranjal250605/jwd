@@ -498,15 +498,15 @@ export function ChatPanel({
 
   return (
     <div
-      className={`flex flex-col ${
-        fullPage ? 'h-[calc(100vh-5rem)]' : 'h-full'
+      className={`flex min-h-0 flex-col ${
+        fullPage ? 'h-full' : 'flex-1'
       } ${className}`}
     >
       {/* Messages */}
       <div
         ref={scrollRef}
         data-lenis-prevent
-        className="flex-1 overflow-y-auto overscroll-contain px-4 py-6 space-y-4"
+        className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-6 space-y-4"
         style={{ scrollbarWidth: 'thin', scrollbarColor: '#9a7b2d33 transparent' }}
       >
         {/* Welcome / empty state */}
