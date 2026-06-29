@@ -50,6 +50,9 @@ function stripMarkdown(text: string): string {
 }
 
 const MAX_MESSAGES = 20;
+// Persist the conversation for the browser session so closing/reopening the
+// widget (which unmounts this panel) doesn't wipe the chat.
+const STORAGE_KEY = 'jwd-advisor-history';
 
 const SUGGESTIONS_EN = [
   'Dubai rental yields?',
@@ -167,7 +170,34 @@ export function ChatPanel({
     [ja]
   );
 
-  // Auto-scroll to bottom
+  // Restore any prior conversation once, on mount (drops empty placeholder
+  // bubbles left behind if the panel was closed mid-stream).
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const saved = JSON.parse(raw) as Message[];
+      const clean = Array.isArray(saved)
+        ? saved.filter((m) => m.role === 'user' || m.content)
+        : [];
+      if (clean.length) setMessages(clean);
+    } catch {
+      /* ignore corrupt storage */
+    }
+  }, []);
+
+  // Persist the conversation whenever it changes.
+  useEffect(() => {
+    try {
+      if (messages.length) {
+        sessionStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+      }
+    } catch {
+      /* storage full / unavailable — non-fatal */
+    }
+  }, [messages]);
+
+  // Auto-scroll to bottom (instant — no smooth animation to fight the stream)
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -349,7 +379,7 @@ export function ChatPanel({
       <div
         ref={scrollRef}
         data-lenis-prevent
-        className="flex-1 overflow-y-auto overscroll-contain px-4 py-6 space-y-4 scroll-smooth"
+        className="flex-1 overflow-y-auto overscroll-contain px-4 py-6 space-y-4"
         style={{ scrollbarWidth: 'thin', scrollbarColor: '#9a7b2d33 transparent' }}
       >
         {/* Welcome / empty state */}
