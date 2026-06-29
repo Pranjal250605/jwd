@@ -315,13 +315,26 @@ export function ChatPanel({
         }
 
         const finalText = stripDirectives(accumulated);
-        // Reply finished streaming — read it aloud if voice output is on.
-        if (ttsOn && finalText) speak(finalText);
+        const goto = accumulated.match(/\[\[GOTO:\s*([^\]\s]+)\s*\]\]/);
+        const willNavigate = !!(goto && allowedNavPath(goto[1]));
+
+        // Guard against a rare empty reply: show a gentle fallback, not a blank
+        // bubble. (Skip if we're navigating away — empty text is fine then.)
+        if (!finalText && !willNavigate) {
+          const fallback = ja
+            ? '申し訳ありません、うまく理解できませんでした。別の言い方で試していただけますか？'
+            : "Sorry, I didn't quite catch that — could you rephrase?";
+          setMessages((prev) =>
+            prev.map((m) => (m.id === assistantMsg.id ? { ...m, content: fallback } : m))
+          );
+          if (ttsOn) speak(fallback);
+        } else if (ttsOn && finalText) {
+          speak(finalText);
+        }
 
         // Honour an in-chat navigation directive, if present and allowlisted.
-        const goto = accumulated.match(/\[\[GOTO:\s*([^\]\s]+)\s*\]\]/);
-        if (goto && allowedNavPath(goto[1])) {
-          const path = goto[1];
+        if (willNavigate) {
+          const path = goto![1];
           setTimeout(() => {
             window.dispatchEvent(new CustomEvent('advisor-close'));
             router.push(path);
