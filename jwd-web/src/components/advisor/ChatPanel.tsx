@@ -219,12 +219,20 @@ export function ChatPanel({
     }
   }, [messages]);
 
-  // Auto-scroll to bottom (instant — no smooth animation to fight the stream)
+  // Auto-scroll to bottom (instant — no smooth animation to fight the stream).
+  // Also re-runs when streaming/limit state flips, since the post-answer
+  // suggestion chips and limit notice render *after* the last message and would
+  // otherwise be cut off below the fold; an rAF lets layout settle first.
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [messages]);
+    const pin = () => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
+    };
+    pin();
+    const id = requestAnimationFrame(pin);
+    return () => cancelAnimationFrame(id);
+  }, [messages, streaming, limitReached]);
 
   const sendMessage = useCallback(
     async (text: string) => {
