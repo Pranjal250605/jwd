@@ -324,7 +324,11 @@ export function ChatPanel({
 
         const finalText = stripDirectives(accumulated);
         const goto = accumulated.match(/\[\[GOTO:\s*([^\]\s]+)\s*\]\]/);
-        const willNavigate = !!(goto && allowedNavPath(goto[1]));
+        // Only honour a directive when the reply is essentially a short
+        // navigation confirmation — never when it's appended to a real answer
+        // (guards against the model mis-firing GOTO on an analysis question).
+        const willNavigate =
+          !!goto && allowedNavPath(goto![1]) && finalText.length <= 240;
 
         // Guard against a rare empty reply: show a gentle fallback, not a blank
         // bubble. (Skip if we're navigating away — empty text is fine then.)
