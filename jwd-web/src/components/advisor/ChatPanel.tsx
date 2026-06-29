@@ -3,11 +3,50 @@
 import { useState, useRef, useEffect, useCallback, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
+import { Mic, Volume2, VolumeX } from 'lucide-react';
 
 interface Message {
   id: string;
   role: 'user' | 'assistant';
   content: string;
+}
+
+// ── Web Speech API typings (not in the standard DOM lib) ──
+interface SpeechAlt { transcript: string }
+interface SpeechResult { 0: SpeechAlt; isFinal: boolean }
+interface SpeechResultList { length: number; [i: number]: SpeechResult }
+interface SpeechEvent { resultIndex: number; results: SpeechResultList }
+interface SpeechRecognizer {
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  onresult: ((e: SpeechEvent) => void) | null;
+  onend: (() => void) | null;
+  onerror: ((e: { error: string }) => void) | null;
+  start(): void;
+  stop(): void;
+  abort(): void;
+}
+type SpeechRecognizerCtor = new () => SpeechRecognizer;
+
+function getRecognizerCtor(): SpeechRecognizerCtor | null {
+  if (typeof window === 'undefined') return null;
+  const w = window as unknown as {
+    SpeechRecognition?: SpeechRecognizerCtor;
+    webkitSpeechRecognition?: SpeechRecognizerCtor;
+  };
+  return w.SpeechRecognition ?? w.webkitSpeechRecognition ?? null;
+}
+
+/** Flatten markdown to plain prose so the text-to-speech voice reads cleanly. */
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[*_`#>]/g, '')
+    .replace(/^[-•]\s*/gm, '')
+    .replace(/\n{2,}/g, '. ')
+    .trim();
 }
 
 const MAX_MESSAGES = 20;
@@ -82,13 +121,51 @@ export function ChatPanel({
   const [input, setInput] = useState('');
   const [streaming, setStreaming] = useState(false);
   const [error, setError] = useState('');
+  // Voice: input (speech-to-text) + output (text-to-speech). Both browser-native.
+  const [listening, setListening] = useState(false);
+  const [ttsOn, setTtsOn] = useState(false);
+  const [voiceInOk, setVoiceInOk] = useState(false);
+  const [voiceOutOk, setVoiceOutOk] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const abortRef = useRef<AbortController | null>(null);
+  const recognizerRef = useRef<SpeechRecognizer | null>(null);
+  const ja = locale === 'ja';
 
-  const suggestions = locale === 'ja' ? SUGGESTIONS_JA : SUGGESTIONS_EN;
+  const suggestions = ja ? SUGGESTIONS_JA : SUGGESTIONS_EN;
   const userCount = messages.filter((m) => m.role === 'user').length;
   const limitReached = userCount >= MAX_MESSAGES;
+
+  // Feature-detect voice support on the client (avoids hydration mismatch).
+  useEffect(() => {
+    setVoiceInOk(!!getRecognizerCtor());
+    setVoiceOutOk('speechSynthesis' in window);
+  }, []);
+
+  // Stop any speech / mic when the panel unmounts.
+  useEffect(
+    () => () => {
+      recognizerRef.current?.abort();
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    },
+    []
+  );
+
+  /** Speak text aloud in the active locale (stops any prior utterance). */
+  const speak = useCallback(
+    (text: string) => {
+      if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+      const clean = stripMarkdown(text);
+      if (!clean) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(clean);
+      u.lang = ja ? 'ja-JP' : 'en-US';
+      window.speechSynthesis.speak(u);
+    },
+    [ja]
+  );
 
   // Auto-scroll to bottom
   useEffect(() => {
@@ -101,6 +178,10 @@ export function ChatPanel({
     async (text: string) => {
       if (!text.trim() || streaming || limitReached) return;
       setError('');
+      // Stop any speech still playing from the previous reply.
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
 
       const userMsg: Message = {
         id: `u-${Date.now()}`,
@@ -180,6 +261,9 @@ export function ChatPanel({
             }
           }
         }
+
+        // Reply finished streaming — read it aloud if voice output is on.
+        if (ttsOn && accumulated.trim()) speak(accumulated);
       } catch (err) {
         if (err instanceof Error && err.name === 'AbortError') return;
         const msg =
@@ -194,8 +278,51 @@ export function ChatPanel({
         abortRef.current = null;
       }
     },
-    [messages, streaming, limitReached, locale]
+    [messages, streaming, limitReached, locale, ttsOn, speak]
   );
+
+  /** Toggle voice input. Fills the box live and auto-sends the final transcript. */
+  const toggleMic = useCallback(() => {
+    if (listening) {
+      recognizerRef.current?.stop();
+      return;
+    }
+    const Ctor = getRecognizerCtor();
+    if (!Ctor) return;
+    const rec = new Ctor();
+    recognizerRef.current = rec;
+    rec.lang = ja ? 'ja-JP' : 'en-US';
+    rec.interimResults = true;
+    rec.continuous = false;
+    let finalText = '';
+    rec.onresult = (e) => {
+      let interim = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const r = e.results[i];
+        if (r.isFinal) finalText += r[0].transcript;
+        else interim += r[0].transcript;
+      }
+      setInput(finalText + interim);
+    };
+    rec.onerror = () => setListening(false);
+    rec.onend = () => {
+      setListening(false);
+      const text = finalText.trim();
+      if (text) sendMessage(text);
+    };
+    setListening(true);
+    rec.start();
+  }, [listening, ja, sendMessage]);
+
+  /** Toggle voice output; turning it off silences any in-progress speech. */
+  const toggleTts = useCallback(() => {
+    setTtsOn((on) => {
+      if (on && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      return !on;
+    });
+  }, []);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -357,12 +484,28 @@ export function ChatPanel({
       {/* Input area */}
       <div className="border-t border-sumi/8 bg-washi px-4 py-3">
         <form onSubmit={handleSubmit} className="flex items-center gap-2">
+          {voiceInOk && (
+            <button
+              type="button"
+              onClick={toggleMic}
+              disabled={streaming || limitReached}
+              aria-label={ja ? '音声入力' : 'Voice input'}
+              title={ja ? '話して入力' : 'Speak your question'}
+              className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300 disabled:opacity-30 ${
+                listening
+                  ? 'border-red-400 bg-red-50 text-red-500 animate-pulse'
+                  : 'border-sumi/10 bg-washi-deep/50 text-sumi-soft hover:border-gold/40 hover:text-gold'
+              }`}
+            >
+              <Mic className="h-4 w-4" strokeWidth={1.8} />
+            </button>
+          )}
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={t('placeholder')}
+            placeholder={listening ? (ja ? '聞いています…' : 'Listening…') : t('placeholder')}
             disabled={streaming || limitReached}
             className="flex-1 rounded-full border border-sumi/10 bg-washi-deep/50 px-4 py-2.5 text-sm text-sumi placeholder:text-sumi/30 outline-none transition-colors duration-300 focus:border-gold/40 disabled:opacity-50"
           />
@@ -387,9 +530,27 @@ export function ChatPanel({
             </svg>
           </button>
         </form>
-        <p className="mt-2 text-center text-[9px] tracking-wide text-sumi/25">
-          {t('disclaimer')}
-        </p>
+        <div className="mt-2 flex items-center justify-between gap-2">
+          {voiceOutOk ? (
+            <button
+              type="button"
+              onClick={toggleTts}
+              aria-pressed={ttsOn}
+              title={ja ? '回答を読み上げ' : 'Read answers aloud'}
+              className={`flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 text-[9px] tracking-wide transition-colors duration-300 ${
+                ttsOn
+                  ? 'border-gold/40 bg-gold/10 text-gold'
+                  : 'border-sumi/10 text-sumi/40 hover:text-sumi-soft'
+              }`}
+            >
+              {ttsOn ? <Volume2 className="h-3 w-3" strokeWidth={1.8} /> : <VolumeX className="h-3 w-3" strokeWidth={1.8} />}
+              {ja ? (ttsOn ? '音声 ON' : '音声 OFF') : ttsOn ? 'Voice on' : 'Voice off'}
+            </button>
+          ) : (
+            <span />
+          )}
+          <p className="text-[9px] tracking-wide text-sumi/25">{t('disclaimer')}</p>
+        </div>
       </div>
     </div>
   );
