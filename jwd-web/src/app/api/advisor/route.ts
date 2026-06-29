@@ -3,6 +3,42 @@ import { buildKnowledgeBase } from '@/lib/knowledge-base';
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY ?? '';
 
+// ── Input limits (cost-abuse / prompt-injection defence) ──
+const MAX_MESSAGES = 40; // conversation turns accepted per request
+const MAX_MSG_CHARS = 4000; // per-message content cap (token-cost guard)
+const VALID_ROLES = new Set(['user', 'assistant']); // never trust 'system' from a client
+
+// ── Best-effort per-IP rate limit ──
+// NOTE: in-memory, so on serverless this throttles per warm instance rather than
+// globally, and resets on cold start. It blunts casual scripted abuse with zero
+// infra; for a hard guarantee, back it with Upstash/Vercel KV.
+const RATE_LIMIT = 15; // requests…
+const RATE_WINDOW_MS = 60_000; // …per minute, per IP
+const hits = new Map<string, { count: number; resetAt: number }>();
+
+function clientIp(request: Request): string {
+  const xff = request.headers.get('x-forwarded-for');
+  if (xff) return xff.split(',')[0].trim();
+  return request.headers.get('x-real-ip') ?? 'unknown';
+}
+
+/** Returns null if allowed, or seconds-to-retry if the IP is over the limit. */
+function rateLimited(ip: string): number | null {
+  const now = Date.now();
+  if (hits.size > 5000) {
+    // opportunistic sweep so the map can't grow unbounded
+    for (const [k, v] of hits) if (now > v.resetAt) hits.delete(k);
+  }
+  const e = hits.get(ip);
+  if (!e || now > e.resetAt) {
+    hits.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return null;
+  }
+  if (e.count >= RATE_LIMIT) return Math.ceil((e.resetAt - now) / 1000);
+  e.count++;
+  return null;
+}
+
 /**
  * Build the system prompt around a freshly-compiled knowledge base. The KB is
  * rebuilt per request (not frozen at cold start) so live FX and DLD-based
@@ -47,23 +83,53 @@ export async function POST(request: Request) {
     );
   }
 
+  // Per-IP rate limit before doing any work (protects the Groq budget).
+  const retry = rateLimited(clientIp(request));
+  if (retry !== null) {
+    return Response.json(
+      { error: 'Too many requests. Please wait a moment and try again.' },
+      { status: 429, headers: { 'Retry-After': String(retry) } }
+    );
+  }
+
+  let body: unknown;
   try {
-    const body = await request.json();
-    const { messages, locale } = body as {
-      messages: { role: 'user' | 'assistant'; content: string }[];
+    body = await request.json();
+  } catch {
+    return Response.json({ error: 'Invalid request body.' }, { status: 400 });
+  }
+
+  try {
+    const { messages, locale } = (body ?? {}) as {
+      messages?: unknown;
       locale?: string;
     };
 
-    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+    if (!Array.isArray(messages) || messages.length === 0) {
       return Response.json({ error: 'Messages are required.' }, { status: 400 });
     }
-
-    // Rate limit: max 20 messages per request (client should enforce too)
-    if (messages.length > 40) {
+    if (messages.length > MAX_MESSAGES) {
       return Response.json(
         { error: 'Too many messages. Please start a new session.' },
-        { status: 429 }
+        { status: 400 }
       );
+    }
+
+    // Trust only well-formed user/assistant turns. Drop any injected roles
+    // (e.g. 'system') and clamp each message's length to bound token cost.
+    const safeMessages = (messages as { role?: unknown; content?: unknown }[])
+      .filter(
+        (m): m is { role: 'user' | 'assistant'; content: string } =>
+          !!m &&
+          typeof m.role === 'string' &&
+          VALID_ROLES.has(m.role) &&
+          typeof m.content === 'string' &&
+          m.content.trim().length > 0
+      )
+      .map((m) => ({ role: m.role, content: m.content.slice(0, MAX_MSG_CHARS) }));
+
+    if (safeMessages.length === 0) {
+      return Response.json({ error: 'No valid messages.' }, { status: 400 });
     }
 
     const groq = new Groq({ apiKey: GROQ_API_KEY });
@@ -81,10 +147,7 @@ export async function POST(request: Request) {
       model: 'llama-3.1-8b-instant',
       messages: [
         { role: 'system', content: buildSystemPrompt(knowledgeBase) + localeHint },
-        ...messages.map((m) => ({
-          role: m.role as 'user' | 'assistant',
-          content: m.content,
-        })),
+        ...safeMessages,
       ],
       temperature: 0.7,
       max_tokens: 1024,
@@ -107,11 +170,11 @@ export async function POST(request: Request) {
           controller.enqueue(encoder.encode('data: [DONE]\n\n'));
           controller.close();
         } catch (err) {
-          const msg =
-            err instanceof Error ? err.message : 'Stream error';
+          // Log details server-side; never leak internals to the client.
+          console.error('Advisor stream error:', err);
           controller.enqueue(
             encoder.encode(
-              `data: ${JSON.stringify({ error: msg })}\n\n`
+              `data: ${JSON.stringify({ error: 'The advisor hit a problem. Please try again.' })}\n\n`
             )
           );
           controller.close();
@@ -127,9 +190,8 @@ export async function POST(request: Request) {
       },
     });
   } catch (err) {
+    // Log the real error; return a generic message so we don't leak internals.
     console.error('Advisor API error:', err);
-    const message =
-      err instanceof Error ? err.message : 'Internal server error';
-    return Response.json({ error: message }, { status: 500 });
+    return Response.json({ error: 'Internal server error.' }, { status: 500 });
   }
 }
