@@ -13,6 +13,7 @@ import { Reveal } from '@/components/kintsugi/Reveal';
 import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 import { MARKETS, MARKETS_ALL_URL } from '@/data/markets';
+import { jaOutbound, JA_PROXY_NOTICE } from '@/lib/translate';
 
 const ACCENT = '#9a7b2d';
 type Lang = 'ja' | 'en';
@@ -97,7 +98,7 @@ export function HomeMarkets() {
           {MARKETS.map((m, i) => (
             <Reveal key={m.key} delay={i * 0.06} className="h-full">
               <TiltLink
-                href={m.url}
+                href={jaOutbound(m.url, ja)}
                 className="group relative flex h-full flex-col gap-5 overflow-hidden rounded-[1.5rem] border border-sumi/8 bg-washi p-7 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-shadow duration-500 hover:border-gold/40 hover:shadow-[0_30px_60px_-30px_rgba(32,37,31,0.42)]"
               >
                 <div style={{ transform: 'translateZ(40px)' }} className="relative flex h-full flex-col gap-5">
@@ -123,7 +124,7 @@ export function HomeMarkets() {
           {/* All-markets card */}
           <Reveal delay={MARKETS.length * 0.06} className="h-full">
             <TiltLink
-              href={MARKETS_ALL_URL}
+              href={jaOutbound(MARKETS_ALL_URL, ja)}
               className="group relative flex h-full flex-col justify-between gap-8 overflow-hidden rounded-[1.5rem] bg-sumi p-7 text-washi shadow-[0_20px_50px_-24px_rgba(12,14,18,0.6)] transition-shadow duration-500"
             >
               <div
@@ -145,12 +146,17 @@ export function HomeMarkets() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.3} className="mt-8">
+        <Reveal delay={0.3} className="mt-8 flex flex-col gap-1.5">
           <p className="text-[10px] tracking-[0.1em] text-sumi/35">
             {ja
               ? '※ 取引はEquitiのプラットフォーム上で行われます。CFD取引にはリスクが伴います。'
               : '※ Trading is executed on Equiti’s platform. CFDs carry risk.'}
           </p>
+          {ja && (
+            <p className="text-[10px] leading-relaxed tracking-[0.05em] text-sumi/30">
+              ※ {JA_PROXY_NOTICE}
+            </p>
+          )}
         </Reveal>
       </div>
     </section>

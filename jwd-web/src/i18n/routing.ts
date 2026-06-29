@@ -5,4 +5,8 @@ export const routing = defineRouting({
   defaultLocale: 'ja',
   // ja lives at "/", en at "/en" — JP is the primary market
   localePrefix: 'as-needed',
+  // Always open in Japanese: ignore the browser's accept-language header and
+  // the locale cookie so "/" never auto-redirects English browsers to /en.
+  // The navbar's EN toggle still works — it links to the /en path directly.
+  localeDetection: false,
 });

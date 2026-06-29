@@ -11,6 +11,7 @@ import {
   Award, Check, ArrowUpRight,
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { jaOutbound, isInvestorSite, JA_PROXY_NOTICE } from '@/lib/translate';
 import { Reveal } from '@/components/kintsugi/Reveal';
 import { StatsRow } from '@/components/sub/StatsRow';
 import { BarChart, LineChart, DonutChart } from '@/components/sub/Charts';
@@ -123,6 +124,7 @@ function FaqItem({ q, a, tone, tx, display }: { q: L; a: L; tone?: Tone; tx: (l:
 }
 
 function PillLinks({ items, tx }: { items: { label: L; url: string }[]; tx: (l: L) => string }) {
+  const ja = useLocale() === 'ja';
   return (
     <div className="flex flex-wrap items-center gap-4">
       {items.map((it, i) => {
@@ -133,7 +135,7 @@ function PillLinks({ items, tx }: { items: { label: L; url: string }[]; tx: (l: 
           : 'group inline-flex items-center gap-2 rounded-full border border-sumi/15 px-7 py-3.5 text-[11px] font-medium uppercase tracking-[0.18em] text-sumi transition-colors duration-300 hover:border-gold hover:text-gold';
         const inner = (<>{label}{external && <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.6} />}</>);
         return external
-          ? <a key={i} href={it.url} target="_blank" rel="noopener noreferrer" className={cls}>{inner}</a>
+          ? <a key={i} href={jaOutbound(it.url, ja)} target="_blank" rel="noopener noreferrer" title={ja && isInvestorSite(it.url) ? JA_PROXY_NOTICE : undefined} className={cls}>{inner}</a>
           : <Link key={i} href={it.url} className={cls}>{inner}</Link>;
       })}
     </div>

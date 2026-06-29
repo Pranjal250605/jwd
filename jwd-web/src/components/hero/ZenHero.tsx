@@ -13,6 +13,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { CountUp } from '@/components/kintsugi/CountUp';
 import { AssetMarquee } from '@/components/home/AssetMarquee';
+import { jaOutbound, isInvestorSite, JA_PROXY_NOTICE } from '@/lib/translate';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -167,9 +168,10 @@ export function ZenHero() {
               return (
                 <a
                   key={s.name}
-                  href={s.url}
+                  href={jaOutbound(s.url, ja)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  title={ja && isInvestorSite(s.url) ? JA_PROXY_NOTICE : undefined}
                   className={`font-sans text-sm font-medium tracking-wide transition-all duration-300 ${
                     isHighlighted
                       ? 'rounded-full border border-[#c9a85c]/35 bg-[#c9a85c]/10 px-4 py-1.5 text-[#c9a85c] hover:bg-[#c9a85c]/18'
