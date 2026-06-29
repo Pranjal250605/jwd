@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback, type FormEvent } from 'react';
+import { useState, useRef, useEffect, useCallback, type FormEvent, type ReactNode } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
@@ -91,45 +91,88 @@ const SUGGESTIONS_JA = [
   'ドバイvs日本の比較',
 ];
 
-/** Minimal markdown-ish rendering: bold, bullets, line breaks. */
-function renderMarkdown(text: string) {
-  const lines = text.split('\n');
-  return lines.map((line, i) => {
-    // Bold: **text**
-    const parts = line.split(/(\*\*[^*]+\*\*)/g).map((part, j) => {
-      if (part.startsWith('**') && part.endsWith('**')) {
-        return (
-          <strong key={j} className="font-semibold text-sumi">
-            {part.slice(2, -2)}
-          </strong>
-        );
-      }
-      return part;
-    });
-
-    // Bullet point
-    if (line.startsWith('- ') || line.startsWith('• ')) {
+/** Inline formatting: **bold**, with stray markdown chars cleaned up. */
+function inline(text: string): ReactNode[] {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, j) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
       return (
-        <div key={i} className="flex gap-2 pl-1">
-          <span className="text-gold mt-0.5 shrink-0">•</span>
-          <span>{parts.slice(0, 1)}{parts.slice(1).map((p, k) =>
-            typeof p === 'string' ? p.replace(/^[-•]\s*/, '') : p
-          )}</span>
-        </div>
+        <strong key={j} className="font-semibold text-sumi">
+          {part.slice(2, -2)}
+        </strong>
       );
     }
+    return part.replace(/`/g, '');
+  });
+}
 
-    // Empty line → spacing
-    if (line.trim() === '') {
-      return <div key={i} className="h-2" />;
+/**
+ * Lightweight markdown for the chat: headers, bullets, bold, blank-line
+ * spacing — and a graceful fallback for Markdown tables (which don't fit a
+ * narrow chat): the separator row is dropped and each row is flattened to a
+ * readable "cell · cell · cell" line.
+ */
+function renderMarkdown(text: string) {
+  const out: ReactNode[] = [];
+  text.split('\n').forEach((line, i) => {
+    const trimmed = line.trim();
+
+    // Heading: #, ##, ### …
+    const heading = trimmed.match(/^#{1,6}\s+(.*)$/);
+    if (heading) {
+      out.push(
+        <p key={i} className="mt-1.5 mb-0.5 text-[13px] font-semibold text-sumi">
+          {inline(heading[1])}
+        </p>
+      );
+      return;
     }
 
-    return (
+    // Table separator row (|---|:--:|) → drop
+    if (/^\|?[\s:|-]+\|?$/.test(trimmed) && trimmed.includes('-') && trimmed.includes('|')) {
+      return;
+    }
+
+    // Table row | a | b | c | → flatten to "a · b · c"
+    if (trimmed.startsWith('|') && trimmed.endsWith('|') && trimmed.length > 2) {
+      const cells = trimmed.slice(1, -1).split('|').map((c) => c.trim()).filter(Boolean);
+      out.push(
+        <div key={i} className="flex flex-wrap items-baseline gap-x-1.5 leading-relaxed">
+          {cells.map((c, k) => (
+            <span key={k}>
+              {inline(c)}
+              {k < cells.length - 1 && <span className="text-sumi/25"> · </span>}
+            </span>
+          ))}
+        </div>
+      );
+      return;
+    }
+
+    // Bullet: -, *, •
+    const bullet = trimmed.match(/^[-*•]\s+(.*)$/);
+    if (bullet) {
+      out.push(
+        <div key={i} className="flex gap-2 pl-1">
+          <span className="text-gold mt-0.5 shrink-0">•</span>
+          <span className="leading-relaxed">{inline(bullet[1])}</span>
+        </div>
+      );
+      return;
+    }
+
+    // Blank line → spacing
+    if (trimmed === '') {
+      out.push(<div key={i} className="h-2" />);
+      return;
+    }
+
+    out.push(
       <p key={i} className="leading-relaxed">
-        {parts}
+        {inline(line)}
       </p>
     );
   });
+  return out;
 }
 
 export function ChatPanel({
