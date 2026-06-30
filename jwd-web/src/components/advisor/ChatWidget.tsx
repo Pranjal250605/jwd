@@ -43,7 +43,7 @@ export function ChatWidget() {
             />
 
             {/* AI sparkle mark */}
-            <AiSpark className="relative h-7 w-7 drop-shadow-[0_1px_3px_rgba(201,168,92,0.35)]" />
+            <AiSpark className="relative h-9 w-9 drop-shadow-[0_1px_3px_rgba(201,168,92,0.35)]" />
 
             {/* label inside the icon */}
             <span className="relative text-[8.5px] font-semibold tracking-wide text-washi/90 leading-none">
