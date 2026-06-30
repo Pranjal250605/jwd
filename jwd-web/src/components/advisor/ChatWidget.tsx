@@ -27,36 +27,27 @@ export function ChatWidget() {
       {/* ── Floating trigger button ── */}
       <AnimatePresence>
         {!open && (
-          <motion.div
+          <motion.button
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 400, damping: 24 }}
-            className="fixed bottom-6 right-6 z-[60] flex flex-col items-center gap-2"
+            onClick={() => setOpen(true)}
+            className="group fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-[1.4rem] border border-gold/30 bg-gradient-to-br from-[#2b2419] to-sumi shadow-[0_10px_30px_-8px_rgba(201,168,92,0.45),0_10px_26px_-12px_rgba(20,20,18,0.7)] transition-transform duration-300 hover:scale-105"
+            aria-label={t('label')}
           >
-            {/* subtle label so people know what it is */}
-            <span className="rounded-full border border-gold/15 bg-sumi/85 px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-washi/85 shadow-sm backdrop-blur-sm">
-              {ja ? 'AIアドバイザー' : 'AI Advisor'}
-            </span>
+            {/* soft gold inner glow (squircle, app-icon feel) */}
+            <span
+              className="pointer-events-none absolute inset-0 rounded-[1.4rem] opacity-80"
+              style={{ background: 'radial-gradient(circle at 32% 26%, rgba(201,168,92,0.30), transparent 62%)' }}
+            />
 
-            <button
-              onClick={() => setOpen(true)}
-              className="group relative flex h-14 w-14 items-center justify-center rounded-[1.4rem] border border-gold/30 bg-gradient-to-br from-[#2b2419] to-sumi shadow-[0_10px_30px_-8px_rgba(201,168,92,0.45),0_10px_26px_-12px_rgba(20,20,18,0.7)] transition-transform duration-300 hover:scale-105"
-              aria-label={t('label')}
-            >
-              {/* soft gold inner glow (squircle, app-icon feel) */}
-              <span
-                className="pointer-events-none absolute inset-0 rounded-[1.4rem] opacity-80"
-                style={{ background: 'radial-gradient(circle at 32% 26%, rgba(201,168,92,0.30), transparent 62%)' }}
-              />
+            {/* AI sparkle mark */}
+            <AiSpark className="relative h-7 w-7 drop-shadow-[0_1px_3px_rgba(201,168,92,0.35)]" />
 
-              {/* AI sparkle mark */}
-              <AiSpark className="relative h-7 w-7 drop-shadow-[0_1px_3px_rgba(201,168,92,0.35)]" />
-
-              {/* Gold pulse ring */}
-              <span className="absolute inset-0 rounded-[1.4rem] border border-gold/40 animate-ping opacity-20" />
-            </button>
-          </motion.div>
+            {/* Gold pulse ring */}
+            <span className="absolute inset-0 rounded-[1.4rem] border border-gold/40 animate-ping opacity-20" />
+          </motion.button>
         )}
       </AnimatePresence>
 
