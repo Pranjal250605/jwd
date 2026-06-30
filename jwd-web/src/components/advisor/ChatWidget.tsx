@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { ChatPanel } from './ChatPanel';
+import { AiSpark } from './AiSpark';
 
 export function ChatWidget() {
   const t = useTranslations('advisor');
@@ -32,26 +33,20 @@ export function ChatWidget() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 400, damping: 24 }}
             onClick={() => setOpen(true)}
-            className="fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-sumi shadow-lg shadow-sumi/20 transition-colors duration-300 hover:bg-gold group"
+            className="group fixed bottom-6 right-6 z-[60] flex h-14 w-14 items-center justify-center rounded-[1.4rem] border border-gold/30 bg-gradient-to-br from-[#2b2419] to-sumi shadow-[0_10px_30px_-8px_rgba(201,168,92,0.45),0_10px_26px_-12px_rgba(20,20,18,0.7)] transition-transform duration-300 hover:scale-105"
             aria-label={t('label')}
           >
-            {/* Chat icon */}
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-washi"
-            >
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-            </svg>
+            {/* soft gold inner glow (squircle, app-icon feel) */}
+            <span
+              className="pointer-events-none absolute inset-0 rounded-[1.4rem] opacity-80"
+              style={{ background: 'radial-gradient(circle at 32% 26%, rgba(201,168,92,0.30), transparent 62%)' }}
+            />
+
+            {/* AI sparkle mark */}
+            <AiSpark className="relative h-7 w-7 drop-shadow-[0_1px_3px_rgba(201,168,92,0.35)]" />
 
             {/* Gold pulse ring */}
-            <span className="absolute inset-0 rounded-full border-2 border-gold/40 animate-ping opacity-20" />
+            <span className="absolute inset-0 rounded-[1.4rem] border border-gold/40 animate-ping opacity-20" />
           </motion.button>
         )}
       </AnimatePresence>
