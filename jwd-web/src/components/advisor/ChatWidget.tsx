@@ -33,25 +33,22 @@ export function ChatWidget() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 400, damping: 24 }}
             onClick={() => setOpen(true)}
-            className="group fixed bottom-6 right-6 z-[60] flex h-[4.6rem] w-[4.6rem] flex-col items-center justify-center gap-0.5 rounded-[1.6rem] border border-gold/30 bg-gradient-to-br from-[#2b2419] to-sumi shadow-[0_12px_34px_-8px_rgba(201,168,92,0.45),0_12px_28px_-12px_rgba(20,20,18,0.7)] transition-transform duration-300 hover:scale-105"
+            className="group fixed bottom-6 right-6 z-[60] flex items-center gap-2.5 rounded-full border border-gold/30 bg-gradient-to-br from-[#2b2419] to-sumi py-2.5 pl-3 pr-5 shadow-[0_12px_34px_-8px_rgba(201,168,92,0.5),0_12px_28px_-12px_rgba(20,20,18,0.7)] transition-transform duration-300 hover:scale-[1.04]"
             aria-label={t('label')}
           >
-            {/* soft gold inner glow (squircle, app-icon feel) */}
+            {/* soft gold inner glow */}
             <span
-              className="pointer-events-none absolute inset-0 rounded-[1.6rem] opacity-80"
-              style={{ background: 'radial-gradient(circle at 32% 24%, rgba(201,168,92,0.30), transparent 62%)' }}
+              className="pointer-events-none absolute inset-0 rounded-full opacity-80"
+              style={{ background: 'radial-gradient(circle at 16% 30%, rgba(201,168,92,0.28), transparent 60%)' }}
             />
 
             {/* AI sparkle mark */}
-            <AiSpark className="relative h-9 w-9 drop-shadow-[0_1px_3px_rgba(201,168,92,0.35)]" />
+            <AiSpark className="relative h-9 w-9 shrink-0 drop-shadow-[0_1px_3px_rgba(201,168,92,0.4)]" />
 
-            {/* label inside the icon */}
-            <span className="relative text-[8.5px] font-semibold tracking-wide text-washi/90 leading-none">
-              AI Agent
+            {/* readable label */}
+            <span className={`relative text-[15px] font-semibold tracking-wide text-washi ${ja ? 'font-jp' : ''}`}>
+              {ja ? 'AIアドバイザー' : 'AI Advisor'}
             </span>
-
-            {/* Gold pulse ring */}
-            <span className="absolute inset-0 rounded-[1.6rem] border border-gold/40 animate-ping opacity-20" />
           </motion.button>
         )}
       </AnimatePresence>
