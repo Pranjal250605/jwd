@@ -86,7 +86,7 @@ export function ChatWidget() {
               <div className="flex items-center justify-between border-b border-sumi/8 px-4 py-3">
                 <div className="flex items-center gap-3">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-sumi">
-                    <span className="text-gold text-xs font-jp font-bold">金</span>
+                    <AiSpark className="h-5 w-5" />
                   </div>
                   <div>
                     <h3 className="text-sm font-semibold text-sumi leading-tight">

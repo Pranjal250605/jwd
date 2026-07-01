@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Reveal } from '@/components/kintsugi/Reveal';
 import { ChatPanel } from '@/components/advisor/ChatPanel';
+import { AiSpark } from '@/components/advisor/AiSpark';
 
 export function AdvisorPageContent() {
   const t = useTranslations('advisor');
@@ -26,7 +27,7 @@ export function AdvisorPageContent() {
               {/* About this advisor */}
               <div className="rounded-xl border border-sumi/8 bg-washi p-6">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-sumi">
-                  <span className="text-gold font-jp text-lg font-bold">金</span>
+                  <AiSpark className="h-7 w-7" />
                 </div>
                 <h3 className="font-jp text-base font-bold text-sumi mb-2">
                   {t('title')}

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { Mic, Volume2, VolumeX } from 'lucide-react';
+import { AiSpark } from './AiSpark';
 
 // ── In-chat navigation: the model can emit [[GOTO:/path]] to route the user. ──
 // We validate against this allowlist so a prompt-injected directive can never
@@ -519,7 +520,7 @@ export function ChatPanel({
           >
             {/* AI Avatar */}
             <div className="w-14 h-14 rounded-full bg-sumi flex items-center justify-center mb-5">
-              <span className="text-gold font-jp text-xl font-bold">金</span>
+              <AiSpark className="h-8 w-8" />
             </div>
 
             <h3 className="font-jp text-lg font-bold text-sumi mb-2">
@@ -560,7 +561,7 @@ export function ChatPanel({
             >
               {msg.role === 'assistant' && (
                 <div className="w-7 h-7 rounded-full bg-sumi flex items-center justify-center mr-2 mt-1 shrink-0">
-                  <span className="text-gold text-[10px] font-jp font-bold">金</span>
+                  <AiSpark className="h-4 w-4" />
                 </div>
               )}
 
