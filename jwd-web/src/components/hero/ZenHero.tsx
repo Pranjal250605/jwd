@@ -64,7 +64,6 @@ export function ZenHero() {
             priority
             sizes="100vw"
             className="object-cover"
-            style={{ opacity: 0.6, filter: 'contrast(1.04) saturate(0.9)' }}
           />
         </motion.div>
       </motion.div>
@@ -72,22 +71,22 @@ export function ZenHero() {
       {/* washi veils — keep the left readable, let the image breathe right */}
       <div
         className="absolute inset-0 z-0"
-        style={{ background: 'linear-gradient(100deg, rgba(250,249,245,0.94) 0%, rgba(250,249,245,0.7) 38%, rgba(250,249,245,0.25) 66%, rgba(250,249,245,0.05) 100%)' }}
+        style={{ background: 'linear-gradient(100deg, rgba(250,249,245,0.92) 0%, rgba(250,249,245,0.55) 36%, rgba(250,249,245,0.12) 62%, rgba(250,249,245,0) 100%)' }}
       />
       <div
         className="absolute inset-0 z-0"
-        style={{ background: 'linear-gradient(to bottom, rgba(250,249,245,0.55) 0%, transparent 24%, transparent 55%, rgba(250,249,245,0.85) 100%)' }}
+        style={{ background: 'linear-gradient(to bottom, rgba(250,249,245,0.3) 0%, transparent 22%, transparent 58%, rgba(250,249,245,0.8) 100%)' }}
       />
       <div className="relative z-10 mx-auto max-w-screen-2xl px-7 sm:px-10 lg:px-16">
         {/* ── statement ── */}
-        <div className="flex min-h-[88vh] items-center pt-28">
-          <div className="max-w-2xl">
+        <div className="flex min-h-[88vh] items-center pt-42">
+          <div className="max-w-3xl">
             <motion.div
-              className="mb-8 inline-flex items-center gap-3 rounded-full border border-sumi/10 bg-washi/70 px-4 py-1.5 backdrop-blur-sm"
+              className="mb-8 inline-flex items-center gap-3 rounded-full border border-sumi/10 bg-washi/70 px-5 py-2 backdrop-blur-sm"
               initial={reduce ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}
             >
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              <span className="text-[10px] uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
+              <span className="h-2 w-2 rounded-full bg-gold" />
+              <span className="text-[15px] uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
             </motion.div>
 
             <h1 className="font-en font-semibold text-sumi" style={{ fontSize: 'clamp(2.8rem, 6.6vw, 5.6rem)', lineHeight: 1.12, letterSpacing: '-0.035em' }}>
@@ -109,23 +108,23 @@ export function ZenHero() {
               </motion.span>
             </h1>
 
-            <motion.p className="mt-7 max-w-lg text-base font-light leading-relaxed text-sumi-soft"
+            <motion.p className="mt-8 max-w-2xl text-2xl font-light leading-relaxed text-sumi-soft"
               initial={reduce ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5, ease: EASE }}>
               {t('description')}
             </motion.p>
 
-            <motion.div className="mt-10 flex flex-wrap items-center gap-4"
+            <motion.div className="mt-12 flex flex-wrap items-center gap-5"
               initial={reduce ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.62, ease: EASE }}>
-              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-sumi px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-washi">
+              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-sumi px-11 py-4.5 text-[18px] font-medium uppercase tracking-[0.16em] text-washi">
                 <span className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-gold to-gold-bright transition-transform duration-500 ease-out group-hover:scale-x-100" aria-hidden />
                 <span className="relative">{t('ctaPrimary')}</span>
               </Link>
-              <Link href="/contact" className="rounded-full border border-sumi/15 bg-washi/60 px-8 py-3.5 text-[12px] font-medium uppercase tracking-[0.16em] text-sumi backdrop-blur-sm transition-colors duration-300 hover:border-gold/50 hover:text-gold">
+              <Link href="/contact" className="rounded-full border border-sumi/15 bg-washi/60 px-11 py-4.5 text-[18px] font-medium uppercase tracking-[0.16em] text-sumi backdrop-blur-sm transition-colors duration-300 hover:border-gold/50 hover:text-gold">
                 {t('ctaSecondary')}
               </Link>
             </motion.div>
 
-            <motion.p className="font-jp mt-7 text-xs font-light tracking-wide text-sumi-soft/80"
+            <motion.p className="font-jp mt-8 text-lg font-light tracking-wide text-sumi-soft/80"
               initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.8 }}>
               {t('subtitle')}
             </motion.p>

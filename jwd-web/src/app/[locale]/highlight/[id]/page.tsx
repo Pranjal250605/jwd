@@ -18,7 +18,7 @@ export default async function HighlightPage({
   const tx = (l: L) => l[locale as 'ja' | 'en'] ?? l.en;
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-washi pt-32 pb-24">
+    <main className="relative min-h-screen overflow-hidden bg-washi pt-48 pb-24">
       <PremiumBackdrop glow />
       
       <div className="relative mx-auto max-w-5xl px-7 lg:px-12">
