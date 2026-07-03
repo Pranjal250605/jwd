@@ -11,7 +11,7 @@ import {
   NET_WORTH, TREND, ALLOC, CCY, TARGET, RE_KPI, PROPS, EQ_KPI, HOLDINGS,
 } from '@/data/wealth';
 
-const ACCENT = '#9a7b2d';
+const ACCENT = '#007ec4';
 const UP = '#3f8f6f';
 const DOWN = '#c0566b';
 type Lang = 'ja' | 'en';

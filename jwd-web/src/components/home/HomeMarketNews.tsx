@@ -10,7 +10,7 @@ import { home } from '@/content/home';
 import type { L } from '@/content/types';
 import type { NewsEntry } from '@/lib/news';
 
-const ACCENT = '#9a7b2d';
+const ACCENT = '#007ec4';
 type Lang = 'ja' | 'en';
 
 /** Interactive market-news rail — hover highlights the row, the accent bar

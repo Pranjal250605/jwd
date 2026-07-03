@@ -22,10 +22,10 @@ const STRANDS = [
   { rot: -83, len: 128, w: 16, o: 0.5 },
 ];
 
-// Default homepage palette — warm kintsugi with cool lavender lift.
+// Default homepage palette — sky-and-ocean blues on the white canvas.
 const DEFAULT_COLORS = [
-  '#bcc8ec', '#d7bfe4', '#e6a98f', '#e8a14e', '#d99a2e',
-  '#c9a85c', '#e6d9b8', '#9a7b2d', '#cdbfe0',
+  '#bcc8ec', '#9ddbeb', '#66c8ff', '#42d5ff', '#00b0e1',
+  '#00b0e1', '#aedfef', '#007ec4', '#cdbfe0',
 ];
 
 export function SilkRibbon({ colors = DEFAULT_COLORS }: { colors?: string[] }) {

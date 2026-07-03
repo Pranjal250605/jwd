@@ -9,7 +9,7 @@ import { Grain } from '@/components/kintsugi/Grain';
  * gentle coverage so every section shares the same texture.
  */
 export function PremiumBackdrop({
-  accent = '#9a7b2d',
+  accent = '#007ec4',
   tone = 'light',
   glow = true,
 }: {
@@ -18,7 +18,7 @@ export function PremiumBackdrop({
   glow?: boolean;
 }) {
   const id = useId().replace(/[:]/g, '');
-  const stroke = tone === 'dark' ? 'rgba(201,168,92,0.85)' : accent;
+  const stroke = tone === 'dark' ? 'rgba(0,176,225,0.85)' : accent;
   const patOpacity = tone === 'dark' ? 0.1 : 0.085;
   // even coverage with a soft edge-fade so it never looks like a hard tile
   const maskImg = 'radial-gradient(ellipse 130% 120% at 50% 45%, #000 58%, transparent 100%)';

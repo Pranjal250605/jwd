@@ -58,12 +58,13 @@ export function ZenHero() {
           transition={{ duration: 2.4, ease: EASE }}
         >
           <Image
-            src="/zen-cover.png"
+            src="/zen-cover.jpg"
             alt="Minimalist Japanese architecture"
             fill
             priority
             sizes="100vw"
             className="object-cover"
+            style={{ filter: 'saturate(1.35) hue-rotate(-4deg)' }}
           />
         </motion.div>
       </motion.div>
@@ -79,14 +80,14 @@ export function ZenHero() {
       />
       <div className="relative z-10 mx-auto max-w-screen-2xl px-7 sm:px-10 lg:px-16">
         {/* ── statement ── */}
-        <div className="flex min-h-[88vh] items-center pt-42">
-          <div className="max-w-3xl">
+        <div className="flex min-h-[88vh] items-center pt-32">
+          <div className="max-w-2xl">
             <motion.div
-              className="mb-8 inline-flex items-center gap-3 rounded-full border border-sumi/10 bg-washi/70 px-5 py-2 backdrop-blur-sm"
+              className="mb-8 inline-flex items-center gap-3 rounded-full border border-sumi/10 bg-washi/70 px-4 py-1.5 backdrop-blur-sm"
               initial={reduce ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}
             >
-              <span className="h-2 w-2 rounded-full bg-gold" />
-              <span className="text-[15px] uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+              <span className="text-[11px] uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
             </motion.div>
 
             <h1 className="font-en font-semibold text-sumi" style={{ fontSize: 'clamp(2.8rem, 6.6vw, 5.6rem)', lineHeight: 1.12, letterSpacing: '-0.035em' }}>
@@ -108,23 +109,23 @@ export function ZenHero() {
               </motion.span>
             </h1>
 
-            <motion.p className="mt-8 max-w-2xl text-2xl font-light leading-relaxed text-sumi-soft"
+            <motion.p className="mt-8 max-w-xl text-xl font-light leading-relaxed text-sumi-soft"
               initial={reduce ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5, ease: EASE }}>
               {t('description')}
             </motion.p>
 
-            <motion.div className="mt-12 flex flex-wrap items-center gap-5"
+            <motion.div className="mt-10 flex flex-wrap items-center gap-4"
               initial={reduce ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.62, ease: EASE }}>
-              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-sumi px-11 py-4.5 text-[18px] font-medium uppercase tracking-[0.16em] text-washi">
+              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-sumi px-9 py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-washi">
                 <span className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-gold to-gold-bright transition-transform duration-500 ease-out group-hover:scale-x-100" aria-hidden />
                 <span className="relative">{t('ctaPrimary')}</span>
               </Link>
-              <Link href="/contact" className="rounded-full border border-sumi/15 bg-washi/60 px-11 py-4.5 text-[18px] font-medium uppercase tracking-[0.16em] text-sumi backdrop-blur-sm transition-colors duration-300 hover:border-gold/50 hover:text-gold">
+              <Link href="/contact" className="rounded-full border border-sumi/15 bg-washi/60 px-9 py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-sumi backdrop-blur-sm transition-colors duration-300 hover:border-gold/50 hover:text-gold">
                 {t('ctaSecondary')}
               </Link>
             </motion.div>
 
-            <motion.p className="font-jp mt-8 text-lg font-light tracking-wide text-sumi-soft/80"
+            <motion.p className="font-jp mt-8 text-sm font-light tracking-wide text-sumi-soft/80"
               initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.8 }}>
               {t('subtitle')}
             </motion.p>
@@ -173,7 +174,7 @@ export function ZenHero() {
                   title={ja && isInvestorSite(s.url) ? JA_PROXY_NOTICE : undefined}
                   className={`font-sans text-sm font-medium tracking-wide transition-all duration-300 ${
                     isHighlighted
-                      ? 'rounded-full border border-[#c9a85c]/35 bg-[#c9a85c]/10 px-4 py-1.5 text-[#c9a85c] hover:bg-[#c9a85c]/18'
+                      ? 'rounded-full border border-[#00b0e1]/35 bg-[#00b0e1]/10 px-4 py-1.5 text-[#00b0e1] hover:bg-[#00b0e1]/18'
                       : 'text-sumi/35 hover:text-sumi/70'
                   }`}
                 >

@@ -9,9 +9,9 @@ export function AiSpark({ className = '' }: { className?: string }) {
     <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
       <defs>
         <linearGradient id="jwd-spark" x1="4" y1="3" x2="20" y2="21" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#efe0b4" />
-          <stop offset="0.5" stopColor="#c9a85c" />
-          <stop offset="1" stopColor="#9a7b2d" />
+          <stop stopColor="#bfeaf7" />
+          <stop offset="0.5" stopColor="#00b0e1" />
+          <stop offset="1" stopColor="#007ec4" />
         </linearGradient>
       </defs>
 

@@ -109,7 +109,7 @@ function Stars({ reduce }: { reduce: boolean }) {
       for (const st of stars) {
         const tw = reduce ? 0.8 : 0.55 + 0.45 * Math.sin(t / 900 * st.s + st.p);
         ctx.globalAlpha = tw * 0.85;
-        ctx.fillStyle = '#e6d9b8';
+        ctx.fillStyle = '#aedfef';
         ctx.beginPath();
         ctx.arc(st.x * w, st.y * h, st.r, 0, Math.PI * 2);
         ctx.fill();
@@ -129,8 +129,8 @@ function Stars({ reduce }: { reduce: boolean }) {
             const hy = meteor.ny * h + age * 0.13 * h;
             const trail = (1 - age) * 0.09 * w;
             const grad = ctx.createLinearGradient(hx, hy, hx - trail, hy - trail * 0.54);
-            grad.addColorStop(0, 'rgba(230,217,184,0.9)');
-            grad.addColorStop(1, 'rgba(230,217,184,0)');
+            grad.addColorStop(0, 'rgba(174,223,239,0.9)');
+            grad.addColorStop(1, 'rgba(174,223,239,0)');
             ctx.globalAlpha = Math.sin(Math.PI * age);
             ctx.strokeStyle = grad;
             ctx.lineWidth = 1.4;
@@ -176,7 +176,7 @@ export function NightWorld({ reduce }: { reduce: boolean }) {
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, #070d1c 0%, #0a1020 38%, #131c33 68%, #2a2438 88%, #3a2f25 100%)',
+            'linear-gradient(180deg, #070d1c 0%, #0a1020 38%, #0f2140 68%, #14284a 88%, #123152 100%)',
         }}
       />
 
@@ -187,7 +187,7 @@ export function NightWorld({ reduce }: { reduce: boolean }) {
         className="absolute inset-x-0 bottom-0 h-[45%]"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 55% 100%, rgba(201,168,92,0.22) 0%, rgba(201,168,92,0.06) 50%, transparent 75%)',
+            'radial-gradient(ellipse 80% 60% at 55% 100%, rgba(0,176,225,0.22) 0%, rgba(0,176,225,0.06) 50%, transparent 75%)',
         }}
       />
 
@@ -197,7 +197,7 @@ export function NightWorld({ reduce }: { reduce: boolean }) {
         className="absolute right-[14%] top-[12%] h-16 w-16"
         viewBox="0 0 64 64"
       >
-        <circle cx="32" cy="32" r="18" fill="#e6d9b8" opacity="0.9" />
+        <circle cx="32" cy="32" r="18" fill="#aedfef" opacity="0.9" />
         <circle cx="40" cy="26" r="17" fill="#0a1020" />
       </svg>
 
@@ -242,13 +242,13 @@ export function NightWorld({ reduce }: { reduce: boolean }) {
             animation: reduce ? undefined : 'glint 5.5s ease-in-out infinite',
           }}
         >
-          <circle cx={760} cy={20} r={3.2} fill="#e6d9b8" opacity={0.85} />
-          <rect x={759.4} y={4} width={1.2} height={32} fill="#e6d9b8" opacity={0.8} />
-          <rect x={744} y={19.4} width={32} height={1.2} fill="#e6d9b8" opacity={0.8} />
+          <circle cx={760} cy={20} r={3.2} fill="#aedfef" opacity={0.85} />
+          <rect x={759.4} y={4} width={1.2} height={32} fill="#aedfef" opacity={0.8} />
+          <rect x={744} y={19.4} width={32} height={1.2} fill="#aedfef" opacity={0.8} />
         </g>
 
         {/* lit windows */}
-        <g fill="#c9a85c">
+        <g fill="#00b0e1">
           {windows.map((win, i) => (
             <rect
               key={i}

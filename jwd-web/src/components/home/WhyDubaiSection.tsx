@@ -20,7 +20,7 @@ export function WhyDubaiSection() {
         className="absolute inset-x-0 top-0 h-px"
         style={{
           background:
-            'linear-gradient(90deg, transparent 10%, rgba(201,168,92,0.55) 50%, transparent 90%)',
+            'linear-gradient(90deg, transparent 10%, rgba(0,176,225,0.55) 50%, transparent 90%)',
         }}
       />
 

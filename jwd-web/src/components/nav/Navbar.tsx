@@ -20,9 +20,9 @@ function LocaleSwitcher() {
   const locale = useLocale();
   const pathname = usePathname();
   return (
-    <div className="flex items-center gap-3 text-[15px] tracking-[0.2em]">
+    <div className="flex items-center gap-2 whitespace-nowrap text-[12px] tracking-[0.2em]">
       {(['ja', 'en'] as const).map((l, i) => (
-        <span key={l} className="flex items-center gap-3">
+        <span key={l} className="flex items-center gap-2">
           {i > 0 && <span className="text-sumi/20">/</span>}
           <Link
             href={pathname}
@@ -63,44 +63,44 @@ export function Navbar() {
             : 'border-b border-transparent bg-transparent'
         }`}
       >
-        <div className="mx-auto grid h-30 max-w-screen-2xl grid-cols-[1fr_auto_1fr] items-center px-6 lg:px-12">
+        <div className="mx-auto grid h-24 max-w-screen-2xl grid-cols-[auto_1fr_auto] items-center gap-8 px-6 lg:px-12">
           {/* Wordmark */}
           <Link href="/" className="group flex w-fit flex-col leading-none">
-            <span className="font-en text-[2.175rem] font-semibold tracking-[0.16em] text-sumi">
+            <span className="font-en text-[1.7rem] font-semibold tracking-[0.16em] text-sumi">
               JWD
             </span>
-            <span className="text-[10.5px] tracking-[0.52em] text-gold">GROUP</span>
+            <span className="text-[8px] tracking-[0.52em] text-gold">GROUP</span>
           </Link>
 
-          {/* Primary links — centered; fluid size so all 7 fit up to the 150% cap */}
-          <nav className="hidden items-center gap-5 xl:flex 2xl:gap-7">
+          {/* Primary links — centered */}
+          <nav className="hidden items-center justify-center gap-6 lg:flex xl:gap-8">
             {PRIMARY_LINKS.map(({ key, href }) => (
               <Link
                 key={key}
                 href={href}
-                className="group relative whitespace-nowrap text-[length:clamp(13px,1.05vw,16.5px)] uppercase tracking-[0.14em] text-sumi/70 transition-colors duration-300 hover:text-sumi"
+                className="group relative whitespace-nowrap text-[12.5px] uppercase tracking-[0.15em] text-sumi/70 transition-colors duration-300 hover:text-sumi"
               >
                 {t(key)}
-                <span className="absolute -bottom-2 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-500 group-hover:scale-x-100" />
+                <span className="absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-500 group-hover:scale-x-100" />
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center justify-end gap-8">
+          <div className="flex items-center justify-end gap-5">
             <LocaleSwitcher />
             <Link
               href="/contact"
-              className="hidden rounded-full bg-sumi px-7 py-3 text-[15px] uppercase tracking-[0.2em] text-washi transition-colors duration-300 hover:bg-gold sm:inline-block"
+              className="hidden whitespace-nowrap rounded-full bg-sumi px-6 py-2.5 text-[12px] uppercase tracking-[0.18em] text-washi transition-colors duration-300 hover:bg-gold sm:inline-block"
             >
               {t('contact')}
             </Link>
             <button
               onClick={() => setOpen(true)}
               aria-label={t('menu')}
-              className="group flex h-15 w-15 flex-col items-end justify-center gap-[10px]"
+              className="group flex h-12 w-12 flex-col items-end justify-center gap-[8px]"
             >
-              <span className="h-[1.5px] w-10 bg-sumi transition-all duration-500 group-hover:w-7 group-hover:bg-gold" />
-              <span className="h-[1.5px] w-7 bg-sumi transition-all duration-500 group-hover:w-10 group-hover:bg-gold" />
+              <span className="h-px w-8 bg-sumi transition-all duration-500 group-hover:w-6 group-hover:bg-gold" />
+              <span className="h-px w-6 bg-sumi transition-all duration-500 group-hover:w-8 group-hover:bg-gold" />
             </button>
           </div>
         </div>

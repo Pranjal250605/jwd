@@ -40,7 +40,7 @@ export function FundsSection() {
               >
                 <div
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                  style={{ background: 'radial-gradient(circle at 100% 100%, rgba(154,123,45,0.06), transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle at 100% 100%, rgba(0,126,196,0.06), transparent 70%)' }}
                 />
                 <h3 className="font-en text-2xl font-semibold tracking-wide text-sumi">
                   {t(`${key}Title`)}

@@ -27,7 +27,7 @@ export default async function PropertyPage({
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-washi pt-36 pb-12 lg:pt-48 lg:pb-24">
+      <main className="min-h-screen bg-washi pt-28 pb-12 lg:pt-36 lg:pb-24">
         <PropertyDetail listing={listing} locale={locale} history={history} fx={fx} />
       </main>
       <Footer />

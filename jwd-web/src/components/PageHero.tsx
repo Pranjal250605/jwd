@@ -55,7 +55,7 @@ export function PageHero({
         </motion.div>
       </motion.div>
 
-      <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-7 pt-48 pb-16 sm:px-10 lg:px-16">
+      <div className="relative z-10 mx-auto w-full max-w-screen-2xl px-7 pt-36 pb-16 sm:px-10 lg:px-16">
         <div className="max-w-3xl">
           <motion.div
             className="mb-7 flex items-center gap-4"

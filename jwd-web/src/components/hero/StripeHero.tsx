@@ -160,7 +160,7 @@ export function StripeHero() {
                   rel="noopener noreferrer"
                   className={`font-sans text-sm font-medium tracking-wide transition-all duration-300 ${
                     isHighlighted
-                      ? 'rounded-full border border-[#c9a85c]/35 bg-[#c9a85c]/10 px-4 py-1.5 text-[#c9a85c] hover:bg-[#c9a85c]/18'
+                      ? 'rounded-full border border-[#00b0e1]/35 bg-[#00b0e1]/10 px-4 py-1.5 text-[#00b0e1] hover:bg-[#00b0e1]/18'
                       : 'text-sumi/35 hover:text-sumi/70'
                   }`}
                 >

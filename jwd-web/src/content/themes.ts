@@ -25,39 +25,43 @@ export interface SectionTheme {
 
 export const SECTION_THEMES: Record<string, SectionTheme> = {
   about: {
-    accent: '#9a7b2d',
-    accentBright: '#c9a85c',
-    accentSoft: 'rgba(154,123,45,0.10)',
-    // the colourful "home" abstract now lives on About JWD
-    ribbon: ['#bcc8ec', '#d7bfe4', '#e6a98f', '#e8a14e', '#d99a2e', '#c9a85c', '#e6d9b8', '#9a7b2d', '#cdbfe0'],
+    // brand ocean blue
+    accent: '#007ec4',
+    accentBright: '#00b0e1',
+    accentSoft: 'rgba(0,126,196,0.10)',
+    ribbon: ['#89d5ff', '#aedfef', '#66c8ff', '#00b0e1', '#0089d6', '#00d3f1', '#9ddbeb', '#007ec4', '#bfe6f5'],
     motif: 'enso',
   },
   'why-dubai': {
-    accent: '#b07b2e',
-    accentBright: '#e0b15e',
-    accentSoft: 'rgba(176,123,46,0.10)',
-    ribbon: ['#e0b15e', '#d99a2e', '#e8c98a', '#b07b2e', '#f0d6a0', '#caa45a'],
+    // bright cyan register
+    accent: '#0093c4',
+    accentBright: '#00d3f1',
+    accentSoft: 'rgba(0,147,196,0.10)',
+    ribbon: ['#42e7ff', '#00d3f1', '#89f0ff', '#00bbd6', '#bff6ff', '#00daf9'],
     motif: 'lattice',
   },
   'dubai-properties': {
-    accent: '#5d6f8a',
-    accentBright: '#9fb1cd',
-    accentSoft: 'rgba(93,111,138,0.10)',
-    ribbon: ['#9fb1cd', '#5d6f8a', '#c3cee0', '#7d8fb0', '#b8c6dd', '#6d7e98'],
+    // architect steel blue, tuned cooler
+    accent: '#4a6d9c',
+    accentBright: '#9fb9dd',
+    accentSoft: 'rgba(74,109,156,0.10)',
+    ribbon: ['#9fb9dd', '#4a6d9c', '#c3d4ea', '#6d8fc0', '#b8cce5', '#5d7eab'],
     motif: 'blueprint',
   },
   'heart-of-europe': {
-    accent: '#2f7d80',
-    accentBright: '#74bcbe',
-    accentSoft: 'rgba(47,125,128,0.10)',
-    ribbon: ['#74bcbe', '#2f7d80', '#a6d8d6', '#4a9a9c', '#cfe8e4', '#5aa6a2'],
+    // blue-teal register
+    accent: '#1d7795',
+    accentBright: '#61c0df',
+    accentSoft: 'rgba(29,119,149,0.10)',
+    ribbon: ['#61c0df', '#1d7795', '#9ddbeb', '#29a7d0', '#cfeaf5', '#43b4d9'],
     motif: 'ripples',
   },
   funds: {
-    accent: '#645a92',
-    accentBright: '#a79ed3',
-    accentSoft: 'rgba(100,90,146,0.10)',
-    ribbon: ['#a79ed3', '#645a92', '#c4bce6', '#7d72ad', '#d6cfee', '#8b80bd'],
+    // deep royal navy register
+    accent: '#0042b2',
+    accentBright: '#669fff',
+    accentSoft: 'rgba(0,66,178,0.08)',
+    ribbon: ['#669fff', '#0042b2', '#a9c8ff', '#1e72ff', '#d6e6ff', '#4289ff'],
     motif: 'mesh',
   },
 };

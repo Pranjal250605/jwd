@@ -10,7 +10,7 @@ import { PropertyAnalysis } from './PropertyAnalysis';
 import { PropertySimulator } from './PropertySimulator';
 import { PropertyTaxComparison } from './PropertyTaxComparison';
 
-const ACCENT = '#9a7b2d';
+const ACCENT = '#007ec4';
 
 export function PropertyDetail({
   listing: p,
@@ -44,7 +44,7 @@ export function PropertyDetail({
         {/* image column */}
         <div className="relative h-80 sm:h-96 lg:h-auto">
           <Image src={p.image} alt={name} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover" />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, transparent 55%, rgba(154,123,45,0.12)), linear-gradient(to top, rgba(12,14,18,0.55) 0%, transparent 45%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, transparent 55%, rgba(0,126,196,0.12)), linear-gradient(to top, rgba(12,14,18,0.55) 0%, transparent 45%)' }} />
           <div className="absolute bottom-6 left-6 inline-flex items-center gap-2 rounded-full bg-washi/90 px-4 py-2 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: ACCENT }} />
             <span className="font-en text-base font-semibold" style={{ color: ACCENT }}>{p.yieldPct.toFixed(1)}%</span>

@@ -32,7 +32,7 @@ export function HeartOfEuropeSection() {
         className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(ellipse 70% 60% at 70% 50%, rgba(40,110,210,0.10) 0%, transparent 65%), radial-gradient(ellipse 50% 45% at 30% 80%, rgba(201,168,92,0.10) 0%, transparent 70%)',
+            'radial-gradient(ellipse 70% 60% at 70% 50%, rgba(40,110,210,0.10) 0%, transparent 65%), radial-gradient(ellipse 50% 45% at 30% 80%, rgba(0,176,225,0.10) 0%, transparent 70%)',
         }}
       />
 
@@ -42,7 +42,7 @@ export function HeartOfEuropeSection() {
         className="absolute right-[-4%] top-1/2 hidden w-[44vmin] -translate-y-1/2 lg:block"
         viewBox="0 0 100 100"
       >
-        <circle cx="50" cy="46" r="40" fill="none" stroke="rgba(201,168,92,0.18)" strokeWidth="0.4" strokeDasharray="2 3" />
+        <circle cx="50" cy="46" r="40" fill="none" stroke="rgba(0,176,225,0.18)" strokeWidth="0.4" strokeDasharray="2 3" />
         {ISLANDS.map(([x, y, r], i) => (
           <ellipse
             key={i}
@@ -50,11 +50,11 @@ export function HeartOfEuropeSection() {
             cy={y}
             rx={r}
             ry={r * 0.7}
-            fill={i % 4 === 0 ? 'rgba(201,168,92,0.55)' : 'rgba(230,217,184,0.28)'}
+            fill={i % 4 === 0 ? 'rgba(0,176,225,0.55)' : 'rgba(174,223,239,0.28)'}
           />
         ))}
         {/* the heart island */}
-        <ellipse cx={48} cy={44} rx={3.4} ry={2.6} fill="#c9a85c" />
+        <ellipse cx={48} cy={44} rx={3.4} ry={2.6} fill="#00b0e1" />
       </svg>
 
       <div className="relative mx-auto max-w-screen-xl px-7 lg:px-12">
@@ -62,7 +62,7 @@ export function HeartOfEuropeSection() {
           <Reveal className="mb-8 flex items-center gap-4">
             <span
               className="h-px w-14"
-              style={{ background: 'linear-gradient(90deg, #c9a85c, transparent)' }}
+              style={{ background: 'linear-gradient(90deg, #00b0e1, transparent)' }}
             />
             <span className="text-[10px] uppercase tracking-[0.38em] text-gold-bright/80">
               {t('label')}

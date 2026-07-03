@@ -11,7 +11,7 @@ export function StatsRow({
   items,
   tx,
   dark = false,
-  accent = '#9a7b2d',
+  accent = '#007ec4',
 }: {
   items: StatItem[];
   tx: (l: L) => string;

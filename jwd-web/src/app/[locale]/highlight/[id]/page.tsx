@@ -18,7 +18,7 @@ export default async function HighlightPage({
   const tx = (l: L) => l[locale as 'ja' | 'en'] ?? l.en;
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-washi pt-48 pb-24">
+    <main className="relative min-h-screen overflow-hidden bg-washi pt-36 pb-24">
       <PremiumBackdrop glow />
       
       <div className="relative mx-auto max-w-5xl px-7 lg:px-12">
@@ -80,7 +80,7 @@ export default async function HighlightPage({
         <div className="mt-32 flex justify-center border-t border-sumi/5 pt-20">
           <Link
             href="/contact"
-            className="group relative overflow-hidden rounded-full border border-gold/30 bg-washi px-14 py-5 text-[11px] font-medium uppercase tracking-[0.2em] text-sumi shadow-[0_4px_20px_-10px_rgba(201,168,92,0.3)] transition-all hover:border-gold hover:shadow-[0_8px_30px_-12px_rgba(201,168,92,0.5)]"
+            className="group relative overflow-hidden rounded-full border border-gold/30 bg-washi px-14 py-5 text-[11px] font-medium uppercase tracking-[0.2em] text-sumi shadow-[0_4px_20px_-10px_rgba(0,176,225,0.3)] transition-all hover:border-gold hover:shadow-[0_8px_30px_-12px_rgba(0,176,225,0.5)]"
           >
             <span
               className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-gold/10 to-gold/5 transition-transform duration-500 ease-out group-hover:scale-x-100"

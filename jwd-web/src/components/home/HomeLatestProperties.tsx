@@ -10,7 +10,7 @@ import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 import { home } from '@/content/home';
 import type { L } from '@/content/types';
 
-const ACCENT = '#9a7b2d';
+const ACCENT = '#007ec4';
 type Lang = 'ja' | 'en';
 
 export function HomeLatestProperties() {

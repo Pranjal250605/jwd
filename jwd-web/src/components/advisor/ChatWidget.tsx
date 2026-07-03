@@ -33,17 +33,17 @@ export function ChatWidget() {
             exit={{ scale: 0, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 400, damping: 24 }}
             onClick={() => setOpen(true)}
-            className="group fixed bottom-6 right-6 z-[60] flex items-center gap-2.5 rounded-full border border-gold/30 bg-gradient-to-br from-[#2b2419] to-sumi py-2.5 pl-3 pr-5 shadow-[0_12px_34px_-8px_rgba(201,168,92,0.5),0_12px_28px_-12px_rgba(20,20,18,0.7)] transition-transform duration-300 hover:scale-[1.04]"
+            className="group fixed bottom-6 right-6 z-[60] flex items-center gap-2.5 rounded-full border border-gold/30 bg-gradient-to-br from-[#122a44] to-sumi py-2.5 pl-3 pr-5 shadow-[0_12px_34px_-8px_rgba(0,176,225,0.5),0_12px_28px_-12px_rgba(20,20,18,0.7)] transition-transform duration-300 hover:scale-[1.04]"
             aria-label={t('label')}
           >
             {/* soft gold inner glow */}
             <span
               className="pointer-events-none absolute inset-0 rounded-full opacity-80"
-              style={{ background: 'radial-gradient(circle at 16% 30%, rgba(201,168,92,0.28), transparent 60%)' }}
+              style={{ background: 'radial-gradient(circle at 16% 30%, rgba(0,176,225,0.28), transparent 60%)' }}
             />
 
             {/* AI sparkle mark */}
-            <AiSpark className="relative h-9 w-9 shrink-0 drop-shadow-[0_1px_3px_rgba(201,168,92,0.4)]" />
+            <AiSpark className="relative h-9 w-9 shrink-0 drop-shadow-[0_1px_3px_rgba(0,176,225,0.4)]" />
 
             {/* readable label */}
             <span className={`relative text-[15px] font-semibold tracking-wide text-washi ${ja ? 'font-jp' : ''}`}>

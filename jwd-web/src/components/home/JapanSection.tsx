@@ -15,7 +15,7 @@ export function JapanSection() {
         className="absolute -left-[8%] top-[10%] h-[40vmin] w-[40vmin] rounded-full opacity-60"
         style={{
           background:
-            'radial-gradient(circle, rgba(201,168,92,0.18) 0%, transparent 70%)',
+            'radial-gradient(circle, rgba(0,176,225,0.18) 0%, transparent 70%)',
         }}
       />
 

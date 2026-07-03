@@ -20,7 +20,7 @@ export function AboutSection() {
         viewBox="0 0 200 200"
       >
         <circle
-          cx="100" cy="100" r="86" fill="none" stroke="#9a7b2d" strokeWidth="8"
+          cx="100" cy="100" r="86" fill="none" stroke="#007ec4" strokeWidth="8"
           strokeLinecap="round" strokeDasharray="430 110" transform="rotate(-100 100 100)"
         />
       </svg>
@@ -39,7 +39,7 @@ export function AboutSection() {
           </h2>
           <motion.span
             className="mt-8 block h-px"
-            style={{ background: 'linear-gradient(90deg, #9a7b2d, transparent)' }}
+            style={{ background: 'linear-gradient(90deg, #007ec4, transparent)' }}
             initial={{ scaleX: 0, transformOrigin: 'left' }}
             animate={inView ? { scaleX: 1 } : undefined}
             transition={{ duration: 1.2, delay: 0.4, ease: EASE }}

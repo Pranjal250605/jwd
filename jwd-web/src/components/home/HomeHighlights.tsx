@@ -18,7 +18,7 @@ import { Motif } from '@/components/sub/Motif';
 import { home } from '@/content/home';
 import type { L } from '@/content/types';
 
-const ACCENT = '#9a7b2d';
+const ACCENT = '#007ec4';
 const EASE = [0.22, 1, 0.36, 1] as const;
 type Lang = 'ja' | 'en';
 
@@ -44,7 +44,7 @@ function TiltStatCard({
   const my = useMotionValue(50);
   const srx = useSpring(rx, { stiffness: 180, damping: 16 });
   const sry = useSpring(ry, { stiffness: 180, damping: 16 });
-  const glow = useMotionTemplate`radial-gradient(circle at ${mx}% ${my}%, rgba(154,123,45,0.20), transparent 55%)`;
+  const glow = useMotionTemplate`radial-gradient(circle at ${mx}% ${my}%, rgba(0,126,196,0.20), transparent 55%)`;
 
   const onMove = (e: React.MouseEvent) => {
     if (reduce) return;
@@ -89,7 +89,7 @@ function TiltStatCard({
         <div style={{ transform: 'translateZ(45px)' }} className="relative flex h-full flex-col">
           <span
             className="mb-7 flex h-12 w-12 items-center justify-center rounded-2xl text-white"
-            style={{ background: `linear-gradient(140deg, ${ACCENT}, #c9a85c)`, boxShadow: `0 12px 26px -10px ${ACCENT}` }}
+            style={{ background: `linear-gradient(140deg, ${ACCENT}, #00b0e1)`, boxShadow: `0 12px 26px -10px ${ACCENT}` }}
           >
             <Icon className="h-5 w-5" strokeWidth={1.5} />
           </span>
@@ -139,7 +139,7 @@ export function HomeHighlights() {
       <Motif motif="enso" accent={ACCENT} className="absolute -right-[6%] top-[-10%] h-[34rem] w-[34rem]" opacity={0.05} />
       <div
         className="pointer-events-none absolute bottom-0 left-0 h-2/3 w-1/2"
-        style={{ background: 'radial-gradient(ellipse at 20% 90%, rgba(154,123,45,0.08), transparent 65%)' }}
+        style={{ background: 'radial-gradient(ellipse at 20% 90%, rgba(0,126,196,0.08), transparent 65%)' }}
       />
       <div ref={ref} className="relative mx-auto max-w-screen-2xl px-7 lg:px-12">
         <div className="mb-14 flex flex-col gap-4">

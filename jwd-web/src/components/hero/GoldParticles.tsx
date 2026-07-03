@@ -48,9 +48,9 @@ export function GoldParticles({ reduce }: { reduce: boolean }) {
       SPRITE / 2, SPRITE / 2, 0,
       SPRITE / 2, SPRITE / 2, SPRITE / 2,
     );
-    grad.addColorStop(0, 'rgba(230,217,184,1)');
-    grad.addColorStop(0.25, 'rgba(201,168,92,0.9)');
-    grad.addColorStop(1, 'rgba(201,168,92,0)');
+    grad.addColorStop(0, 'rgba(174,223,239,1)');
+    grad.addColorStop(0.25, 'rgba(0,176,225,0.9)');
+    grad.addColorStop(1, 'rgba(0,176,225,0)');
     sctx.fillStyle = grad;
     sctx.fillRect(0, 0, SPRITE, SPRITE);
 

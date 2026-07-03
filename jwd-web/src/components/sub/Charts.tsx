@@ -13,7 +13,7 @@ export function BarChart({
   items,
   unit = '',
   dark = false,
-  accent = '#9a7b2d',
+  accent = '#007ec4',
 }: {
   items: Datum[];
   unit?: string;
@@ -60,7 +60,7 @@ export function LineChart({
   points,
   unit = '',
   dark = false,
-  accent = '#9a7b2d',
+  accent = '#007ec4',
 }: {
   points: Datum[];
   unit?: string;
@@ -143,7 +143,7 @@ export function LineChart({
 export function DonutChart({
   items,
   dark = false,
-  accent = '#9a7b2d',
+  accent = '#007ec4',
 }: {
   items: Datum[];
   dark?: boolean;
@@ -151,7 +151,7 @@ export function DonutChart({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
-  const SHADES = [accent, '#c9a85c', '#bca06a', '#e6d9b8', '#8fa0c4', '#b7a7d0'];
+  const SHADES = [accent, '#00b0e1', '#1d7795', '#aedfef', '#8fa0c4', '#b7a7d0'];
   const total = items.reduce((s, d) => s + d.value, 0);
   const C = 2 * Math.PI * 30;
   let offset = 0;

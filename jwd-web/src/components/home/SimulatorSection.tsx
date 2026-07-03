@@ -38,7 +38,7 @@ function Field({
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="h-px w-full cursor-pointer appearance-none bg-sumi/15 accent-[#9a7b2d]"
+        className="h-px w-full cursor-pointer appearance-none bg-sumi/15 accent-[#007ec4]"
       />
     </label>
   );

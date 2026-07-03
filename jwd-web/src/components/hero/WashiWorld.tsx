@@ -117,7 +117,7 @@ export function WashiWorld({ reduce }: { reduce: boolean }) {
           top: '8%',
           left: '12%',
           background:
-            'radial-gradient(circle, rgba(201,168,92,0.30) 0%, rgba(201,168,92,0.12) 45%, transparent 70%)',
+            'radial-gradient(circle, rgba(0,176,225,0.30) 0%, rgba(0,176,225,0.12) 45%, transparent 70%)',
           borderRadius: '50%',
         }}
       />
@@ -134,7 +134,7 @@ export function WashiWorld({ reduce }: { reduce: boolean }) {
           cy="100"
           r="86"
           fill="none"
-          stroke="#9a7b2d"
+          stroke="#007ec4"
           strokeWidth="7"
           strokeLinecap="round"
           strokeOpacity="0.13"
@@ -148,7 +148,7 @@ export function WashiWorld({ reduce }: { reduce: boolean }) {
           cy="100"
           r="86"
           fill="none"
-          stroke="#9a7b2d"
+          stroke="#007ec4"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeOpacity="0.10"

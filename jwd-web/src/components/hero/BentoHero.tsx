@@ -90,14 +90,14 @@ export function BentoHero() {
       {/* faint warm wash, lower right */}
       <div
         className="pointer-events-none absolute bottom-0 right-0 h-2/3 w-1/2"
-        style={{ background: 'radial-gradient(ellipse at 80% 90%, rgba(154,123,45,0.08) 0%, transparent 65%)' }}
+        style={{ background: 'radial-gradient(ellipse at 80% 90%, rgba(0,126,196,0.08) 0%, transparent 65%)' }}
       />
 
       <div className="relative mx-auto max-w-screen-2xl px-5 sm:px-8 lg:px-12">
         {/* Kintsugi-jointed bento grid — gaps are the gold seams */}
         <div
           className="grid auto-rows-[minmax(150px,auto)] grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-4"
-          style={{ background: 'rgba(154,123,45,0.18)' }}
+          style={{ background: 'rgba(0,126,196,0.18)' }}
         >
           {/* ── A · The statement (2×2) ── */}
           <Cell
@@ -114,7 +114,7 @@ export function BentoHero() {
             >
               <motion.path
                 d="M75 26 C87 38 90 60 77 75 C64 90 38 91 22 79 C7 67 7 41 23 26 C37 13 60 12 74 22"
-                stroke="#9a7b2d"
+                stroke="#007ec4"
                 strokeWidth={2}
                 strokeLinecap="round"
                 initial={reduce ? { pathLength: 1 } : { pathLength: 0 }}
@@ -127,7 +127,7 @@ export function BentoHero() {
               <div className="mb-8 flex items-center gap-4">
                 <motion.span
                   className="h-px w-12 origin-left"
-                  style={{ background: 'linear-gradient(90deg, #9a7b2d, transparent)' }}
+                  style={{ background: 'linear-gradient(90deg, #007ec4, transparent)' }}
                   initial={reduce ? false : { scaleX: 0 }}
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 0.3, ease: EASE }}
@@ -266,9 +266,9 @@ export function BentoHero() {
                 </span>
               </div>
               <svg aria-hidden viewBox="0 0 100 100" className="h-24 w-24 shrink-0 opacity-80">
-                <circle cx="50" cy="48" r="40" fill="none" stroke="rgba(154,123,45,0.2)" strokeWidth="0.4" strokeDasharray="2 3" />
+                <circle cx="50" cy="48" r="40" fill="none" stroke="rgba(0,126,196,0.2)" strokeWidth="0.4" strokeDasharray="2 3" />
                 {ISLANDS.map(([x, y, r], i) => (
-                  <circle key={i} cx={x} cy={y} r={r} fill={i % 3 === 0 ? '#9a7b2d' : 'rgba(154,123,45,0.4)'} />
+                  <circle key={i} cx={x} cy={y} r={r} fill={i % 3 === 0 ? '#007ec4' : 'rgba(0,126,196,0.4)'} />
                 ))}
               </svg>
             </Cell>
@@ -286,7 +286,7 @@ export function BentoHero() {
             </div>
             <span
               className="font-jp shrink-0 px-5 py-2 text-[10px] tracking-[0.3em] text-gold"
-              style={{ border: '1px solid rgba(154,123,45,0.25)', background: 'rgba(154,123,45,0.04)' }}
+              style={{ border: '1px solid rgba(0,126,196,0.25)', background: 'rgba(0,126,196,0.04)' }}
             >
               {t('badge').split('·')[0].trim()}
             </span>
