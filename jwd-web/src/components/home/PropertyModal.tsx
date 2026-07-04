@@ -8,7 +8,7 @@ import { X, ArrowUpRight, BedDouble, Ruler, Building2, MapPin } from 'lucide-rea
 import { Link } from '@/i18n/navigation';
 import type { Listing } from '@/content/properties';
 
-const ACCENT = '#007ec4';
+const ACCENT = '#0097a7';
 
 export function PropertyModal({
   listing: p,
@@ -61,7 +61,7 @@ export function PropertyModal({
         {/* image column */}
         <div className="relative h-60 sm:h-80 lg:h-auto">
           <Image src={p.image} alt={name} fill sizes="(max-width:1024px) 100vw, 540px" className="object-cover" />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, transparent 55%, rgba(0,126,196,0.12)), linear-gradient(to top, rgba(12,14,18,0.55) 0%, transparent 45%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, transparent 55%, rgba(0,151,167,0.12)), linear-gradient(to top, rgba(12,14,18,0.55) 0%, transparent 45%)' }} />
           <div className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full bg-washi/90 px-3.5 py-1.5 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: ACCENT }} />
             <span className="font-en text-sm font-semibold" style={{ color: ACCENT }}>{p.yieldPct.toFixed(1)}%</span>

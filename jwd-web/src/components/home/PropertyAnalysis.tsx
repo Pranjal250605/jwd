@@ -2,7 +2,7 @@ import { Sparkles, TrendingUp, ShieldCheck } from 'lucide-react';
 import type { Listing } from '@/content/properties';
 import type { PriceHistory } from '@/lib/market-data';
 
-const ACCENT = '#007ec4';
+const ACCENT = '#0097a7';
 
 /* ── Illustrative model assumptions (replace with verified / live data) ── */
 const APPRECIATION = 0.06; // fallback capital growth p.a. (used if no history)

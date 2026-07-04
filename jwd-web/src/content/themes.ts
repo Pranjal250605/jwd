@@ -25,43 +25,43 @@ export interface SectionTheme {
 
 export const SECTION_THEMES: Record<string, SectionTheme> = {
   about: {
-    // brand ocean blue
-    accent: '#007ec4',
-    accentBright: '#00b0e1',
-    accentSoft: 'rgba(0,126,196,0.10)',
-    ribbon: ['#89d5ff', '#aedfef', '#66c8ff', '#00b0e1', '#0089d6', '#00d3f1', '#9ddbeb', '#007ec4', '#bfe6f5'],
+    // brand turquoise
+    accent: '#0097a7',
+    accentBright: '#00c4cc',
+    accentSoft: 'rgba(0,151,167,0.10)',
+    ribbon: ['#7fe7e0', '#b5ece7', '#4fd8d5', '#00c4cc', '#00a3ad', '#2ee6d6', '#9fe3de', '#0097a7', '#c4f1ec'],
     motif: 'enso',
   },
   'why-dubai': {
-    // bright cyan register
-    accent: '#0093c4',
-    accentBright: '#00d3f1',
-    accentSoft: 'rgba(0,147,196,0.10)',
-    ribbon: ['#42e7ff', '#00d3f1', '#89f0ff', '#00bbd6', '#bff6ff', '#00daf9'],
+    // bright aqua register
+    accent: '#00a5a5',
+    accentBright: '#40e0d0',
+    accentSoft: 'rgba(0,165,165,0.10)',
+    ribbon: ['#40e0d0', '#2ee6d6', '#8ff0e8', '#00c9c0', '#c9f7f0', '#00d6ca'],
     motif: 'lattice',
   },
   'dubai-properties': {
-    // architect steel blue, tuned cooler
-    accent: '#4a6d9c',
-    accentBright: '#9fb9dd',
-    accentSoft: 'rgba(74,109,156,0.10)',
-    ribbon: ['#9fb9dd', '#4a6d9c', '#c3d4ea', '#6d8fc0', '#b8cce5', '#5d7eab'],
+    // architect steel teal
+    accent: '#4a8a94',
+    accentBright: '#9fd0d6',
+    accentSoft: 'rgba(74,138,148,0.10)',
+    ribbon: ['#9fd0d6', '#4a8a94', '#c3e2e6', '#6dabb4', '#b8dade', '#5d9aa3'],
     motif: 'blueprint',
   },
   'heart-of-europe': {
-    // blue-teal register
-    accent: '#1d7795',
-    accentBright: '#61c0df',
-    accentSoft: 'rgba(29,119,149,0.10)',
-    ribbon: ['#61c0df', '#1d7795', '#9ddbeb', '#29a7d0', '#cfeaf5', '#43b4d9'],
+    // lagoon register
+    accent: '#177f80',
+    accentBright: '#61d5cf',
+    accentSoft: 'rgba(23,127,128,0.10)',
+    ribbon: ['#61d5cf', '#177f80', '#9de6e0', '#29b3ad', '#cff2ee', '#43c4bc'],
     motif: 'ripples',
   },
   funds: {
-    // deep royal navy register
-    accent: '#0042b2',
-    accentBright: '#669fff',
-    accentSoft: 'rgba(0,66,178,0.08)',
-    ribbon: ['#669fff', '#0042b2', '#a9c8ff', '#1e72ff', '#d6e6ff', '#4289ff'],
+    // deep sea teal register
+    accent: '#006d77',
+    accentBright: '#5fd3c8',
+    accentSoft: 'rgba(0,109,119,0.08)',
+    ribbon: ['#5fd3c8', '#006d77', '#a9e8e0', '#1ea5a0', '#d6f4f0', '#42bdb4'],
     motif: 'mesh',
   },
 };

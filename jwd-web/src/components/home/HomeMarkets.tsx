@@ -15,7 +15,7 @@ import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 import { MARKETS, MARKETS_ALL_URL } from '@/data/markets';
 import { jaOutbound, JA_PROXY_NOTICE } from '@/lib/translate';
 
-const ACCENT = '#007ec4';
+const ACCENT = '#0097a7';
 type Lang = 'ja' | 'en';
 
 /** Cursor-following 3D tilt anchor — matches the stat cards elsewhere on site. */
@@ -35,7 +35,7 @@ function TiltLink({
   const my = useMotionValue(50);
   const srx = useSpring(rx, { stiffness: 180, damping: 16 });
   const sry = useSpring(ry, { stiffness: 180, damping: 16 });
-  const glow = useMotionTemplate`radial-gradient(circle at ${mx}% ${my}%, rgba(0,126,196,0.18), transparent 55%)`;
+  const glow = useMotionTemplate`radial-gradient(circle at ${mx}% ${my}%, rgba(0,151,167,0.18), transparent 55%)`;
 
   const onMove = (e: React.MouseEvent) => {
     if (reduce) return;
@@ -104,7 +104,7 @@ export function HomeMarkets() {
                 <div style={{ transform: 'translateZ(40px)' }} className="relative flex h-full flex-col gap-5">
                   <span
                     className="flex h-12 w-12 items-center justify-center rounded-2xl text-white"
-                    style={{ background: `linear-gradient(140deg, ${ACCENT}, #00b0e1)`, boxShadow: `0 12px 26px -10px ${ACCENT}` }}
+                    style={{ background: `linear-gradient(140deg, ${ACCENT}, #00c4cc)`, boxShadow: `0 12px 26px -10px ${ACCENT}` }}
                   >
                     <m.icon className="h-5 w-5" strokeWidth={1.5} />
                   </span>

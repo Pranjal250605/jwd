@@ -6,7 +6,7 @@ import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { YieldCalculator } from '@/components/sub/Interactive';
 import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 
-const ACCENT = '#007ec4';
+const ACCENT = '#0097a7';
 
 /** Interactive moment on the homepage — drag the sliders, watch the numbers. */
 export function HomeCalculator() {

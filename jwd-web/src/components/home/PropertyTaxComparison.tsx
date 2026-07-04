@@ -3,7 +3,7 @@
 import { useLocale } from 'next-intl';
 import { Scale } from 'lucide-react';
 
-const DUBAI = '#007ec4';
+const DUBAI = '#0097a7';
 const JAPAN = '#5d6f8a';
 const JP_CGT = 0.20315;
 const HOLD = 5;
@@ -93,7 +93,7 @@ export function PropertyTaxComparison({
                 <span className="font-en font-semibold" style={{ color: DUBAI }}>{aed(projectedGainAed)}</span>
               </div>
               <div className="h-2 overflow-hidden rounded-full bg-sumi/10">
-                <div className="h-full rounded-full" style={{ width: '100%', background: `linear-gradient(90deg, ${DUBAI}, #00b0e1)` }} />
+                <div className="h-full rounded-full" style={{ width: '100%', background: `linear-gradient(90deg, ${DUBAI}, #00c4cc)` }} />
               </div>
               <p className="mt-1.5 text-[11px]" style={{ color: DUBAI }}>
                 {ja ? `差 +${aed(jpTaxAed)} ( ${oku(jpTaxAed * aedJpy)} ) 手元に残る` : `+${aed(jpTaxAed)} ( ${oku(jpTaxAed * aedJpy)} ) more kept`}

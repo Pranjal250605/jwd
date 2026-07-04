@@ -6,7 +6,7 @@ import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { Tabs } from '@/components/sub/Interactive';
 import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 
-const ACCENT = '#007ec4';
+const ACCENT = '#0097a7';
 type L = { ja: string; en: string };
 
 const ITEMS: {

@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
 import { SlidersHorizontal } from 'lucide-react';
 
-const DUBAI = '#007ec4';
+const DUBAI = '#0097a7';
 const JAPAN = '#5d6f8a';
 const JP_CGT = 0.20315; // Japan capital-gains / financial-income tax
 
@@ -40,7 +40,7 @@ function Slider({
         step={step}
         value={value}
         onChange={(e) => onChange(+e.target.value)}
-        className="h-1 w-full cursor-pointer appearance-none rounded-full bg-sumi/15 accent-[#007ec4]"
+        className="h-1 w-full cursor-pointer appearance-none rounded-full bg-sumi/15 accent-[#0097a7]"
       />
     </div>
   );

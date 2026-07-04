@@ -24,8 +24,8 @@ const STRANDS = [
 
 // Default homepage palette — sky-and-ocean blues on the white canvas.
 const DEFAULT_COLORS = [
-  '#bcc8ec', '#9ddbeb', '#66c8ff', '#42d5ff', '#00b0e1',
-  '#00b0e1', '#aedfef', '#007ec4', '#cdbfe0',
+  '#bce8e4', '#9fe3de', '#5ce0d8', '#40e0d0', '#00c4cc',
+  '#00c4cc', '#b5ece7', '#0097a7', '#cdbfe0',
 ];
 
 export function SilkRibbon({ colors = DEFAULT_COLORS }: { colors?: string[] }) {

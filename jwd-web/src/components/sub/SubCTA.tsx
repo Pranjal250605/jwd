@@ -15,14 +15,14 @@ export function SubCTA() {
         className="absolute inset-x-0 top-0 h-px"
         style={{
           background:
-            'linear-gradient(90deg, transparent, rgba(0,126,196,0.45), transparent)',
+            'linear-gradient(90deg, transparent, rgba(0,151,167,0.45), transparent)',
         }}
       />
       <div
         className="absolute inset-x-0 bottom-0 h-1/2"
         style={{
           background:
-            'radial-gradient(ellipse 60% 60% at 50% 100%, rgba(0,126,196,0.1) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 60% at 50% 100%, rgba(0,151,167,0.1) 0%, transparent 70%)',
         }}
       />
       {/* faint ensō echo */}
@@ -34,7 +34,7 @@ export function SubCTA() {
       >
         <path
           d="M75 26 C87 38 90 60 77 75 C64 90 38 91 22 79 C7 67 7 41 23 26 C37 13 60 12 74 22"
-          stroke="#007ec4"
+          stroke="#0097a7"
           strokeWidth={2}
           strokeLinecap="round"
         />

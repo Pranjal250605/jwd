@@ -9,12 +9,12 @@ import { motion, useReducedMotion } from 'framer-motion';
  * gold, sand and bronze warmed by a whisper of Dubai indigo.
  */
 const BLOBS = [
-  { color: '#00b0e1', top: '-12%', left: '2%', size: 60, o: 0.85, dx: 9, dy: 7, dur: 22 },
-  { color: '#d8edf6', top: '-20%', left: '48%', size: 66, o: 0.95, dx: -8, dy: 6, dur: 26 },
-  { color: '#007ec4', top: '14%', left: '24%', size: 52, o: 0.5, dx: 7, dy: -6, dur: 28 },
-  { color: '#aedfef', top: '20%', left: '66%', size: 58, o: 0.8, dx: -7, dy: -5, dur: 24 },
+  { color: '#00c4cc', top: '-12%', left: '2%', size: 60, o: 0.85, dx: 9, dy: 7, dur: 22 },
+  { color: '#d6f2ef', top: '-20%', left: '48%', size: 66, o: 0.95, dx: -8, dy: 6, dur: 26 },
+  { color: '#0097a7', top: '14%', left: '24%', size: 52, o: 0.5, dx: 7, dy: -6, dur: 28 },
+  { color: '#b5ece7', top: '20%', left: '66%', size: 58, o: 0.8, dx: -7, dy: -5, dur: 24 },
   { color: '#bcc8e0', top: '-6%', left: '80%', size: 44, o: 0.55, dx: -6, dy: 8, dur: 30 },
-  { color: '#7fd0ea', top: '26%', left: '6%', size: 40, o: 0.5, dx: 6, dy: 5, dur: 20 },
+  { color: '#7fe0da', top: '26%', left: '6%', size: 40, o: 0.5, dx: 6, dy: 5, dur: 20 },
 ];
 
 export function AuroraMesh() {

@@ -24,10 +24,10 @@ export function KintsugiSeam({ reduce }: { reduce: boolean }) {
     >
       <defs>
         <linearGradient id="kintsugi-gold" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#aedfef" />
-          <stop offset="40%" stopColor="#00b0e1" />
-          <stop offset="75%" stopColor="#007ec4" />
-          <stop offset="100%" stopColor="#00b0e1" />
+          <stop offset="0%" stopColor="#b5ece7" />
+          <stop offset="40%" stopColor="#00c4cc" />
+          <stop offset="75%" stopColor="#0097a7" />
+          <stop offset="100%" stopColor="#00c4cc" />
         </linearGradient>
         <filter id="kintsugi-glow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="1.1" />
@@ -38,7 +38,7 @@ export function KintsugiSeam({ reduce }: { reduce: boolean }) {
       <motion.path
         d={SEAM_PATH}
         fill="none"
-        stroke="#aedfef"
+        stroke="#b5ece7"
         strokeWidth={26}
         vectorEffect="non-scaling-stroke"
         filter="url(#kintsugi-glow)"
@@ -55,7 +55,7 @@ export function KintsugiSeam({ reduce }: { reduce: boolean }) {
       <motion.path
         d={SEAM_PATH}
         fill="none"
-        stroke="#00b0e1"
+        stroke="#00c4cc"
         strokeWidth={9}
         vectorEffect="non-scaling-stroke"
         filter="url(#kintsugi-glow)"
@@ -76,7 +76,7 @@ export function KintsugiSeam({ reduce }: { reduce: boolean }) {
       <motion.path
         d={SEAM_PATH}
         fill="none"
-        stroke="#00b0e1"
+        stroke="#00c4cc"
         strokeWidth={5}
         strokeOpacity={0.35}
         vectorEffect="non-scaling-stroke"

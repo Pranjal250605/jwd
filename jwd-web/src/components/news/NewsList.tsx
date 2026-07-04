@@ -8,7 +8,7 @@ import { Reveal } from '@/components/kintsugi/Reveal';
 import type { L } from '@/content/types';
 import type { NewsEntry } from '@/lib/news';
 
-const ACCENT = '#007ec4';
+const ACCENT = '#0097a7';
 const PAGE = 8;
 type Market = 'all' | 'dubai' | 'japan';
 

@@ -9,7 +9,7 @@ import { MarkerUnderline } from '@/components/sub/MarkerUnderline';
 import { PremiumBackdrop } from '@/components/kintsugi/PremiumBackdrop';
 import { listings } from '@/content/properties';
 
-const ACCENT = '#007ec4';
+const ACCENT = '#0097a7';
 const aed = (n: number) => `AED ${n.toLocaleString('en-US')}`;
 
 export function PropertiesSection() {

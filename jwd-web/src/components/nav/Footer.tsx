@@ -31,7 +31,7 @@ export function Footer() {
         className="absolute inset-x-0 top-0 h-px"
         style={{
           background:
-            'linear-gradient(90deg, transparent, rgba(0,176,225,0.5), transparent)',
+            'linear-gradient(90deg, transparent, rgba(0,196,204,0.5), transparent)',
         }}
       />
       <div className="mx-auto max-w-screen-2xl px-7 py-20 lg:px-12">

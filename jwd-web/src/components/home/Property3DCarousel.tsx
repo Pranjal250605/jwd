@@ -13,7 +13,7 @@ import {
 import { useLocale } from 'next-intl';
 import { listings, type Listing } from '@/content/properties';
 
-const ACCENT = '#007ec4';
+const ACCENT = '#0097a7';
 const RX = 380;
 const RZ = 320;
 type Lang = 'ja' | 'en';
@@ -119,7 +119,7 @@ export function Property3DCarousel() {
       >
         <div
           className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[680px] -translate-x-1/2 -translate-y-1/2"
-          style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0,126,196,0.16) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(0,151,167,0.16) 0%, transparent 70%)' }}
         />
         <div className="absolute inset-0" style={{ transformStyle: 'preserve-3d' }}>
           {listings.map((p, i) => (

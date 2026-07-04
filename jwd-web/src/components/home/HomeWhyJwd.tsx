@@ -22,7 +22,7 @@ export function HomeWhyJwd() {
         viewBox="0 0 200 200"
       >
         <circle
-          cx="100" cy="100" r="86" fill="none" stroke="#007ec4" strokeWidth="8"
+          cx="100" cy="100" r="86" fill="none" stroke="#0097a7" strokeWidth="8"
           strokeLinecap="round" strokeDasharray="430 110" transform="rotate(-100 100 100)"
         />
       </svg>

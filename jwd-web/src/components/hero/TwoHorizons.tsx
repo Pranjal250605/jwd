@@ -161,7 +161,7 @@ export function TwoHorizons() {
             className="pointer-events-none absolute inset-0 z-[28]"
             style={{
               background:
-                'linear-gradient(100deg, transparent 44%, rgba(174,223,239,0.13) 50%, transparent 56%)',
+                'linear-gradient(100deg, transparent 44%, rgba(181,236,231,0.13) 50%, transparent 56%)',
             }}
             initial={{ x: '-120%' }}
             animate={{ x: '120%' }}
@@ -194,7 +194,7 @@ export function TwoHorizons() {
             >
               <span
                 className="h-px w-14"
-                style={{ background: 'linear-gradient(90deg, #007ec4, transparent)' }}
+                style={{ background: 'linear-gradient(90deg, #0097a7, transparent)' }}
               />
               <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
                 {t('badge')}
@@ -330,7 +330,7 @@ export function TwoHorizons() {
             style={{
               opacity: gateOpacity,
               background:
-                'radial-gradient(circle at 53% 42%, #aedfef 0%, rgba(0,176,225,0.92) 26%, rgba(0,126,196,0.65) 46%, rgba(16,24,43,0.97) 80%)',
+                'radial-gradient(circle at 53% 42%, #b5ece7 0%, rgba(0,196,204,0.92) 26%, rgba(0,151,167,0.65) 46%, rgba(16,24,43,0.97) 80%)',
             }}
           />
         )}

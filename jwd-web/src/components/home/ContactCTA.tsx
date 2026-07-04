@@ -23,7 +23,7 @@ export function ContactCTA() {
         <motion.path
           d="M0 72 L18 68 L26 71 L41 64 L52 67 L68 58 L79 61 L100 52"
           fill="none"
-          stroke="#00b0e1"
+          stroke="#00c4cc"
           strokeWidth="1"
           vectorEffect="non-scaling-stroke"
           initial={{ pathLength: 0 }}

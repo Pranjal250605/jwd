@@ -22,8 +22,8 @@ export function SubHubGrid({
   base,
   subsections,
   heading,
-  accent = '#007ec4',
-  accentBright = '#00b0e1',
+  accent = '#0097a7',
+  accentBright = '#00c4cc',
 }: {
   base: string;
   subsections: Subsection[];

@@ -508,7 +508,7 @@ export function ChatPanel({
         ref={scrollRef}
         data-lenis-prevent
         className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-6 space-y-4"
-        style={{ scrollbarWidth: 'thin', scrollbarColor: '#007ec433 transparent' }}
+        style={{ scrollbarWidth: 'thin', scrollbarColor: '#0097a733 transparent' }}
       >
         {/* Welcome / empty state */}
         {messages.length === 0 && (

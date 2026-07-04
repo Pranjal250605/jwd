@@ -17,7 +17,7 @@ export function StoriesSection() {
         className="absolute bottom-0 left-1/3 h-[260px] w-[640px]"
         style={{
           background:
-            'radial-gradient(ellipse, rgba(0,176,225,0.10) 0%, transparent 70%)',
+            'radial-gradient(ellipse, rgba(0,196,204,0.10) 0%, transparent 70%)',
         }}
       />
 
