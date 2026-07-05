@@ -24,6 +24,8 @@
 }
 
 html {
+  /* 18px base (readability for a senior audience) — scales every rem-based size */
+  font-size: 112.5%;
   scroll-behavior: smooth;
 }
 

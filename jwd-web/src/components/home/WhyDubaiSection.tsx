@@ -31,7 +31,7 @@ export function WhyDubaiSection() {
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 1, ease: EASE }}
         >
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold-bright/70">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold-bright/70">
             {t('label')}
           </span>
           <h2 className="font-jp text-3xl font-extrabold text-washi lg:text-[2.6rem]">
@@ -56,7 +56,7 @@ export function WhyDubaiSection() {
               <h3 className="font-jp mt-4 text-xl font-bold text-washi">
                 {t(`${card}Title`)}
               </h3>
-              <p className="mt-5 text-[0.84rem] font-light leading-[2.1] text-washi/50">
+              <p className="mt-5 text-lg font-light leading-[2.1] text-washi/75">
                 {t(`${card}Text`)}
               </p>
             </motion.article>

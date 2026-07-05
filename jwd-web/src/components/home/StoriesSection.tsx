@@ -23,7 +23,7 @@ export function StoriesSection() {
 
       <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-10 px-7 text-center">
         <Reveal>
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold-bright/70">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold-bright/70">
             {t('label')}
           </span>
         </Reveal>
@@ -40,7 +40,7 @@ export function StoriesSection() {
           <span className="font-en text-base italic tracking-wide text-gold-pale">
             {t('name')}
           </span>
-          <span className="text-[10px] tracking-[0.3em] text-washi/40">
+          <span className="text-[12px] tracking-[0.3em] text-washi/40">
             {t('role')}
           </span>
         </Reveal>

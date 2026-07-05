@@ -29,13 +29,13 @@ export function HomeWhyJwd() {
 
       <div className="relative mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-14 flex flex-col gap-5">
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
             {tx(c.label)}
           </span>
           <h2 className="font-jp max-w-2xl text-3xl font-extrabold leading-snug text-sumi lg:text-[2.6rem]">
             {tx(c.title)}
           </h2>
-          <p className="max-w-xl text-sm font-light leading-loose text-sumi-soft">
+          <p className="max-w-xl text-xl font-light leading-loose text-sumi-soft">
             {tx(c.intro)}
           </p>
         </Reveal>
@@ -51,14 +51,14 @@ export function HomeWhyJwd() {
                 <h3 className="font-jp mt-4 text-lg font-bold text-sumi">
                   {tx(it.title)}
                 </h3>
-                <p className="mt-4 text-[0.84rem] font-light leading-[2.1] text-sumi-soft">
+                <p className="mt-4 text-lg font-light leading-[2.1] text-sumi-soft">
                   {tx(it.text)}
                 </p>
                 {it.action && (
                   it.action.href === '/advisor' ? (
                     <button
                       onClick={() => window.dispatchEvent(new Event('open-advisor-chat'))}
-                      className="group/btn mt-6 inline-flex items-center gap-2 border-b border-gold/40 pb-1 text-[11px] uppercase tracking-[0.2em] text-gold transition-all duration-300 hover:border-gold hover:text-gold-bright"
+                      className="group/btn mt-6 inline-flex items-center gap-2 border-b border-gold/40 pb-1 text-[13px] uppercase tracking-[0.2em] text-gold transition-all duration-300 hover:border-gold hover:text-gold-bright"
                     >
                       <span className="relative flex h-1.5 w-1.5">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75" />
@@ -69,7 +69,7 @@ export function HomeWhyJwd() {
                   ) : (
                     <Link
                       href={it.action.href}
-                      className="mt-6 inline-block w-fit border-b border-gold/40 pb-1 text-[11px] uppercase tracking-[0.2em] text-gold transition-colors hover:border-gold hover:text-sumi"
+                      className="mt-6 inline-block w-fit border-b border-gold/40 pb-1 text-[13px] uppercase tracking-[0.2em] text-gold transition-colors hover:border-gold hover:text-sumi"
                     >
                       {tx(it.action.label)}
                     </Link>

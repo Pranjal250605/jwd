@@ -24,7 +24,7 @@ function Panel({ title, sub, children, span }: { title?: string; sub?: string; c
       {title && (
         <div className="mb-6 flex items-baseline justify-between gap-3">
           <h3 className="font-en text-lg font-medium tracking-wide text-sumi">{title}</h3>
-          {sub && <span className="text-[11px] tracking-wide text-sumi-soft">{sub}</span>}
+          {sub && <span className="text-[13px] tracking-wide text-sumi-soft">{sub}</span>}
         </div>
       )}
       {children}
@@ -54,7 +54,7 @@ export function WealthDashboard() {
         {/* header */}
         <Reveal className="mb-12 flex flex-wrap items-end justify-between gap-6">
           <div className="flex flex-col gap-4">
-            <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+            <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
               {tl('Family Office · Wealth Suite', 'ファミリーオフィス・ウェルススイート')}
             </span>
             <h2 className={`${display} max-w-3xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] text-sumi lg:text-[3rem]`}>
@@ -66,7 +66,7 @@ export function WealthDashboard() {
             <span className="flex h-9 w-9 items-center justify-center rounded-full text-washi" style={{ background: `linear-gradient(135deg, #5d6f8a, ${ACCENT})` }}>藤</span>
             <div className="flex flex-col">
               <span className="font-en text-sm text-sumi">{tl('Todō Family', '藤堂家')}</span>
-              <span className="text-[10px] tracking-wide text-sumi-soft">{tl('Consolidated · JPY base', '統合口座 ・ JPY 基準')}</span>
+              <span className="text-[12px] tracking-wide text-sumi-soft">{tl('Consolidated · JPY base', '統合口座 ・ JPY 基準')}</span>
             </div>
           </div>
         </Reveal>
@@ -75,13 +75,13 @@ export function WealthDashboard() {
         <Reveal>
           <div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-sumi/8 bg-sumi/[0.06] lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
             <div className="flex flex-col gap-3 bg-washi p-8">
-              <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-gold">
+              <span className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.2em] text-gold">
                 <Wallet className="h-3.5 w-3.5" strokeWidth={1.6} /> {tl('Net Worth', '総資産')}
               </span>
               <div className="font-en text-5xl font-light leading-none text-sumi lg:text-6xl">
                 <span className="text-3xl text-gold align-top">¥</span>48.0<span className="text-2xl text-sumi-soft">億</span>
               </div>
-              <span className="text-[12px] text-sumi-soft">{tl('¥4,800,000,000 · 5 accounts / 3 currencies', '¥4,800,000,000 ・ 5口座 / 3通貨 を統合')}</span>
+              <span className="text-[14px] text-sumi-soft">{tl('¥4,800,000,000 · 5 accounts / 3 currencies', '¥4,800,000,000 ・ 5口座 / 3通貨 を統合')}</span>
             </div>
             <Kpi label={tl('MoM', '前月比')} value={`+${NET_WORTH.momPct}%`} sub={`▲ ¥${(NET_WORTH.momYen / 1e6).toFixed(0)}M`} tone={UP} />
             <Kpi label={tl('YTD return', '年初来リターン')} value={`+${NET_WORTH.ytdPct}%`} sub={tl(`Benchmark +${NET_WORTH.benchPct}%`, `ベンチマーク +${NET_WORTH.benchPct}%`)} />
@@ -108,9 +108,9 @@ export function WealthDashboard() {
               <div className="flex flex-col">
                 {ALLOC.map((a, i) => (
                   <div key={i} className="flex items-center justify-between border-b border-sumi/8 py-3 last:border-0">
-                    <span className="text-[13px] text-sumi-soft">{ja ? a.ja : a.en}</span>
+                    <span className="text-[15px] text-sumi-soft">{ja ? a.ja : a.en}</span>
                     <div className="flex items-center gap-4">
-                      <span className="font-en text-[13px] text-sumi-soft/70">{a.pct.toFixed(1)}%</span>
+                      <span className="font-en text-[15px] text-sumi-soft/70">{a.pct.toFixed(1)}%</span>
                       <span className="font-en text-sm text-sumi">{oku(a.v)}</span>
                     </div>
                   </div>
@@ -124,7 +124,7 @@ export function WealthDashboard() {
               <div className="flex flex-col gap-4">
                 {TARGET.map((t, i) => (
                   <div key={i} className="flex flex-col gap-1.5">
-                    <div className="flex justify-between text-[12px]">
+                    <div className="flex justify-between text-[14px]">
                       <span className="text-sumi">{ja ? t.ja : t.en}</span>
                       <span className="font-en text-sumi-soft">{tl(`now ${t.cur}% / target ${t.tgt}%`, `現状 ${t.cur}% / 目標 ${t.tgt}%`)}</span>
                     </div>
@@ -155,16 +155,16 @@ export function WealthDashboard() {
               const up = gain >= 0;
               return (
                 <div key={i} className="rounded-[1.5rem] border border-sumi/8 bg-washi p-6 transition-all duration-500 hover:-translate-y-1 hover:border-gold/40 hover:shadow-[0_24px_50px_-30px_rgba(32,37,31,0.4)]">
-                  <span className="text-[10px] uppercase tracking-[0.18em] text-gold">{ja ? p.locJa : p.locEn}</span>
-                  <h4 className={`${display} mt-1.5 text-lg font-semibold text-sumi`}>{ja ? p.nmJa : p.nmEn}</h4>
+                  <span className="text-[12px] uppercase tracking-[0.18em] text-gold">{ja ? p.locJa : p.locEn}</span>
+                  <h4 className={`${display} mt-1.5 text-xl font-semibold text-sumi`}>{ja ? p.nmJa : p.nmEn}</h4>
                   <div className="mt-4 flex items-end justify-between">
-                    <span className="inline-block rounded-full border border-sumi/12 px-3 py-1 text-[10px] tracking-wide text-sumi-soft">{ja ? p.tagJa : p.tagEn}</span>
+                    <span className="inline-block rounded-full border border-sumi/12 px-3 py-1 text-[12px] tracking-wide text-sumi-soft">{ja ? p.tagJa : p.tagEn}</span>
                     <span className="font-en text-xl font-light text-sumi">{oku(p.cur)}</span>
                   </div>
-                  <div className="mt-4 flex justify-between gap-3 border-t border-sumi/8 pt-4 text-[11px] text-sumi-soft">
-                    <span className="flex flex-col gap-0.5">{tl('Acquired', '取得価額')}<b className="font-en text-[13px] font-medium text-sumi">{oku(p.acq)}</b></span>
-                    <span className="flex flex-col gap-0.5">{tl('Unrealised', '含み損益')}<b className="font-en text-[13px] font-medium" style={{ color: up ? UP : DOWN }}>{up ? '+' : ''}{oku(gain)}</b></span>
-                    <span className="flex flex-col gap-0.5">{tl('Yield', '表面利回り')}<b className="font-en text-[13px] font-medium text-sumi">{p.yld}</b></span>
+                  <div className="mt-4 flex justify-between gap-3 border-t border-sumi/8 pt-4 text-[13px] text-sumi-soft">
+                    <span className="flex flex-col gap-0.5">{tl('Acquired', '取得価額')}<b className="font-en text-[15px] font-medium text-sumi">{oku(p.acq)}</b></span>
+                    <span className="flex flex-col gap-0.5">{tl('Unrealised', '含み損益')}<b className="font-en text-[15px] font-medium" style={{ color: up ? UP : DOWN }}>{up ? '+' : ''}{oku(gain)}</b></span>
+                    <span className="flex flex-col gap-0.5">{tl('Yield', '表面利回り')}<b className="font-en text-[15px] font-medium text-sumi">{p.yld}</b></span>
                   </div>
                 </div>
               );
@@ -182,7 +182,7 @@ export function WealthDashboard() {
               <div className="overflow-x-auto">
                 <table className="w-full border-collapse">
                   <thead>
-                    <tr className="text-[10px] uppercase tracking-[0.12em] text-sumi-soft/70">
+                    <tr className="text-[12px] uppercase tracking-[0.12em] text-sumi-soft/70">
                       <th className="pb-3 text-left font-medium">{tl('Holding', '銘柄')}</th>
                       <th className="pb-3 text-right font-medium">{tl('Qty', '数量')}</th>
                       <th className="pb-3 text-right font-medium">{tl('Value', '時価')}</th>
@@ -192,13 +192,13 @@ export function WealthDashboard() {
                   </thead>
                   <tbody>
                     {HOLDINGS.map((h, i) => (
-                      <tr key={i} className="border-t border-sumi/8 text-[13px]">
+                      <tr key={i} className="border-t border-sumi/8 text-[15px]">
                         <td className="py-3.5">
                           <div className="flex items-center gap-3">
-                            <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-sumi/10 bg-gold/[0.06] font-en text-[13px] text-gold">{h.tk.length > 3 ? '∎' : h.tk[0]}</span>
+                            <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-sumi/10 bg-gold/[0.06] font-en text-[15px] text-gold">{h.tk.length > 3 ? '∎' : h.tk[0]}</span>
                             <span className="flex flex-col">
                               <span className="text-sumi">{ja ? h.nmJa : h.nmEn}</span>
-                              <span className="text-[10px] tracking-wide text-sumi-soft">{h.tk} · {ja ? h.subJa : h.subEn}</span>
+                              <span className="text-[12px] tracking-wide text-sumi-soft">{h.tk} · {ja ? h.subJa : h.subEn}</span>
                             </span>
                           </div>
                         </td>
@@ -234,7 +234,7 @@ export function WealthDashboard() {
           </div>
         </Reveal>
 
-        <p className="mt-8 text-[11px] font-light leading-relaxed text-sumi-soft/60">
+        <p className="mt-8 text-base font-light leading-relaxed text-sumi-soft/60">
           {tl(
             '※ Illustrative sample portfolio for demonstration. Figures are not advice; consult a licensed professional.',
             '※ 本ポートフォリオはデモ用のサンプルです。数値は投資助言ではありません。有資格の専門家にご相談ください。',
@@ -248,9 +248,9 @@ export function WealthDashboard() {
 function Kpi({ label, value, sub, tone, inline }: { label: string; value: string; sub?: string; tone?: string; inline?: boolean }) {
   return (
     <div className={`flex flex-col gap-2.5 ${inline ? '' : 'bg-washi p-8'}`}>
-      <span className="text-[10px] uppercase tracking-[0.16em] text-sumi-soft">{label}</span>
+      <span className="text-[12px] uppercase tracking-[0.16em] text-sumi-soft">{label}</span>
       <span className="font-en text-3xl font-light leading-none" style={{ color: tone ?? '#1b1f26' }}>{value}</span>
-      {sub && <span className="text-[12px]" style={{ color: tone ?? '#7b8492' }}>{sub}</span>}
+      {sub && <span className="text-[14px]" style={{ color: tone ?? '#7b8492' }}>{sub}</span>}
     </div>
   );
 }

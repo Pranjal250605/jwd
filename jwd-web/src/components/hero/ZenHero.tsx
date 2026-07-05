@@ -87,7 +87,7 @@ export function ZenHero() {
               initial={reduce ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}
             >
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              <span className="text-[11px] uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
+              <span className="text-[13px] uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
             </motion.div>
 
             <h1 className="font-en font-semibold text-sumi" style={{ fontSize: 'clamp(2.8rem, 6.6vw, 5.6rem)', lineHeight: 1.12, letterSpacing: '-0.035em' }}>
@@ -109,23 +109,23 @@ export function ZenHero() {
               </motion.span>
             </h1>
 
-            <motion.p className="mt-8 max-w-xl text-xl font-light leading-relaxed text-sumi-soft"
+            <motion.p className="mt-8 max-w-xl text-2xl font-light leading-relaxed text-sumi-soft"
               initial={reduce ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.5, ease: EASE }}>
               {t('description')}
             </motion.p>
 
             <motion.div className="mt-10 flex flex-wrap items-center gap-4"
               initial={reduce ? false : { opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.62, ease: EASE }}>
-              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-sumi px-9 py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-washi">
+              <Link href="/contact" className="group relative overflow-hidden rounded-full bg-sumi px-9 py-4 text-[15px] font-medium uppercase tracking-[0.16em] text-washi">
                 <span className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-gold to-gold-bright transition-transform duration-500 ease-out group-hover:scale-x-100" aria-hidden />
                 <span className="relative">{t('ctaPrimary')}</span>
               </Link>
-              <Link href="/contact" className="rounded-full border border-sumi/15 bg-washi/60 px-9 py-4 text-[13px] font-medium uppercase tracking-[0.16em] text-sumi backdrop-blur-sm transition-colors duration-300 hover:border-gold/50 hover:text-gold">
+              <Link href="/contact" className="rounded-full border border-sumi/15 bg-washi/60 px-9 py-4 text-[15px] font-medium uppercase tracking-[0.16em] text-sumi backdrop-blur-sm transition-colors duration-300 hover:border-gold/50 hover:text-gold">
                 {t('ctaSecondary')}
               </Link>
             </motion.div>
 
-            <motion.p className="font-jp mt-8 text-sm font-light tracking-wide text-sumi-soft/80"
+            <motion.p className="font-jp mt-8 text-lg font-light tracking-wide text-sumi-soft/80"
               initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.8 }}>
               {t('subtitle')}
             </motion.p>
@@ -151,7 +151,7 @@ export function ZenHero() {
                 <span className="font-en text-4xl font-semibold tracking-tight text-sumi lg:text-[2.8rem]">
                   <CountUp to={s.value} prefix={s.prefix ?? ''} suffix={s.suffix ?? ''} start={statsInView} />
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-sumi-soft">{ja ? s.ja : s.en}</span>
+                <span className="text-[12px] uppercase tracking-[0.2em] text-sumi-soft">{ja ? s.ja : s.en}</span>
               </motion.div>
             ))}
           </div>
@@ -159,7 +159,7 @@ export function ZenHero() {
 
         {/* ── source strip ── */}
         <div className="pb-16">
-          <p className="mb-6 text-center text-[10px] uppercase tracking-[0.3em] text-sumi-soft/60">
+          <p className="mb-6 text-center text-[12px] uppercase tracking-[0.3em] text-sumi-soft/60">
             {ja ? '信頼できる情報源と提携' : 'Curated across trusted sources'}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">

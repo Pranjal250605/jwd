@@ -19,7 +19,7 @@ export function AssetMarquee() {
 
   return (
     <div className="flex flex-col gap-3.5">
-      <span className="text-[10px] uppercase tracking-[0.3em] text-sumi-soft/60">
+      <span className="text-[12px] uppercase tracking-[0.3em] text-sumi-soft/60">
         {locale === 'ja' ? '対応マーケット — Equiti & AIX' : 'Markets we cover — Equiti & AIX'}
       </span>
       <div className="relative overflow-hidden" style={{ maskImage: FADE, WebkitMaskImage: FADE }}>

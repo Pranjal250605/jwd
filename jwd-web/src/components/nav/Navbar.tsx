@@ -20,7 +20,7 @@ function LocaleSwitcher() {
   const locale = useLocale();
   const pathname = usePathname();
   return (
-    <div className="flex items-center gap-2 whitespace-nowrap text-[12px] tracking-[0.2em]">
+    <div className="flex items-center gap-2 whitespace-nowrap text-[14px] tracking-[0.2em]">
       {(['ja', 'en'] as const).map((l, i) => (
         <span key={l} className="flex items-center gap-2">
           {i > 0 && <span className="text-sumi/20">/</span>}
@@ -69,16 +69,16 @@ export function Navbar() {
             <span className="font-en text-[1.7rem] font-semibold tracking-[0.16em] text-sumi">
               JWD
             </span>
-            <span className="text-[8px] tracking-[0.52em] text-gold">GROUP</span>
+            <span className="text-[10px] tracking-[0.52em] text-gold">GROUP</span>
           </Link>
 
           {/* Primary links — centered */}
-          <nav className="hidden items-center justify-center gap-6 lg:flex xl:gap-8">
+          <nav className="hidden items-center justify-center gap-5 xl:flex 2xl:gap-7">
             {PRIMARY_LINKS.map(({ key, href }) => (
               <Link
                 key={key}
                 href={href}
-                className="group relative whitespace-nowrap text-[12.5px] uppercase tracking-[0.15em] text-sumi/70 transition-colors duration-300 hover:text-sumi"
+                className="group relative whitespace-nowrap text-[14px] uppercase tracking-[0.15em] text-sumi/70 transition-colors duration-300 hover:text-sumi"
               >
                 {t(key)}
                 <span className="absolute -bottom-1.5 left-0 h-px w-full origin-left scale-x-0 bg-gold transition-transform duration-500 group-hover:scale-x-100" />
@@ -90,7 +90,7 @@ export function Navbar() {
             <LocaleSwitcher />
             <Link
               href="/contact"
-              className="hidden whitespace-nowrap rounded-full bg-sumi px-6 py-2.5 text-[12px] uppercase tracking-[0.18em] text-washi transition-colors duration-300 hover:bg-gold sm:inline-block"
+              className="hidden whitespace-nowrap rounded-full bg-sumi px-6 py-2.5 text-[14px] uppercase tracking-[0.18em] text-washi transition-colors duration-300 hover:bg-gold sm:inline-block"
             >
               {t('contact')}
             </Link>

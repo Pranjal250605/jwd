@@ -30,7 +30,7 @@ export function BarChart({
     <div ref={ref} className="flex flex-col gap-5">
       {items.map((d, i) => (
         <div key={i} className="flex items-center gap-4">
-          <span className={`w-28 shrink-0 text-right text-[11px] tracking-wide ${labelCol} sm:w-40`}>
+          <span className={`w-28 shrink-0 text-right text-[13px] tracking-wide ${labelCol} sm:w-40`}>
             {d.label}
           </span>
           <div className="relative h-7 flex-1 overflow-hidden rounded-sm" style={{ background: dark ? 'rgba(255,255,255,0.06)' : 'rgba(32,37,31,0.05)' }}>
@@ -129,7 +129,7 @@ export function LineChart({
       </svg>
       <div className="flex justify-between">
         {points.map((p, i) => (
-          <span key={i} className={`text-[10px] tracking-wide ${labelCol}`}>
+          <span key={i} className={`text-[12px] tracking-wide ${labelCol}`}>
             {p.label}
             {unit && i === points.length - 1 ? '' : ''}
           </span>
@@ -188,7 +188,7 @@ export function DonutChart({
         {items.map((d, i) => (
           <li key={i} className="flex items-center gap-3">
             <span className="h-2.5 w-2.5 rounded-full" style={{ background: SHADES[i % SHADES.length] }} />
-            <span className={`text-[13px] ${labelCol}`}>{d.label}</span>
+            <span className={`text-[15px] ${labelCol}`}>{d.label}</span>
             <span className={`font-en text-sm ${valueCol}`}>
               {Math.round((d.value / total) * 100)}%
             </span>

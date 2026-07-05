@@ -40,7 +40,7 @@ export function TrustBand() {
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.9, ease: EASE }}
         >
-          <span className="text-[10px] uppercase tracking-[0.4em] text-gold-bright/70">
+          <span className="text-[12px] uppercase tracking-[0.4em] text-gold-bright/70">
             {t('subheading')}
           </span>
           <h2 className="font-jp text-3xl font-bold text-washi lg:text-4xl">
@@ -66,7 +66,7 @@ export function TrustBand() {
                   suffix={t(stat.suffixKey)}
                 />
               </span>
-              <span className="max-w-[12rem] text-[11px] leading-relaxed tracking-[0.12em] text-washi/45">
+              <span className="max-w-[12rem] text-[13px] leading-relaxed tracking-[0.12em] text-washi/45">
                 {t(stat.labelKey)}
               </span>
             </motion.div>

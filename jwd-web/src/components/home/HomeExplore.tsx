@@ -81,7 +81,7 @@ export function HomeExplore() {
       <PremiumBackdrop />
       <div className="relative z-10 mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-12 flex flex-col gap-4">
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
             {ja ? '事業領域' : 'What we do'}
           </span>
           <h2 className={`${display} max-w-2xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] text-sumi lg:text-[3rem]`}>

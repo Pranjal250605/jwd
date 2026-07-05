@@ -131,14 +131,14 @@ export function PropertyAnalysis({
       <div className="overflow-hidden rounded-[1.75rem] border border-sumi/8 bg-washi p-8 lg:p-12">
         <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-col gap-2">
-            <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em]" style={{ color: ACCENT }}>
+            <span className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.28em]" style={{ color: ACCENT }}>
               <TrendingUp className="h-4 w-4" strokeWidth={1.6} /> {ja ? '投資分析' : 'Investment Analysis'}
             </span>
             <h2 className={`${display} text-2xl font-semibold text-sumi lg:text-3xl`}>
               {ja ? '数字で見る、この物件' : 'This asset, in numbers'}
             </h2>
           </div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 text-[10px] uppercase tracking-[0.18em] text-gold">
+          <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-4 py-2 text-[12px] uppercase tracking-[0.18em] text-gold">
             <Sparkles className="h-3.5 w-3.5" strokeWidth={1.6} />
             {live ? (ja ? 'DLDデータ · AI予測' : 'DLD data · AI forecast') : ja ? 'AI試算 · 参考値' : 'AI-modelled · illustrative'}
           </span>
@@ -148,11 +148,11 @@ export function PropertyAnalysis({
           {/* chart */}
           <div className="flex flex-col gap-4">
             <div className="flex items-baseline justify-between gap-3">
-              <span className="text-[11px] uppercase tracking-[0.2em] text-sumi-soft">
+              <span className="text-[13px] uppercase tracking-[0.2em] text-sumi-soft">
                 {ja ? '価格推移と将来予測（AED / sqft）' : 'Price history & projection (AED / sqft)'}
               </span>
               {live && (
-                <span className="text-[10px] tracking-wide text-sumi-soft/60">
+                <span className="text-[12px] tracking-wide text-sumi-soft/60">
                   {ja ? 'ドバイ土地局のエリア動向に基づく' : 'Based on DLD area trends'}
                 </span>
               )}
@@ -170,10 +170,10 @@ export function PropertyAnalysis({
               <path d={line(projPts)} fill="none" stroke={ACCENT} strokeWidth={1} strokeDasharray="2 1.6" strokeLinecap="round" vectorEffect="non-scaling-stroke" opacity={0.75} />
               <circle cx={nowX} cy={xy[nowIdx][1]} r={1} fill={ACCENT} />
             </svg>
-            <div className="flex justify-between text-[10px] tracking-wide text-sumi-soft/70">
+            <div className="flex justify-between text-[12px] tracking-wide text-sumi-soft/70">
               {series.filter((_, i) => i % 2 === 0).map((s, i) => <span key={`${s.label}-${i}`}>{s.label}</span>)}
             </div>
-            <p className="text-[11px] font-light italic text-sumi-soft/70">
+            <p className="text-base font-light italic text-sumi-soft/70">
               {live
                 ? ja
                   ? `実線=ドバイ土地局のエリア価格動向（本物件の坪単価に基準化）、点線=今後${HOLD}年の予測（年率${(appreciation * 100).toFixed(0)}%想定）。`
@@ -189,7 +189,7 @@ export function PropertyAnalysis({
             {metrics.map((m, i) => (
               <div key={i} className="flex flex-col gap-1.5 bg-washi p-5">
                 <span className="font-en text-2xl font-light text-sumi">{m.value}</span>
-                <span className="text-[10px] uppercase tracking-[0.16em] text-sumi-soft">{m.label}</span>
+                <span className="text-[12px] uppercase tracking-[0.16em] text-sumi-soft">{m.label}</span>
               </div>
             ))}
           </div>
@@ -198,10 +198,10 @@ export function PropertyAnalysis({
         {/* value history — explicit year-by-year numbers */}
         <div className="mt-12 border-t border-sumi/8 pt-10">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
-            <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em]" style={{ color: ACCENT }}>
+            <span className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.28em]" style={{ color: ACCENT }}>
               <TrendingUp className="h-4 w-4" strokeWidth={1.6} /> {ja ? '資産価値の推移' : 'Value history'}
             </span>
-            <span className="text-[11px] text-sumi-soft/80">
+            <span className="text-[13px] text-sumi-soft/80">
               {ja ? "'21年比 " : "Since '21 "}
               <b className="font-en" style={{ color: ACCENT }}>+{totalGrowth.toFixed(0)}%</b>
             </span>
@@ -209,22 +209,22 @@ export function PropertyAnalysis({
           <div className="mt-5 grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-sumi/8 bg-sumi/[0.06] sm:grid-cols-6">
             {valueHistory.map((v) => (
               <div key={v.year} className={`flex flex-col gap-1.5 p-4 ${v.now ? 'bg-gold/[0.07]' : 'bg-washi'}`}>
-                <span className="text-[10px] tracking-wide text-sumi-soft">
+                <span className="text-[12px] tracking-wide text-sumi-soft">
                   {v.year}
                   {v.now ? (ja ? ' 現在' : ' now') : ''}
                 </span>
                 <span className="font-en text-[0.95rem] font-light leading-none text-sumi">AED {fmt(v.value)}</span>
                 {v.yoy != null ? (
-                  <span className="inline-flex items-center gap-0.5 text-[10px]" style={{ color: v.yoy >= 0 ? ACCENT : '#c0566b' }}>
+                  <span className="inline-flex items-center gap-0.5 text-[12px]" style={{ color: v.yoy >= 0 ? ACCENT : '#c0566b' }}>
                     {v.yoy >= 0 ? '▲' : '▼'} {Math.abs(v.yoy).toFixed(1)}%
                   </span>
                 ) : (
-                  <span className="text-[10px] text-sumi-soft/50">{ja ? '基準' : 'base'}</span>
+                  <span className="text-[12px] text-sumi-soft/50">{ja ? '基準' : 'base'}</span>
                 )}
               </div>
             ))}
           </div>
-          <p className="mt-3 text-[11px] font-light italic text-sumi-soft/60">
+          <p className="mt-3 text-base font-light italic text-sumi-soft/60">
             {live
               ? ja
                 ? '推定総額（ドバイ土地局のエリア坪単価 × 専有面積）。'
@@ -237,7 +237,7 @@ export function PropertyAnalysis({
 
         {/* risks & hedges */}
         <div className="mt-12 border-t border-sumi/8 pt-10">
-          <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.28em]" style={{ color: ACCENT }}>
+          <span className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.28em]" style={{ color: ACCENT }}>
             <ShieldCheck className="h-4 w-4" strokeWidth={1.6} /> {ja ? 'リスクとヘッジ' : 'Risks & risk-hedges'}
           </span>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -249,7 +249,7 @@ export function PropertyAnalysis({
                 </div>
                 <div className="mt-2.5 flex items-start gap-2 pl-3.5">
                   <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: ACCENT }} />
-                  <span className="text-[0.84rem] font-light leading-relaxed text-sumi-soft">{r.hedge}</span>
+                  <span className="text-lg font-light leading-relaxed text-sumi-soft">{r.hedge}</span>
                 </div>
               </div>
             ))}
@@ -257,7 +257,7 @@ export function PropertyAnalysis({
         </div>
 
         {/* assumptions / disclaimer */}
-        <p className="mt-10 text-[11px] font-light leading-relaxed text-sumi-soft/70">
+        <p className="mt-10 text-base font-light leading-relaxed text-sumi-soft/70">
           {ja
             ? `※ ${live ? '価格推移はドバイ土地局のエリア価格動向に基づき、本物件の坪単価に基準化しています。利回り・ROI・IRRはAIによる試算です。' : '本分析はAIによる試算（参考値）です。'}前提：年率${(appreciation * 100).toFixed(0)}%の価格上昇、取得コスト${(PURCHASE_COST * 100).toFixed(0)}%、売却コスト${(EXIT_COST * 100).toFixed(0)}%、管理・共益費 約AED${OPEX_PER_SQFT}/sqft/年、保有${HOLD}年、AED≈¥${FX_JPY}。実際の数値は市場データ・契約条件により変動します。確定的な投資助言ではありません。`
             : `※ ${live ? "Price history is based on Dubai Land Department area price trends, anchored to this unit's price/sqft; yield, ROI and IRR are AI-modelled." : 'This analysis is AI-modelled and illustrative.'} Assumptions: ${(appreciation * 100).toFixed(0)}% p.a. price growth, ${(PURCHASE_COST * 100).toFixed(0)}% purchase costs, ${(EXIT_COST * 100).toFixed(0)}% exit costs, ~AED ${OPEX_PER_SQFT}/sqft/yr running costs, ${HOLD}-yr hold, AED≈¥${FX_JPY}. Actual figures vary with market data and terms; not financial advice.`}

@@ -42,7 +42,7 @@ export function SubHubGrid({
       <PremiumBackdrop accent={accent} />
       <div ref={ref} className="relative z-10 mx-auto max-w-screen-2xl px-7 lg:px-12">
         <div className="mb-14 flex flex-col gap-4">
-          <span className="text-[10px] uppercase tracking-[0.38em]" style={{ color: accent }}>
+          <span className="text-[12px] uppercase tracking-[0.38em]" style={{ color: accent }}>
             {locale === 'ja' ? 'このセクションを探る' : 'In this section'}
           </span>
           <h2 className={`${display} max-w-3xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] text-sumi lg:text-[3rem]`}>
@@ -108,7 +108,7 @@ export function SubHubGrid({
 
                   {/* content */}
                   <div className="absolute inset-x-0 bottom-0 p-7">
-                    <span className="text-[10px] uppercase tracking-[0.28em]" style={{ color: accentBright }}>
+                    <span className="text-[12px] uppercase tracking-[0.28em]" style={{ color: accentBright }}>
                       {tx(s.label)}
                     </span>
                     <h3 className={`${display} mt-2 text-xl font-semibold leading-snug text-white transition-transform duration-500 group-hover:-translate-y-1 lg:text-2xl`}>
@@ -116,7 +116,7 @@ export function SubHubGrid({
                     </h3>
                     {/* tagline reveals on hover */}
                     <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-500 group-hover:grid-rows-[1fr] group-hover:opacity-100">
-                      <p className="overflow-hidden text-[0.84rem] font-light leading-relaxed text-white/80">
+                      <p className="overflow-hidden text-lg font-light leading-relaxed text-white/85">
                         <span className="mt-3 block">{tx(s.tagline)}</span>
                       </p>
                     </div>

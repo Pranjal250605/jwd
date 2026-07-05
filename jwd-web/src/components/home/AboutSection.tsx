@@ -31,7 +31,7 @@ export function AboutSection() {
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 1, ease: EASE }}
         >
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
             {t('label')}
           </span>
           <h2 className="font-jp mt-6 text-3xl font-extrabold leading-snug text-sumi lg:text-[2.6rem]">
@@ -50,7 +50,7 @@ export function AboutSection() {
           {(['p1', 'p2'] as const).map((key, i) => (
             <motion.p
               key={key}
-              className="text-sm font-light leading-[2.2] text-sumi-soft lg:text-[0.95rem]"
+              className="text-lg font-light leading-[2.2] text-sumi-soft lg:text-lg"
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.9, delay: 0.25 + i * 0.18, ease: EASE }}

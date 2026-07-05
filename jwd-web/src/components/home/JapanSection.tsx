@@ -21,7 +21,7 @@ export function JapanSection() {
 
       <div className="relative mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-14 flex flex-col gap-5">
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
             {t('label')}
           </span>
           <h2 className="font-jp text-3xl font-extrabold text-sumi lg:text-[2.4rem]">
@@ -36,7 +36,7 @@ export function JapanSection() {
                 <h3 className="font-jp text-lg font-bold text-sumi">
                   {t(`${item}Title`)}
                 </h3>
-                <p className="mt-3 text-[0.85rem] font-light leading-[2] text-sumi-soft">
+                <p className="mt-3 text-lg font-light leading-[2] text-sumi-soft">
                   {t(`${item}Text`)}
                 </p>
               </div>

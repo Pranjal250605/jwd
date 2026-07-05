@@ -22,7 +22,7 @@ export function FamilyOfficeSection() {
 
       <div className="relative mx-auto flex max-w-screen-xl flex-col items-center gap-8 px-7 text-center lg:px-12">
         <Reveal>
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold-bright/70">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold-bright/70">
             {t('label')}
           </span>
         </Reveal>
@@ -32,7 +32,7 @@ export function FamilyOfficeSection() {
           </h2>
         </Reveal>
         <Reveal delay={0.2}>
-          <p className="max-w-2xl text-sm font-light leading-[2.1] text-washi/55">
+          <p className="max-w-2xl text-xl font-light leading-[2.1] text-washi/80">
             {t('intro')}
           </p>
         </Reveal>

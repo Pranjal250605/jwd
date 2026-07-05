@@ -35,7 +35,7 @@ export function AdvisorPageContent() {
                 <p className="text-sm text-sumi-soft/80 leading-relaxed mb-4">
                   {t('intro')}
                 </p>
-                <div className="flex items-center gap-2 text-[10px] text-sumi-soft/50">
+                <div className="flex items-center gap-2 text-[12px] text-sumi-soft/50">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   <span>Powered by Google Gemini</span>
                 </div>
@@ -49,7 +49,7 @@ export function AdvisorPageContent() {
 
               {/* Quick links */}
               <div className="rounded-xl border border-sumi/8 bg-washi p-6">
-                <h4 className="text-[10px] uppercase tracking-[0.25em] text-gold mb-4">
+                <h4 className="text-[12px] uppercase tracking-[0.25em] text-gold mb-4">
                   {locale === 'ja' ? '関連ページ' : 'Related Pages'}
                 </h4>
                 <div className="flex flex-col gap-2">
@@ -81,7 +81,7 @@ export function AdvisorPageContent() {
                       className="group flex items-center justify-between rounded-lg border border-sumi/5 px-4 py-2.5 text-sm text-sumi-soft transition-all duration-300 hover:border-gold/30 hover:text-sumi"
                     >
                       <span>{link.label}</span>
-                      <span className="text-[10px] text-sumi/20 transition-colors group-hover:text-gold">
+                      <span className="text-[12px] text-sumi/20 transition-colors group-hover:text-gold">
                         →
                       </span>
                     </Link>
@@ -90,7 +90,7 @@ export function AdvisorPageContent() {
               </div>
 
               {/* Disclaimer */}
-              <p className="text-[10px] leading-relaxed text-sumi/30 px-1">
+              <p className="text-[12px] leading-relaxed text-sumi/30 px-1">
                 {t('disclaimer')}
               </p>
             </div>

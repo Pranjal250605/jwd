@@ -114,7 +114,7 @@ function TiltStatCard({
             <div className="flex items-center justify-between">
               <span className="text-[0.7rem] uppercase tracking-[0.18em] text-sumi-soft">{label}</span>
               {stat.href && (
-                <span className="text-[9px] font-medium uppercase tracking-[0.2em] text-gold opacity-0 transition-all duration-300 group-hover:opacity-100">
+                <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-gold opacity-0 transition-all duration-300 group-hover:opacity-100">
                   View &rarr;
                 </span>
               )}
@@ -143,12 +143,12 @@ export function HomeHighlights() {
       />
       <div ref={ref} className="relative mx-auto max-w-screen-2xl px-7 lg:px-12">
         <div className="mb-14 flex flex-col gap-4">
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">{tx(c.label)}</span>
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">{tx(c.label)}</span>
           <h2 className={`${display} max-w-2xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] text-sumi lg:text-[3rem]`}>
             {tx(c.title)}
           </h2>
           <MarkerUnderline accent={ACCENT} className="w-44 lg:w-64" />
-          <p className="mt-2 max-w-xl text-sm font-light leading-loose text-sumi-soft">{tx(c.intro)}</p>
+          <p className="mt-2 max-w-xl text-xl font-light leading-loose text-sumi-soft">{tx(c.intro)}</p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

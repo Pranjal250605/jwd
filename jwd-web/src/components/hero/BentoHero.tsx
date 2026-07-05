@@ -62,13 +62,13 @@ function StatCell({
   const inView = useInView(ref, { once: true, margin: '-40px' });
   return (
     <Cell delay={delay} reduce={reduce} className="flex flex-col justify-between gap-6 transition-colors duration-500 hover:bg-washi-deep">
-      <span className="text-[10px] uppercase tracking-[0.28em] text-gold">{kicker}</span>
+      <span className="text-[12px] uppercase tracking-[0.28em] text-gold">{kicker}</span>
       <div ref={ref} className="flex flex-col gap-2">
         <span className="font-en text-[2.7rem] font-light leading-none text-sumi lg:text-[3.2rem]">
           <CountUp to={value} decimals={decimals} prefix={prefix} suffix={suffix} start={inView} />
         </span>
         {note && (
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-sumi-soft/70">
+          <span className="font-mono text-[12px] uppercase tracking-[0.16em] text-sumi-soft/70">
             {note}
           </span>
         )}
@@ -132,7 +132,7 @@ export function BentoHero() {
                   animate={{ scaleX: 1 }}
                   transition={{ duration: 1, delay: 0.3, ease: EASE }}
                 />
-                <span className="text-[10px] uppercase tracking-[0.4em] text-gold">{t('badge')}</span>
+                <span className="text-[12px] uppercase tracking-[0.4em] text-gold">{t('badge')}</span>
               </div>
 
               <h1
@@ -164,13 +164,13 @@ export function BentoHero() {
             </div>
 
             <div className="relative flex flex-col gap-7">
-              <p className="font-jp max-w-md text-sm font-light leading-[2] tracking-wide text-sumi-soft">
+              <p className="font-jp max-w-md text-lg font-light leading-[2] tracking-wide text-sumi-soft">
                 {t('subtitle')}
               </p>
               <div className="flex flex-wrap items-center gap-4">
                 <Link
                   href="/contact"
-                  className="group/btn relative overflow-hidden bg-sumi px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-washi"
+                  className="group/btn relative overflow-hidden bg-sumi px-8 py-4 text-[13px] uppercase tracking-[0.24em] text-washi"
                 >
                   <span
                     className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-gold to-gold-bright transition-transform duration-700 ease-out group-hover/btn:scale-x-100"
@@ -180,7 +180,7 @@ export function BentoHero() {
                 </Link>
                 <Link
                   href="/contact"
-                  className="border border-gold/35 px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-sumi transition-colors duration-500 hover:border-gold hover:bg-gold/5"
+                  className="border border-gold/35 px-8 py-4 text-[13px] uppercase tracking-[0.24em] text-sumi transition-colors duration-500 hover:border-gold hover:bg-gold/5"
                 >
                   {t('ctaSecondary')}
                 </Link>
@@ -191,19 +191,19 @@ export function BentoHero() {
           {/* ── B · Live FX ── */}
           <Cell delay={0.1} reduce={reduce} className="flex flex-col justify-between gap-6 transition-colors duration-500 hover:bg-washi-deep">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-[0.28em] text-gold">{d('fxLabel')}</span>
+              <span className="text-[12px] uppercase tracking-[0.28em] text-gold">{d('fxLabel')}</span>
               <span className="flex items-center gap-1.5">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-gold/60" style={{ animation: reduce ? undefined : 'pulseDot 2s ease-in-out infinite' }} />
                 </span>
-                <span className="font-mono text-[9px] tracking-[0.2em] text-gold/70">{d('live')}</span>
+                <span className="font-mono text-[11px] tracking-[0.2em] text-gold/70">{d('live')}</span>
               </span>
             </div>
             <div className="flex flex-col gap-2">
               <span className="font-en text-[2.7rem] font-light leading-none text-sumi lg:text-[3.2rem]">
                 <CountUp to={40.8} decimals={1} duration={1.4} />
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-sumi-soft/70">
+              <span className="font-mono text-[12px] uppercase tracking-[0.16em] text-sumi-soft/70">
                 {ja ? '1 AED = 40.8 円' : '1 AED = 40.8 JPY'}
               </span>
             </div>
@@ -221,7 +221,7 @@ export function BentoHero() {
 
           {/* ── D · Avg yield with mini bar ── */}
           <Cell delay={0.22} reduce={reduce} className="flex flex-col justify-between gap-6 transition-colors duration-500 hover:bg-washi-deep">
-            <span className="text-[10px] uppercase tracking-[0.28em] text-gold">{d('yieldLabel')}</span>
+            <span className="text-[12px] uppercase tracking-[0.28em] text-gold">{d('yieldLabel')}</span>
             <div className="flex flex-col gap-3">
               <span className="font-en text-[2.7rem] font-light leading-none text-sumi lg:text-[3.2rem]">
                 <CountUp to={7} suffix="%" />
@@ -235,7 +235,7 @@ export function BentoHero() {
                   transition={{ duration: 1.4, delay: 0.3, ease: EASE }}
                 />
               </div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-sumi-soft/70">
+              <span className="font-mono text-[12px] uppercase tracking-[0.16em] text-sumi-soft/70">
                 {ja ? '東京の約2倍' : '~2× Tokyo gross'}
               </span>
             </div>
@@ -255,13 +255,13 @@ export function BentoHero() {
           <Link href="/heart-of-europe" className="contents">
             <Cell delay={0.34} reduce={reduce} className="flex items-center justify-between gap-6 transition-colors duration-500 hover:bg-washi-deep sm:col-span-2">
               <div className="flex flex-col gap-3">
-                <span className="text-[10px] uppercase tracking-[0.28em] text-gold">
+                <span className="text-[12px] uppercase tracking-[0.28em] text-gold">
                   {ja ? '旗艦プロジェクト' : 'Flagship Project'}
                 </span>
                 <span className="font-jp text-xl font-bold text-sumi transition-colors group-hover:text-gold lg:text-2xl">
                   {ja ? 'ハート・オブ・ヨーロッパ' : 'The Heart of Europe'}
                 </span>
-                <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-sumi-soft transition-all duration-500 group-hover:gap-3 group-hover:text-gold">
+                <span className="inline-flex items-center gap-2 text-[13px] uppercase tracking-[0.2em] text-sumi-soft transition-all duration-500 group-hover:gap-3 group-hover:text-gold">
                   {ja ? '詳しく見る' : 'Explore'} <span aria-hidden>→</span>
                 </span>
               </div>
@@ -280,12 +280,12 @@ export function BentoHero() {
               <span className="font-jp text-2xl font-light tracking-wide text-sumi lg:text-3xl">
                 {t('japan')} <span className="text-gold">⇄</span> {t('dubai')}
               </span>
-              <span className="text-[10px] uppercase tracking-[0.24em] text-sumi-soft/70">
+              <span className="text-[12px] uppercase tracking-[0.24em] text-sumi-soft/70">
                 {ja ? 'クロスボーダー資産設計' : 'Cross-border wealth'}
               </span>
             </div>
             <span
-              className="font-jp shrink-0 px-5 py-2 text-[10px] tracking-[0.3em] text-gold"
+              className="font-jp shrink-0 px-5 py-2 text-[12px] tracking-[0.3em] text-gold"
               style={{ border: '1px solid rgba(0,151,167,0.25)', background: 'rgba(0,151,167,0.04)' }}
             >
               {t('badge').split('·')[0].trim()}

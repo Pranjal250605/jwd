@@ -34,7 +34,7 @@ export function ContactCTA() {
 
       <div ref={ref} className="relative mx-auto flex max-w-3xl flex-col items-center gap-8 px-7 text-center">
         <motion.span
-          className="border border-gold/30 bg-gold/5 px-5 py-2 font-jp text-[11px] tracking-[0.35em] text-gold"
+          className="border border-gold/30 bg-gold/5 px-5 py-2 font-jp text-[13px] tracking-[0.35em] text-gold"
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.9, ease: EASE }}
@@ -52,7 +52,7 @@ export function ContactCTA() {
         </motion.h2>
 
         <motion.p
-          className="max-w-xl text-sm font-light leading-loose text-sumi-soft"
+          className="max-w-xl text-xl font-light leading-loose text-sumi-soft"
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.9, delay: 0.3, ease: EASE }}

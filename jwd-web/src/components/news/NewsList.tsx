@@ -44,14 +44,14 @@ export function NewsList({ items }: { items: NewsEntry[] }) {
                 setMarket(f.id);
                 setCount(PAGE);
               }}
-              className={`rounded-full border px-5 py-2 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors duration-300 ${on ? 'text-washi' : 'text-sumi-soft hover:text-sumi'}`}
+              className={`rounded-full border px-5 py-2 text-[13px] font-medium uppercase tracking-[0.18em] transition-colors duration-300 ${on ? 'text-washi' : 'text-sumi-soft hover:text-sumi'}`}
               style={on ? { background: ACCENT, borderColor: ACCENT } : { borderColor: 'rgba(32,37,31,0.14)' }}
             >
               {f.label}
             </button>
           );
         })}
-        <span className="ml-auto self-center text-[11px] tracking-wide text-sumi-soft/60">
+        <span className="ml-auto self-center text-[13px] tracking-wide text-sumi-soft/60">
           {filtered.length} {ja ? '件' : 'articles'}
         </span>
       </div>
@@ -65,12 +65,12 @@ export function NewsList({ items }: { items: NewsEntry[] }) {
               className="group relative grid grid-cols-[auto_1fr_auto] items-center gap-5 rounded-2xl px-4 py-6 transition-colors duration-300 hover:bg-sumi/[0.035] lg:grid-cols-[7rem_auto_1fr_auto] lg:gap-8 lg:px-6"
             >
               <span className="absolute left-0 top-1/2 h-7 w-[3px] origin-center -translate-y-1/2 scale-y-0 rounded-full transition-transform duration-500 group-hover:scale-y-100" style={{ background: ACCENT }} />
-              <span className="font-mono text-[11px] tracking-wide text-sumi-soft">{n.date}</span>
+              <span className="font-mono text-[13px] tracking-wide text-sumi-soft">{n.date}</span>
               <span className="hidden items-center gap-2.5 lg:flex">
-                <span className="text-[9px] uppercase tracking-[0.2em] text-sumi-soft/60">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-sumi-soft/60">
                   {n.market === 'dubai' ? (ja ? 'ドバイ' : 'Dubai') : ja ? '日本' : 'Japan'}
                 </span>
-                <span className="rounded-full border px-3 py-1 text-[9px] uppercase tracking-[0.2em]" style={{ borderColor: `${ACCENT}44`, color: ACCENT }}>
+                <span className="rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.2em]" style={{ borderColor: `${ACCENT}44`, color: ACCENT }}>
                   {tx(n.tag)}
                 </span>
               </span>
@@ -91,7 +91,7 @@ export function NewsList({ items }: { items: NewsEntry[] }) {
         <div className="mt-12 text-center">
           <button
             onClick={() => setCount((c) => c + PAGE)}
-            className="inline-flex items-center gap-2.5 rounded-full border border-sumi/15 px-8 py-3.5 text-[11px] font-medium uppercase tracking-[0.18em] text-sumi transition-colors duration-300 hover:border-gold hover:text-gold"
+            className="inline-flex items-center gap-2.5 rounded-full border border-sumi/15 px-8 py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-sumi transition-colors duration-300 hover:border-gold hover:text-gold"
           >
             <Plus className="h-4 w-4" strokeWidth={1.6} />
             {ja ? 'もっと見る' : 'Show more'}

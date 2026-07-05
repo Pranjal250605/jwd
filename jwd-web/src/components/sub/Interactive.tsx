@@ -72,7 +72,7 @@ export function Tabs({
               <span className="font-en text-5xl font-light lg:text-6xl" style={{ color: accent }}>
                 {cur.metric.value}
               </span>
-              <span className={`text-[11px] uppercase tracking-[0.18em] ${muted}`}>
+              <span className={`text-[13px] uppercase tracking-[0.18em] ${muted}`}>
                 {cur.metric.label}
               </span>
             </div>
@@ -134,7 +134,7 @@ export function YieldCalculator({
       <div className="flex flex-col justify-center gap-10">
         <div className="flex flex-col gap-3">
           <div className="flex items-baseline justify-between">
-            <span className={`text-[11px] uppercase tracking-[0.18em] ${muted}`}>{t.price}</span>
+            <span className={`text-[13px] uppercase tracking-[0.18em] ${muted}`}>{t.price}</span>
             <span className={`font-en text-xl ${head}`}>AED {fmt(price)}</span>
           </div>
           <input
@@ -146,7 +146,7 @@ export function YieldCalculator({
         </div>
         <div className="flex flex-col gap-3">
           <div className="flex items-baseline justify-between">
-            <span className={`text-[11px] uppercase tracking-[0.18em] ${muted}`}>{t.yield}</span>
+            <span className={`text-[13px] uppercase tracking-[0.18em] ${muted}`}>{t.yield}</span>
             <span className={`font-en text-xl ${head}`}>{yld.toFixed(1)}%</span>
           </div>
           <input
@@ -164,16 +164,16 @@ export function YieldCalculator({
           <div className="font-en text-5xl font-light lg:text-6xl" style={{ color: accent }}>
             AED {fmt(annual)}
           </div>
-          <div className={`mt-2 text-[11px] uppercase tracking-[0.18em] ${muted}`}>{t.annual}</div>
+          <div className={`mt-2 text-[13px] uppercase tracking-[0.18em] ${muted}`}>{t.annual}</div>
         </div>
         <div className="flex flex-wrap gap-x-10 gap-y-4">
           <div>
             <div className={`font-en text-2xl font-light ${head}`}>AED {fmt(annual / 12)}</div>
-            <div className={`mt-1 text-[10px] uppercase tracking-[0.16em] ${muted}`}>{t.monthly}</div>
+            <div className={`mt-1 text-[12px] uppercase tracking-[0.16em] ${muted}`}>{t.monthly}</div>
           </div>
           <div>
             <div className={`font-en text-2xl font-light ${head}`}>¥{fmt(jpy)}</div>
-            <div className={`mt-1 text-[10px] uppercase tracking-[0.16em] ${muted}`}>{t.jpy}</div>
+            <div className={`mt-1 text-[12px] uppercase tracking-[0.16em] ${muted}`}>{t.jpy}</div>
           </div>
         </div>
       </div>
@@ -213,7 +213,7 @@ export function Compare({
         </div>
         {rows.map((r, i) => (
           <div key={i} className="contents">
-            <div className={`${i < rows.length - 1 ? `border-b ${border}` : ''} p-5 text-[13px] ${muted}`}>{r.label}</div>
+            <div className={`${i < rows.length - 1 ? `border-b ${border}` : ''} p-5 text-[15px] ${muted}`}>{r.label}</div>
             <div className={`${i < rows.length - 1 ? `border-b ` : ''} border-l ${border} p-5 text-center text-sm font-medium ${head}`} style={{ background: `${accent}08` }}>{r.left}</div>
             <div className={`${i < rows.length - 1 ? `border-b ` : ''} border-l ${border} p-5 text-center text-sm ${muted}`}>{r.right}</div>
           </div>

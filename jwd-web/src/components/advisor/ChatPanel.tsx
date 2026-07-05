@@ -121,7 +121,7 @@ function renderMarkdown(text: string) {
     const heading = trimmed.match(/^#{1,6}\s+(.*)$/);
     if (heading) {
       out.push(
-        <p key={i} className="mt-1.5 mb-0.5 text-[13px] font-semibold text-sumi">
+        <p key={i} className="mt-1.5 mb-0.5 text-[15px] font-semibold text-sumi">
           {inline(heading[1])}
         </p>
       );
@@ -536,7 +536,7 @@ export function ChatPanel({
                 <button
                   key={s}
                   onClick={() => handleSuggestion(s)}
-                  className="rounded-full border border-sumi/10 bg-washi px-3.5 py-1.5 text-[11px] text-sumi-soft transition-all duration-300 hover:border-gold/40 hover:text-gold hover:bg-gold/5"
+                  className="rounded-full border border-sumi/10 bg-washi px-3.5 py-1.5 text-[13px] text-sumi-soft transition-all duration-300 hover:border-gold/40 hover:text-gold hover:bg-gold/5"
                 >
                   {s}
                 </button>
@@ -603,7 +603,7 @@ export function ChatPanel({
                 <button
                   key={s}
                   onClick={() => handleSuggestion(s)}
-                  className="rounded-full border border-sumi/8 px-3 py-1 text-[10px] text-sumi-soft/70 transition-all duration-300 hover:border-gold/40 hover:text-gold"
+                  className="rounded-full border border-sumi/8 px-3 py-1 text-[12px] text-sumi-soft/70 transition-all duration-300 hover:border-gold/40 hover:text-gold"
                 >
                   {s}
                 </button>
@@ -632,7 +632,7 @@ export function ChatPanel({
             <p className="mb-2">{t('limit')}</p>
             <a
               href={`/${locale}/contact`}
-              className="inline-block rounded-full bg-sumi px-4 py-1.5 text-[10px] uppercase tracking-widest text-washi transition-colors hover:bg-gold"
+              className="inline-block rounded-full bg-sumi px-4 py-1.5 text-[12px] uppercase tracking-widest text-washi transition-colors hover:bg-gold"
             >
               {t('cta')}
             </a>
@@ -696,7 +696,7 @@ export function ChatPanel({
               onClick={toggleTts}
               aria-pressed={ttsOn}
               title={ja ? '回答を読み上げ' : 'Read answers aloud'}
-              className={`flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 text-[9px] tracking-wide transition-colors duration-300 ${
+              className={`flex shrink-0 items-center gap-1 rounded-full border px-2.5 py-1 text-[11px] tracking-wide transition-colors duration-300 ${
                 ttsOn
                   ? 'border-gold/40 bg-gold/10 text-gold'
                   : 'border-sumi/10 text-sumi/40 hover:text-sumi-soft'
@@ -708,7 +708,7 @@ export function ChatPanel({
           ) : (
             <span />
           )}
-          <p className="text-[9px] tracking-wide text-sumi/25">{t('disclaimer')}</p>
+          <p className="text-[11px] tracking-wide text-sumi/25">{t('disclaimer')}</p>
         </div>
       </div>
     </div>

@@ -24,7 +24,7 @@ function Field({
   return (
     <label className="flex flex-col gap-3">
       <span className="flex items-baseline justify-between">
-        <span className="text-[10px] uppercase tracking-[0.25em] text-sumi-soft">
+        <span className="text-[12px] uppercase tracking-[0.25em] text-sumi-soft">
           {label}
         </span>
         <span className="font-mono text-sm text-sumi">
@@ -47,7 +47,7 @@ function Field({
 function Output({ label, value, accent = false }: { label: string; value: string; accent?: boolean }) {
   return (
     <div className="flex flex-col gap-1.5 border-t border-gold/20 pt-4">
-      <span className="text-[9px] uppercase tracking-[0.25em] text-sumi-soft/80">
+      <span className="text-[11px] uppercase tracking-[0.25em] text-sumi-soft/80">
         {label}
       </span>
       <span className={`font-mono text-xl ${accent ? 'text-gold' : 'text-sumi'}`}>
@@ -87,13 +87,13 @@ export function SimulatorSection() {
     <section id="simulator" className="relative overflow-hidden bg-washi-deep py-28 lg:py-36">
       <div className="mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-14 flex flex-col gap-5">
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
             {t('label')}
           </span>
           <h2 className="font-jp text-3xl font-extrabold text-sumi lg:text-[2.4rem]">
             {t('title')}
           </h2>
-          <p className="max-w-xl text-sm font-light leading-loose text-sumi-soft">
+          <p className="max-w-xl text-xl font-light leading-loose text-sumi-soft">
             {t('intro')}
           </p>
         </Reveal>
@@ -118,7 +118,7 @@ export function SimulatorSection() {
         </Reveal>
 
         <Reveal delay={0.25} className="mt-6">
-          <p className="text-[10px] tracking-[0.1em] text-sumi/35">{t('disclaimer')}</p>
+          <p className="text-[12px] tracking-[0.1em] text-sumi/35">{t('disclaimer')}</p>
         </Reveal>
       </div>
     </section>

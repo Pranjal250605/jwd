@@ -40,11 +40,11 @@ export function Footer() {
           <div className="flex flex-col gap-5">
             <span className="font-en text-2xl font-semibold tracking-[0.16em] text-washi">
               JWD
-              <span className="ml-2 align-middle text-[8px] tracking-[0.5em] text-gold-bright">
+              <span className="ml-2 align-middle text-[10px] tracking-[0.5em] text-gold-bright">
                 GROUP
               </span>
             </span>
-            <p className="max-w-xs text-[13px] font-light leading-relaxed text-washi/45">
+            <p className="max-w-xs text-lg font-light leading-relaxed text-washi/70">
               {t('blurb')}
             </p>
             <p className="font-en text-sm italic text-gold-pale/55">{t('tagline')}</p>
@@ -52,7 +52,7 @@ export function Footer() {
 
           {/* Explore */}
           <nav className="flex flex-col gap-4">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-gold-bright/70">
+            <span className="text-[12px] uppercase tracking-[0.3em] text-gold-bright/70">
               {t('explore')}
             </span>
             <ul className="flex flex-col gap-2.5">
@@ -60,7 +60,7 @@ export function Footer() {
                 <li key={key}>
                   <Link
                     href={href}
-                    className="text-[13px] text-washi/55 transition-colors duration-300 hover:text-gold-bright"
+                    className="text-[15px] text-washi/55 transition-colors duration-300 hover:text-gold-bright"
                   >
                     {nav(key)}
                   </Link>
@@ -71,14 +71,14 @@ export function Footer() {
 
           {/* Connect */}
           <nav className="flex flex-col gap-4">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-gold-bright/70">
+            <span className="text-[12px] uppercase tracking-[0.3em] text-gold-bright/70">
               {t('connect')}
             </span>
             <ul className="flex flex-col gap-2.5">
               <li>
                 <Link
                   href="/contact"
-                  className="text-[13px] text-washi/55 transition-colors duration-300 hover:text-gold-bright"
+                  className="text-[15px] text-washi/55 transition-colors duration-300 hover:text-gold-bright"
                 >
                   {nav('contact')}
                 </Link>
@@ -87,7 +87,7 @@ export function Footer() {
                 <li key={c.label}>
                   <Link
                     href={c.href}
-                    className="text-[13px] text-washi/55 transition-colors duration-300 hover:text-gold-bright"
+                    className="text-[15px] text-washi/55 transition-colors duration-300 hover:text-gold-bright"
                   >
                     {c.label}
                   </Link>
@@ -98,10 +98,10 @@ export function Footer() {
 
           {/* Office */}
           <div className="flex flex-col gap-4">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-gold-bright/70">
+            <span className="text-[12px] uppercase tracking-[0.3em] text-gold-bright/70">
               {t('company')}
             </span>
-            <p className="text-[13px] font-light leading-relaxed text-washi/45">
+            <p className="text-lg font-light leading-relaxed text-washi/70">
               {t('address')}
             </p>
           </div>
@@ -109,10 +109,10 @@ export function Footer() {
 
         {/* Disclaimer + legal */}
         <div className="mt-16 flex flex-col gap-6 border-t border-washi/10 pt-8">
-          <p className="max-w-3xl text-[11px] leading-relaxed text-washi/30">
+          <p className="max-w-3xl text-[13px] leading-relaxed text-washi/30">
             {t('disclaimer')}
           </p>
-          <p className="text-[10px] tracking-[0.2em] text-washi/40">
+          <p className="text-[12px] tracking-[0.2em] text-washi/40">
             © {new Date().getFullYear()} JWD GROUP. {t('rights')}
           </p>
         </div>

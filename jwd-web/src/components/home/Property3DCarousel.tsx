@@ -57,18 +57,18 @@ function OrbitCard({
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(12,14,18,0.82) 0%, rgba(12,14,18,0.2) 42%, transparent 70%)' }} />
           <div className="absolute right-3.5 top-3.5 flex flex-col items-center rounded-xl bg-washi/95 px-3 py-2 shadow-lg backdrop-blur-sm">
             <span className="font-en text-lg font-semibold leading-none" style={{ color: ACCENT }}>{p.yieldPct.toFixed(1)}%</span>
-            <span className="mt-0.5 text-[7px] uppercase tracking-[0.14em] text-sumi-soft">{locale === 'ja' ? '目標利回り' : 'Target yield'}</span>
+            <span className="mt-0.5 text-[9px] uppercase tracking-[0.14em] text-sumi-soft">{locale === 'ja' ? '目標利回り' : 'Target yield'}</span>
           </div>
           <div className="absolute inset-x-0 bottom-0 p-4">
-            <span className="text-[10px] uppercase tracking-[0.22em] text-gold-pale/90">{locale === 'ja' ? p.typeJa : p.typeEn}</span>
-            <div className="text-[11px] uppercase tracking-[0.18em] text-white/85">{p.area}</div>
+            <span className="text-[12px] uppercase tracking-[0.22em] text-gold-pale/90">{locale === 'ja' ? p.typeJa : p.typeEn}</span>
+            <div className="text-[13px] uppercase tracking-[0.18em] text-white/85">{p.area}</div>
           </div>
         </div>
         <div className="flex flex-col gap-3 p-5">
           <h3 className="font-jp text-[0.95rem] font-bold leading-snug text-sumi">{locale === 'ja' ? p.nameJa : p.nameEn}</h3>
           <div className="flex items-center justify-between">
             <span className="font-en text-lg font-light text-sumi">AED {p.priceAed.toLocaleString('en-US')}</span>
-            <span className="text-[9px] uppercase tracking-[0.18em] transition-colors group-hover:text-gold" style={{ color: ACCENT }}>
+            <span className="text-[11px] uppercase tracking-[0.18em] transition-colors group-hover:text-gold" style={{ color: ACCENT }}>
               {locale === 'ja' ? '詳細 →' : 'Details →'}
             </span>
           </div>

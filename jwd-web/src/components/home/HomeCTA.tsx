@@ -47,13 +47,13 @@ export function HomeCTA() {
       </svg>
       <div className="relative mx-auto max-w-2xl px-7">
         <Reveal>
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
             {tx(c.label)}
           </span>
           <h2 className="font-jp mt-6 text-3xl font-extrabold leading-snug text-sumi lg:text-[2.6rem]">
             {tx(c.title)}
           </h2>
-          <p className="mx-auto mt-6 max-w-md text-sm font-light leading-loose text-sumi-soft">
+          <p className="mx-auto mt-6 max-w-md text-xl font-light leading-loose text-sumi-soft">
             {tx(c.desc)}
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -74,7 +74,7 @@ export function HomeCTA() {
               {tx(c.secondary)}
             </Link>
           </div>
-          <p className="mt-8 text-[10px] uppercase tracking-[0.24em] text-sumi/40">
+          <p className="mt-8 text-[12px] uppercase tracking-[0.24em] text-sumi/40">
             {tx(c.note)}
           </p>
         </Reveal>

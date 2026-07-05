@@ -24,20 +24,20 @@ export function HomeLatestProperties() {
       <PremiumBackdrop />
       <div className="relative z-10 mx-auto max-w-screen-2xl px-7 lg:px-12">
         <Reveal className="mb-6 flex flex-col gap-4">
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
             {tx(c.label)}
           </span>
           <h2 className={`${display} max-w-3xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] text-sumi lg:text-[3rem]`}>
             {tx(c.title)}
           </h2>
           <MarkerUnderline accent={ACCENT} className="w-44 lg:w-64" />
-          <p className="mt-2 max-w-xl text-sm font-light leading-loose text-sumi-soft">
+          <p className="mt-2 max-w-xl text-xl font-light leading-loose text-sumi-soft">
             {tx(c.intro)}
           </p>
         </Reveal>
 
         {/* drag hint */}
-        <Reveal className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-sumi-soft/70">
+        <Reveal className="mb-2 flex items-center gap-2 text-[12px] uppercase tracking-[0.22em] text-sumi-soft/70">
           <MoveHorizontal className="h-3.5 w-3.5" style={{ color: ACCENT }} strokeWidth={1.6} />
           {locale === 'ja' ? 'ドラッグして回す・カードをクリックで詳細' : 'Drag to explore · click a card for details'}
         </Reveal>
@@ -49,7 +49,7 @@ export function HomeLatestProperties() {
         <Reveal delay={0.1} className="mt-10">
           <Link
             href="/dubai-properties"
-            className="group inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-gold transition-all duration-500 hover:gap-4 hover:text-sumi"
+            className="group inline-flex items-center gap-3 text-[13px] uppercase tracking-[0.22em] text-gold transition-all duration-500 hover:gap-4 hover:text-sumi"
           >
             <span className="border-b border-gold/40 pb-1 transition-colors group-hover:border-sumi">
               {tx(c.viewAll)}

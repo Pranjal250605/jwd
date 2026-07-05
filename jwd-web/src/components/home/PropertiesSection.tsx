@@ -23,12 +23,12 @@ export function PropertiesSection() {
       <PremiumBackdrop />
       <div className="relative z-10 mx-auto max-w-screen-2xl px-7 lg:px-12">
         <Reveal className="mb-14 flex flex-col gap-4 lg:mb-18">
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">{t('label')}</span>
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">{t('label')}</span>
           <h2 className={`${display} max-w-3xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] text-sumi lg:text-[3rem]`}>
             {t('title')}
           </h2>
           <MarkerUnderline accent={ACCENT} className="w-44 lg:w-64" />
-          <p className="mt-2 max-w-xl text-sm font-light leading-loose text-sumi-soft">{t('intro')}</p>
+          <p className="mt-2 max-w-xl text-xl font-light leading-loose text-sumi-soft">{t('intro')}</p>
         </Reveal>
 
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
@@ -63,9 +63,9 @@ export function PropertiesSection() {
 
                 {/* body */}
                 <div className="flex flex-1 flex-col gap-2.5 p-5">
-                  <span className="text-[9px] uppercase tracking-[0.28em] text-gold/70">{ja ? p.typeJa : p.typeEn}</span>
+                  <span className="text-[11px] uppercase tracking-[0.28em] text-gold/70">{ja ? p.typeJa : p.typeEn}</span>
                   <h3 className="font-jp text-[0.95rem] font-bold leading-snug text-sumi">{ja ? p.nameJa : p.nameEn}</h3>
-                  <div className="flex items-center gap-3.5 text-[11px] text-sumi-soft">
+                  <div className="flex items-center gap-3.5 text-[13px] text-sumi-soft">
                     <span className="inline-flex items-center gap-1">
                       <BedDouble className="h-3.5 w-3.5" strokeWidth={1.5} /> {p.beds}
                     </span>
@@ -75,7 +75,7 @@ export function PropertiesSection() {
                   </div>
                   <div className="mt-auto flex items-center justify-between border-t border-sumi/8 pt-3.5">
                     <span className="font-en text-base font-light text-sumi">{aed(p.priceAed)}</span>
-                    <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.16em] text-gold opacity-0 -translate-x-1 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                    <span className="inline-flex items-center gap-1 text-[12px] uppercase tracking-[0.16em] text-gold opacity-0 -translate-x-1 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
                       {ja ? '詳細' : 'View'} <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.6} />
                     </span>
                   </div>
@@ -86,7 +86,7 @@ export function PropertiesSection() {
         </div>
 
         <Reveal delay={0.3} className="mt-8">
-          <p className="text-[10px] tracking-[0.1em] text-sumi/35">{t('note')}</p>
+          <p className="text-[12px] tracking-[0.1em] text-sumi/35">{t('note')}</p>
         </Reveal>
       </div>
     </section>

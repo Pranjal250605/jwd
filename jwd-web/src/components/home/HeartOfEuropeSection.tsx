@@ -64,7 +64,7 @@ export function HeartOfEuropeSection() {
               className="h-px w-14"
               style={{ background: 'linear-gradient(90deg, #00c4cc, transparent)' }}
             />
-            <span className="text-[10px] uppercase tracking-[0.38em] text-gold-bright/80">
+            <span className="text-[12px] uppercase tracking-[0.38em] text-gold-bright/80">
               {t('label')}
             </span>
           </Reveal>
@@ -76,7 +76,7 @@ export function HeartOfEuropeSection() {
           </Reveal>
 
           <Reveal delay={0.2}>
-            <p className="mt-8 text-sm font-light leading-[2.2] text-washi/55 lg:text-[0.95rem]">
+            <p className="mt-8 text-xl font-light leading-[2.1] text-washi/80">
               {t('desc')}
             </p>
           </Reveal>

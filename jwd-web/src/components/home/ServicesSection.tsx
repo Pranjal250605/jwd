@@ -22,13 +22,13 @@ export function ServicesSection() {
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 1, ease: EASE }}
         >
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
             {t('label')}
           </span>
           <h2 className="font-jp text-3xl font-extrabold text-sumi lg:text-[2.4rem]">
             {t('title')}
           </h2>
-          <p className="max-w-2xl text-sm font-light leading-loose text-sumi-soft">
+          <p className="max-w-2xl text-xl font-light leading-loose text-sumi-soft">
             {t('intro')}
           </p>
         </motion.div>
@@ -43,18 +43,18 @@ export function ServicesSection() {
               animate={inView ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.8, delay: 0.15 + i * 0.07, ease: EASE }}
             >
-              <span className="font-mono text-[10px] text-gold/55">
+              <span className="font-mono text-[12px] text-gold/55">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div>
                 <h3 className="font-jp text-lg font-bold text-sumi transition-colors duration-500 group-hover:text-gold">
                   {locale === 'ja' ? service.titleJa : service.titleEn}
                 </h3>
-                <p className="font-en mt-1 text-[11px] italic tracking-wide text-gold/70">
+                <p className="font-en mt-1 text-[13px] italic tracking-wide text-gold/70">
                   {service.subtitle}
                 </p>
               </div>
-              <p className="text-xs font-light leading-[1.9] text-sumi-soft">
+              <p className="text-base font-light leading-[1.9] text-sumi-soft">
                 {locale === 'ja' ? service.descJa : service.descEn}
               </p>
               {/* kintsugi underline */}

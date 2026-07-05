@@ -196,7 +196,7 @@ export function TwoHorizons() {
                 className="h-px w-14"
                 style={{ background: 'linear-gradient(90deg, #0097a7, transparent)' }}
               />
-              <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+              <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
                 {t('badge')}
               </span>
             </motion.div>
@@ -241,7 +241,7 @@ export function TwoHorizons() {
 
             {/* Description */}
             <motion.p
-              className="mt-7 max-w-xl text-sm font-light leading-[2.1] text-sumi-soft sm:text-[0.95rem]"
+              className="mt-7 max-w-xl text-lg font-light leading-[2.1] text-sumi-soft sm:text-lg"
               initial={reduce ? false : { opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 2.85, ease: EASE }}
@@ -283,7 +283,7 @@ export function TwoHorizons() {
         >
           <span className="h-14 w-px bg-sumi/20" />
           <span
-            className="font-jp text-[10px] tracking-[0.5em] text-sumi/35"
+            className="font-jp text-[12px] tracking-[0.5em] text-sumi/35"
             style={{ writingMode: 'vertical-rl' }}
           >
             {t('japan')} · JAPAN
@@ -295,7 +295,7 @@ export function TwoHorizons() {
         >
           <span className="h-14 w-px bg-gold-bright/30" />
           <span
-            className="font-jp text-[10px] tracking-[0.5em] text-gold-bright/50"
+            className="font-jp text-[12px] tracking-[0.5em] text-gold-bright/50"
             style={{ writingMode: 'vertical-rl' }}
           >
             {t('dubai')} · DUBAI
@@ -310,7 +310,7 @@ export function TwoHorizons() {
           transition={{ delay: 3.6, duration: 1 }}
           style={{ opacity: reduce ? 1 : contentOpacity }}
         >
-          <span className="text-[9px] uppercase tracking-[0.4em] text-sumi/40">
+          <span className="text-[11px] uppercase tracking-[0.4em] text-sumi/40">
             {t('scroll')}
           </span>
           <span className="relative h-10 w-px overflow-hidden bg-sumi/10">

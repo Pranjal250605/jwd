@@ -41,13 +41,13 @@ export function SubCTA() {
       </svg>
       <div className="relative mx-auto max-w-2xl px-7">
         <Reveal>
-          <span className="text-[10px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
             {t('label')}
           </span>
           <h2 className="font-jp mt-6 text-3xl font-extrabold leading-snug text-sumi lg:text-[2.4rem]">
             {t('title')}
           </h2>
-          <p className="mx-auto mt-6 max-w-md text-sm font-light leading-loose text-sumi-soft">
+          <p className="mx-auto mt-6 max-w-md text-xl font-light leading-loose text-sumi-soft">
             {t('desc')}
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
@@ -61,7 +61,7 @@ export function SubCTA() {
               />
               <span className="relative">{t('ctaPrimary')}</span>
             </Link>
-            <span className="text-[10px] uppercase tracking-[0.24em] text-sumi/45">
+            <span className="text-[12px] uppercase tracking-[0.24em] text-sumi/45">
               {t('notice')}
             </span>
           </div>

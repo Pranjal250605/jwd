@@ -70,7 +70,7 @@ export function PageHero({
               animate={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.2, ease: EASE }}
             />
-            <span className="text-[10px] uppercase tracking-[0.38em]" style={{ color: accent }}>
+            <span className="text-[12px] uppercase tracking-[0.38em]" style={{ color: accent }}>
               {label}
             </span>
           </motion.div>
@@ -93,7 +93,7 @@ export function PageHero({
 
           {subtitle && (
             <motion.p
-              className="mt-6 max-w-xl text-base font-light leading-relaxed text-sumi-soft"
+              className="mt-6 max-w-xl text-lg font-light leading-relaxed text-sumi-soft"
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.55, ease: EASE }}
