@@ -30,7 +30,7 @@ export function BarChart({
     <div ref={ref} className="flex flex-col gap-5">
       {items.map((d, i) => (
         <div key={i} className="flex items-center gap-4">
-          <span className={`w-28 shrink-0 text-right text-[13px] tracking-wide ${labelCol} sm:w-40`}>
+          <span className={`w-28 shrink-0 text-right text-[15px] tracking-wide ${labelCol} sm:w-40`}>
             {d.label}
           </span>
           <div className="relative h-7 flex-1 overflow-hidden rounded-sm" style={{ background: dark ? 'rgba(255,255,255,0.06)' : 'rgba(32,37,31,0.05)' }}>
@@ -129,7 +129,7 @@ export function LineChart({
       </svg>
       <div className="flex justify-between">
         {points.map((p, i) => (
-          <span key={i} className={`text-[12px] tracking-wide ${labelCol}`}>
+          <span key={i} className={`text-[14px] tracking-wide ${labelCol}`}>
             {p.label}
             {unit && i === points.length - 1 ? '' : ''}
           </span>

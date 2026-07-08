@@ -43,7 +43,7 @@ export function StatsRow({
               suffix={s.suffix ?? ''}
             />
           </div>
-          <div className={`mt-3 text-[0.7rem] uppercase tracking-[0.18em] ${label}`}>
+          <div className={`mt-3 text-sm uppercase tracking-[0.18em] ${label}`}>
             {tx(s.label)}
           </div>
         </motion.div>

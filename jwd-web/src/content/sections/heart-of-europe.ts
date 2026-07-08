@@ -401,7 +401,7 @@ export const heartOfEurope: Section = {
             en: 'Property on the sea cannot be told in numbers alone. Some things only become visible once you actually own it.',
           },
           by: { ja: '川名 智 (Tomo Kawana)', en: 'Tomo Kawana' },
-          role: { ja: 'JWDグループ 代表', en: 'Representative, JWD Group' },
+          role: { ja: 'JWDインベストメント 代表', en: 'Representative, JWD Investment' },
         },
         {
           kind: 'links',

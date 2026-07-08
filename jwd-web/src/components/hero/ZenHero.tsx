@@ -87,7 +87,7 @@ export function ZenHero() {
               initial={reduce ? false : { opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE }}
             >
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              <span className="text-[13px] uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
+              <span className="text-sm uppercase tracking-[0.28em] text-sumi-soft">{t('badge')}</span>
             </motion.div>
 
             <h1 className="font-en font-semibold text-sumi" style={{ fontSize: 'clamp(2.8rem, 6.6vw, 5.6rem)', lineHeight: 1.12, letterSpacing: '-0.035em' }}>
@@ -151,7 +151,7 @@ export function ZenHero() {
                 <span className="font-en text-4xl font-semibold tracking-tight text-sumi lg:text-[2.8rem]">
                   <CountUp to={s.value} prefix={s.prefix ?? ''} suffix={s.suffix ?? ''} start={statsInView} />
                 </span>
-                <span className="text-[12px] uppercase tracking-[0.2em] text-sumi-soft">{ja ? s.ja : s.en}</span>
+                <span className="text-sm uppercase tracking-[0.2em] text-sumi-soft">{ja ? s.ja : s.en}</span>
               </motion.div>
             ))}
           </div>
@@ -159,7 +159,7 @@ export function ZenHero() {
 
         {/* ── source strip ── */}
         <div className="pb-16">
-          <p className="mb-6 text-center text-[12px] uppercase tracking-[0.3em] text-sumi-soft/60">
+          <p className="mb-6 text-center text-sm uppercase tracking-[0.3em] text-sumi-soft/60">
             {ja ? '信頼できる情報源と提携' : 'Curated across trusted sources'}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
@@ -172,10 +172,10 @@ export function ZenHero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   title={ja && isInvestorSite(s.url) ? JA_PROXY_NOTICE : undefined}
-                  className={`font-sans text-sm font-medium tracking-wide transition-all duration-300 ${
+                  className={`font-sans text-sm tracking-wide transition-all duration-300 ${
                     isHighlighted
-                      ? 'rounded-full border border-[#00c4cc]/35 bg-[#00c4cc]/10 px-4 py-1.5 text-[#00c4cc] hover:bg-[#00c4cc]/18'
-                      : 'text-sumi/35 hover:text-sumi/70'
+                      ? 'rounded-full border border-[#0097a7]/70 bg-[#00c4cc]/15 px-4 py-1.5 font-semibold text-[#00727e] shadow-[0_3px_12px_-4px_rgba(0,151,167,0.5)] hover:border-[#0097a7] hover:bg-[#00c4cc]/25'
+                      : 'font-medium text-sumi/35 hover:text-sumi/70'
                   }`}
                 >
                   {s.name}

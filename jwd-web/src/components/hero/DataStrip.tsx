@@ -18,7 +18,7 @@ function Stat({
 }) {
   return (
     <div className={`flex flex-col gap-1 px-5 py-3 sm:px-8 ${className}`}>
-      <span className="text-[11px] uppercase tracking-[0.3em] text-gold-pale/60">
+      <span className="text-sm uppercase tracking-[0.3em] text-gold-pale/60">
         {label}
       </span>
       <span className="font-mono text-base text-washi sm:text-lg">
@@ -73,7 +73,7 @@ export function DataStrip({ fade }: { fade?: MotionValue<number> }) {
           <span className="inline-flex items-center gap-2">
             <CountUp to={fx} decimals={2} start={start} prefix="¥" />
             {live && (
-              <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.2em] text-gold-bright/70">
+              <span className="inline-flex items-center gap-1 text-sm uppercase tracking-[0.2em] text-gold-bright/70">
                 <span
                   className="h-1.5 w-1.5 rounded-full bg-gold-bright"
                   style={{ animation: 'pulseDot 2s ease-in-out infinite' }}

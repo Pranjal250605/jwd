@@ -47,7 +47,7 @@ export function HomeCTA() {
       </svg>
       <div className="relative mx-auto max-w-2xl px-7">
         <Reveal>
-          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-sm uppercase tracking-[0.38em] text-gold">
             {tx(c.label)}
           </span>
           <h2 className="font-jp mt-6 text-3xl font-extrabold leading-snug text-sumi lg:text-[2.6rem]">
@@ -59,7 +59,7 @@ export function HomeCTA() {
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/contact"
-              className="group relative w-full overflow-hidden bg-sumi px-9 py-4 text-xs uppercase tracking-[0.24em] text-washi sm:w-auto"
+              className="group relative w-full overflow-hidden bg-sumi px-9 py-4 text-sm uppercase tracking-[0.24em] text-washi sm:w-auto"
             >
               <span
                 className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-gold to-gold-bright transition-transform duration-700 ease-out group-hover:scale-x-100"
@@ -69,12 +69,12 @@ export function HomeCTA() {
             </Link>
             <Link
               href="/contact"
-              className="w-full border border-gold/35 px-9 py-4 text-xs uppercase tracking-[0.24em] text-sumi transition-colors duration-500 hover:border-gold hover:bg-gold/5 sm:w-auto"
+              className="w-full border border-gold/35 px-9 py-4 text-sm uppercase tracking-[0.24em] text-sumi transition-colors duration-500 hover:border-gold hover:bg-gold/5 sm:w-auto"
             >
               {tx(c.secondary)}
             </Link>
           </div>
-          <p className="mt-8 text-[12px] uppercase tracking-[0.24em] text-sumi/40">
+          <p className="mt-8 text-sm uppercase tracking-[0.24em] text-sumi/40">
             {tx(c.note)}
           </p>
         </Reveal>

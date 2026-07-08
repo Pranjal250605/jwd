@@ -196,7 +196,7 @@ export function TwoHorizons() {
                 className="h-px w-14"
                 style={{ background: 'linear-gradient(90deg, #0097a7, transparent)' }}
               />
-              <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
+              <span className="text-sm uppercase tracking-[0.38em] text-gold">
                 {t('badge')}
               </span>
             </motion.div>
@@ -258,7 +258,7 @@ export function TwoHorizons() {
             >
               <a
                 href="#contact"
-                className="group relative overflow-hidden bg-sumi px-9 py-4 text-xs uppercase tracking-[0.25em] text-washi transition-colors duration-500"
+                className="group relative overflow-hidden bg-sumi px-9 py-4 text-sm uppercase tracking-[0.25em] text-washi transition-colors duration-500"
               >
                 <span
                   className="absolute inset-0 -translate-x-full bg-gradient-to-r from-gold to-gold-bright transition-transform duration-500 ease-out group-hover:translate-x-0"
@@ -268,7 +268,7 @@ export function TwoHorizons() {
               </a>
               <a
                 href="#guide"
-                className="border border-gold/35 px-9 py-4 text-xs uppercase tracking-[0.25em] text-sumi transition-all duration-500 hover:border-gold hover:bg-gold/5"
+                className="border border-gold/35 px-9 py-4 text-sm uppercase tracking-[0.25em] text-sumi transition-all duration-500 hover:border-gold hover:bg-gold/5"
               >
                 {t('ctaSecondary')}
               </a>
@@ -283,7 +283,7 @@ export function TwoHorizons() {
         >
           <span className="h-14 w-px bg-sumi/20" />
           <span
-            className="font-jp text-[12px] tracking-[0.5em] text-sumi/35"
+            className="font-jp text-sm tracking-[0.5em] text-sumi/55"
             style={{ writingMode: 'vertical-rl' }}
           >
             {t('japan')} · JAPAN
@@ -295,7 +295,7 @@ export function TwoHorizons() {
         >
           <span className="h-14 w-px bg-gold-bright/30" />
           <span
-            className="font-jp text-[12px] tracking-[0.5em] text-gold-bright/50"
+            className="font-jp text-[14px] tracking-[0.5em] text-gold-bright/50"
             style={{ writingMode: 'vertical-rl' }}
           >
             {t('dubai')} · DUBAI
@@ -310,7 +310,7 @@ export function TwoHorizons() {
           transition={{ delay: 3.6, duration: 1 }}
           style={{ opacity: reduce ? 1 : contentOpacity }}
         >
-          <span className="text-[11px] uppercase tracking-[0.4em] text-sumi/40">
+          <span className="text-sm uppercase tracking-[0.4em] text-sumi/40">
             {t('scroll')}
           </span>
           <span className="relative h-10 w-px overflow-hidden bg-sumi/10">

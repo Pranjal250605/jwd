@@ -34,7 +34,7 @@ export function ContactCTA() {
 
       <div ref={ref} className="relative mx-auto flex max-w-3xl flex-col items-center gap-8 px-7 text-center">
         <motion.span
-          className="border border-gold/30 bg-gold/5 px-5 py-2 font-jp text-[13px] tracking-[0.35em] text-gold"
+          className="border border-gold/30 bg-gold/5 px-5 py-2 font-jp text-[15px] tracking-[0.35em] text-gold"
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.9, ease: EASE }}
@@ -68,7 +68,7 @@ export function ContactCTA() {
         >
           <a
             href="#contact"
-            className="group relative overflow-hidden bg-sumi px-10 py-4 text-xs uppercase tracking-[0.25em] text-washi"
+            className="group relative overflow-hidden bg-sumi px-10 py-4 text-sm uppercase tracking-[0.25em] text-washi"
           >
             <span
               className="absolute inset-0 -translate-x-full bg-gradient-to-r from-gold to-gold-bright transition-transform duration-500 ease-out group-hover:translate-x-0"
@@ -79,13 +79,13 @@ export function ContactCTA() {
           {/* TODO: real wa.me / lin.ee links once client provides numbers */}
           <a
             href="#whatsapp"
-            className="border border-gold/35 px-8 py-4 text-xs uppercase tracking-[0.25em] text-sumi transition-all duration-500 hover:border-gold hover:bg-gold/5"
+            className="border border-gold/35 px-8 py-4 text-sm uppercase tracking-[0.25em] text-sumi transition-all duration-500 hover:border-gold hover:bg-gold/5"
           >
             {t('ctaWhatsApp')}
           </a>
           <a
             href="#line"
-            className="border border-gold/35 px-8 py-4 text-xs uppercase tracking-[0.25em] text-sumi transition-all duration-500 hover:border-gold hover:bg-gold/5"
+            className="border border-gold/35 px-8 py-4 text-sm uppercase tracking-[0.25em] text-sumi transition-all duration-500 hover:border-gold hover:bg-gold/5"
           >
             {t('ctaLine')}
           </a>

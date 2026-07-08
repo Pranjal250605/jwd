@@ -23,7 +23,7 @@ export function StoriesSection() {
 
       <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-10 px-7 text-center">
         <Reveal>
-          <span className="text-[12px] uppercase tracking-[0.38em] text-gold-bright/70">
+          <span className="text-sm uppercase tracking-[0.38em] text-gold-bright/70">
             {t('label')}
           </span>
         </Reveal>
@@ -40,7 +40,7 @@ export function StoriesSection() {
           <span className="font-en text-base italic tracking-wide text-gold-pale">
             {t('name')}
           </span>
-          <span className="text-[12px] tracking-[0.3em] text-washi/40">
+          <span className="text-[14px] tracking-[0.3em] text-washi/40">
             {t('role')}
           </span>
         </Reveal>
@@ -49,7 +49,7 @@ export function StoriesSection() {
           {CHIPS.map((chip) => (
             <span
               key={chip}
-              className="border border-gold-bright/25 px-5 py-2.5 font-jp text-xs tracking-[0.15em] text-gold-pale/80 transition-colors duration-500 hover:border-gold-bright"
+              className="border border-gold-bright/25 px-5 py-2.5 font-jp text-sm tracking-[0.15em] text-gold-pale/80 transition-colors duration-500 hover:border-gold-bright"
             >
               {t(chip)}
             </span>

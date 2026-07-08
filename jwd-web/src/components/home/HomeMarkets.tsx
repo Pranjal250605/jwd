@@ -80,7 +80,7 @@ export function HomeMarkets() {
       <PremiumBackdrop />
       <div className="relative z-10 mx-auto max-w-screen-2xl px-7 lg:px-12">
         <Reveal className="mb-14 flex flex-col gap-4 lg:mb-18">
-          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-sm uppercase tracking-[0.38em] text-gold">
             {ja ? 'Equiti と提携' : 'In partnership with Equiti'}
           </span>
           <h2 className={`${display} max-w-3xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] text-sumi lg:text-[3rem]`}>
@@ -112,7 +112,7 @@ export function HomeMarkets() {
                     <h3 className={`${display} text-xl font-semibold text-sumi`}>{ja ? m.ja : m.en}</h3>
                     <p className="text-lg font-light leading-relaxed text-sumi-soft">{ja ? m.descJa : m.descEn}</p>
                   </div>
-                  <span className="mt-auto inline-flex items-center gap-1.5 text-[13px] uppercase tracking-[0.16em] text-gold">
+                  <span className="mt-auto inline-flex items-center gap-1.5 text-sm uppercase tracking-[0.16em] text-gold">
                     {ja ? 'Equitiで取引' : 'Trade on Equiti'}
                     <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" strokeWidth={1.8} />
                   </span>
@@ -132,7 +132,7 @@ export function HomeMarkets() {
                 style={{ background: `radial-gradient(ellipse 70% 60% at 80% 10%, ${ACCENT}40, transparent 60%)` }}
               />
               <div style={{ transform: 'translateZ(40px)' }} className="relative flex h-full flex-col justify-between gap-8">
-                <span className="text-[12px] uppercase tracking-[0.28em] text-gold-pale/90">
+                <span className="text-sm uppercase tracking-[0.28em] text-gold-pale/90">
                   {ja ? 'すべての商品' : 'Full range'}
                 </span>
                 <div className="flex items-center justify-between">
@@ -147,13 +147,13 @@ export function HomeMarkets() {
         </div>
 
         <Reveal delay={0.3} className="mt-8 flex flex-col gap-1.5">
-          <p className="text-[12px] tracking-[0.1em] text-sumi/35">
+          <p className="text-sm tracking-[0.1em] text-sumi/55">
             {ja
               ? '※ 取引はEquitiのプラットフォーム上で行われます。CFD取引にはリスクが伴います。'
               : '※ Trading is executed on Equiti’s platform. CFDs carry risk.'}
           </p>
           {ja && (
-            <p className="text-[12px] leading-relaxed tracking-[0.05em] text-sumi/30">
+            <p className="text-sm leading-relaxed tracking-[0.05em] text-sumi/55">
               ※ {JA_PROXY_NOTICE}
             </p>
           )}

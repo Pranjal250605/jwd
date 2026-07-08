@@ -31,7 +31,7 @@ export function AboutSection() {
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 1, ease: EASE }}
         >
-          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-sm uppercase tracking-[0.38em] text-gold">
             {t('label')}
           </span>
           <h2 className="font-jp mt-6 text-3xl font-extrabold leading-snug text-sumi lg:text-[2.6rem]">

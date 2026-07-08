@@ -42,7 +42,7 @@ Property price trends (${histories[0]?.source === 'dld-live' ? 'LIVE Dubai Land 
   parts.push(`Data freshness: FX is real-time/daily; property figures are DLD-based trend estimates (not live transaction records unless the live feed is enabled). Say so honestly if asked.`);
 
   // ── Company overview ──
-  parts.push(`# JWD GROUP
+  parts.push(`# JWD INVESTMENT
 "The Bridge Between Japan & Dubai Real Estate and Wealth Creation"
 Founded by Tomo Kawana. Cross-border advisory connecting Japanese investors with Dubai real estate, investment funds, and wealth planning.
 Tomo personally lives in Dubai, invests in Dubai (Heart of Europe project), and raises his family there.

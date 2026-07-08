@@ -88,6 +88,21 @@ body {
   50% { opacity: 0.4; transform: scale(0.7); }
 }
 
+/* ── Wealth terminal: ticker marquee + scanline sweep ── */
+@keyframes wtTicker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes wtScan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  8%, 92% { opacity: 1; }
+  100% { transform: translateY(2400%); opacity: 0; }
+}
+@keyframes wtBlink {
+  0%, 48% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
 /* ── Scroll hint line ── */
 @keyframes scrollHint {
   0% { transform: scaleY(0); transform-origin: top; }

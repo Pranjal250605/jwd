@@ -20,8 +20,8 @@ export const about: Section = {
   order: 2,
   image: IMG.hero,
   intro: {
-    ja: 'JWDグループは、日本とドバイという二つの市場を母語で結ぶ、数少ない架け橋です。',
-    en: 'JWD Group is the rare bridge that connects two markets — Japan and Dubai — in your own language.',
+    ja: 'JWDインベストメントは、日本とドバイという二つの市場を母語で結ぶ、数少ない架け橋です。',
+    en: 'JWD Investment is the rare bridge that connects two markets — Japan and Dubai — in your own language.',
   },
   blurb: {
     ja: '会社概要、ミッション、ビジョン、経営陣、そして代表・川名のプロフィールまで。私たちの土台をご紹介します。',
@@ -31,7 +31,7 @@ export const about: Section = {
     {
       slug: 'company-overview',
       label: { ja: '会社概要', en: 'Company Overview' },
-      title: { ja: 'JWDグループという会社', en: 'The JWD Group story' },
+      title: { ja: 'JWDインベストメントという会社', en: 'The JWD Investment story' },
       tagline: {
         ja: '日本に根ざし、ドバイに広がる。一人の起業家の経験から生まれた架け橋。',
         en: 'Rooted in Japan, reaching across to Dubai — a bridge born from one entrepreneur’s lived experience.',
@@ -42,8 +42,8 @@ export const about: Section = {
           kind: 'lead',
           tone: 'light',
           text: {
-            ja: 'JWDグループ（Japan WorldLink DWC）は、ドバイと日本の不動産・資産形成をつなぐクロスボーダー・アドバイザリーです。私たちは「物件を売る会社」ではなく、二つの市場を知り尽くした上で、お客様の資産が次の地平へ渡るための設計を行うパートナーを目指しています。',
-            en: 'JWD Group (Japan WorldLink DWC) is a cross-border advisory linking real estate and wealth creation across Dubai and Japan. We are not a company that simply sells property — we are a partner that understands both markets intimately and designs the structures that carry your wealth to its next horizon.',
+            ja: 'JWDインベストメント（Japan WorldLink DWC）は、ドバイと日本の不動産・資産形成をつなぐクロスボーダー・アドバイザリーです。私たちは「物件を売る会社」ではなく、二つの市場を知り尽くした上で、お客様の資産が次の地平へ渡るための設計を行うパートナーを目指しています。',
+            en: 'JWD Investment (Japan WorldLink DWC) is a cross-border advisory linking real estate and wealth creation across Dubai and Japan. We are not a company that simply sells property — we are a partner that understands both markets intimately and designs the structures that carry your wealth to its next horizon.',
           },
         },
         {
@@ -220,7 +220,7 @@ export const about: Section = {
             en: 'Our job is not to sell — it is to put you in a position to decide well.',
           },
           by: { ja: '川名 智 (Tomo Kawana)', en: 'Tomo Kawana' },
-          role: { ja: 'JWDグループ 代表', en: 'Representative, JWD Group' },
+          role: { ja: 'JWDインベストメント 代表', en: 'Representative, JWD Investment' },
         },
       ],
     },
@@ -346,7 +346,7 @@ export const about: Section = {
             ja: '理論を教える人は多い。自分の資金を賭けて検証した人は少ない。私たちは後者でありたい。',
             en: 'Many people will teach you theory. Few have tested it with their own capital. We choose to be the latter.',
           },
-          by: { ja: 'JWDグループ 経営陣', en: 'JWD Group Leadership' },
+          by: { ja: 'JWDインベストメント 経営陣', en: 'JWD Investment Leadership' },
         },
       ],
     },

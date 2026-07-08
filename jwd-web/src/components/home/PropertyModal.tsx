@@ -65,14 +65,14 @@ export function PropertyModal({
           <div className="absolute bottom-5 left-5 inline-flex items-center gap-2 rounded-full bg-washi/90 px-3.5 py-1.5 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: ACCENT }} />
             <span className="font-en text-sm font-semibold" style={{ color: ACCENT }}>{p.yieldPct.toFixed(1)}%</span>
-            <span className="text-[11px] uppercase tracking-[0.16em] text-sumi-soft">{ja ? '目標利回り' : 'Target yield'}</span>
+            <span className="text-sm uppercase tracking-[0.16em] text-sumi-soft">{ja ? '目標利回り' : 'Target yield'}</span>
           </div>
         </div>
 
         {/* details column */}
         <div className="flex flex-col gap-7 overflow-y-auto p-7 lg:p-9">
           <div className="flex flex-col gap-2.5">
-            <span className="inline-flex items-center gap-1.5 text-[12px] uppercase tracking-[0.24em]" style={{ color: ACCENT }}>
+            <span className="inline-flex items-center gap-1.5 text-sm uppercase tracking-[0.24em]" style={{ color: ACCENT }}>
               <MapPin className="h-3.5 w-3.5" strokeWidth={1.6} /> {type} · {p.area}
             </span>
             <h3 className={`${display} text-2xl font-semibold leading-tight text-sumi lg:text-[1.9rem]`}>{name}</h3>
@@ -81,11 +81,11 @@ export function PropertyModal({
           {/* price + yield */}
           <div className="grid grid-cols-2 overflow-hidden rounded-2xl border border-sumi/8">
             <div className="bg-washi-deep/40 p-5">
-              <span className="text-[11px] uppercase tracking-[0.2em] text-sumi-soft">{ja ? '販売価格' : 'Asking price'}</span>
+              <span className="text-sm uppercase tracking-[0.2em] text-sumi-soft">{ja ? '販売価格' : 'Asking price'}</span>
               <div className="font-en mt-1 text-2xl font-light leading-none text-sumi">AED {p.priceAed.toLocaleString('en-US')}</div>
             </div>
             <div className="border-l border-sumi/8 p-5" style={{ background: `${ACCENT}0c` }}>
-              <span className="text-[11px] uppercase tracking-[0.2em] text-sumi-soft">{ja ? '目標利回り' : 'Target yield'}</span>
+              <span className="text-sm uppercase tracking-[0.2em] text-sumi-soft">{ja ? '目標利回り' : 'Target yield'}</span>
               <div className="font-en mt-1 text-2xl font-light leading-none" style={{ color: ACCENT }}>{p.yieldPct.toFixed(1)}%</div>
             </div>
           </div>
@@ -96,7 +96,7 @@ export function PropertyModal({
               <div key={i} className="flex flex-col items-center gap-2 rounded-xl border border-sumi/8 px-2 py-4 text-center">
                 <Icon className="h-5 w-5" style={{ color: ACCENT }} strokeWidth={1.5} />
                 <span className="font-jp text-sm font-bold text-sumi">{value}</span>
-                <span className="text-[10px] uppercase tracking-[0.16em] text-sumi-soft">{label}</span>
+                <span className="text-sm uppercase tracking-[0.16em] text-sumi-soft">{label}</span>
               </div>
             ))}
           </div>
@@ -108,16 +108,16 @@ export function PropertyModal({
             <Link
               href="/contact"
               onClick={onClose}
-              className="group relative overflow-hidden rounded-full bg-sumi px-7 py-3.5 text-center text-[13px] font-medium uppercase tracking-[0.18em] text-washi"
+              className="group relative overflow-hidden rounded-full bg-sumi px-7 py-3.5 text-center text-sm font-medium uppercase tracking-[0.18em] text-washi"
             >
               <span className="absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-gold to-gold-bright transition-transform duration-500 ease-out group-hover:scale-x-100" aria-hidden />
               <span className="relative">{ja ? 'この物件について相談する' : 'Enquire about this property'}</span>
             </Link>
             <div className="grid grid-cols-2 gap-3">
-              <a href={p.bayut} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full border border-sumi/15 px-4 py-3 text-[12px] font-medium uppercase tracking-[0.16em] text-sumi transition-colors hover:border-gold hover:text-gold">
+              <a href={p.bayut} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full border border-sumi/15 px-4 py-3 text-sm font-medium uppercase tracking-[0.16em] text-sumi transition-colors hover:border-gold hover:text-gold">
                 Bayut <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.6} />
               </a>
-              <a href={p.pf} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full border border-sumi/15 px-4 py-3 text-[12px] font-medium uppercase tracking-[0.16em] text-sumi transition-colors hover:border-gold hover:text-gold">
+              <a href={p.pf} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1.5 rounded-full border border-sumi/15 px-4 py-3 text-sm font-medium uppercase tracking-[0.16em] text-sumi transition-colors hover:border-gold hover:text-gold">
                 Property Finder <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.6} />
               </a>
             </div>

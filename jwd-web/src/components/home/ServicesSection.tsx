@@ -22,7 +22,7 @@ export function ServicesSection() {
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 1, ease: EASE }}
         >
-          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-sm uppercase tracking-[0.38em] text-gold">
             {t('label')}
           </span>
           <h2 className="font-jp text-3xl font-extrabold text-sumi lg:text-[2.4rem]">
@@ -43,14 +43,14 @@ export function ServicesSection() {
               animate={inView ? { opacity: 1, y: 0 } : undefined}
               transition={{ duration: 0.8, delay: 0.15 + i * 0.07, ease: EASE }}
             >
-              <span className="font-mono text-[12px] text-gold/55">
+              <span className="font-mono text-[14px] text-gold/55">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <div>
                 <h3 className="font-jp text-lg font-bold text-sumi transition-colors duration-500 group-hover:text-gold">
                   {locale === 'ja' ? service.titleJa : service.titleEn}
                 </h3>
-                <p className="font-en mt-1 text-[13px] italic tracking-wide text-gold/70">
+                <p className="font-en mt-1 text-[15px] italic tracking-wide text-gold/70">
                   {service.subtitle}
                 </p>
               </div>

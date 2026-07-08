@@ -12,7 +12,7 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
       aria-label="Breadcrumb"
       className="border-b border-sumi/8 bg-washi"
     >
-      <ol className="mx-auto flex max-w-screen-xl flex-wrap items-center gap-x-3 gap-y-1 px-7 py-4 text-[13px] tracking-[0.12em] lg:px-12">
+      <ol className="mx-auto flex max-w-screen-xl flex-wrap items-center gap-x-3 gap-y-1 px-7 py-4 text-[15px] tracking-[0.12em] lg:px-12">
         {items.map((c, i) => (
           <li key={i} className="flex items-center gap-3">
             {i > 0 && <span className="text-gold/50">/</span>}

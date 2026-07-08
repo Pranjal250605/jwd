@@ -47,7 +47,7 @@ export function StripeHero() {
               transition={{ duration: 0.7, ease: EASE }}
             >
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              <span className="text-[12px] uppercase tracking-[0.28em] text-sumi-soft">
+              <span className="text-sm uppercase tracking-[0.28em] text-sumi-soft">
                 {t('badge')}
               </span>
             </motion.div>
@@ -136,7 +136,7 @@ export function StripeHero() {
                 <span className="font-sans text-4xl font-semibold tracking-tight text-sumi lg:text-[2.8rem]">
                   <CountUp to={s.value} prefix={s.prefix ?? ''} suffix={s.suffix ?? ''} start={statsInView} />
                 </span>
-                <span className="text-[12px] uppercase tracking-[0.2em] text-sumi-soft">
+                <span className="text-sm uppercase tracking-[0.2em] text-sumi-soft">
                   {ja ? s.ja : s.en}
                 </span>
               </motion.div>
@@ -146,7 +146,7 @@ export function StripeHero() {
 
         {/* ── Source / trust strip ── */}
         <div className="pb-16">
-          <p className="mb-6 text-center text-[12px] uppercase tracking-[0.3em] text-sumi-soft/60">
+          <p className="mb-6 text-center text-sm uppercase tracking-[0.3em] text-sumi-soft/60">
             {ja ? '信頼できる情報源と提携' : 'Curated across trusted sources'}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4">

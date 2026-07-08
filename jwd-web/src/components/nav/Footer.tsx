@@ -40,7 +40,7 @@ export function Footer() {
           <div className="flex flex-col gap-5">
             <span className="font-en text-2xl font-semibold tracking-[0.16em] text-washi">
               JWD
-              <span className="ml-2 align-middle text-[10px] tracking-[0.5em] text-gold-bright">
+              <span className="ml-2 align-middle text-[15px] tracking-[0.5em] text-gold-bright">
                 GROUP
               </span>
             </span>
@@ -52,7 +52,7 @@ export function Footer() {
 
           {/* Explore */}
           <nav className="flex flex-col gap-4">
-            <span className="text-[12px] uppercase tracking-[0.3em] text-gold-bright/70">
+            <span className="text-sm uppercase tracking-[0.3em] text-gold-bright/70">
               {t('explore')}
             </span>
             <ul className="flex flex-col gap-2.5">
@@ -71,7 +71,7 @@ export function Footer() {
 
           {/* Connect */}
           <nav className="flex flex-col gap-4">
-            <span className="text-[12px] uppercase tracking-[0.3em] text-gold-bright/70">
+            <span className="text-sm uppercase tracking-[0.3em] text-gold-bright/70">
               {t('connect')}
             </span>
             <ul className="flex flex-col gap-2.5">
@@ -98,7 +98,7 @@ export function Footer() {
 
           {/* Office */}
           <div className="flex flex-col gap-4">
-            <span className="text-[12px] uppercase tracking-[0.3em] text-gold-bright/70">
+            <span className="text-sm uppercase tracking-[0.3em] text-gold-bright/70">
               {t('company')}
             </span>
             <p className="text-lg font-light leading-relaxed text-washi/70">
@@ -109,11 +109,11 @@ export function Footer() {
 
         {/* Disclaimer + legal */}
         <div className="mt-16 flex flex-col gap-6 border-t border-washi/10 pt-8">
-          <p className="max-w-3xl text-[13px] leading-relaxed text-washi/30">
+          <p className="max-w-3xl text-[15px] leading-relaxed text-washi/30">
             {t('disclaimer')}
           </p>
-          <p className="text-[12px] tracking-[0.2em] text-washi/40">
-            © {new Date().getFullYear()} JWD GROUP. {t('rights')}
+          <p className="text-[14px] tracking-[0.2em] text-washi/40">
+            © {new Date().getFullYear()} JWD INVESTMENT. {t('rights')}
           </p>
         </div>
       </div>

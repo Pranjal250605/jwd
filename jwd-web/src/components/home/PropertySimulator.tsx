@@ -115,14 +115,14 @@ export function PropertySimulator({
       <div className="overflow-hidden rounded-[1.75rem] border border-sumi/8 bg-washi p-8 lg:p-12">
         <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
           <div className="flex flex-col gap-2">
-            <span className="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.28em]" style={{ color: DUBAI }}>
+            <span className="inline-flex items-center gap-2 text-sm uppercase tracking-[0.28em]" style={{ color: DUBAI }}>
               <SlidersHorizontal className="h-4 w-4" strokeWidth={1.6} /> {ja ? '資産シミュレーション' : 'Growth Simulation'}
             </span>
             <h2 className={`${display} text-2xl font-semibold text-sumi lg:text-3xl`}>
               {ja ? 'この物件 vs 日本での運用' : 'This property vs. keeping it in Japan'}
             </h2>
           </div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-sumi/10 bg-washi px-4 py-2 text-[13px]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-sumi/10 bg-washi px-4 py-2 text-[15px]">
             <span className={`h-1.5 w-1.5 rounded-full ${fxLive ? 'bg-emerald-500' : 'bg-sumi/30'}`} />
             <span className="text-sumi-soft">AED 1 =</span>
             <span className="font-en font-semibold text-sumi">¥{aedJpy.toFixed(2)}</span>
@@ -156,7 +156,7 @@ export function PropertySimulator({
 
           {/* controls */}
           <div className="flex flex-col gap-6 rounded-2xl border border-sumi/8 bg-washi-deep/40 p-6">
-            <span className="text-[12px] uppercase tracking-[0.2em] text-sumi-soft">{ja ? '前提条件' : 'Assumptions'}</span>
+            <span className="text-sm uppercase tracking-[0.2em] text-sumi-soft">{ja ? '前提条件' : 'Assumptions'}</span>
             <Slider label={ja ? '運用年数' : 'Holding period'} value={years} display={`${years}${ja ? '年' : 'y'}`} min={3} max={25} step={1} onChange={setYears} />
             <Slider label={ja ? 'ドバイ 期待値上がり/年' : 'Dubai appreciation / yr'} value={dubaiApp} display={`${dubaiApp.toFixed(1)}%`} min={0} max={12} step={0.1} onChange={setDubaiApp} />
             <Slider label={ja ? '日本 期待リターン/年' : 'Japan return / yr'} value={japanRet} display={`${japanRet.toFixed(1)}%`} min={0} max={6} step={0.1} onChange={setJapanRet} />
@@ -166,21 +166,21 @@ export function PropertySimulator({
         {/* result cards */}
         <div className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-sumi/8 bg-sumi/[0.06] sm:grid-cols-3">
           <div className="flex flex-col gap-1.5 bg-washi p-5">
-            <span className="text-[12px] uppercase tracking-[0.14em] text-sumi-soft">{ja ? `${years}年後 · この物件` : `This property · ${years}y`}</span>
+            <span className="text-sm uppercase tracking-[0.14em] text-sumi-soft">{ja ? `${years}年後 · この物件` : `This property · ${years}y`}</span>
             <span className="font-en text-2xl font-light" style={{ color: DUBAI }}>{oku(dFinal)}</span>
-            <span className="text-[13px] text-sumi-soft/70">AED {new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(dFinalAed)}</span>
+            <span className="text-[15px] text-sumi-soft/70">AED {new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(dFinalAed)}</span>
           </div>
           <div className="flex flex-col gap-1.5 bg-washi p-5">
-            <span className="text-[12px] uppercase tracking-[0.14em] text-sumi-soft">{ja ? `${years}年後 · 日本運用` : `Kept in Japan · ${years}y`}</span>
+            <span className="text-sm uppercase tracking-[0.14em] text-sumi-soft">{ja ? `${years}年後 · 日本運用` : `Kept in Japan · ${years}y`}</span>
             <span className="font-en text-2xl font-light" style={{ color: JAPAN }}>{oku(jFinal)}</span>
-            <span className="text-[13px] text-sumi-soft/70">{ja ? '課税後' : 'after tax'}</span>
+            <span className="text-[15px] text-sumi-soft/70">{ja ? '課税後' : 'after tax'}</span>
           </div>
           <div className="flex flex-col gap-1.5 bg-gold/[0.07] p-5">
-            <span className="text-[12px] uppercase tracking-[0.14em] text-sumi-soft">{ja ? '差額' : 'Difference'}</span>
+            <span className="text-sm uppercase tracking-[0.14em] text-sumi-soft">{ja ? '差額' : 'Difference'}</span>
             <span className="font-en text-2xl font-light" style={{ color: gap >= 0 ? DUBAI : JAPAN }}>
               {gap >= 0 ? '+' : ''}{oku(gap)}
             </span>
-            <span className="text-[13px] text-sumi-soft/70">{ja ? `${jFinal > 0 ? ((dFinal / jFinal - 1) * 100).toFixed(0) : '—'}% 上振れ` : `+${jFinal > 0 ? ((dFinal / jFinal - 1) * 100).toFixed(0) : '—'}% more`}</span>
+            <span className="text-[15px] text-sumi-soft/70">{ja ? `${jFinal > 0 ? ((dFinal / jFinal - 1) * 100).toFixed(0) : '—'}% 上振れ` : `+${jFinal > 0 ? ((dFinal / jFinal - 1) * 100).toFixed(0) : '—'}% more`}</span>
           </div>
         </div>
 

@@ -94,7 +94,7 @@ export function ChatWidget() {
                     </h3>
                     <div className="flex items-center gap-1.5">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                      <span className="text-[11px] text-sumi-soft/60 tracking-wide uppercase">
+                      <span className="text-sm text-sumi-soft/60 tracking-wide uppercase">
                         Online
                       </span>
                     </div>

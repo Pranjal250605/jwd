@@ -64,7 +64,7 @@ export function HeartOfEuropeSection() {
               className="h-px w-14"
               style={{ background: 'linear-gradient(90deg, #00c4cc, transparent)' }}
             />
-            <span className="text-[12px] uppercase tracking-[0.38em] text-gold-bright/80">
+            <span className="text-sm uppercase tracking-[0.38em] text-gold-bright/80">
               {t('label')}
             </span>
           </Reveal>
@@ -85,7 +85,7 @@ export function HeartOfEuropeSection() {
             {(['type1', 'type2', 'type3'] as const).map((key) => (
               <span
                 key={key}
-                className="border border-gold-bright/25 px-5 py-2 font-jp text-xs tracking-[0.2em] text-gold-pale/80"
+                className="border border-gold-bright/25 px-5 py-2 font-jp text-sm tracking-[0.2em] text-gold-pale/80"
               >
                 {t(key)}
               </span>
@@ -97,7 +97,7 @@ export function HeartOfEuropeSection() {
               href="https://theworld-dubai.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gold-bright px-8 py-4 text-xs uppercase tracking-[0.25em] text-night-deep transition-colors duration-500 hover:bg-gold-pale"
+              className="bg-gold-bright px-8 py-4 text-sm uppercase tracking-[0.25em] text-night-deep transition-colors duration-500 hover:bg-gold-pale"
             >
               {t('link1')}
             </a>
@@ -105,14 +105,14 @@ export function HeartOfEuropeSection() {
               href="https://theheartofeurope.emirates.expert/"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-gold-bright/40 px-8 py-4 text-xs uppercase tracking-[0.25em] text-gold-pale transition-all duration-500 hover:border-gold-bright hover:bg-gold-bright/10"
+              className="border border-gold-bright/40 px-8 py-4 text-sm uppercase tracking-[0.25em] text-gold-pale transition-all duration-500 hover:border-gold-bright hover:bg-gold-bright/10"
             >
               {t('link2')}
             </a>
           </Reveal>
 
           <Reveal delay={0.5} className="mt-8">
-            <p className="font-en text-xs italic tracking-wide text-gold-bright/50">
+            <p className="font-en text-sm italic tracking-wide text-gold-bright/50">
               — {t('experience')}
             </p>
           </Reveal>

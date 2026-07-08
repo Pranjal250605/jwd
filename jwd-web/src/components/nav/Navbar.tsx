@@ -69,7 +69,7 @@ export function Navbar() {
             <span className="font-en text-[1.7rem] font-semibold tracking-[0.16em] text-sumi">
               JWD
             </span>
-            <span className="text-[10px] tracking-[0.52em] text-gold">GROUP</span>
+            <span className="text-[12px] tracking-[0.2em] text-gold">INVESTMENT</span>
           </Link>
 
           {/* Primary links — centered */}

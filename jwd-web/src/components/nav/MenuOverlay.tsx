@@ -90,7 +90,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.25 + i * 0.04, ease: EASE }}
                 >
-                  <span className="font-mono text-[12px] text-gold/60">
+                  <span className="font-mono text-[14px] text-gold/60">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <span
@@ -101,7 +101,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
                     {t(key)}
                   </span>
                   {subs && (
-                    <span className="ml-auto self-center font-mono text-[12px] text-gold/40">
+                    <span className="ml-auto self-center font-mono text-[14px] text-gold/40">
                       {String(subs.length).padStart(2, '0')}
                     </span>
                   )}
@@ -139,7 +139,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
                 transition={{ duration: 0.4, ease: EASE }}
                 className="flex flex-col gap-1"
               >
-                <span className="mb-5 text-[12px] uppercase tracking-[0.38em] text-gold">
+                <span className="mb-5 text-sm uppercase tracking-[0.38em] text-gold">
                   {locale === 'ja' ? 'このセクション' : 'In this section'}
                 </span>
                 {activeSubs.map((sub, i) => (
@@ -152,7 +152,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.4, delay: i * 0.04, ease: EASE }}
                   >
-                    <span className="font-mono text-[12px] text-gold/50">
+                    <span className="font-mono text-[14px] text-gold/50">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span className="flex flex-col gap-1">
@@ -176,7 +176,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
                 className="flex flex-col gap-6"
               >
                 <span className="font-en text-xl font-semibold tracking-[0.16em] text-sumi">
-                  JWD<span className="ml-2 text-[11px] tracking-[0.5em] text-gold">GROUP</span>
+                  JWD<span className="ml-2 text-[13px] tracking-[0.22em] text-gold">INVESTMENT</span>
                 </span>
                 <p className="max-w-xs text-lg font-light leading-loose text-sumi-soft">
                   {t('tagline')}
@@ -193,7 +193,7 @@ export function MenuOverlay({ onClose }: { onClose: () => void }) {
           <Link
             href="/contact"
             onClick={onClose}
-            className="mt-10 w-fit bg-sumi px-7 py-4 text-[12px] uppercase tracking-[0.3em] text-washi transition-colors duration-500 hover:bg-gold"
+            className="mt-10 w-fit bg-sumi px-7 py-4 text-sm uppercase tracking-[0.3em] text-washi transition-colors duration-500 hover:bg-gold"
           >
             {t('contact')}
           </Link>

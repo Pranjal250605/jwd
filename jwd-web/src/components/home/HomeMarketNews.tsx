@@ -36,7 +36,7 @@ export function HomeMarketNews({
       <div className="relative z-10 mx-auto max-w-screen-xl px-7 lg:px-12">
         <div className="mb-12 flex items-end justify-between gap-6">
           <Reveal className="flex flex-col gap-4">
-            <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
+            <span className="text-sm uppercase tracking-[0.38em] text-gold">
               {tx(c.label)}
             </span>
             <h2 className={`${display} text-[2rem] font-semibold leading-[1.1] tracking-[-0.015em] text-sumi lg:text-[2.7rem]`}>
@@ -47,7 +47,7 @@ export function HomeMarketNews({
           <Reveal>
             <Link
               href="/news"
-              className="group hidden shrink-0 items-center gap-2 whitespace-nowrap text-[13px] uppercase tracking-[0.2em] text-gold transition-all duration-500 hover:gap-3 hover:text-sumi sm:inline-flex"
+              className="group hidden shrink-0 items-center gap-2 whitespace-nowrap text-sm uppercase tracking-[0.2em] text-gold transition-all duration-500 hover:gap-3 hover:text-sumi sm:inline-flex"
             >
               <span className="border-b border-gold/40 pb-1 transition-colors group-hover:border-sumi">
                 {locale === 'ja' ? 'すべてのニュース' : 'View all news'}
@@ -69,11 +69,11 @@ export function HomeMarketNews({
                   className="absolute left-0 top-1/2 h-7 w-[3px] origin-center -translate-y-1/2 scale-y-0 rounded-full transition-transform duration-500 group-hover:scale-y-100"
                   style={{ background: ACCENT }}
                 />
-                <span className="font-mono text-[13px] tracking-wide text-sumi-soft">
+                <span className="font-mono text-[15px] tracking-wide text-sumi-soft">
                   {n.date}
                 </span>
                 <span
-                  className="hidden w-fit rounded-full border px-3.5 py-1 text-[11px] uppercase tracking-[0.2em] transition-colors duration-300 lg:inline-block"
+                  className="hidden w-fit rounded-full border px-3.5 py-1 text-sm uppercase tracking-[0.2em] transition-colors duration-300 lg:inline-block"
                   style={{ borderColor: `${ACCENT}44`, color: ACCENT }}
                 >
                   {tx(n.tag)}

@@ -31,7 +31,7 @@ export function WhyDubaiSection() {
           animate={inView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 1, ease: EASE }}
         >
-          <span className="text-[12px] uppercase tracking-[0.38em] text-gold-bright/70">
+          <span className="text-sm uppercase tracking-[0.38em] text-gold-bright/70">
             {t('label')}
           </span>
           <h2 className="font-jp text-3xl font-extrabold text-washi lg:text-[2.6rem]">
@@ -50,7 +50,7 @@ export function WhyDubaiSection() {
             >
               {/* gold seam grows on hover */}
               <span className="absolute left-0 top-[-1px] h-px w-full origin-left scale-x-0 bg-gradient-to-r from-gold-bright to-transparent transition-transform duration-700 group-hover:scale-x-100" />
-              <span className="font-mono text-xs text-gold-bright/60">
+              <span className="font-mono text-sm text-gold-bright/60">
                 {String(i + 1).padStart(2, '0')}
               </span>
               <h3 className="font-jp mt-4 text-xl font-bold text-washi">

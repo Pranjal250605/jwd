@@ -21,7 +21,7 @@ export function JapanSection() {
 
       <div className="relative mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-14 flex flex-col gap-5">
-          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-sm uppercase tracking-[0.38em] text-gold">
             {t('label')}
           </span>
           <h2 className="font-jp text-3xl font-extrabold text-sumi lg:text-[2.4rem]">

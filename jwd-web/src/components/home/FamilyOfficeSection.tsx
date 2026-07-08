@@ -22,7 +22,7 @@ export function FamilyOfficeSection() {
 
       <div className="relative mx-auto flex max-w-screen-xl flex-col items-center gap-8 px-7 text-center lg:px-12">
         <Reveal>
-          <span className="text-[12px] uppercase tracking-[0.38em] text-gold-bright/70">
+          <span className="text-sm uppercase tracking-[0.38em] text-gold-bright/70">
             {t('label')}
           </span>
         </Reveal>
@@ -40,7 +40,7 @@ export function FamilyOfficeSection() {
           {CHIPS.map((chip) => (
             <span
               key={chip}
-              className="border border-gold-bright/25 px-5 py-2.5 font-jp text-xs tracking-[0.15em] text-gold-pale/80 transition-colors duration-500 hover:border-gold-bright hover:text-gold-pale"
+              className="border border-gold-bright/25 px-5 py-2.5 font-jp text-sm tracking-[0.15em] text-gold-pale/80 transition-colors duration-500 hover:border-gold-bright hover:text-gold-pale"
             >
               {t(chip)}
             </span>

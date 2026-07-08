@@ -70,7 +70,7 @@ export function PageHero({
               animate={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.2, ease: EASE }}
             />
-            <span className="text-[12px] uppercase tracking-[0.38em]" style={{ color: accent }}>
+            <span className="text-sm uppercase tracking-[0.38em]" style={{ color: accent }}>
               {label}
             </span>
           </motion.div>

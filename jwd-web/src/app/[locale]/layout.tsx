@@ -43,8 +43,8 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'JWD GROUP — 日本とドバイを結ぶ、資産の架け橋',
-    template: '%s | JWD GROUP',
+    default: 'JWD INVESTMENT — 日本とドバイを結ぶ、資産の架け橋',
+    template: '%s | JWD INVESTMENT',
   },
   description:
     'The Bridge Between Japan & Dubai Real Estate and Wealth Creation. ドバイ不動産投資・日本不動産・ファミリーオフィスまで、二つの市場を知り尽くしたパートナー。',

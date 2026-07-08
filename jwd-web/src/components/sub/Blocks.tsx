@@ -87,7 +87,7 @@ function Header({ tone, kicker, heading, tx, display }: { tone?: Tone; kicker?: 
   if (!kicker && !heading) return null;
   return (
     <Reveal className="mb-14 flex flex-col gap-5">
-      {kicker && <span className="text-[12px] uppercase tracking-[0.38em]" style={{ color: accFor(theme, tone) }}>{tx(kicker)}</span>}
+      {kicker && <span className="text-sm uppercase tracking-[0.38em]" style={{ color: accFor(theme, tone) }}>{tx(kicker)}</span>}
       {heading && (
         <div className="flex flex-col gap-3.5">
           <h2 className={`${display} max-w-3xl text-[2.1rem] font-semibold leading-[1.1] tracking-[-0.015em] ${c.heading} lg:text-[3rem]`}>{tx(heading)}</h2>
@@ -131,8 +131,8 @@ function PillLinks({ items, tx }: { items: { label: L; url: string }[]; tx: (l: 
         const external = it.url.startsWith('http');
         const label = tx(it.label);
         const cls = i === 0
-          ? 'group inline-flex items-center gap-2 rounded-full bg-sumi px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-washi transition-colors duration-300 hover:bg-gold'
-          : 'group inline-flex items-center gap-2 rounded-full border border-sumi/15 px-7 py-3.5 text-[13px] font-medium uppercase tracking-[0.18em] text-sumi transition-colors duration-300 hover:border-gold hover:text-gold';
+          ? 'group inline-flex items-center gap-2 rounded-full bg-sumi px-7 py-3.5 text-[15px] font-medium uppercase tracking-[0.18em] text-washi transition-colors duration-300 hover:bg-gold'
+          : 'group inline-flex items-center gap-2 rounded-full border border-sumi/15 px-7 py-3.5 text-[15px] font-medium uppercase tracking-[0.18em] text-sumi transition-colors duration-300 hover:border-gold hover:text-gold';
         const inner = (<>{label}{external && <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.6} />}</>);
         return external
           ? <a key={i} href={jaOutbound(it.url, ja)} target="_blank" rel="noopener noreferrer" title={ja && isInvestorSite(it.url) ? JA_PROXY_NOTICE : undefined} className={cls}>{inner}</a>
@@ -195,7 +195,7 @@ function BlockView({ block, tx, display }: { block: Block; tx: (l: L) => string;
                 <div className="absolute inset-0" style={{ background: `linear-gradient(120deg, transparent 58%, ${theme.accentSoft})` }} />
               </div>
               {block.imageAlt && (
-                <p className={`mt-3.5 flex items-center gap-2 pl-1 text-[13px] italic ${c.body}`}>
+                <p className={`mt-3.5 flex items-center gap-2 pl-1 text-[15px] italic ${c.body}`}>
                   <span className="h-px w-5" style={{ background: acc }} />
                   {tx(block.imageAlt)}
                 </p>
@@ -238,7 +238,7 @@ function BlockView({ block, tx, display }: { block: Block; tx: (l: L) => string;
               {ch.type === 'bars' && <BarChart items={ch.items.map((d) => ({ label: tx(d.label), value: d.value, highlight: d.highlight }))} unit={ch.unit} dark={dark} accent={acc} />}
               {ch.type === 'line' && <LineChart points={ch.points.map((d) => ({ label: tx(d.label), value: d.value }))} unit={ch.unit} dark={dark} accent={acc} />}
               {ch.type === 'donut' && <DonutChart items={ch.items.map((d) => ({ label: tx(d.label), value: d.value }))} dark={dark} accent={acc} />}
-              {block.note && <p className={`mt-7 text-xs font-light italic ${c.body}`}>{tx(block.note)}</p>}
+              {block.note && <p className={`mt-7 text-sm font-light italic ${c.body}`}>{tx(block.note)}</p>}
             </Reveal>
           </div>
         </Shell>
@@ -310,7 +310,7 @@ function BlockView({ block, tx, display }: { block: Block; tx: (l: L) => string;
                         ) : (
                           <span className="h-px w-8" style={{ background: acc }} />
                         )}
-                        {it.meta && <span className="font-mono text-[12px] uppercase tracking-[0.16em]" style={{ color: acc }}>{tx(it.meta)}</span>}
+                        {it.meta && <span className="font-mono text-sm uppercase tracking-[0.16em]" style={{ color: acc }}>{tx(it.meta)}</span>}
                       </div>
                       <h3 className={`${display} text-xl font-semibold ${c.heading}`}>{tx(it.title)}</h3>
                       <p className={`text-sm font-light leading-[1.9] ${c.body}`}>{tx(it.text)}</p>
@@ -331,9 +331,9 @@ function BlockView({ block, tx, display }: { block: Block; tx: (l: L) => string;
             {block.items.map((it, i) => (
               <Reveal key={i} delay={i * 0.1}>
                 <div className={`relative border-t pt-7 ${c.cardBorder}`}>
-                  <span className="font-mono text-[12px]" style={{ color: acc, opacity: 0.7 }}>{String(i + 1).padStart(2, '0')}</span>
+                  <span className="font-mono text-[14px]" style={{ color: acc, opacity: 0.7 }}>{String(i + 1).padStart(2, '0')}</span>
                   <h3 className={`${display} mt-4 text-base font-semibold ${c.heading}`}>{tx(it.title)}</h3>
-                  <p className={`mt-3 text-[0.84rem] font-light leading-[1.9] ${c.body}`}>{tx(it.text)}</p>
+                  <p className={`mt-3 text-sm font-light leading-[1.9] ${c.body}`}>{tx(it.text)}</p>
                 </div>
               </Reveal>
             ))}
@@ -351,7 +351,7 @@ function BlockView({ block, tx, display }: { block: Block; tx: (l: L) => string;
               <div className="mt-8 flex flex-col items-center gap-1">
                 <span className="mb-4 h-px w-12" style={{ background: rule }} />
                 {block.by && <span className="font-en text-sm tracking-wide">{tx(block.by)}</span>}
-                {block.role && <span className={`text-[12px] uppercase tracking-[0.24em] ${c.body}`}>{tx(block.role)}</span>}
+                {block.role && <span className={`text-sm uppercase tracking-[0.24em] `}>{tx(block.role)}</span>}
               </div>
             )}
           </Reveal>
@@ -367,13 +367,13 @@ function BlockView({ block, tx, display }: { block: Block; tx: (l: L) => string;
                 <p className={`${display} text-xl font-light leading-[1.6] ${c.heading} lg:text-2xl`}>“{tx(block.quote)}”</p>
                 <div className="mt-7 flex flex-col">
                   <span className="font-en text-sm tracking-wide">{tx(block.name)}</span>
-                  <span className={`text-[13px] uppercase tracking-[0.2em] ${c.body}`}>{tx(block.role)}</span>
+                  <span className={`text-[15px] uppercase tracking-[0.2em] ${c.body}`}>{tx(block.role)}</span>
                 </div>
               </div>
               {block.result && (
                 <div className="flex flex-col items-start gap-2 border-t pt-6 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0" style={{ borderColor: theme.accentSoft }}>
                   <span className={`font-en text-4xl font-light ${c.heading}`} style={{ color: acc }}>{tx(block.result).split(' ')[0]}</span>
-                  <span className={`text-[13px] uppercase tracking-[0.16em] ${c.body}`}>{tx(block.result).split(' ').slice(1).join(' ')}</span>
+                  <span className={`text-[15px] uppercase tracking-[0.16em] ${c.body}`}>{tx(block.result).split(' ').slice(1).join(' ')}</span>
                 </div>
               )}
             </div>
@@ -397,7 +397,7 @@ function BlockView({ block, tx, display }: { block: Block; tx: (l: L) => string;
       return (
         <Shell tone={block.tone} tight>
           <Reveal className="flex flex-col gap-6">
-            {block.heading && <span className="text-[12px] uppercase tracking-[0.38em]" style={{ color: acc }}>{tx(block.heading)}</span>}
+            {block.heading && <span className="text-sm uppercase tracking-[0.38em]" style={{ color: acc }}>{tx(block.heading)}</span>}
             {block.note && <p className={`max-w-xl text-sm font-light leading-loose ${c.body}`}>{tx(block.note)}</p>}
             <PillLinks items={block.items} tx={tx} />
           </Reveal>
@@ -431,7 +431,7 @@ function BlockView({ block, tx, display }: { block: Block; tx: (l: L) => string;
           <Header tone={block.tone} kicker={block.kicker} heading={block.heading} tx={tx} display={display} />
           <Reveal>
             <YieldCalculator accent={acc} dark={dark} ja={!isEn} />
-            {block.note && <p className={`mt-6 text-xs font-light italic ${c.body}`}>{tx(block.note)}</p>}
+            {block.note && <p className={`mt-6 text-sm font-light italic ${c.body}`}>{tx(block.note)}</p>}
           </Reveal>
         </Shell>
       );

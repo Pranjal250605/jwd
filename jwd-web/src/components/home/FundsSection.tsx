@@ -17,7 +17,7 @@ export function FundsSection() {
     <section id="funds" className="relative overflow-hidden bg-washi-deep py-28 lg:py-36">
       <div className="mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-14 flex flex-col gap-5">
-          <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
+          <span className="text-sm uppercase tracking-[0.38em] text-gold">
             {t('label')}
           </span>
           <h2 className="font-jp text-3xl font-extrabold text-sumi lg:text-[2.4rem]">
@@ -48,7 +48,7 @@ export function FundsSection() {
                 <p className="text-xl font-light leading-loose text-sumi-soft">
                   {t(`${key}Desc`)}
                 </p>
-                <span className="mt-auto inline-block w-fit border-b border-gold/40 pb-1 text-[13px] uppercase tracking-[0.2em] text-gold transition-colors group-hover:border-gold group-hover:text-sumi">
+                <span className="mt-auto inline-block w-fit border-b border-gold/40 pb-1 text-sm uppercase tracking-[0.2em] text-gold transition-colors group-hover:border-gold group-hover:text-sumi">
                   {t('visit')}
                   {ja && <span className="ml-2 normal-case tracking-normal text-sumi-soft">（日本語訳で開く）</span>}
                 </span>
@@ -58,7 +58,7 @@ export function FundsSection() {
         </div>
 
         {ja && (
-          <p className="mt-5 text-[12px] leading-relaxed tracking-[0.05em] text-sumi/30">
+          <p className="mt-5 text-sm leading-relaxed tracking-[0.05em] text-sumi/55">
             ※ {JA_PROXY_NOTICE}
           </p>
         )}
@@ -67,7 +67,7 @@ export function FundsSection() {
           {(['governance', 'risk'] as const).map((key, i) => (
             <Reveal key={key} delay={0.3 + i * 0.1}>
               <div className="flex items-start gap-5 border-t border-gold/20 pt-6">
-                <span className="font-mono text-[12px] text-gold/60">
+                <span className="font-mono text-[14px] text-gold/60">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <div>

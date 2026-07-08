@@ -40,7 +40,7 @@ export function SubPager({
               href={`${base}/${prev.slug}`}
               className="group flex flex-col gap-2 bg-washi p-7 transition-colors duration-500 hover:bg-washi-deep"
             >
-              <span className="text-[12px] uppercase tracking-[0.24em] text-gold/70">
+              <span className="text-sm uppercase tracking-[0.24em] text-gold/70">
                 ← {prevWord}
               </span>
               <span className="font-jp text-base font-bold text-sumi transition-colors group-hover:text-gold lg:text-lg">
@@ -56,7 +56,7 @@ export function SubPager({
               href={`${base}/${next.slug}`}
               className="group flex flex-col items-end gap-2 bg-washi p-7 text-right transition-colors duration-500 hover:bg-washi-deep"
             >
-              <span className="text-[12px] uppercase tracking-[0.24em] text-gold/70">
+              <span className="text-sm uppercase tracking-[0.24em] text-gold/70">
                 {nextWord} →
               </span>
               <span className="font-jp text-base font-bold text-sumi transition-colors group-hover:text-gold lg:text-lg">
@@ -71,7 +71,7 @@ export function SubPager({
         <div className="mt-10 text-center">
           <Link
             href={sectionHref}
-            className="inline-block border-b border-gold/40 pb-1 text-[13px] uppercase tracking-[0.22em] text-gold transition-colors hover:border-gold hover:text-sumi"
+            className="inline-block border-b border-gold/40 pb-1 text-sm uppercase tracking-[0.22em] text-gold transition-colors hover:border-gold hover:text-sumi"
           >
             ↑ {sectionLabel} — {backLabel}
           </Link>

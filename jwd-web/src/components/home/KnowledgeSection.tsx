@@ -13,7 +13,7 @@ export function KnowledgeSection() {
       <div className="mx-auto max-w-screen-xl px-7 lg:px-12">
         <Reveal className="mb-14 flex items-end justify-between gap-6">
           <div className="flex flex-col gap-5">
-            <span className="text-[12px] uppercase tracking-[0.38em] text-gold">
+            <span className="text-sm uppercase tracking-[0.38em] text-gold">
               {t('label')}
             </span>
             <h2 className="font-jp text-3xl font-extrabold text-sumi lg:text-[2.4rem]">
@@ -22,7 +22,7 @@ export function KnowledgeSection() {
           </div>
           <a
             href="#knowledge"
-            className="hidden whitespace-nowrap border-b border-gold/40 pb-1 text-[13px] uppercase tracking-[0.2em] text-gold transition-colors hover:text-sumi sm:block"
+            className="hidden whitespace-nowrap border-b border-gold/40 pb-1 text-sm uppercase tracking-[0.2em] text-gold transition-colors hover:text-sumi sm:block"
           >
             {t('viewAll')}
           </a>
@@ -33,10 +33,10 @@ export function KnowledgeSection() {
             <Reveal key={n} delay={0.1 + i * 0.1}>
               <article className="group flex h-full flex-col gap-5 bg-washi p-8 transition-colors duration-500 hover:bg-washi-deep">
                 <div className="flex items-center gap-4">
-                  <span className="font-mono text-[12px] text-sumi/40">
+                  <span className="font-mono text-sm text-sumi/55">
                     {t(`date${n}`)}
                   </span>
-                  <span className="border border-gold/30 px-2.5 py-1 text-[11px] tracking-[0.2em] text-gold">
+                  <span className="border border-gold/30 px-2.5 py-1 text-[15px] tracking-[0.2em] text-gold">
                     {t(`tag${n}`)}
                   </span>
                 </div>
