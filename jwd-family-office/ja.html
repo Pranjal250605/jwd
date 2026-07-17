@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JWDファミリーオフィス — 守り、育て、次世代へ。</title>
+<meta name="description" content="JWDファミリーオフィス — ドバイを拠点に、日本の富裕層一族の資産を守り、世代を超えて引き継ぐための中核ハブ。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#0a2a54;          /* deep blue — primary */
+    --navy-2:#123a6b;
+    --navy-ink:#0e2440;      /* headings */
+    --gold:#b8912f;          /* gold accent (readable on white) */
+    --gold-bright:#d4af37;
+    --gold-soft:#f3ecd8;
+    --ink:#1b2740;
+    --muted:#5a6b82;
+    --line:#e6ecf3;
+    --bg:#ffffff;
+    --tint:#f4f7fb;          /* light blue section */
+    --tint-2:#eef3fa;
+    --shadow:0 24px 60px -30px rgba(10,42,84,.35);
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Noto Sans JP','Plus Jakarta Sans',system-ui,sans-serif;
+    color:var(--ink); background:var(--bg);
+    -webkit-font-smoothing:antialiased; line-height:1.6;
+  }
+  /* subtle paper grain (from the old variant) — premium warmth, never cloudy */
+  body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.04;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .serif{font-family:'Plus Jakarta Sans',sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+  .ey{font-size:13px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+  h2.sec{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-.02em;color:var(--navy-ink);
+    font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.01em;margin:14px 0}
+  .lead{font-size:19px;color:var(--muted);max-width:640px;font-weight:300}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;
+    padding:14px 26px;border-radius:999px;transition:.25s;cursor:pointer;border:1px solid transparent}
+  .btn-primary{background:var(--navy);color:#fff}
+  .btn-primary:hover{background:var(--navy-2);transform:translateY(-1px);box-shadow:0 14px 30px -12px rgba(10,42,84,.6)}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-bright));color:#1a1405}
+  .btn-gold:hover{transform:translateY(-1px);box-shadow:0 14px 30px -12px rgba(184,145,47,.6)}
+  .btn-ghost{background:#fff;border-color:var(--line);color:var(--navy)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+
+  /* ── utility bar ── */
+  .util{background:var(--navy);color:#cdd9ec;font-size:13px}
+  .util .wrap{display:flex;align-items:center;justify-content:space-between;height:50px}
+  .util a{opacity:.92;transition:.2s;letter-spacing:.02em}
+  .util .eco a{border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:5px 14px;font-weight:600;background:rgba(255,255,255,.06)}
+  .util .eco a:hover{opacity:1;color:#fff;background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.5)}
+  .util .eco a b{color:var(--gold-bright)}
+  .util .eco{display:flex;gap:22px;align-items:center}
+  .util .eco b{color:var(--gold-bright);font-weight:600}
+  .util .lang a{margin-left:14px}
+  .util .lang a.on{color:#fff;font-weight:600}
+
+  .portals{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .portals .plab{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-right:4px}
+  .portal{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:10px 16px;font-size:14px;font-weight:600;
+    border:1px solid var(--line);background:#fff;color:var(--navy-ink);transition:.25s;box-shadow:0 6px 18px -12px rgba(10,42,84,.35)}
+  .portal .swatch{width:10px;height:10px;border-radius:3px;flex:none}
+  .portal:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--gold)}
+
+  /* ── main nav ── */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);transition:box-shadow .3s}
+  header.scrolled{box-shadow:0 8px 30px -18px rgba(10,42,84,.3)}
+  nav.main{display:flex;align-items:center;justify-content:space-between;height:76px}
+  .logo{display:flex;flex-direction:column;line-height:1}
+  .logo .mk{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:26px;color:var(--navy);letter-spacing:.02em}
+  .logo .mk b{color:var(--gold)}
+  .logo .sb{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+  .navlinks{display:flex;gap:22px;align-items:center}
+  .navlinks a{font-size:14.5px;font-weight:500;color:#33415c;position:relative;padding:4px 0;white-space:nowrap}
+  .navlinks a::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--gold);transition:.3s}
+  .navlinks a:hover{color:var(--navy)}
+  .navlinks a:hover::after{width:100%}
+  .navcta{display:flex;gap:12px;align-items:center;flex:none}
+  .navcta .btn{padding:11px 20px;font-size:14px;white-space:nowrap}
+  .menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+  .menu-btn span{width:24px;height:2px;background:var(--navy);display:block}
+
+  /* ── hero ── */
+  .hero{position:relative;overflow:hidden;background:
+    radial-gradient(900px 500px at 88% -5%,rgba(184,145,47,.10),transparent 60%),
+    linear-gradient(180deg,#fff, var(--tint))}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding:84px 28px 90px}
+  .hero .kick{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+    border-radius:999px;padding:7px 16px;font-size:13px;font-weight:600;color:var(--navy);box-shadow:var(--shadow)}
+  .hero .kick .dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+  .hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-.02em;color:var(--navy-ink);
+    font-size:clamp(2.7rem,5vw,4.4rem);line-height:1.05;letter-spacing:-.015em;margin:22px 0 20px}
+  .hero h1 em{font-style:normal;color:var(--gold)}
+  .hero p.sub{font-size:20px;color:var(--muted);font-weight:300;max-width:520px;margin-bottom:32px}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .assure{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+  .hero .assure b{color:var(--navy)}
+  /* hero visual */
+  .hcard{position:relative}
+  .hcard .img{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;
+    background:#dfe7f1 center/cover no-repeat}
+  .hcard .float{position:absolute;left:-34px;bottom:34px;background:#fff;border:1px solid var(--line);
+    border-radius:16px;padding:20px 22px;box-shadow:var(--shadow);width:290px}
+  .hcard .float .t{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .hcard .float .v{font-family:'Plus Jakarta Sans',sans-serif;font-size:34px;font-weight:600;color:var(--navy-ink);line-height:1.1;margin:4px 0}
+  .hcard .float .v small{color:var(--gold);font-size:20px}
+  .hcard .float .row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+  .hcard .float .row b{color:#1f9d6b;font-weight:600}
+
+  /* ── stat band ── */
+  .stats{background:var(--navy);color:#fff}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:38px 28px}
+  .stats .s{padding:0 10px;border-left:1px solid rgba(255,255,255,.14)}
+  .stats .s:first-child{border-left:none}
+  .stats .s .n{font-family:'Plus Jakarta Sans',sans-serif;font-size:40px;font-weight:600;line-height:1}
+  .stats .s .n span{color:var(--gold-bright)}
+  .stats .s .l{font-size:13.5px;color:#a9bcd8;margin-top:6px}
+
+  /* section shell */
+  section.blk{padding:92px 0}
+  section.tint{background:var(--tint)}
+  .head{max-width:720px;margin-bottom:48px}
+  .center{text-align:center;margin-left:auto;margin-right:auto}
+
+  /* question */
+  .q{background:linear-gradient(120deg,var(--navy),#0d3366);color:#fff;text-align:center;padding:84px 0;position:relative;overflow:hidden}
+  .q::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(700px 320px at 82% 6%,rgba(184,145,47,.16),transparent 60%)}
+  .q .wrap{position:relative}
+  .q .wrap{max-width:900px}
+  .q .ey{color:var(--gold-bright)}
+  .q h2{font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.18;margin:16px 0 26px}
+  .q h2 em{font-style:normal;color:var(--gold-bright)}
+  .q p{color:#c4d2e8;font-size:18px;font-weight:300;max-width:640px;margin:0 auto}
+
+  /* licensed entity plate */
+  .lic{display:grid;grid-template-columns:1.25fr .75fr;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .lic .main2{background:linear-gradient(135deg,#0a2a54,#0e3468);color:#fff;padding:44px 46px;position:relative}
+  .lic .main2::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--gold-bright),var(--gold))}
+  .lic .main2 .co{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:.01em}
+  .lic .main2 .sub2{color:#a9bcd8;font-size:14.5px;margin:6px 0 28px}
+  .lic .rowli{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:15px}
+  .lic .rowli:last-child{border-bottom:none}
+  .lic .rowli .k2{color:#a9bcd8}
+  .lic .rowli .k2 small{display:block;font-size:11.5px;color:#7189ad}
+  .lic .rowli .v2{color:#fff;font-weight:600;text-align:right}
+  .lic aside{background:var(--gold-soft);padding:44px 36px;display:flex;flex-direction:column;gap:20px;justify-content:center}
+  .lic aside .seal{width:74px;height:74px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;background:#fff;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:var(--gold);font-size:13px;letter-spacing:.08em;text-align:center;line-height:1.2}
+  .lic aside h4{color:var(--navy-ink);font-size:17px}
+  .lic aside p{color:#6b5d33;font-size:14px;line-height:1.7}
+  .lic aside .ok{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--gold);border-radius:999px;
+    padding:8px 16px;font-size:13.5px;font-weight:700;color:#1f7a4d;align-self:flex-start}
+  .lic aside .ok i{width:8px;height:8px;border-radius:50%;background:#1f9d6b;font-style:normal}
+  @media(max-width:1000px){.lic{grid-template-columns:1fr}}
+
+  /* feature split (editorial) */
+  .feature{padding:92px 0}
+  .feature .wrap{display:grid;grid-template-columns:.92fr 1.08fr;gap:64px;align-items:center}
+  .feature .ph{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;background:center/cover no-repeat}
+  .feature .ph .tag2{position:absolute;left:18px;bottom:18px;background:rgba(255,255,255,.95);backdrop-filter:blur(6px);
+    border:1px solid var(--line);border-radius:12px;padding:11px 15px;font-size:13px;font-weight:600;color:var(--navy);
+    box-shadow:0 14px 30px -18px rgba(10,42,84,.5)}
+  .feature .pts{list-style:none;display:flex;flex-direction:column;gap:18px;margin:28px 0 32px}
+  .feature .pts li{display:flex;gap:14px;align-items:flex-start}
+  .feature .pts li svg{width:22px;height:22px;flex:none;margin-top:3px;stroke:var(--gold);fill:none;stroke-width:2.4}
+  .feature .pts li b{color:var(--navy-ink);display:block;font-size:16.5px}
+  .feature .pts li span{color:var(--muted);font-size:15px}
+  @media(max-width:1000px){.feature .wrap{grid-template-columns:1fr;gap:36px}.feature .ph{max-width:440px}}
+
+  /* quick-action tiles (Emirates-NBD style shortcut row) */
+  .quick{background:#fff;border-bottom:1px solid var(--line)}
+  .quick .wrap{display:grid;grid-template-columns:repeat(5,1fr)}
+  .quick a{display:flex;align-items:center;gap:13px;padding:24px 20px;border-left:1px solid var(--line);transition:.25s}
+  .quick a:first-child{border-left:none}
+  .quick a:hover{background:var(--tint)}
+  .quick .qi{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--tint-2);color:var(--navy);transition:.25s}
+  .quick a:hover .qi{background:var(--navy);color:#fff}
+  .quick .qi svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6}
+  .quick .ql{font-weight:600;color:var(--navy-ink);font-size:14.5px;line-height:1.25}
+  .quick .ql small{display:block;color:var(--muted);font-weight:400;font-size:12.5px;margin-top:2px}
+  .quick .qar{margin-left:auto;color:var(--gold);font-weight:700}
+  @media(max-width:1000px){.quick .wrap{grid-template-columns:1fr 1fr}.quick a{border-left:none;border-top:1px solid var(--line)}}
+
+  /* who we serve */
+  .serve{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .serve .who{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:.3s}
+  .serve .who:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+  .serve .who .ph{aspect-ratio:16/10;background:center/cover no-repeat;position:relative}
+  .serve .who .ph .lab{position:absolute;left:16px;top:16px;background:rgba(255,255,255,.94);border-radius:8px;padding:6px 13px;font-size:12.5px;font-weight:700;color:var(--navy);letter-spacing:.04em}
+  .serve .who .bd{padding:26px 28px}
+  .serve .who h3{color:var(--navy-ink);font-size:22px;margin-bottom:8px}
+  .serve .who p{color:var(--muted);font-size:16px}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px;justify-content:center}
+  .chips span{border:1px solid var(--line);border-radius:999px;padding:10px 22px;font-size:14.5px;font-weight:500;color:var(--navy);background:#fff}
+
+  /* tax comparison */
+  .compare{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;max-width:840px;margin:0 auto;box-shadow:var(--shadow)}
+  .compare .rw{display:grid;grid-template-columns:1.5fr 1fr 1fr}
+  .compare .hd2{background:var(--navy);color:#fff}
+  .compare .hd2 div{padding:18px 22px;font-weight:600;font-size:15.5px}
+  .compare .hd2 .c{text-align:center}
+  .compare .hd2 .jp{color:#c4d2e8}
+  .compare .hd2 .ae{color:var(--gold-bright)}
+  .compare .rw:not(.hd2){border-top:1px solid var(--line)}
+  .compare .rw:not(.hd2)>div{padding:16px 22px}
+  .compare .k{color:var(--muted);font-size:15.5px}
+  .compare .vj{text-align:center;font-weight:600;color:var(--navy-ink)}
+  .compare .va{text-align:center;font-weight:700;color:#1f9d6b}
+  .compare .rw:nth-child(even){background:var(--tint)}
+
+  /* ENBD-style simulator */
+  .sim .wrap2{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start;max-width:1240px;margin:0 auto;padding:0 28px}
+  .simtabs{display:flex;gap:8px;border-bottom:1px solid var(--line);margin-bottom:38px}
+  .simtab{display:flex;flex-direction:column;align-items:center;gap:10px;padding:14px 26px 16px;cursor:pointer;
+    color:var(--muted);font-weight:600;font-size:15.5px;border-bottom:3px solid transparent;margin-bottom:-1px;transition:.25s;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
+  .simtab svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.5}
+  .simtab.on{color:var(--navy);border-bottom-color:var(--navy)}
+  .simtab:hover{color:var(--navy)}
+  .ctrl2{margin-bottom:34px}
+  .ctrl2 label{display:block;font-weight:600;color:var(--navy-ink);font-size:17px;margin-bottom:16px}
+  .ctrl2 .minmax{display:flex;justify-content:space-between;font-weight:600;color:var(--navy-ink);font-size:15.5px;margin-top:12px}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;background:#dfe7f1;outline:none;cursor:pointer}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;
+    background:var(--navy);border:5px solid #fff;box-shadow:0 2px 10px rgba(10,42,84,.4);cursor:pointer;transition:.15s}
+  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.1)}
+  input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--navy);border:4px solid #fff;box-shadow:0 2px 10px rgba(10,42,84,.4);cursor:pointer}
+  .sim .fine{font-size:13.5px;color:var(--muted);margin-top:6px}
+  .simcard{background:#fff;border-radius:16px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+  .simcard .res{padding:40px 36px;text-align:center}
+  .simcard .res .t3{font-size:15px;color:var(--muted);font-weight:500}
+  .simcard .res .big3{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-.02em;font-size:clamp(2.4rem,3.6vw,3.2rem);color:var(--navy-ink);line-height:1.1;margin:10px 0 4px}
+  .simcard .res .big3 .neg{color:#b3432f}
+  .simcard .res .sub3{font-size:14.5px;color:var(--muted);margin-bottom:26px}
+  .simcard .res .sub3 b{color:#1f9d6b}
+  .simcard .res .btn{width:100%;justify-content:center}
+  .simcard .res .lnk{display:inline-block;margin-top:16px;font-weight:600;color:var(--navy);font-size:15px}
+  .simcard .tip{background:var(--navy);color:#fff;text-align:center;padding:30px 26px}
+  .simcard .tip .bulb{width:34px;height:34px;margin:0 auto 10px;display:grid;place-items:center}
+  .simcard .tip .bulb svg{width:26px;height:26px;stroke:var(--gold-bright);fill:none;stroke-width:1.6}
+  .simcard .tip .tt{font-weight:600;font-size:16.5px}
+  .simcard .tip a{display:inline-flex;align-items:center;gap:6px;color:#c4d2e8;font-size:14.5px;margin-top:8px}
+  .simcard .tip a:hover{color:#fff}
+  .simpane{display:none}.simpane.on{display:block}
+  @media(max-width:1000px){.sim .wrap2{grid-template-columns:1fr}}
+
+  /* cards grid */
+  .grid{display:grid;gap:22px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;transition:.3s}
+  .card:hover{border-color:rgba(184,145,47,.5);transform:translateY(-4px);box-shadow:var(--shadow)}
+  .card .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;color:#fff;margin-bottom:18px;
+    background:linear-gradient(140deg,var(--navy),var(--gold))}
+  .card h3{font-size:20px;color:var(--navy-ink);font-weight:600;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15.5px}
+  .ic svg{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.6}
+
+  /* journey */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative}
+  .steps::before{content:'';position:absolute;left:3%;right:3%;top:28px;height:2px;
+    background:linear-gradient(90deg,transparent,var(--line) 10%,var(--line) 90%,transparent)}
+  .step{position:relative;text-align:center}
+  .step .num{width:58px;height:58px;border-radius:16px;margin:0 auto 16px;display:grid;place-items:center;
+    background:#fff;border:1px solid var(--line);color:var(--navy);position:relative;box-shadow:0 10px 24px -14px rgba(10,42,84,.4)}
+  .step .num b{position:absolute;right:-6px;top:-6px;width:24px;height:24px;border-radius:50%;background:var(--gold);
+    color:#fff;font-size:13px;display:grid;place-items:center;font-weight:700}
+  .step .num svg{width:24px;height:24px;stroke:var(--navy);fill:none;stroke-width:1.6}
+  .step h4{color:var(--navy-ink);font-size:18px;font-weight:600;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:14.5px}
+
+  /* strategy */
+  .strat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;display:flex;flex-direction:column;height:100%}
+  .strat .no{font-family:'Plus Jakarta Sans',sans-serif;font-size:52px;font-weight:600;color:var(--gold);line-height:1}
+  .strat .law{align-self:flex-start;font-size:12.5px;font-weight:600;color:var(--navy);background:var(--tint-2);
+    border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin:6px 0 14px}
+  .strat h3{color:var(--navy-ink);font-size:20px;margin-bottom:8px}
+  .strat p{color:var(--muted);font-size:15px;margin-bottom:18px}
+  .strat .res{margin-top:auto;display:flex;gap:10px;align-items:flex-start;border-top:1px solid var(--line);padding-top:16px;
+    color:var(--navy-ink);font-weight:600;font-size:15px}
+  .strat .res .d{width:9px;height:9px;border-radius:50%;background:var(--gold);margin-top:6px;flex:none}
+
+  /* case */
+  .case{background:var(--tint);border:1px solid var(--line);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;height:100%}
+  .case .tag{align-self:flex-start;font-size:13px;font-weight:600;color:var(--gold);background:var(--gold-soft);border-radius:999px;padding:5px 13px;margin-bottom:14px}
+  .case h3{color:var(--navy-ink);font-size:20px}
+  .case .pf{color:var(--muted);font-size:15px;margin:6px 0 16px}
+  .case ol{list-style:none;display:flex;flex-direction:column;gap:11px;border-top:1px solid var(--line);padding-top:16px}
+  .case ol li{display:flex;gap:11px;font-size:14.5px;color:#3a4761}
+  .case ol li i{width:23px;height:23px;border-radius:50%;background:rgba(10,42,84,.08);color:var(--navy);
+    font-style:normal;font-weight:700;font-size:12.5px;display:grid;place-items:center;flex:none}
+  .case .out{margin-top:16px;background:var(--gold-soft);border-radius:12px;padding:14px;display:flex;gap:9px;
+    color:var(--navy-ink);font-weight:600;font-size:14.5px}
+  .case .out svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:2.4;flex:none;margin-top:2px}
+
+  /* ecosystem */
+  .eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .pill{border:1px solid var(--line);border-radius:var(--radius);padding:26px;background:#fff;transition:.3s;display:block}
+  .pill:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold)}
+  .pill .badge{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:6px;color:#fff;display:inline-block}
+  .pill h3{color:var(--navy-ink);font-size:20px;margin:14px 0 6px}
+  .pill p{color:var(--muted);font-size:14.5px;margin-bottom:14px}
+  .pill .go{font-size:14px;font-weight:600;color:var(--navy)}
+  .pill.hubme{background:linear-gradient(160deg,#fff,var(--tint));border-color:rgba(184,145,47,.4)}
+
+  /* insights */
+  .ins{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .vid{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;transition:.3s;cursor:pointer}
+  .vid:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .vid .thumb{aspect-ratio:16/9;background:#0a2a54 center/cover no-repeat;position:relative;display:grid;place-items:center}
+  .vid .thumb::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,42,84,.12),rgba(10,42,84,.5))}
+  .vid .thumb .play{position:relative;width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.22);backdrop-filter:blur(4px);display:grid;place-items:center;border:1px solid rgba(255,255,255,.4);transition:.3s}
+  .vid:hover .thumb .play{background:rgba(212,175,55,.9);transform:scale(1.06)}
+  .vid .thumb .play::after{content:'';border-left:16px solid var(--gold-bright);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+  .vid .b{padding:20px 22px}
+  .vid .b .t{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .vid .b h4{color:var(--navy-ink);font-size:17px;margin-top:6px}
+
+  /* cta band */
+  .band{background:linear-gradient(120deg,var(--navy),var(--navy-2));color:#fff;border-radius:24px;padding:56px;text-align:center;
+    box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .band::after{content:'';position:absolute;inset:0;background:radial-gradient(600px 300px at 85% 0,rgba(184,145,47,.22),transparent 60%)}
+  .band h2{position:relative;font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:clamp(2rem,3.6vw,2.8rem);margin-bottom:14px}
+  .band p{position:relative;color:#c4d2e8;font-weight:300;font-size:18px;max-width:560px;margin:0 auto 26px}
+  .band .cta{position:relative;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* footer */
+  footer{background:#071d3b;color:#9fb2cf;padding:64px 0 30px;font-size:14.5px}
+  .fcols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+  footer .mk{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:24px;color:#fff}
+  footer .mk b{color:var(--gold-bright)}
+  footer h5{color:#fff;font-size:14px;letter-spacing:.06em;margin-bottom:16px;font-weight:600}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  footer ul a:hover{color:#fff}
+  footer .bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;color:#6d84a6;flex-wrap:wrap;gap:10px}
+  footer .disc{max-width:520px;font-size:12.5px;line-height:1.7;color:#6d84a6}
+
+  @media(max-width:1000px){
+    .hero .wrap{grid-template-columns:1fr;gap:40px}
+    .hcard{max-width:440px}
+    .stats .wrap{grid-template-columns:repeat(2,1fr);gap:26px}
+    .g3,.ins,.eco-grid,.steps{grid-template-columns:1fr 1fr}
+    .steps::before{display:none}
+    .fcols{grid-template-columns:1fr 1fr}
+    .navlinks{display:none}
+    .menu-btn{display:flex}
+  }
+  @media(max-width:620px){
+    .g3,.g2,.ins,.eco-grid,.steps{grid-template-columns:1fr}
+    .stats .wrap{grid-template-columns:1fr 1fr}
+    .util .eco span:not(.brand){display:none}
+    .band{padding:38px 24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ UTILITY BAR ══ -->
+<div class="util">
+  <div class="wrap">
+    <div class="eco">
+      <span class="brand">JWDグループ：</span>
+      <a href="#ecosystem"><b>ファミリーオフィス</b></a>
+      <a href="#ecosystem">JWDインベストメント</a>
+      <a href="#ecosystem">ANAWAK不動産</a>
+      <a href="#ecosystem">ルナトラベル</a>
+    </div>
+    <div class="lang"><a href="index.html">EN</a>·<a href="ja.html" class="on">日本語</a></div>
+  </div>
+</div>
+
+<!-- ══ MAIN NAV ══ -->
+<header id="hd">
+  <div class="wrap">
+    <nav class="main">
+      <a href="#top" class="logo">
+        <span class="mk">JWD <b>family office</b></span>
+        <span class="sb">日本 · ドバイ · 資産保全</span>
+      </a>
+      <div class="navlinks">
+        <a href="#clients">顧客層</a>
+        <a href="#services">サービス</a>
+        <a href="#approach">アプローチ</a>
+        <a href="#strategies">戦略</a>
+        <a href="#simulator">シミュレーター</a>
+        <a href="#cases">事例</a>
+        <a href="#ecosystem">グループ</a>
+        <a href="#insights">インサイト</a>
+      </div>
+      <div class="navcta">
+        <a href="#contact" class="btn btn-primary">無料相談を予約</a>
+        <button class="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="kick"><span class="dot"></span> JWDエコシステムの中心</span>
+      <h1>一族の資産を、守り、育て、<em>次世代へ。</em></h1>
+      <p class="sub">日本の富裕層とオーナー経営者のために。「築いた資産を、いかに世代を超えて守り抜くか」——その問いにまず答える、ドバイ拠点のファミリーオフィスです。</p>
+      <div class="cta">
+        <a href="#contact" class="btn btn-gold">無料相談を予約 →</a>
+        <a href="#approach" class="btn btn-ghost">仕組みを見る</a>
+      </div>
+      <div class="assure">
+        <span>✓ <b>2013年</b>からドバイでライセンス保有 · 登録番号937</span>
+        <span>✓ 国際税務・資産承継</span>
+        <span>✓ 日本語での対応</span>
+      </div>
+      <div class="portals">
+        <span class="plab">グループサイト</span>
+        <a class="portal" href="#ecosystem"><span class="swatch" style="background:#0097a7"></span>JWD Investment ↗</a>
+        <a class="portal" href="#ecosystem"><span class="swatch" style="background:linear-gradient(135deg,#123a6b,#b8912f)"></span>ANAWAK不動産 ↗</a>
+        <a class="portal" href="#ecosystem"><span class="swatch" style="background:#2f7d80"></span>ルナトラベル ↗</a>
+      </div>
+    </div>
+    <div class="hcard">
+      <div class="img" style="background-image:url('img/couple-beach.jpg')"></div>
+      <div class="float">
+        <div class="t">統合純資産</div>
+        <div class="v"><small>¥</small>2,847,500,000</div>
+        <div class="row"><span>年初来リターン</span><b>+9.7%</b></div>
+        <div class="row"><span>海外資産の相続税</span><b>→ 0%</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUICK ACTIONS (ENBD-style) ══ -->
+<div class="quick">
+  <div class="wrap">
+    <a href="#strategies"><span class="qi"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3 7-7 9-4-2-7-4-7-9V7z"/></svg></span><span class="ql">資産保護<small>守る・保全する</small></span><span class="qar">→</span></a>
+    <a href="#services"><span class="qi"><svg viewBox="0 0 24 24"><path d="M12 3v18M6 8h12M9 21h6"/><circle cx="12" cy="6" r="2"/></svg></span><span class="ql">承継プランニング<small>世代を超えて</small></span><span class="qar">→</span></a>
+    <a href="#strategies"><span class="qi"><svg viewBox="0 0 24 24"><path d="M9 7h6M9 11h6M9 15h4M6 3h12v18l-3-2-3 2-3-2-3 2z"/></svg></span><span class="ql">タックスプランニング<small>国際税務</small></span><span class="qar">→</span></a>
+    <a href="#services"><span class="qi"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span><span class="ql">ファミリーオフィス設立<small>DIFC / ADGM</small></span><span class="qar">→</span></a>
+    <a href="#ecosystem"><span class="qi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18"/></svg></span><span class="ql">多国間ストラクチャー<small>日本 · ドバイ</small></span><span class="qar">→</span></a>
+  </div>
+</div>
+
+<!-- ══ WEALTH SIMULATOR (ENBD-style) ══ -->
+<section class="blk sim" id="simulator" style="background:var(--tint-2)">
+  <div class="head center" style="padding:0 28px">
+    <div class="ey" style="color:var(--muted);font-weight:500;letter-spacing:.08em;text-transform:none">資産シミュレーター</div>
+    <h2 class="sec" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:-.02em">資産承継をお考えですか？失われる額を試算しましょう</h2>
+  </div>
+  <div class="wrap2">
+    <div>
+      <div class="simtabs">
+        <button class="simtab on" data-p="p-tax"><svg viewBox="0 0 24 24"><path d="M9 7h6M9 11h6M9 15h4M6 3h12v18l-3-2-3 2-3-2-3 2z"/></svg>相続税</button>
+        <button class="simtab" data-p="p-grow"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7M21 6h-4M21 6v4"/></svg>資産成長</button>
+        <button class="simtab" data-p="p-fx"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 10h8M8 14h8M12 6v12"/></svg>為替リスク</button>
+      </div>
+
+      <!-- tax pane -->
+      <div class="simpane on" id="p-tax">
+        <div class="ctrl2">
+          <label>一族の総資産</label>
+          <input type="range" id="t-est" min="100" max="3000" step="50" value="1000">
+          <div class="minmax"><span>¥1億</span><span>¥30億</span></div>
+        </div>
+        <div class="ctrl2">
+          <label>法定相続人の数</label>
+          <input type="range" id="t-heirs" min="1" max="6" step="1" value="3">
+          <div class="minmax"><span>1</span><span>6</span></div>
+        </div>
+        <p class="fine">日本の相続税の累進税率（10〜55%）と基礎控除（3,000万円＋600万円×法定相続人数）に基づく概算です（法定相続分で均等按分と仮定）。実際の税額は異なります。税理士にご相談ください。</p>
+      </div>
+
+      <!-- growth pane -->
+      <div class="simpane" id="p-grow">
+        <div class="ctrl2">
+          <label>初期資産</label>
+          <input type="range" id="g-init" min="100" max="3000" step="50" value="1000">
+          <div class="minmax"><span>¥1億</span><span>¥30億</span></div>
+        </div>
+        <div class="ctrl2">
+          <label>運用年数</label>
+          <input type="range" id="g-yrs" min="5" max="30" step="1" value="15">
+          <div class="minmax"><span>5年</span><span>30年</span></div>
+        </div>
+        <p class="fine">国内運用3.5%と海外運用6.5%（年率、円安効果1%を加味）を単純複利で比較。手数料・税引前であり、将来の成果を保証するものではありません。</p>
+      </div>
+
+      <!-- fx pane -->
+      <div class="simpane" id="p-fx">
+        <div class="ctrl2">
+          <label>円建て資産</label>
+          <input type="range" id="f-amt" min="100" max="3000" step="50" value="1000">
+          <div class="minmax"><span>¥1億</span><span>¥30億</span></div>
+        </div>
+        <div class="ctrl2">
+          <label>円安率（年率）</label>
+          <input type="range" id="f-dep" min="0" max="5" step="0.5" value="2">
+          <div class="minmax"><span>0%</span><span>5% / 年</span></div>
+        </div>
+        <p class="fine">ヘッジなしの円資産が、選択した円安率で10年間にどれだけ国際購買力を失うかを示します。2020〜2024年に円は対米ドルで約30%下落しました。</p>
+      </div>
+    </div>
+
+    <!-- result card -->
+    <div class="simcard">
+      <div class="res">
+        <div class="t3" id="r-label">相続税の概算（日本）</div>
+        <div class="big3" id="r-big"><span class="neg">−¥2.9億</span></div>
+        <div class="sub3" id="r-sub">Effective rate ~29% · with a JWD Dubai structure: <b>potentially → ¥0</b></div>
+        <a href="#contact" class="btn btn-primary">今すぐ相談を予約する</a>
+        <a class="lnk" href="#strategies">3つの戦略を見る ›</a>
+      </div>
+      <div class="tip">
+        <div class="bulb"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 014 10c-.7.6-1 1.4-1 2H9c0-.6-.3-1.4-1-2a6 6 0 014-10z"/></svg></div>
+        <div class="tt">早めの設計を——10年ルールには時間が必要です</div>
+        <a href="#strategies">詳しく見る ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STAT BAND ══ -->
+<div class="stats">
+  <div class="wrap">
+    <div class="s"><div class="n">¥<span>1,400</span>T</div><div class="l">移転期にある日本の家計金融資産</div></div>
+    <div class="s"><div class="n"><span>55</span>%</div><div class="l">日本の相続税 最高税率</div></div>
+    <div class="s"><div class="n"><span>0</span>%</div><div class="l">UAEの所得税・相続税・譲渡益税</div></div>
+    <div class="s"><div class="n"><span>6,700</span></div><div class="l">2024年にUAEへ移住した富裕層</div></div>
+  </div>
+</div>
+
+<!-- ══ THE QUESTION ══ -->
+<section class="q">
+  <div class="wrap">
+    <div class="ey">すべての出発点</div>
+    <h2>「日本の富裕層は、いかに資産を<em>守り、引き継ぐ</em>のか。」</h2>
+    <p>不動産、投資、移住、旅行——そのすべてが、この一つの問いから枝分かれするソリューションです。ファミリーオフィスが、その旅の始まりです。</p>
+  </div>
+</section>
+
+<!-- ══ LICENSED ENTITY ══ -->
+<section class="blk" id="license">
+  <div class="wrap">
+    <div class="head center">
+      <div class="ey">ライセンスを持つドバイ法人</div>
+      <h2 class="sec">Japan Worldlink DWC-LLC</h2>
+      <p class="lead center">ファミリーオフィスの中核は、ドバイで正式にライセンスを受けた法人です。単なる紹介窓口ではなく、規制された基盤の上にストラクチャーを構築します。</p>
+    </div>
+    <div class="lic">
+      <div class="main2">
+        <div class="co">Japan Worldlink DWC-LLC</div>
+        <div class="sub2">Dubai Aviation City Corporation — Licensed Entity</div>
+        <div class="rowli"><span class="k2">事業内容 <small>Business activity</small></span><span class="v2">経営コンサルティング</span></div>
+        <div class="rowli"><span class="k2">登録番号 <small>Registration no.</small></span><span class="v2">937</span></div>
+        <div class="rowli"><span class="k2">法的形態 <small>Legal form</small></span><span class="v2">DWC-LLC</span></div>
+        <div class="rowli"><span class="k2">ライセンス有効期限 <small>Valid until</small></span><span class="v2">2027年3月25日</span></div>
+        <div class="rowli"><span class="k2">代表者 <small>Representative</small></span><span class="v2">川名 智之（Tomoyuki Kawana）</span></div>
+      </div>
+      <aside>
+        <div class="seal">DACC<br>LICENSE</div>
+        <h4>ドバイ航空都市公社 発行の公式ライセンス</h4>
+        <p>ドバイ航空都市 ビジネスセンター Building A3, Floor 3 · P.O. Box 282807</p>
+        <span class="ok"><i></i>ライセンス有効中 — 2013年3月発行 → 2027年3月まで有効</span>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GENERATIONAL WEALTH ══ -->
+<section class="feature">
+  <div class="wrap">
+    <div class="ph" style="background-image:url('img/generations.jpg')">
+      <div class="tag2">三世代 · ひとつの設計</div>
+    </div>
+    <div>
+      <div class="ey">世代を超える資産</div>
+      <h2 class="sec">築いた人より、長く生きる資産を。</h2>
+      <p class="lead">日本では、相続税により一世代で一族の資産の最大55%が失われることがあります。私たちは、その資産を目減りさせることなく、子へ、孫へと引き継ぐためのストラクチャーを構築します。</p>
+      <ul class="pts">
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><div><b>守る</b><span>移転の過程で資産が目減りしないよう保全します。</span></div></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><div><b>備える</b><span>教育と居住設計を通じて、次世代を育てます。</span></div></li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><div><b>引き継ぐ</b><span>10年をかけて、海外資産の相続税を合法的にゼロへ近づけます。</span></div></li>
+      </ul>
+      <a href="#approach" class="btn btn-primary">仕組みを見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ WHO WE SERVE ══ -->
+<section class="blk tint" id="clients">
+  <div class="wrap">
+    <div class="head center">
+      <div class="ey">顧客層</div>
+      <h2 class="sec">一族の資産を、世代を超えて。</h2>
+      <p class="lead center">日本とドバイ、二つの拠点を活かしたクロスボーダーの資産保全。JWDだけが提供できる、一族のための包括設計です。</p>
+    </div>
+    <div class="serve">
+      <div class="who">
+        <div class="ph" style="background-image:url('img/couple-bright.jpg')"><span class="lab">富裕層ファミリー</span></div>
+        <div class="bd"><h3>富裕層ファミリー</h3><p>¥1,400兆円の世代間移転期を迎える日本の富裕層。引き継ぐ資産には最高55%の相続税が課されます。</p></div>
+      </div>
+      <div class="who">
+        <div class="ph" style="background-image:url('img/business-owner.jpg')"><span class="lab">オーナー経営者</span></div>
+        <div class="bd"><h3>中小企業オーナー</h3><p>約9兆円の法人余剰資本というブルーオーシャン。個人金融資産が1億円未満でも活用できます。</p></div>
+      </div>
+    </div>
+    <div class="chips">
+      <span>資産保護</span><span>事業承継</span><span>タックスプランニング</span><span>ファミリーオフィス設立</span><span>多国間資産ストラクチャー</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section class="blk" id="services">
+  <div class="wrap">
+    <div class="head">
+      <div class="ey">ファミリーオフィス・アズ・ア・サービス</div>
+      <h2 class="sec">一族のすべてを、ひとつの統合プラットフォームで</h2>
+      <p class="lead">国際税務、グローバル資産運用、移住、事業承継——そのすべてをひとつに統合してご提供します。</p>
+    </div>
+    <div class="grid g3">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg></div><h3>グローバル資産運用</h3><p>グローバル市場を横断した一任運用。</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v5c0 5-3 7-7 9-4-2-7-4-7-9V7z"/></svg></div><h3>信託・資産承継設計</h3><p>資産保全のための信託ストラクチャーと承継設計。</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M6 8h12M5 8l-2 6a4 4 0 008 0zM21 14l-2-6M16 8l-2 6a4 4 0 008 0"/></svg></div><h3>税務・法務アドバイザリー</h3><p>国際税務プランニングと法的ストラクチャリング。</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M2 12l20-8-8 20-2-8z"/></svg></div><h3>移住・居住サポート</h3><p>ビザ・居住権取得と移住支援によるグローバル・モビリティ。</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div><h3>ファミリーガバナンス・承継</h3><p>家憲・ガバナンス体制の構築と承継計画。</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 6H21l-5 4 2 7-6-4-6 4 2-7-5-4h6.5z"/></svg></div><h3>ライフスタイル・コンシェルジュ</h3><p>プレミアムなライフスタイルとコンシェルジュ支援。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ APPROACH / JOURNEY ══ -->
+<section class="blk tint" id="approach">
+  <div class="wrap">
+    <div class="head center">
+      <div class="ey">クライアント・ジャーニー</div>
+      <h2 class="sec">5つのステップで、グローバルな資産管理へ</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num"><b>1</b><svg viewBox="0 0 24 24"><path d="M4 6h11a3 3 0 013 3v9a3 3 0 00-3-3H4zM20 6h-1a3 3 0 00-3 3v9"/></svg></div><h4>学ぶ</h4><p>市場の知見、税務の学び、事例のご共有。</p></div>
+      <div class="step"><div class="num"><b>2</b><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></div><h4>相談</h4><p>ご要望を理解し、最適なストラクチャーを設計。</p></div>
+      <div class="step"><div class="num"><b>3</b><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18"/></svg></div><h4>体験</h4><p>ドバイを訪れ、エコシステムを体感。</p></div>
+      <div class="step"><div class="num"><b>4</b><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-7"/></svg></div><h4>投資</h4><p>投資戦略と資産設計を実行。</p></div>
+      <div class="step"><div class="num"><b>5</b><svg viewBox="0 0 24 24"><path d="M2 12l20-8-8 20-2-8z"/></svg></div><h4>移住</h4><p>グローバル移住と長期居住をサポート。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STRATEGIES ══ -->
+<section class="blk" id="strategies">
+  <div class="wrap">
+    <div class="head">
+      <div class="ey">3つの相続プランニング戦略</div>
+      <h2 class="sec">UAE規制に基づく、合法的な税務最適化</h2>
+      <p class="lead">JWDのエコシステムを通じ、ひとつの統合されたファミリーオフィス・ソリューションとして設計・実行します。</p>
+    </div>
+    <div class="grid g3">
+      <div class="strat"><div class="no">01</div><div class="law">相続税法 第22条</div><h3>資産評価の最適化</h3><p>ドバイの持株ストラクチャーと評価差を活用。非上場株式を市場価格より低く評価できる場合があります。</p><div class="res"><span class="d"></span>課税対象評価額を最大60%圧縮</div></div>
+      <div class="strat"><div class="no">02</div><div class="law">租税特別措置法 第40条の4</div><h3>実体を伴うCFC最適化</h3><p>ドバイに実体ある事業を設立。実際の事業活動・物理的オフィス・現地管理により実体基準を充足します。</p><div class="res"><span class="d"></span>海外事業利益への日本課税を合法的に繰り延べ</div></div>
+      <div class="strat"><div class="no">03</div><div class="law">相続税法 第1条の3</div><h3>次世代・10年ルール</h3><p>相続人と資産の双方が10年超の非居住者となる場合、海外資産への相続税を実質的にゼロにできます。</p><div class="res"><span class="d"></span>10年経過後、海外資産の相続税は実質ゼロに</div></div>
+    </div>
+    <p style="margin-top:22px;font-size:13px;color:var(--muted);max-width:820px">※ 戦略は一例であり、個別の状況・居住実態・現行法により結果は異なります。税務助言ではありません。国際税務に精通した専門家に必ずご相談ください。</p>
+  </div>
+</section>
+
+<!-- ══ JAPAN vs DUBAI ══ -->
+<section class="blk tint" id="compare">
+  <div class="wrap">
+    <div class="head center">
+      <div class="ey">日本 vs ドバイ</div>
+      <h2 class="sec">なぜUAEでストラクチャーを組むのか</h2>
+      <p class="lead center">同じ資産でも、税制が違えば残る額が変わります。この差こそ、一族がドバイでストラクチャーを組む理由です。</p>
+    </div>
+    <div class="compare">
+      <div class="rw hd2"><div>税目（個人）</div><div class="c jp">日本</div><div class="c ae">ドバイ · UAE</div></div>
+      <div class="rw"><div class="k">個人所得税（最高）</div><div class="vj">55%</div><div class="va">0%</div></div>
+      <div class="rw"><div class="k">株式譲渡益・配当</div><div class="vj">20.315%</div><div class="va">0%</div></div>
+      <div class="rw"><div class="k">相続税（最高）</div><div class="vj">55%</div><div class="va">0%</div></div>
+      <div class="rw"><div class="k">法人税（実効）</div><div class="vj">~30%</div><div class="va">9%</div></div>
+      <div class="rw"><div class="k">消費税 / VAT</div><div class="vj">10%</div><div class="va">5%</div></div>
+      <div class="rw"><div class="k">富裕税</div><div class="vj">なし</div><div class="va">なし</div></div>
+    </div>
+    <p style="text-align:center;margin-top:20px;font-size:13px;color:var(--muted)">※ 税率は説明用の概要です。ドバイの0%はUAEの税務上の居住実態が前提となります。税務助言ではありません。専門家にご相談ください。</p>
+  </div>
+</section>
+
+<!-- ══ CASE STUDIES ══ -->
+<section class="blk" id="cases">
+  <div class="wrap">
+    <div class="head">
+      <div class="ey">ケーススタディ</div>
+      <h2 class="sec">築いた資産を、どう守り抜くか</h2>
+    </div>
+    <div class="grid g3">
+      <div class="case"><span class="tag">不動産の承継</span><h3>資産10億円の不動産オーナー</h3><div class="pf">資産の大半が国内不動産 · 子ども3人。</div>
+        <ol><li><i>1</i>国内不動産をドバイ不動産へ再配分</li><li><i>2</i>長男のドバイ移住をサポート</li><li><i>3</i>DIFCにファミリーオフィスを設立し承継へ</li></ol>
+        <div class="out"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>相続税を55%から、10年後に実質ゼロへ</div></div>
+      <div class="case"><span class="tag">経営者のExit</span><h3>M&amp;A後 資産30億円</h3><div class="pf">IT企業創業者 · 資産が円に極端に集中。</div>
+        <ol><li><i>1</i>実体を伴うドバイ・ファミリーオフィスを設立</li><li><i>2</i>グローバル株式・PE・為替・USD資産へ分散</li><li><i>3</i>ドバイ不動産取得と10年ルールの適用</li></ol>
+        <div class="out"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>円安への完全ヘッジ · 年率8〜12%を目標</div></div>
+      <div class="case"><span class="tag">多世代</span><h3>資産20億円・三世代</h3><div class="pf">同族企業オーナー · 子ども3人と孫3人。</div>
+        <ol><li><i>1</i>子・孫のドバイ移住（国際バカロレア教育）</li><li><i>2</i>ゴールデンビザでドバイ不動産取得（利回り7〜10%）</li><li><i>3</i>多世代型ファミリーオフィスを設立</li></ol>
+        <div class="out"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg>海外資産の相続税を撤廃 · 地政学リスクから分散</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ECOSYSTEM ══ -->
+<section class="blk" id="ecosystem">
+  <div class="wrap">
+    <div class="head center">
+      <div class="ey">JWDグループの架け橋</div>
+      <h2 class="sec">ひとつのハブと、3つの専門会社</h2>
+      <p class="lead center">すべてのご縁は、このファミリーオフィス（Japan Worldlink DWC-LLC）から始まります。ここをハブに、お客様のプランに必要な専門会社へと橋を架けます——各社はそれぞれ独立したライセンス企業です。</p>
+    </div>
+    <div class="eco-grid">
+      <div class="pill hubme"><span class="badge" style="background:var(--navy)">TOP · 現在地</span><h3>ファミリーオフィス</h3><p>Japan Worldlink DWC-LLC — 相続、承継、税務戦略、資産保護、ウェルスコンサルティング。</p><span class="go">中核ハブ</span></div>
+      <a class="pill" href="#" target="_blank"><span class="badge" style="background:#0097a7">Investment</span><h3>JWDインベストメント</h3><p>資産運用・アドバイザリー — Equiti・AIX投資プラットフォーム。</p><span class="go">サイトへ →</span></a>
+      <a class="pill" href="#" target="_blank"><span class="badge" style="background:linear-gradient(90deg,#123a6b,var(--gold))">Real Estate</span><h3>ANAWAK Real Estate L.L.C</h3><p>ドバイ不動産の投資・取得・管理。</p><span class="go">サイトへ →</span></a>
+      <a class="pill" href="#" target="_blank"><span class="badge" style="background:#2f7d80">Travel</span><h3>JWD Luna Travel &amp; Tourism LLC</h3><p>ドバイ政府観光局認可 — 物件ツアー、投資ツアー、ラグジュアリートラベル。</p><span class="go">サイトへ →</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSIGHTS / EDUCATION ══ -->
+<section class="blk tint" id="insights">
+  <div class="wrap">
+    <div class="head">
+      <div class="ey">インサイト＆教育</div>
+      <h2 class="sec">資産保全ライブラリー</h2>
+      <p class="lead">5〜10分の短い動画で、要点をわかりやすく。</p>
+    </div>
+    <div class="ins">
+      <div class="vid"><div class="thumb" style="background-image:url('img/hero-couple.jpg')"><div class="play"></div></div><div class="b"><div class="t">ファミリーオフィス · 6分</div><h4>日本の相続税とは？</h4></div></div>
+      <div class="vid"><div class="thumb" style="background-image:url('img/generations.jpg');background-position:center 30%"><div class="play"></div></div><div class="b"><div class="t">戦略 · 8分</div><h4>世代を超えて資産を引き継ぐには</h4></div></div>
+      <div class="vid"><div class="thumb" style="background-image:url('img/family.jpg')"><div class="play"></div></div><div class="b"><div class="t">保全 · 7分</div><h4>資産保護と事業承継</h4></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══ -->
+<section class="blk" id="contact">
+  <div class="wrap">
+    <div class="band">
+      <h2>まずは、個別相談から。</h2>
+      <p>現状を正しく把握し、一族の資産を次の地平へ運ぶストラクチャーを設計しましょう。</p>
+      <div class="cta">
+        <a href="mailto:contact@jwd.example" class="btn btn-gold">無料相談を予約</a>
+        <a href="#services" class="btn btn-ghost" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.4)">サービスを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="wrap">
+    <div class="fcols">
+      <div>
+        <div class="mk">JWD <b>family office</b></div>
+        <p style="margin-top:14px;max-width:300px">日本とドバイを結ぶ架け橋——一族の資産を世代を超えて守り、引き継ぐ。Japan WorldLink DWC.</p>
+      </div>
+      <div><h5>ファミリーオフィス</h5><ul><li><a href="#services">サービス</a></li><li><a href="#approach">アプローチ</a></li><li><a href="#strategies">戦略</a></li><li><a href="#cases">事例</a></li></ul></div>
+      <div><h5>JWDグループ</h5><ul><li><a href="#ecosystem">JWDインベストメント（Equiti · AIX）</a></li><li><a href="#ecosystem">ANAWAK Real Estate L.L.C</a></li><li><a href="#ecosystem">JWD Luna Travel &amp; Tourism LLC</a></li><li><a href="#insights">インサイト</a></li></ul></div>
+      <div><h5>お問い合わせ</h5><ul><li><a href="#contact">無料相談を予約</a></li><li><a href="#">ドバイ（DIFC）</a></li><li><a href="#">東京</a></li><li><a href="index.html">EN · 日本語</a></li></ul></div>
+    </div>
+    <div class="bottom">
+      <span>© <span id="yr"></span> JWD Family Office · Japan WorldLink DWC</span>
+      <span class="disc">※ 本サイトはデモ用の説明コンテンツです。数値・戦略は投資助言・税務助言ではありません。専門家にご相談ください。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const hd = document.getElementById('hd');
+  addEventListener('scroll', () => hd.classList.toggle('scrolled', scrollY > 10), {passive:true});
+
+  /* ── Wealth Simulator ── */
+  const $ = id => document.getElementById(id);
+  const oku = m => (m/100).toLocaleString('en-US',{maximumFractionDigits:1}); // 百万円 -> 億
+  let pane = 'p-tax';
+
+  // Japan inheritance-tax brackets (per statutory share, in ¥M)
+  const BR = [[10,.10,0],[30,.15,.5],[50,.20,2],[100,.30,7],[200,.40,17],[300,.45,27],[600,.50,42],[Infinity,.55,72]];
+  const shareTax = s => { for (const [cap,rate,ded] of BR) if (s <= cap) return Math.max(0, s*rate - ded); };
+
+  function render(){
+    const L=$('r-label'), B=$('r-big'), S=$('r-sub');
+    if (pane==='p-tax'){
+      const est=+$('t-est').value, h=+$('t-heirs').value;          // est in ¥M
+      const taxable=Math.max(0, est-(30+6*h));
+      const tax=Math.round(shareTax(taxable/h)*h);
+      const eff=est? Math.round(tax/est*100):0;
+      L.textContent='相続税の概算（日本）';
+      B.innerHTML=`<span class="neg">−¥${oku(tax)}億</span>`;
+      S.innerHTML=`総資産¥${oku(est)}億・相続人${h}人 · 実効税率 約${eff}% · JWDのドバイ・ストラクチャーなら<b>実質¥0の可能性</b>`;
+    } else if (pane==='p-grow'){
+      const v0=+$('g-init').value, yrs=+$('g-yrs').value;
+      const dom=v0*Math.pow(1.035,yrs);
+      const ovs=v0*Math.pow(1.065*1.01,yrs);
+      L.textContent=`${yrs}年後の資産推計`;
+      B.innerHTML=`¥${oku(ovs)}億`;
+      S.innerHTML=`海外運用の場合。国内運用は<b>¥${oku(dom)}億</b> — 差額 ¥${oku(ovs-dom)}億`;
+    } else {
+      const amt=+$('f-amt').value, dep=+$('f-dep').value;
+      const left=amt*Math.pow(1-dep/100,10);
+      L.textContent='10年後の購買力';
+      B.innerHTML=dep? `<span class="neg">¥${oku(left)}億</span>` : `¥${oku(left)}億`;
+      S.innerHTML=dep? `¥${oku(amt)}億の円資産は、年${dep}%の円安で<b style="color:#b3432f">−¥${oku(amt-left)}億</b>の国際購買力を失います`
+                     : '円安率0%の想定です——スライダーを動かして円リスクを確認してください';
+    }
+  }
+  document.querySelectorAll('.simtab').forEach(t=>t.onclick=()=>{
+    pane=t.dataset.p;
+    document.querySelectorAll('.simtab').forEach(x=>x.classList.toggle('on',x===t));
+    document.querySelectorAll('.simpane').forEach(x=>x.classList.toggle('on',x.id===pane));
+    render();
+  });
+  ['t-est','t-heirs','g-init','g-yrs','f-amt','f-dep'].forEach(id=>$(id).addEventListener('input',render));
+  render();
+</script>
+</body>
+</html>
