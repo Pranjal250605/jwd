@@ -4,6 +4,7 @@ import { Hero, VideoPromo, QuickTiles, StatBand, Question } from './components/H
 import { Simulator } from './components/Simulator.jsx';
 import { License, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
 import { Strategies, Compare, Cases, Ecosystem, Insights } from './components/Proof.jsx';
+import { ChatWidget } from './components/advisor/ChatWidget.jsx';
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <CtaBand />
       </main>
       <Footer />
+      <ChatWidget />
     </LangProvider>
   );
 }
