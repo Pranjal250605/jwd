@@ -1,6 +1,6 @@
 import { LangProvider } from './i18n.jsx';
 import { UtilBar, Header, CtaBand, Footer } from './components/Chrome.jsx';
-import { Hero, QuickTiles, StatBand, Question } from './components/Hero.jsx';
+import { Hero, VideoPromo, QuickTiles, StatBand, Question } from './components/Hero.jsx';
 import { Simulator } from './components/Simulator.jsx';
 import { License, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
 import { Strategies, Compare, Cases, Ecosystem, Insights } from './components/Proof.jsx';
@@ -12,6 +12,7 @@ export default function App() {
       <Header />
       <main>
         <Hero />
+        <VideoPromo />
         <QuickTiles />
         <Simulator />
         <StatBand />

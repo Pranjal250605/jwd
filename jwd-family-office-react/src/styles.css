@@ -353,3 +353,21 @@
 /* react-specific */
 .util .lang a{cursor:pointer}
 
+
+/* ── AI avatar video promo (under hero) ── */
+.vpromo{background:#fff;border-bottom:1px solid var(--line);padding:34px 0}
+.vpromo .wrap{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.vthumbs{display:flex;gap:16px}
+.vthumb{position:relative;width:230px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;display:block;
+  box-shadow:0 14px 34px -18px rgba(10,42,84,.5);border:1px solid var(--line);transition:.3s;background:center/cover no-repeat}
+.vthumb:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.vthumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(10,42,84,.35))}
+.vthumb .vplay{position:absolute;inset:0;margin:auto;width:44px;height:44px;border-radius:50%;z-index:2;
+  background:rgba(255,255,255,.85);display:grid;place-items:center;transition:.3s}
+.vthumb .vplay::after{content:'';border-left:13px solid var(--navy);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:3px}
+.vthumb:hover .vplay{background:var(--gold-bright)}
+.vlead{display:flex;align-items:flex-start;gap:14px}
+.vlead .varrow{color:var(--gold);font-size:30px;line-height:1.15;flex:none}
+.vlead h3{font-size:clamp(1.3rem,2.4vw,1.8rem);font-weight:700;color:var(--navy-ink);line-height:1.35;letter-spacing:.01em}
+.vlead p{font-size:14.5px;color:var(--muted);margin-top:6px}
+@media(max-width:760px){.vthumb{width:46vw}}
