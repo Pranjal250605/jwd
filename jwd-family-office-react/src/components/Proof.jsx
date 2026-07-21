@@ -192,10 +192,23 @@ export function Ecosystem() {
   );
 }
 
+// Core educational library — the five priority videos from the 13-July meeting.
 const VIDEOS = [
-  ['/img/hero-couple.jpg', 'Family Office · 6 min', 'ファミリーオフィス · 6分', 'What is Japanese inheritance tax?', '日本の相続税とは？'],
-  ['/img/generations.jpg', 'Strategy · 8 min', '戦略 · 8分', 'How to transfer wealth across generations', '世代を超えて資産を引き継ぐには'],
-  ['/img/family.jpg', 'Protection · 7 min', '保全 · 7分', 'Asset protection & business succession', '資産保護と事業承継'],
+  ['/img/hero-couple.jpg', '01 · Family Office', '01 · ファミリーオフィス', '5 min', 'Japanese inheritance tax, explained', '日本の相続税とは？'],
+  ['/img/generations.jpg', '02 · Strategy', '02 · 戦略', '8 min', 'How to transfer wealth across generations', '世代を超えて資産を引き継ぐには'],
+  ['/img/business-owner.jpg', '03 · Protection', '03 · 保全', '6 min', 'Asset protection for your family', '一族の資産を守る方法'],
+  ['/img/couple-bright.jpg', '04 · Succession', '04 · 承継', '7 min', 'Business succession without the tax hit', '税負担を抑えた事業承継'],
+  ['/img/couple-beach.jpg', '05 · Tax', '05 · 税務', '9 min', 'Legal tax-reduction strategies', '合法的な税負担軽減の戦略'],
+];
+
+// Short "What is…?" explainer series — reusable across the group.
+const EXPLAINERS = [
+  ['What is Dubai?', 'ドバイとは？'],
+  ['What is a Family Office?', 'ファミリーオフィスとは？'],
+  ['What is the 10-year rule?', '10年ルールとは？'],
+  ['What is the Golden Visa?', 'ゴールデンビザとは？'],
+  ['What is DIFC / ADGM?', 'DIFC・ADGMとは？'],
+  ['What is CFC substance?', 'CFC実体基準とは？'],
 ];
 
 export function Insights() {
@@ -207,20 +220,38 @@ export function Insights() {
           <div className="ey">{t('Insights & Education', 'インサイト＆教育')}</div>
           <h2 className="sec">{t('The wealth-preservation library', '資産保全ライブラリー')}</h2>
           <p className="lead">{t(
-            'Short, plain-language videos — the essentials, in five to ten minutes each.',
-            '5〜10分の短い動画で、要点をわかりやすく。',
+            'Short, plain-language videos — the essentials, in five to ten minutes each. New topics added continuously.',
+            '5〜10分の短い動画で、要点をわかりやすく。トピックは随時追加します。',
           )}</p>
         </div>
-        <div className="ins">
-          {VIDEOS.map(([img, tEn, tJa, hEn, hJa]) => (
+
+        {/* core library — 5 priority videos */}
+        <div className="ins ins5">
+          {VIDEOS.map(([img, tEn, tJa, dur, hEn, hJa]) => (
             <div className="vid" key={hEn}>
-              <div className="thumb" style={{ backgroundImage: `url('${img}')` }}><div className="play" /></div>
+              <div className="thumb" style={{ backgroundImage: `url('${img}')` }}>
+                <div className="play" />
+                <span className="vdur">{dur}</span>
+              </div>
               <div className="b">
                 <div className="t">{t(tEn, tJa)}</div>
                 <h4>{t(hEn, hJa)}</h4>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* "What is…?" explainer series */}
+        <div className="explain">
+          <div className="explain-h">{t('Two-minute explainers', '2分でわかる用語解説')}</div>
+          <div className="explain-grid">
+            {EXPLAINERS.map(([en, ja]) => (
+              <a className="explain-chip" href="#contact" key={en}>
+                <span className="ec-play">▶</span>
+                <span>{t(en, ja)}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
