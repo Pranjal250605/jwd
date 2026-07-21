@@ -1,4 +1,5 @@
 import { useLang } from '../i18n.jsx';
+import { useVideo } from '../videos.jsx';
 
 const STRATEGIES = [
   ['01', 'Art. 22 · Inheritance Tax Act', '相続税法 第22条', 'Asset Valuation Optimization', '資産評価の最適化',
@@ -193,26 +194,28 @@ export function Ecosystem() {
 }
 
 // Core educational library — the five priority videos from the 13-July meeting.
+// [ videoId, image, kickerEn, kickerJa, dur, titleEn, titleJa ]
 const VIDEOS = [
-  ['/img/hero-couple.jpg', '01 · Family Office', '01 · ファミリーオフィス', '5 min', 'Japanese inheritance tax, explained', '日本の相続税とは？'],
-  ['/img/generations.jpg', '02 · Strategy', '02 · 戦略', '8 min', 'How to transfer wealth across generations', '世代を超えて資産を引き継ぐには'],
-  ['/img/business-owner.jpg', '03 · Protection', '03 · 保全', '6 min', 'Asset protection for your family', '一族の資産を守る方法'],
-  ['/img/couple-bright.jpg', '04 · Succession', '04 · 承継', '7 min', 'Business succession without the tax hit', '税負担を抑えた事業承継'],
-  ['/img/couple-beach.jpg', '05 · Tax', '05 · 税務', '9 min', 'Legal tax-reduction strategies', '合法的な税負担軽減の戦略'],
+  ['edu-01', '/img/hero-couple.jpg', '01 · Family Office', '01 · ファミリーオフィス', '5 min', 'Japanese inheritance tax, explained', '日本の相続税とは？'],
+  ['edu-02', '/img/generations.jpg', '02 · Strategy', '02 · 戦略', '8 min', 'How to transfer wealth across generations', '世代を超えて資産を引き継ぐには'],
+  ['edu-03', '/img/business-owner.jpg', '03 · Protection', '03 · 保全', '6 min', 'Asset protection for your family', '一族の資産を守る方法'],
+  ['edu-04', '/img/couple-bright.jpg', '04 · Succession', '04 · 承継', '7 min', 'Business succession without the tax hit', '税負担を抑えた事業承継'],
+  ['edu-05', '/img/couple-beach.jpg', '05 · Tax', '05 · 税務', '9 min', 'Legal tax-reduction strategies', '合法的な税負担軽減の戦略'],
 ];
 
 // Short "What is…?" explainer series — reusable across the group.
 const EXPLAINERS = [
-  ['What is Dubai?', 'ドバイとは？'],
-  ['What is a Family Office?', 'ファミリーオフィスとは？'],
-  ['What is the 10-year rule?', '10年ルールとは？'],
-  ['What is the Golden Visa?', 'ゴールデンビザとは？'],
-  ['What is DIFC / ADGM?', 'DIFC・ADGMとは？'],
-  ['What is CFC substance?', 'CFC実体基準とは？'],
+  ['exp-dubai', 'What is Dubai?', 'ドバイとは？'],
+  ['exp-fo', 'What is a Family Office?', 'ファミリーオフィスとは？'],
+  ['exp-10yr', 'What is the 10-year rule?', '10年ルールとは？'],
+  ['exp-visa', 'What is the Golden Visa?', 'ゴールデンビザとは？'],
+  ['exp-difc', 'What is DIFC / ADGM?', 'DIFC・ADGMとは？'],
+  ['exp-cfc', 'What is CFC substance?', 'CFC実体基準とは？'],
 ];
 
 export function Insights() {
   const { t } = useLang();
+  const { open } = useVideo();
   return (
     <section className="blk tint" id="insights">
       <div className="wrap">
@@ -227,8 +230,8 @@ export function Insights() {
 
         {/* core library — 5 priority videos */}
         <div className="ins ins5">
-          {VIDEOS.map(([img, tEn, tJa, dur, hEn, hJa]) => (
-            <div className="vid" key={hEn}>
+          {VIDEOS.map(([id, img, tEn, tJa, dur, hEn, hJa]) => (
+            <button className="vid" key={id} onClick={() => open(id, t(hEn, hJa))}>
               <div className="thumb" style={{ backgroundImage: `url('${img}')` }}>
                 <div className="play" />
                 <span className="vdur">{dur}</span>
@@ -237,7 +240,7 @@ export function Insights() {
                 <div className="t">{t(tEn, tJa)}</div>
                 <h4>{t(hEn, hJa)}</h4>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 
@@ -245,11 +248,11 @@ export function Insights() {
         <div className="explain">
           <div className="explain-h">{t('Two-minute explainers', '2分でわかる用語解説')}</div>
           <div className="explain-grid">
-            {EXPLAINERS.map(([en, ja]) => (
-              <a className="explain-chip" href="#contact" key={en}>
+            {EXPLAINERS.map(([id, en, ja]) => (
+              <button className="explain-chip" key={id} onClick={() => open(id, t(en, ja))}>
                 <span className="ec-play">▶</span>
                 <span>{t(en, ja)}</span>
-              </a>
+              </button>
             ))}
           </div>
         </div>

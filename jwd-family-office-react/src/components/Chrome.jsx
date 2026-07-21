@@ -1,6 +1,72 @@
 import { useEffect, useState } from 'react';
 import { useLang } from '../i18n.jsx';
 
+export function ContactForm() {
+  const { t } = useLang();
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: '', email: '', assets: '', message: '' });
+  const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const submit = (e) => {
+    e.preventDefault();
+    // No backend yet — open a pre-filled email so nothing is lost, then thank.
+    const subject = encodeURIComponent('Consultation request — JWD Family Office');
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\nAsset range: ${form.assets}\n\n${form.message}`,
+    );
+    window.location.href = `mailto:contact@jwd.example?subject=${subject}&body=${body}`;
+    setSent(true);
+  };
+
+  const ASSETS = ['〜¥1億', '¥1〜5億', '¥5〜20億', '¥20億+'];
+
+  return (
+    <section className="blk" id="contact">
+      <div className="wrap">
+        <div className="band">
+          <h2>{t('Begin with a private consultation', 'まずは、個別相談から。')}</h2>
+          <p>{t(
+            "Understand your position, then design the structure that carries your family's wealth to its next horizon.",
+            '現状を正しく把握し、一族の資産を次の地平へ運ぶストラクチャーを設計しましょう。',
+          )}</p>
+          {sent ? (
+            <div className="cform-done">
+              <span className="cform-check">✓</span>
+              <p>{t('Thank you — we will be in touch shortly.', 'ありがとうございます。追ってご連絡いたします。')}</p>
+            </div>
+          ) : (
+            <form className="cform" onSubmit={submit}>
+              <div className="cform-row">
+                <input required value={form.name} onChange={set('name')}
+                  placeholder={t('Full name', 'お名前')} />
+                <input required type="email" value={form.email} onChange={set('email')}
+                  placeholder={t('Email', 'メールアドレス')} />
+              </div>
+              <div className="cform-assets">
+                <span>{t('Asset range', '資産規模')}</span>
+                {ASSETS.map((a) => (
+                  <button type="button" key={a}
+                    className={`cform-tag ${form.assets === a ? 'on' : ''}`}
+                    onClick={() => setForm((f) => ({ ...f, assets: a }))}>{a}</button>
+                ))}
+              </div>
+              <textarea rows={3} value={form.message} onChange={set('message')}
+                placeholder={t('How can we help? (optional)', 'ご相談内容（任意）')} />
+              <button type="submit" className="btn btn-gold cform-submit">
+                {t('Request a consultation', '相談を申し込む')}
+              </button>
+              <p className="cform-note">{t(
+                'Japanese-language advisory · Dubai (DIFC) & Tokyo · replies within 1 business day.',
+                '日本語対応 · ドバイ（DIFC）／東京 · 1営業日以内にご返信します。',
+              )}</p>
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function UtilBar() {
   const { lang, setLang, t } = useLang();
   return (

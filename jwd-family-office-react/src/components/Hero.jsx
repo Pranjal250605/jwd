@@ -1,4 +1,5 @@
 import { useLang } from '../i18n.jsx';
+import { useVideo } from '../videos.jsx';
 
 export function Hero() {
   const { t } = useLang();
@@ -49,18 +50,21 @@ export function Hero() {
 /** AI-avatar video strip — the HeyGen videos from the production plan. */
 export function VideoPromo() {
   const { t } = useLang();
+  const { open } = useVideo();
+  const title = t('Protect your family’s wealth through Dubai real-estate investment',
+                  'ドバイの不動産投資で家族の財産を守る');
   return (
     <div className="vpromo">
       <div className="wrap">
         <div className="vthumbs">
-          <a className="vthumb" style={{ backgroundImage: "url('/img/avatar-face.jpg')" }}
-             href="https://youtu.be/bNwfUe41t2U" target="_blank" rel="noreferrer" aria-label="Watch video 1">
+          <button className="vthumb" style={{ backgroundImage: "url('/img/avatar-face.jpg')" }}
+             onClick={() => open('hero-1', title)} aria-label="Watch video 1">
             <span className="vplay" />
-          </a>
-          <a className="vthumb" style={{ backgroundImage: "url('/img/avatar-standing.jpg')" }}
-             href="https://youtu.be/mmZjAihSBGM" target="_blank" rel="noreferrer" aria-label="Watch video 2">
+          </button>
+          <button className="vthumb" style={{ backgroundImage: "url('/img/avatar-standing.jpg')" }}
+             onClick={() => open('hero-2', title)} aria-label="Watch video 2">
             <span className="vplay" />
-          </a>
+          </button>
         </div>
         <div className="vlead">
           <span className="varrow">◀</span>
