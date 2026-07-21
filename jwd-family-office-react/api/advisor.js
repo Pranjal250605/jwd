@@ -93,7 +93,18 @@ export default async function handler(request) {
   });
 
   if (!upstream.ok || !upstream.body) {
-    return Response.json({ error: 'The advisor hit a problem. Please try again.' }, { status: 502 });
+    // Temporary diagnostics: surface why Groq rejected the request.
+    let detail = '';
+    try { detail = await upstream.text(); } catch { /* ignore */ }
+    return Response.json({
+      error: 'The advisor hit a problem. Please try again.',
+      _debug: {
+        upstreamStatus: upstream.status,
+        keyLen: (process.env.GROQ_API_KEY ?? '').length,
+        keyPrefix: (process.env.GROQ_API_KEY ?? '').slice(0, 4),
+        upstream: detail.slice(0, 400),
+      },
+    }, { status: 502 });
   }
 
   // Transform Groq's OpenAI-style SSE into the app's `data:{"text"}` events.
