@@ -149,12 +149,12 @@ export function Cases() {
 export function Ecosystem() {
   const { t } = useLang();
   return (
-    <section className="blk" id="ecosystem">
+    <section className="blk eco-navy" id="ecosystem" style={{ background: '#0a2a54' }}>
       <div className="wrap">
         <div className="head center">
           <div className="ey">{t('The JWD Group Bridge', 'JWDグループの架け橋')}</div>
-          <h2 className="sec">{t('One licensed hub, three specialized companies', 'ひとつのハブと、3つの専門会社')}</h2>
-          <p className="lead center">{t(
+          <h2 className="sec" style={{ color: '#ffffff' }}>{t('One licensed hub, three specialized companies', 'ひとつのハブと、3つの専門会社')}</h2>
+          <p className="lead center" style={{ color: '#c4d2e8' }}>{t(
             'Every relationship begins here at the Family Office (Japan Worldlink DWC-LLC). From this hub, we bridge you to the specialist company your plan requires — each a separate licensed business.',
             'すべてのご縁は、このファミリーオフィス（Japan Worldlink DWC-LLC）から始まります。ここをハブに、お客様のプランに必要な専門会社へと橋を架けます——各社はそれぞれ独立したライセンス企業です。',
           )}</p>

@@ -83,7 +83,7 @@ export function GenerationalWealth() {
 export function WhoWeServe() {
   const { t } = useLang();
   return (
-    <section className="blk tint" id="clients">
+    <section className="blk" id="clients" style={{ background: 'linear-gradient(180deg, #cfe6f8, #e4f1fb)' }}>
       <div className="wrap">
         <div className="head center">
           <div className="ey">{t('Who We Serve', '顧客層')}</div>
