@@ -114,8 +114,11 @@ export function Header() {
       <div className="wrap">
         <nav className="main">
           <a href="#top" className="logo">
-            <span className="mk">JWD <b>family office</b></span>
-            <span className="sb">{t('Japan · Dubai · Wealth Preservation', '日本 · ドバイ · 資産保全')}</span>
+            <img src="/img/jwd-star.png" alt="JWD" className="logo-star" />
+            <span className="logo-txt">
+              <span className="mk">JWD <b>family office</b></span>
+              <span className="sb">{t('Japan · Dubai · Wealth Preservation', '日本 · ドバイ · 資産保全')}</span>
+            </span>
           </a>
           <div className="navlinks">
             {links.map(([href, en, ja]) => <a key={href} href={href}>{t(en, ja)}</a>)}
@@ -159,7 +162,10 @@ export function Footer() {
       <div className="wrap">
         <div className="fcols">
           <div>
-            <div className="mk">JWD <b>family office</b></div>
+            <div className="fmark">
+              <img src="/img/jwd-star.png" alt="JWD" className="fmark-star" />
+              <div className="mk">JWD <b>family office</b></div>
+            </div>
             <p style={{ marginTop: 14, maxWidth: 300 }}>{t(
               'The bridge between Japan and Dubai — protecting and transferring family wealth across generations. Japan WorldLink DWC.',
               '日本とドバイを結ぶ架け橋——一族の資産を世代を超えて守り、引き継ぐ。Japan WorldLink DWC.',
