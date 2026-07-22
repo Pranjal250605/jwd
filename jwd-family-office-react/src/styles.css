@@ -498,9 +498,8 @@
 .vmodal-soon p{color:#c4d2e8;font-size:14.5px;max-width:360px;margin:0}
 
 /* clickable thumbnails were <a>/<div> — now <button>: reset chrome */
-.vthumb,.vid{border:none;background:transparent;padding:0;margin:0;font-family:inherit;text-align:left;cursor:pointer;width:100%}
-.vid{display:block}
-.vthumb{border:1px solid var(--line);background:center/cover no-repeat}
+.vid{border:none;background:transparent;padding:0;margin:0;font-family:inherit;text-align:left;cursor:pointer;width:100%;display:block}
+.vthumb{padding:0;margin:0;font-family:inherit;cursor:pointer}
 .explain-chip{border:1px solid var(--line);background:#fff;cursor:pointer;font-family:inherit;text-align:left;width:100%}
 
 /* ── consultation form ── */
