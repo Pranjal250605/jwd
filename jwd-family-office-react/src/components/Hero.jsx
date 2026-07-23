@@ -34,7 +34,7 @@ export function Hero() {
           </div>
         </div>
         <div className="hcard">
-          <div className="img" style={{ backgroundImage: "url('/img/avatar-face.jpg')", backgroundPosition: '68% 28%' }} />
+          <div className="img" style={{ backgroundImage: "url('/img/new-couple.jpg')", backgroundPosition: 'center 22%' }} />
           <div className="float">
             <div className="t">{t('Consolidated Net Worth', '統合純資産')}</div>
             <div className="v"><small>¥</small>2,847,500,000</div>
