@@ -106,6 +106,7 @@ export function Header() {
     ['#simulator', 'Simulator', 'シミュレーター'],
     ['#cases', 'Case Studies', '事例'],
     ['#ecosystem', 'Ecosystem', 'グループ'],
+    ['#heart-of-europe', 'Villas', 'ヴィラ'],
     ['#insights', 'Insights', 'インサイト'],
   ];
 

@@ -64,17 +64,17 @@
   header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line);transition:box-shadow .3s}
   header.scrolled{box-shadow:0 8px 30px -18px rgba(10,42,84,.3)}
-  nav.main{display:flex;align-items:center;justify-content:space-between;height:76px}
-  .logo{display:flex;flex-direction:row;align-items:center;gap:12px;line-height:1}
-  .logo-star{height:42px;width:auto;flex:none}
+  nav.main{display:flex;align-items:center;gap:24px;height:74px}
+  .logo{display:flex;flex-direction:row;align-items:center;gap:10px;line-height:1;flex:none}
+  .logo-star{height:36px;width:auto;flex:none}
   .logo-txt{display:flex;flex-direction:column}
   .fmark{display:flex;align-items:center;gap:11px}
   .fmark-star{height:38px;width:auto;flex:none}
-  .logo .mk{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:26px;color:var(--navy);letter-spacing:.02em}
+  .logo .mk{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:22px;color:var(--navy);letter-spacing:.01em;white-space:nowrap}
   .logo .mk b{color:var(--gold)}
-  .logo .sb{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin-top:2px}
-  .navlinks{display:flex;gap:22px;align-items:center}
-  .navlinks a{font-size:14.5px;font-weight:500;color:#33415c;position:relative;padding:4px 0;white-space:nowrap}
+  .logo .sb{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  .navlinks{display:flex;gap:18px;align-items:center;justify-content:center;flex:1 1 auto;min-width:0}
+  .navlinks a{font-size:14px;font-weight:500;color:#33415c;position:relative;padding:4px 0;white-space:nowrap}
   .navlinks a::after{content:'';position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--gold);transition:.3s}
   .navlinks a:hover{color:var(--navy)}
   .navlinks a:hover::after{width:100%}
@@ -344,7 +344,11 @@
     .g3,.ins,.eco-grid,.steps{grid-template-columns:1fr 1fr}
     .steps::before{display:none}
     .fcols{grid-template-columns:1fr 1fr}
+  }
+  /* collapse the nav to the hamburger before the links crowd the CTA */
+  @media(max-width:1150px){
     .navlinks{display:none}
+    nav.main{justify-content:space-between}
     .menu-btn{display:flex}
   }
   @media(max-width:620px){
@@ -528,3 +532,20 @@
 
 /* navy ecosystem section — light eyebrow, white cards keep their look */
 .eco-navy .ey{color:var(--gold-bright)}
+
+/* ── Heart of Europe / Floating Villas ── */
+.hoe{background:linear-gradient(180deg,#eef7fd,#ffffff)}
+.hoe-hero{position:relative;margin-top:38px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.hoe-hero img{display:block;width:100%;height:auto;object-fit:cover}
+.hoe-cap{position:absolute;left:18px;bottom:16px;background:rgba(10,42,84,.72);color:#fff;backdrop-filter:blur(4px);
+  font-size:13px;font-weight:600;letter-spacing:.02em;padding:8px 14px;border-radius:10px}
+.hoe-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px}
+.hoe-ph{border-radius:16px;min-height:230px;background:center/cover no-repeat;box-shadow:var(--shadow)}
+.hoe-info{border-radius:16px;background:var(--navy);color:#fff;padding:26px;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.hoe-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.hoe-stat .n{display:block;font-weight:800;font-size:26px;color:#fff;line-height:1}
+.hoe-stat .l{display:block;font-size:12.5px;color:#a9bcd8;margin-top:4px}
+.hoe-cta{align-self:flex-start}
+.hoe-note{font-size:12.5px;color:#a9bcd8;margin:0}
+@media(max-width:900px){.hoe-grid{grid-template-columns:1fr 1fr}.hoe-info{grid-column:1/-1}}
+@media(max-width:560px){.hoe-grid{grid-template-columns:1fr}}

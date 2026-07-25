@@ -195,6 +195,51 @@ export function Ecosystem() {
 
 // Core educational library — the five priority videos from the 13-July meeting.
 // [ videoId, image, kickerEn, kickerJa, dur, titleEn, titleJa ]
+export function HeartOfEurope() {
+  const { t } = useLang();
+  const stats = [
+    ['4,004', t('sq ft', '平方フィート')],
+    ['3', t('levels', 'フロア')],
+    ['1', t('underwater bedroom', '水中ベッドルーム')],
+    ['360°', t('coral reef gardens', '珊瑚礁ガーデン')],
+  ];
+  return (
+    <section className="blk hoe" id="heart-of-europe">
+      <div className="wrap">
+        <div className="head center">
+          <div className="ey">{t('Signature Portfolio · Heart of Europe', 'シグネチャー・ポートフォリオ · ハート・オブ・ヨーロッパ')}</div>
+          <h2 className="sec">{t('Villas that live on the water', '海に浮かぶ、唯一無二の邸宅')}</h2>
+          <p className="lead center">{t(
+            'On The World islands off Dubai — the Floating Seahorse: a three-level villa above and beneath the sea, with an underwater master bedroom wrapped in living coral gardens. A landmark asset for a family portfolio.',
+            'ドバイ沖の人工群島「ザ・ワールド」に浮かぶ、フローティング・シーホース。海上と海中にまたがる3層構造の邸宅で、珊瑚礁に包まれた水中マスターベッドルームを備えます。一族のポートフォリオを象徴する資産です。',
+          )}</p>
+        </div>
+
+        <div className="hoe-hero">
+          <img src="/img/hoe-underwater.jpg" alt={t('Floating villa above and beneath the sea', '海上と海中にまたがる浮遊邸宅')} loading="lazy" />
+          <span className="hoe-cap">{t('The Floating Seahorse · The World, Dubai', 'フローティング・シーホース · ザ・ワールド、ドバイ')}</span>
+        </div>
+
+        <div className="hoe-grid">
+          <div className="hoe-ph" style={{ backgroundImage: "url('/img/hoe-seahorse.jpg')" }} />
+          <div className="hoe-ph" style={{ backgroundImage: "url('/img/hoe-villa.jpg')" }} />
+          <div className="hoe-info">
+            <div className="hoe-stats">
+              {stats.map(([n, l]) => (
+                <div className="hoe-stat" key={l}><span className="n">{n}</span><span className="l">{l}</span></div>
+              ))}
+            </div>
+            <a href="https://thoe.com/properties/the-floating-villas/" target="_blank" rel="noreferrer" className="btn btn-gold hoe-cta">
+              {t('Discover Heart of Europe →', 'ハート・オブ・ヨーロッパを見る →')}
+            </a>
+            <p className="hoe-note">{t('Acquired & managed via ANAWAK Real Estate.', 'ANAWAK不動産を通じて取得・管理いたします。')}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const VIDEOS = [
   ['edu-01', '/img/hero-couple.jpg', '01 · Family Office', '01 · ファミリーオフィス', '5 min', 'Japanese inheritance tax, explained', '日本の相続税とは？'],
   ['edu-02', '/img/generations.jpg', '02 · Strategy', '02 · 戦略', '8 min', 'How to transfer wealth across generations', '世代を超えて資産を引き継ぐには'],

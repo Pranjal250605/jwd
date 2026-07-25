@@ -4,7 +4,7 @@ import { UtilBar, Header, ContactForm, Footer } from './components/Chrome.jsx';
 import { Hero, VideoPromo, QuickTiles, StatBand, Question } from './components/Hero.jsx';
 import { Simulator } from './components/Simulator.jsx';
 import { License, GenerationalWealth, WhoWeServe, Services, Journey } from './components/Sections.jsx';
-import { Strategies, Compare, Cases, Ecosystem, Insights } from './components/Proof.jsx';
+import { Strategies, Compare, Cases, Ecosystem, HeartOfEurope, Insights } from './components/Proof.jsx';
 import { ChatWidget } from './components/advisor/ChatWidget.jsx';
 
 export default function App() {
@@ -29,6 +29,7 @@ export default function App() {
         <Compare />
         <Cases />
         <Ecosystem />
+        <HeartOfEurope />
         <Insights />
         <ContactForm />
       </main>
