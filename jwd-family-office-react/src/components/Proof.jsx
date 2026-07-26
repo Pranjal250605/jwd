@@ -241,7 +241,7 @@ export function HeartOfEurope() {
 }
 
 const VIDEOS = [
-  ['edu-01', '/img/hero-couple.jpg', '01 · Family Office', '01 · ファミリーオフィス', '5 min', 'Japanese inheritance tax, explained', '日本の相続税とは？'],
+  ['edu-01', '/img/video-inheritance-thumb.jpg', '01 · Family Office', '01 · ファミリーオフィス', '5 min', 'Japanese inheritance tax, explained', '日本の相続税とは？'],
   ['edu-02', '/img/generations.jpg', '02 · Strategy', '02 · 戦略', '8 min', 'How to transfer wealth across generations', '世代を超えて資産を引き継ぐには'],
   ['edu-03', '/img/business-owner.jpg', '03 · Protection', '03 · 保全', '6 min', 'Asset protection for your family', '一族の資産を守る方法'],
   ['edu-04', '/img/couple-bright.jpg', '04 · Succession', '04 · 承継', '7 min', 'Business succession without the tax hit', '税負担を抑えた事業承継'],

@@ -16,7 +16,7 @@ export const VIDEO_SOURCES = {
   'hero-1': '/videos/family-inheritance.mp4',
   'hero-2': 'https://youtu.be/mmZjAihSBGM',
   // Core education library — paste HeyGen URLs here as they are produced
-  'edu-01': '', // Japanese inheritance tax, explained
+  'edu-01': '/videos/family-inheritance.mp4', // Japanese inheritance tax, explained
   'edu-02': '', // How to transfer wealth across generations
   'edu-03': '', // Asset protection for your family
   'edu-04': '', // Business succession without the tax hit
