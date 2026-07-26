@@ -12,8 +12,8 @@ import { useLang } from './i18n.jsx';
  * ─────────────────────────────────────────────────────────────────────────
  */
 export const VIDEO_SOURCES = {
-  // Hero avatar promo (the two HeyGen reference clips)
-  'hero-1': 'https://youtu.be/bNwfUe41t2U',
+  // Hero avatar promo — video 1 is the family-inheritance film (local mp4)
+  'hero-1': '/videos/family-inheritance.mp4',
   'hero-2': 'https://youtu.be/mmZjAihSBGM',
   // Core education library — paste HeyGen URLs here as they are produced
   'edu-01': '', // Japanese inheritance tax, explained

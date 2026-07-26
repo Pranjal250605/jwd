@@ -57,7 +57,7 @@ export function VideoPromo() {
     <div className="vpromo">
       <div className="wrap">
         <div className="vthumbs">
-          <button className="vthumb" style={{ backgroundImage: "url('/img/avatar-standing.jpg')", backgroundPosition: 'center 20%' }}
+          <button className="vthumb" style={{ backgroundImage: "url('/img/video-inheritance-thumb.jpg')", backgroundPosition: 'center 22%' }}
              onClick={() => open('hero-1', title)} aria-label="Watch video 1">
             <span className="vplay" />
           </button>
