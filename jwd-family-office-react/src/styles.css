@@ -553,8 +553,8 @@
 /* ── mobile menu ── */
 .mmenu{position:fixed;inset:0;z-index:70;background:rgba(8,20,36,.5);backdrop-filter:blur(3px);animation:advIn .2s ease}
 .mmenu-panel{position:absolute;top:0;right:0;height:100%;width:min(340px,86vw);background:#fff;
-  box-shadow:-20px 0 60px -20px rgba(10,42,84,.4);display:flex;flex-direction:column;padding:20px 22px;
-  animation:mmslide .28s cubic-bezier(.2,.8,.2,1)}
+  box-shadow:-20px 0 60px -20px rgba(10,42,84,.4);display:flex;flex-direction:column;padding:20px 22px 28px;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;animation:mmslide .28s cubic-bezier(.2,.8,.2,1)}
 @keyframes mmslide{from{transform:translateX(100%)}to{transform:none}}
 .mmenu-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--line)}
 .mmenu-top .mk{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:19px;color:var(--navy)}
@@ -568,3 +568,83 @@
 @media(min-width:1151px){.menu-btn{display:none!important}}
 @media(max-width:1150px){.menu-btn{display:flex}.navcta-book{display:none}}
 @media(max-width:420px){.navcta-book{display:none}}
+
+/* ══════════════════════════════════════════════════════════
+   MOBILE REDESIGN
+   ══════════════════════════════════════════════════════════ */
+/* mobile-menu group + language block */
+.mmenu-group{display:flex;flex-direction:column;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+.mmenu-cap{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.mmenu-group a{padding:11px 4px;font-size:15px;font-weight:500;color:var(--muted)}
+.mmenu-group a:hover{color:var(--navy)}
+.mmenu-lang{display:flex;gap:8px;margin-top:18px}
+.mmenu-lang button{flex:1;padding:11px;border:1px solid var(--line);background:#fff;border-radius:12px;
+  font-family:inherit;font-size:15px;font-weight:600;color:var(--muted);cursor:pointer}
+.mmenu-lang button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+@media(max-width:820px){
+  /* the group utility bar overflows on phones — it now lives in the menu */
+  .util{display:none}
+
+  header{border-bottom:1px solid var(--line)}
+  nav.main{height:64px;gap:12px}
+  .logo-star{height:32px}
+  .logo .mk{font-size:19px}
+  .logo .sb{font-size:8px;letter-spacing:.22em}
+
+  /* section rhythm */
+  section.blk{padding:56px 0}
+  .feature{padding:52px 0}
+  .wrap{padding:0 20px}
+  .head{margin-bottom:30px}
+  h2.sec{font-size:1.7rem;margin:10px 0}
+  .lead{font-size:16.5px}
+
+  /* hero */
+  .hero .wrap{grid-template-columns:1fr;gap:26px;padding:30px 20px 44px}
+  .hero h1{font-size:2.15rem;margin:16px 0 16px}
+  .hero p.sub{font-size:16.5px;margin-bottom:24px}
+  .hero .cta{gap:10px}
+  .hero .cta .btn{flex:1 1 auto;justify-content:center}
+  .hero .assure{gap:8px 18px;margin-top:20px;font-size:13px}
+  .portals{margin-top:18px}
+  .hcard{max-width:none}
+  .hcard .img{aspect-ratio:4/3}
+  /* the ¥ net-worth card no longer overlaps — it sits under the photo */
+  .hcard .float{position:static;left:auto;bottom:auto;width:100%;margin-top:14px}
+
+  /* quick action tiles — one clean row each (fixes stacked JP text) */
+  .quick .wrap{grid-template-columns:1fr}
+  .quick a{border-left:none;border-top:1px solid var(--line);padding:16px 4px}
+  .quick a:first-child{border-top:none}
+  .ql{font-size:15px}
+
+  /* stat band */
+  .stats .wrap{grid-template-columns:repeat(2,1fr);gap:22px;padding:30px 20px}
+  .stats .s .n{font-size:34px}
+
+  /* AI advisor floating button — compact so it stops covering the CTAs */
+  .adv-fab{bottom:14px;right:14px;padding:9px 15px 9px 10px;gap:7px}
+  .adv-fab-label{font-size:14px}
+  .adv-panel{height:100dvh}
+
+  /* heart-of-europe: image caption + info readable */
+  .hoe-hero{margin-top:26px}
+  .hoe-cap{font-size:12px;left:12px;bottom:12px}
+}
+
+@media(max-width:520px){
+  .hero h1{font-size:1.9rem}
+  h2.sec{font-size:1.5rem}
+  .lead{font-size:16px}
+  .stats .wrap{grid-template-columns:1fr 1fr;gap:18px}
+  .stats .s{padding:0 6px}
+  .stats .s .n{font-size:30px}
+  .q h2{font-size:1.5rem}
+  .band{padding:34px 22px}
+  .sim .wrap2{padding:0 20px}
+  /* icon-only advisor bubble on the smallest screens */
+  .adv-fab{padding:12px;border-radius:50%}
+  .adv-fab-label{display:none}
+  .hero .assure span{width:100%}
+}

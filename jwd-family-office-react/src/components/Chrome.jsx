@@ -89,7 +89,7 @@ export function UtilBar() {
 }
 
 export function Header() {
-  const { t } = useLang();
+  const { lang, setLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -152,6 +152,20 @@ export function Header() {
                 <a key={href} href={href} onClick={() => setOpen(false)}>{t(en, ja)}</a>
               ))}
             </nav>
+
+            <div className="mmenu-group">
+              <span className="mmenu-cap">{t('JWD Group', 'JWDグループ')}</span>
+              <a href="#ecosystem" onClick={() => setOpen(false)}>{t('Family Office', 'ファミリーオフィス')}</a>
+              <a href="#ecosystem" onClick={() => setOpen(false)}>{t('JWD Investment', 'JWDインベストメント')}</a>
+              <a href="#ecosystem" onClick={() => setOpen(false)}>{t('ANAWAK Real Estate', 'ANAWAK不動産')}</a>
+              <a href="#ecosystem" onClick={() => setOpen(false)}>{t('Luna Travel', 'ルナトラベル')}</a>
+            </div>
+
+            <div className="mmenu-lang">
+              <button className={lang === 'en' ? 'on' : ''} onClick={() => setLang('en')}>EN</button>
+              <button className={lang === 'ja' ? 'on' : ''} onClick={() => setLang('ja')}>日本語</button>
+            </div>
+
             <a href="#contact" className="btn btn-gold mmenu-cta" onClick={() => setOpen(false)}>
               {t('Book a Consultation', '無料相談を予約')}
             </a>
