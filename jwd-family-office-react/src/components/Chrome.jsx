@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useLang } from '../i18n.jsx';
 
 export function ContactForm() {
@@ -139,8 +140,10 @@ export function Header() {
         </nav>
       </div>
 
-      {/* ── mobile menu ── */}
-      {open && (
+      {/* ── mobile menu ── rendered on <body> so it isn't clipped to the
+          header's box (header's backdrop-filter becomes the containing block
+          for position:fixed descendants). */}
+      {open && createPortal(
         <div className="mmenu" onClick={() => setOpen(false)}>
           <div className="mmenu-panel" onClick={(e) => e.stopPropagation()}>
             <div className="mmenu-top">
@@ -170,7 +173,8 @@ export function Header() {
               {t('Book a Consultation', '無料相談を予約')}
             </a>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </header>
   );
