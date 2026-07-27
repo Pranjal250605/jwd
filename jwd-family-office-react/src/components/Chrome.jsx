@@ -91,12 +91,18 @@ export function UtilBar() {
 export function Header() {
   const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 10);
     on();
     addEventListener('scroll', on, { passive: true });
     return () => removeEventListener('scroll', on);
   }, []);
+  // lock body scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
 
   const links = [
     ['#clients', 'Clients', '顧客層'],
@@ -125,10 +131,33 @@ export function Header() {
             {links.map(([href, en, ja]) => <a key={href} href={href}>{t(en, ja)}</a>)}
           </div>
           <div className="navcta">
-            <a href="#contact" className="btn btn-primary">{t('Book a Consultation', '無料相談を予約')}</a>
+            <a href="#contact" className="btn btn-primary navcta-book">{t('Book a Consultation', '無料相談を予約')}</a>
+            <button className="menu-btn" aria-label={t('Menu', 'メニュー')} aria-expanded={open} onClick={() => setOpen(true)}>
+              <span /><span /><span />
+            </button>
           </div>
         </nav>
       </div>
+
+      {/* ── mobile menu ── */}
+      {open && (
+        <div className="mmenu" onClick={() => setOpen(false)}>
+          <div className="mmenu-panel" onClick={(e) => e.stopPropagation()}>
+            <div className="mmenu-top">
+              <span className="mk">JWD <b>family office</b></span>
+              <button className="mmenu-x" aria-label={t('Close', '閉じる')} onClick={() => setOpen(false)}>✕</button>
+            </div>
+            <nav className="mmenu-links">
+              {links.map(([href, en, ja]) => (
+                <a key={href} href={href} onClick={() => setOpen(false)}>{t(en, ja)}</a>
+              ))}
+            </nav>
+            <a href="#contact" className="btn btn-gold mmenu-cta" onClick={() => setOpen(false)}>
+              {t('Book a Consultation', '無料相談を予約')}
+            </a>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
