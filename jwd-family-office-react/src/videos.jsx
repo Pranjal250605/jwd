@@ -14,7 +14,7 @@ import { useLang } from './i18n.jsx';
 export const VIDEO_SOURCES = {
   // Hero avatar promo — video 1 is the Dubai real-estate inheritance film (local mp4)
   'hero-1': '/videos/family-inheritance-dubai.mp4',
-  'hero-2': 'https://youtu.be/mmZjAihSBGM',
+  'hero-2': '/videos/jwd-investment.mp4',
   // Core education library — paste HeyGen URLs here as they are produced
   'edu-01': '/videos/family-inheritance.mp4', // Japanese inheritance tax, explained
   'edu-02': '', // How to transfer wealth across generations
