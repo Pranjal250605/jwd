@@ -149,7 +149,7 @@ export function Cases() {
 export function Ecosystem() {
   const { t } = useLang();
   return (
-    <section className="blk eco-navy" id="ecosystem" style={{ background: '#0a2a54' }}>
+    <section className="blk eco-navy" id="ecosystem" style={{ background: '#2b2d31' }}>
       <div className="wrap">
         <div className="head center">
           <div className="ey">{t('The JWD Group Bridge', 'JWDグループの架け橋')}</div>
@@ -175,7 +175,7 @@ export function Ecosystem() {
             <span className="go">{t('Visit site →', 'サイトへ →')}</span>
           </a>
           <a className="pill" href="#" target="_blank" rel="noreferrer">
-            <span className="badge" style={{ background: 'linear-gradient(90deg,#123a6b,var(--gold))' }}>Real Estate</span>
+            <span className="badge" style={{ background: 'linear-gradient(90deg,#3a3d42,var(--gold))' }}>Real Estate</span>
             <h3>ANAWAK Real Estate L.L.C</h3>
             <p>{t('Dubai property investment, acquisition and management.', 'ドバイ不動産の投資・取得・管理。')}</p>
             <span className="go">{t('Visit site →', 'サイトへ →')}</span>
@@ -215,38 +215,47 @@ export function HeartOfEurope() {
           )}</p>
         </div>
 
+        {/* IHG hospitality brands — credibility band (links to IHG) */}
+        <a className="hoe-ihg" href="https://www.ihg.com/" target="_blank" rel="noreferrer" aria-label="IHG Hotels & Resorts">
+          <span className="hoe-ihg-cap">{t('Hospitality operated in partnership with', 'ホスピタリティ運営パートナー')}</span>
+          <img src="/img/ihg-brands.png" alt="IHG Hotels & Resorts — Six Senses, Regent, InterContinental, Kimpton, and more" loading="lazy" />
+          <span className="hoe-ihg-note">{t('IHG Hotels & Resorts — one of the world’s leading hotel groups, 6,000+ hotels across 100+ countries. ↗', '世界有数のホテルグループ IHG Hotels & Resorts — 100か国以上・6,000軒超のホテルネットワーク。↗')}</span>
+        </a>
+
         <div className="hoe-hero">
           <img src="/img/hoe-underwater.jpg" alt={t('Floating villa above and beneath the sea', '海上と海中にまたがる浮遊邸宅')} loading="lazy" />
           <span className="hoe-cap">{t('The Floating Seahorse · The World, Dubai', 'フローティング・シーホース · ザ・ワールド、ドバイ')}</span>
         </div>
 
-        <div className="hoe-grid">
-          <div className="hoe-ph" style={{ backgroundImage: "url('/img/hoe-seahorse.jpg')" }} />
-          <div className="hoe-ph" style={{ backgroundImage: "url('/img/hoe-villa.jpg')" }} />
-          <div className="hoe-info">
-            <div className="hoe-stats">
-              {stats.map(([n, l]) => (
-                <div className="hoe-stat" key={l}><span className="n">{n}</span><span className="l">{l}</span></div>
-              ))}
-            </div>
+        {/* stats + ANAWAK sourcing */}
+        <div className="hoe-info">
+          <div className="hoe-stats">
+            {stats.map(([n, l]) => (
+              <div className="hoe-stat" key={l}><span className="n">{n}</span><span className="l">{l}</span></div>
+            ))}
+          </div>
+          <div className="hoe-info-r">
+            <p className="hoe-note">{t('Acquired & managed via ANAWAK Real Estate.', 'ANAWAK不動産を通じて取得・管理いたします。')}</p>
             <a href="https://thoe.com/properties/the-floating-villas/" target="_blank" rel="noreferrer" className="btn btn-gold hoe-cta">
               {t('Discover Heart of Europe →', 'ハート・オブ・ヨーロッパを見る →')}
             </a>
-            <p className="hoe-note">{t('Acquired & managed via ANAWAK Real Estate.', 'ANAWAK不動産を通じて取得・管理いたします。')}</p>
           </div>
+        </div>
+      </div>
+
+      {/* full-bleed gallery — slides right to left */}
+      <div className="hoe-marquee" aria-hidden="true">
+        <div className="hoe-track">
+          {[...SLIDES, ...SLIDES].map((s, i) => (
+            <div className="hoe-slide" key={i} style={{ backgroundImage: `url('${s}')` }} />
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-const VIDEOS = [
-  ['edu-01', '/img/video-inheritance-thumb.jpg', '01 · Family Office', '01 · ファミリーオフィス', '5 min', 'Japanese inheritance tax, explained', '日本の相続税とは？'],
-  ['edu-02', '/img/generations.jpg', '02 · Strategy', '02 · 戦略', '8 min', 'How to transfer wealth across generations', '世代を超えて資産を引き継ぐには'],
-  ['edu-03', '/img/business-owner.jpg', '03 · Protection', '03 · 保全', '6 min', 'Asset protection for your family', '一族の資産を守る方法'],
-  ['edu-04', '/img/couple-bright.jpg', '04 · Succession', '04 · 承継', '7 min', 'Business succession without the tax hit', '税負担を抑えた事業承継'],
-  ['edu-05', '/img/couple-beach.jpg', '05 · Tax', '05 · 税務', '9 min', 'Legal tax-reduction strategies', '合法的な税負担軽減の戦略'],
-];
+const SLIDES = Array.from({ length: 26 }, (_, i) => `/img/hoe-slide-${i + 1}.jpg`);
 
 // Short "What is…?" explainer series — reusable across the group.
 const EXPLAINERS = [
@@ -273,20 +282,26 @@ export function Insights() {
           )}</p>
         </div>
 
-        {/* core library — 5 priority videos */}
-        <div className="ins ins5">
-          {VIDEOS.map(([id, img, tEn, tJa, dur, hEn, hJa]) => (
-            <button className="vid" key={id} onClick={() => open(id, t(hEn, hJa))}>
-              <div className="thumb" style={{ backgroundImage: `url('${img}')` }}>
-                <div className="play" />
-                <span className="vdur">{dur}</span>
-              </div>
-              <div className="b">
-                <div className="t">{t(tEn, tJa)}</div>
-                <h4>{t(hEn, hJa)}</h4>
-              </div>
-            </button>
-          ))}
+        {/* Featured — the two films shown on the landing page */}
+        <div className="ins-featured">
+          <button className="vid vid-feat" onClick={() => open('hero-2', t('JWD Investment — Creating the future through the power of capital', 'JWDインベストメント — 資本の力で、未来を創る'))}>
+            <div className="thumb" style={{ backgroundImage: "url('/img/avatar-face.jpg')" }}>
+              <div className="play" />
+            </div>
+            <div className="b">
+              <div className="t">{t('Featured · Investment', '注目 · インベストメント')}</div>
+              <h4>{t('Creating the future through the power of capital', '資本の力で、未来を創る')}</h4>
+            </div>
+          </button>
+          <button className="vid vid-feat" onClick={() => open('hero-1', t('Protecting family wealth through Dubai real estate', 'ファミリー資産継承：ドバイ不動産による価値の守護'))}>
+            <div className="thumb" style={{ backgroundImage: "url('/img/video-inheritance-thumb.jpg')", backgroundPosition: 'center 22%' }}>
+              <div className="play" />
+            </div>
+            <div className="b">
+              <div className="t">{t('Featured · Family Office', '注目 · ファミリーオフィス')}</div>
+              <h4>{t('Protecting family wealth through Dubai real estate', 'ドバイ不動産による、家族の資産継承')}</h4>
+            </div>
+          </button>
         </div>
 
         {/* "What is…?" explainer series */}
@@ -299,6 +314,38 @@ export function Insights() {
                 <span>{t(en, ja)}</span>
               </button>
             ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** The JWD group as a hub-and-petals flower — Family Office at the centre. */
+export function EcosystemFlower() {
+  const { t } = useLang();
+  return (
+    <section className="blk flower-sec" id="group">
+      <div className="wrap">
+        <div className="head center">
+          <div className="ey">{t('The JWD Group', 'JWDグループ')}</div>
+          <h2 className="sec">{t('One group, moving as one', 'ひとつのグループとして')}</h2>
+          <p className="lead center">{t(
+            'The Family Office sits at the hub — investment, real estate and travel companies working together around it.',
+            'ファミリーオフィスを中核に、投資・不動産・旅行の各社がひとつのグループとして連携します。',
+          )}</p>
+        </div>
+
+        <div className="flower" role="img"
+          aria-label={t('JWD Group: Family Office at the centre, with Investment, ANAWAK and Luna Travel.',
+                        'JWDグループ：ファミリーオフィスを中心に、インベストメント、ANAWAK、ルナトラベル。')}>
+          <div className="petal petal-fo"><span className="petal-l">Family Office</span><span className="petal-s">ファミリーオフィス</span></div>
+          <div className="petal petal-inv"><span className="petal-l">Investment</span><span className="petal-s">インベストメント</span></div>
+          <div className="petal petal-ana"><span className="petal-l">ANAWAK</span><span className="petal-s">不動産</span></div>
+          <div className="petal petal-luna"><span className="petal-l">Luna Travel</span><span className="petal-s">トラベル</span></div>
+          <div className="flower-core">
+            <img src="/img/jwd-star.png" alt="JWD" />
+            <span className="flower-core-tx"><b>JWD</b><small>Japan Worldlink DWC Group</small></span>
           </div>
         </div>
       </div>

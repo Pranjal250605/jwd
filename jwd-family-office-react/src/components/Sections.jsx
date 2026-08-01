@@ -1,5 +1,72 @@
 import { useLang } from '../i18n.jsx';
 
+/** Representative's message — sits just before the Japan Worldlink DWC-LLC block. */
+export function President() {
+  const { t } = useLang();
+  const points = [
+    [t('Comprehensive Expertise', '総合的な専門性'),
+     t('We work closely with a trusted network of tax professionals, attorneys, financial institutions, and other specialists to develop the most effective solutions tailored to your circumstances.',
+       '税理士、弁護士、金融機関などの各分野のプロフェッショナルと強固に連携し、最適な方法を導き出します。')],
+    [t('Tailor-Made Family Solutions', 'オーダーメイドの伴走体制'),
+     t('Every family has its own history, priorities, and aspirations. We design customized wealth-preservation and succession strategies that reflect your unique background and future vision.',
+       '一族の背景や将来のビジョンに合わせた、オーダーメイドの資産防衛・承継プランを構築します。')],
+    [t('A Long-Term Partnership', '長期的な信頼関係'),
+     t('Our commitment extends beyond one-time advice. We stand beside your family as a trusted long-term partner, with a vision that spans generations — even a century into the future.',
+       '一時的なアドバイスに留まらず、百年先を見据えたファミリーの永続的なパートナーとしてサポートいたします。')],
+  ];
+  return (
+    <section className="blk prez" id="message">
+      <div className="wrap">
+        <div className="head center">
+          <div className="ey">{t('Message from the Representative', '代表者ごあいさつ')}</div>
+          <h2 className="sec">{t('Preserving Peace of Mind and Lasting Value for the Next Generation',
+                                  '次世代へ繋ぐ「安心」と「価値」を、ご家族とともに')}</h2>
+        </div>
+        <div className="prez-grid">
+          <figure className="prez-photo">
+            <img src="/img/president.jpg" alt={t('Hamit Gurbuz, Representative Director', '代表取締役 ハミット・ギュルビュズ')} />
+            <figcaption>
+              <b>Hamit Gurbuz</b>
+              <span>{t('Representative Director · Japan Worldlink DWC-LLC', '代表取締役 · Japan Worldlink DWC-LLC')}</span>
+            </figcaption>
+          </figure>
+          <div className="prez-body">
+            <p>{t(
+              'Today, the landscape surrounding wealth management and estate succession has become more complex than ever due to evolving legal frameworks and changing social and economic conditions. In particular, the transfer of assets — including inheritance-tax considerations — is far more than a tax matter. It represents a significant milestone in passing on not only the wealth your family has carefully built over generations, but also the values, aspirations, and legacy that accompany it.',
+              '私たちが直面する現代の資産運用や相続を取り巻く環境は、法制度の複雑化や社会情勢の変化に伴い、かつてないほど多様化しています。特に「相続税」をはじめとする資産の移転は、単なる税務上の手続きではなく、ご家族が長年築き上げてこられた大切な財産と「想い」を、次の世代へとバトンタッチする極めて重要な節目です。',
+            )}</p>
+            <p>{t(
+              'At Japan Worldlink, our role extends well beyond providing tax-efficient solutions. We strive to become a trusted strategic partner who understands each family’s unique goals, values, and long-term vision — a comprehensive compass for preserving, growing, and seamlessly transferring family wealth across generations.',
+              '私たちは、単に税負担を軽減するスキームを提供するだけの存在ではありません。ご家族一人ひとりのライフプランや価値観に深く寄り添い、世代を超えて資産を守り、育み、円滑に承継していくための「総合的な羅針盤」でありたいと考えています。',
+            )}</p>
+            <div className="prez-points">
+              {points.map(([h, b]) => (
+                <div key={h}><h4>{h}</h4><p>{b}</p></div>
+              ))}
+            </div>
+            <blockquote className="prez-q">{t(
+              '“How should we pass on our assets — and the values behind them — to the next generation?”',
+              '「次世代にどのような形で資産と想いを残すべきか」——。',
+            )}</blockquote>
+            <p>{t(
+              'We meet that question head-on. Honoring your family’s history while designing lasting peace of mind for the future is the mission that defines our company — pursued with integrity, professionalism, and genuine care.',
+              'その疑問やご不安に、私たちは正面から向き合います。ご家族の歴史に敬意を払い、未来への確かな安心をデザインすることこそが、私たちの使命です。',
+            )}</p>
+            <p>{t(
+              'We invite you to choose Japan Worldlink DWC-LLC as your trusted partner in protecting your family’s wealth, preserving your legacy, and strengthening the bonds that connect generations.',
+              '皆さまの大切な資産と絆を守るパートナーとして、ぜひ私たち Japan Worldlink DWC-LLC をお選びください。',
+            )}</p>
+            <div className="prez-sign">
+              <span>Japan Worldlink DWC-LLC</span>
+              <b>{t('Hamit Gurbuz — Representative Director', '代表取締役　ハミット・ギュルビュズ')}</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function License() {
   const { t } = useLang();
   const rows = [
@@ -7,7 +74,7 @@ export function License() {
     ['Registration no.', '登録番号', '937'],
     ['Legal form', '法的形態', 'DWC-LLC'],
     ['License valid until', 'ライセンス有効期限', t('25 March 2027', '2027年3月25日')],
-    ['Representative', '代表者', t('Tomoyuki Kawana', '川名 智之（Tomoyuki Kawana）')],
+    ['Representative', '代表者', t('Hamit Gurbuz', 'ハミット・ギュルビュズ（Hamit Gurbuz）')],
   ];
   return (
     <section className="blk" id="license">
@@ -15,10 +82,16 @@ export function License() {
         <div className="head center">
           <div className="ey">{t('A Licensed Dubai Entity', 'ライセンスを持つドバイ法人')}</div>
           <h2 className="sec">Japan Worldlink DWC-LLC</h2>
-          <p className="lead center">{t(
+        </div>
+        <div className="lic-intro">
+          <p className="lead">{t(
             'The Family Office hub is a formally licensed company in Dubai — not an introduction desk. Your structure is built on a regulated foundation.',
-            'ファミリーオフィスの中核は、ドバイで正式にライセンスを受けた法人です。単なる紹介窓口ではなく、規制された基盤の上にストラクチャーを構築します。',
+            'ファミリーオフィスの中核は、ドバイで正式にライセンスを受けた本陣です。単なる紹介窓口ではなく、規制された基盤の上にストラクチャーを構築します。',
           )}</p>
+          <figure className="lic-photo">
+            <img src="/img/symposium.jpg" alt={t('Hamit Gurbuz at the UAE Innovation Symposium — Shaping the Future', 'UAEイノベーション・シンポジウムに登壇するハミット・ギュルビュズ')} loading="lazy" />
+            <figcaption>{t('UAE Innovation Symposium · Shaping the Future', 'UAEイノベーション・シンポジウム · Shaping the Future')}</figcaption>
+          </figure>
         </div>
         <div className="lic">
           <div className="main2">
@@ -83,7 +156,7 @@ export function GenerationalWealth() {
 export function WhoWeServe() {
   const { t } = useLang();
   return (
-    <section className="blk" id="clients" style={{ background: 'linear-gradient(180deg, #cfe6f8, #e4f1fb)' }}>
+    <section className="blk" id="clients" style={{ background: 'linear-gradient(180deg, #efedE8, #f9f8f5)' }}>
       <div className="wrap">
         <div className="head center">
           <div className="ey">{t('Who We Serve', '顧客層')}</div>
