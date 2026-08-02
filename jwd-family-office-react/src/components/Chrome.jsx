@@ -193,7 +193,7 @@ export function CtaBand() {
           )}</p>
           <div className="cta">
             <a href="mailto:contact@jwd.example" className="btn btn-gold">{t('Book a Consultation', '無料相談を予約')}</a>
-            <a href="#services" className="btn btn-ghost" style={{ background: 'transparent', color: '#fff', borderColor: 'rgba(255,255,255,.4)' }}>
+            <a href="#services" className="btn btn-ghost">
               {t('Explore services', 'サービスを見る')}
             </a>
           </div>
