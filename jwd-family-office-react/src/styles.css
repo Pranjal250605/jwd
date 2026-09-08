@@ -609,32 +609,33 @@
 
 /* ── JWD group flower ── */
 .flower-sec{background:var(--tint)}
-.flower{position:relative;width:100%;max-width:660px;margin:22px auto 0;aspect-ratio:1 / .84}
-.petal{position:absolute;display:flex;flex-direction:column;text-align:center;border:1px solid rgba(184,145,47,.32);
-  border-radius:50%;transition:background .3s,border-color .3s}
-.petal-l{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:.01em;color:var(--navy-ink);
-  font-size:clamp(15px,2.3vw,21px);line-height:1.05}
-.petal-s{font-size:clamp(10px,1.4vw,12px);color:var(--muted);margin-top:4px;letter-spacing:.06em}
-.petal-fo  {width:60%;height:49%;left:20%;top:0;      background:rgba(184,145,47,.10);align-items:center;justify-content:flex-start;padding-top:6%}
-.petal-luna{width:60%;height:49%;left:20%;bottom:0;   background:rgba(43,45,49,.06);  align-items:center;justify-content:flex-end;  padding-bottom:6%}
-.petal-inv {width:58%;height:46%;left:0;  top:27%;     background:rgba(43,45,49,.05);  align-items:flex-start;justify-content:center;padding-left:5%}
-.petal-ana {width:58%;height:46%;right:0; top:27%;     background:rgba(184,145,47,.15);align-items:flex-end;  justify-content:center;padding-right:5%}
-.petal:hover{background:rgba(184,145,47,.2);border-color:var(--gold)}
-.flower-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;display:flex;align-items:center;gap:12px;
-  justify-content:center;width:37%;min-width:190px;padding:15px 20px;background:#fff;border:1px solid var(--line);
-  border-radius:18px;box-shadow:var(--shadow)}
-.flower-core img{height:42px;width:auto;flex:none}
-.flower-core-tx{display:flex;flex-direction:column;line-height:1}
-.flower-core-tx b{font-family:'Plus Jakarta Sans',sans-serif;font-size:23px;font-weight:800;color:var(--navy-ink);letter-spacing:.01em}
-.flower-core-tx small{font-size:8.5px;letter-spacing:.04em;color:var(--muted);margin-top:3px;white-space:nowrap}
-/* On small screens keep the same flower proportions — just scale the core so
-   it doesn't dominate; petals scale down with their percentages. */
+.flower{position:relative;width:100%;max-width:680px;margin:28px auto 0;aspect-ratio:1 / .88}
+.petal{position:absolute;display:flex;flex-direction:column;text-align:center;border-radius:50%;transition:background .3s,border-color .3s;mix-blend-mode:multiply}
+.petal-l{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:.01em;color:var(--navy-ink);
+  font-size:clamp(12px,1.7vw,16px);line-height:1.15}
+.petal-s{font-size:clamp(9px,1.1vw,11px);color:var(--muted);margin-top:3px;letter-spacing:.04em}
+
+.petal-fo  {width:50%;height:52%;left:25%;top:0;     background:rgba(228,220,196,.55);border:1px solid rgba(184,145,47,.3);align-items:center;justify-content:flex-start;padding-top:5%}
+.petal-inv {width:50%;height:52%;left:1%; top:21%;    background:rgba(185,215,225,.55);border:1px solid rgba(90,160,180,.3);align-items:center;justify-content:center;padding-right:16%;padding-bottom:6%}
+.petal-edify{width:50%;height:52%;left:10%;bottom:1%;  background:rgba(175,185,225,.55);border:1px solid rgba(110,125,195,.3);align-items:center;justify-content:center;padding-right:12%;padding-top:10%}
+.petal-luna{width:50%;height:52%;right:10%;bottom:1%; background:rgba(235,205,215,.55);border:1px solid rgba(200,145,170,.3);align-items:center;justify-content:center;padding-left:12%;padding-top:10%}
+.petal-ana {width:50%;height:52%;right:1%;top:21%;    background:rgba(200,195,220,.55);border:1px solid rgba(150,140,185,.3);align-items:center;justify-content:center;padding-left:16%;padding-bottom:6%}
+
+.petal:hover{filter:brightness(0.96)}
+.flower-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:4px;
+  justify-content:center;width:32%;min-width:150px;aspect-ratio:1/1;background:#fff;border:3px solid #e2e4e8;
+  border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,.08);text-align:center;padding:10px}
+.flower-core img{height:36px;width:auto;flex:none;margin-bottom:2px}
+.flower-core-tx{display:flex;flex-direction:column;align-items:center;line-height:1}
+.flower-core-tx b{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--navy-ink);letter-spacing:.02em}
+.flower-core-tx small{font-size:7.5px;letter-spacing:.05em;color:var(--muted);margin-top:3px;white-space:nowrap;font-weight:600}
+/* On small screens keep the same flower proportions */
 @media(max-width:560px){
   .flower{max-width:none}
-  .flower-core{width:42%;min-width:0;padding:10px 12px;gap:8px;border-radius:14px}
-  .flower-core img{height:30px}
-  .flower-core-tx b{font-size:17px}
-  .flower-core-tx small{font-size:6.5px}
+  .flower-core{width:36%;min-width:0;padding:6px;gap:2px}
+  .flower-core img{height:24px}
+  .flower-core-tx b{font-size:14px}
+  .flower-core-tx small{font-size:5.5px}
 }
 @media(max-width:560px){
   .hoe-info{padding:22px}.hoe-stats{gap:26px}
