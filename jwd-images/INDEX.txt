@@ -1,0 +1,60 @@
+JWD website images — index
+========================================
+
+Photos used across the JWD Group website, grouped by page/section.
+All downloaded at 2400px width (highest quality used on the site).
+
+REMOTE PHOTOS (from Unsplash):
+
+  funds-01.jpg                 used in: content/sections/funds.ts
+  about-01.jpg                 used in: app/[locale]/about/page.tsx, content/sections/about.ts
+  heart-of-europe-01.jpg       used in: app/[locale]/consulting/page.tsx, content/sections/dubai-properties.ts, content/sections/heart-of-europe.ts
+  why-dubai-01.jpg             used in: content/sections/why-dubai.ts
+  japan-properties-01.jpg      used in: app/[locale]/japan-properties/page.tsx
+  heart-of-europe-02.jpg       used in: content/sections/heart-of-europe.ts
+  about-02.jpg                 used in: content/sections/about.ts
+  about-03.jpg                 used in: content/sections/about.ts
+  heart-of-europe-03.jpg       used in: app/[locale]/heart-of-europe/page.tsx, content/home.ts, content/sections/heart-of-europe.ts
+  heart-of-europe-04.jpg       used in: content/sections/about.ts, content/sections/heart-of-europe.ts
+  knowledge-01.jpg             used in: app/[locale]/knowledge/page.tsx
+  family-office-01.jpg         used in: app/[locale]/family-office/page.tsx
+  heart-of-europe-05.jpg       used in: app/[locale]/why-dubai/page.tsx, content/properties.ts, content/sections/dubai-properties.ts, content/sections/heart-of-europe.ts, content/sections/why-dubai.ts
+  heart-of-europe-06.jpg       used in: app/[locale]/stories/page.tsx, content/properties.ts, content/sections/about.ts, content/sections/heart-of-europe.ts, content/sections/why-dubai.ts
+  funds-02.jpg                 used in: content/sections/funds.ts
+  about-04.jpg                 used in: content/sections/about.ts
+  why-dubai-02.jpg             used in: app/[locale]/contact/page.tsx, content/properties.ts, content/sections/why-dubai.ts
+  dubai-properties-01.jpg      used in: content/sections/dubai-properties.ts
+  funds-03.jpg                 used in: app/[locale]/advisor/page.tsx, app/[locale]/simulator/page.tsx, content/sections/funds.ts
+  heart-of-europe-07.jpg       used in: content/sections/heart-of-europe.ts, content/sections/why-dubai.ts
+  funds-04.jpg                 used in: content/sections/funds.ts
+  heart-of-europe-08.jpg       used in: content/sections/heart-of-europe.ts
+  heart-of-europe-09.jpg       used in: content/sections/heart-of-europe.ts
+  dubai-properties-02.jpg      used in: app/[locale]/dubai-properties/page.tsx, content/home.ts, content/properties.ts, content/sections/dubai-properties.ts
+  why-dubai-03.jpg             used in: content/sections/why-dubai.ts
+  funds-05.jpg                 used in: app/[locale]/funds/page.tsx, content/home.ts, content/sections/funds.ts, content/sections/why-dubai.ts
+  funds-06.jpg                 used in: content/sections/funds.ts
+
+LOCAL FILES (already in the project's /public and /app):
+
+  local-zen-cover.png          zen cover image (public/zen-cover.png)
+  local-favicon.ico            site favicon
+  local-icon-*.svg             Next.js template icons (file/globe/next/vercel/window)
+
+
+========================================
+foj-app VARIANT — HERO SECTION IMAGES
+========================================
+
+Hero image for each section of the React (foj-app) variant.
+Note: some sections intentionally reuse the same hero image on the site
+(e.g. corporate-formation & visa-acquisition; license & corporate-bank-account).
+
+  foj-00-homepage-hero-1.png/2      main homepage hero (local: src/jwd1-hero.jpg, jwd2-hero.jpg)
+  foj-01-corporate-formation-hero   Corporate Formation section hero
+  foj-02-license-acquisition-hero   License Acquisition section hero
+  foj-03-visa-acquisition-hero      VISA Acquisition section hero
+  foj-04-emirates-id-hero           Emirates ID Acquisition section hero
+  foj-05-corporate-bank-account-hero  Corporate Bank Account Opening section hero
+  foj-06-personal-bank-account-hero   Personal Bank Account Opening section hero
+  foj-07-tax-registration-hero      Tax Office Registration section hero
+  foj-08-auditing-hero              Auditing section hero
